@@ -16,6 +16,9 @@ bin/DeepScore could be obtained from DeepAlign package:
 bin/PDB_Tool could be obtained from PDB_Tool package:
     https://github.com/realbigws/PDB_Tool
 
+modeller9v8 could be obtained from SaliLab Modeller:
+    https://salilab.org/modeller/9v8/modeller-9v8.tar.gz
+
 
 ========
 Compile:
