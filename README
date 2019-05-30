@@ -20,6 +20,7 @@ modeller9v8 could be obtained from SaliLab Modeller:
     https://salilab.org/modeller/9v8/modeller-9v8.tar.gz
 
 
+
 ========
 Compile:
 ========
@@ -59,5 +60,11 @@ Running example:
 ================
 
 ./CA_to_FullAtom.sh -i example/1pazA_Ca.pdb
+
+
+#-------- note -------#
+Users may add 'missing' residues to head, middle, and/or tail regions.
+
+
 
 

@@ -138,8 +138,10 @@ mkdir -p $tmp_root
 ##### ===== Part 1: Restore Heavy Atom and CB ====== #########
 #------------------------------------------------------------#
 
+#-> extract CA trace 
+$bin/PDB_Tool -i $input -R 1 -M -1 -N -1 -o $tmp_root/${relnam}_CaTrace.pdb 
 #-> restore heavy atomand CB
-$bin/PDB_Tool -i $input -R 1 -N -1 -o $tmp_root/${relnam}_HeavyAtom.pdb
+$bin/PDB_Tool -i $tmp_root/${relnam}_CaTrace.pdb -R 1 -N -1 -o $tmp_root/${relnam}_HeavyAtom.pdb
 #-> generate a pseudo model
 $util/PDB_Add_Chain $tmp_root/${relnam}_HeavyAtom.pdb A $tmp_root/1pdbA.pdb
 
@@ -170,6 +172,7 @@ if [ $kill_tmp -eq 1 ]
 then
 	rm -rf $tmp_root
 else
+	rm -rf TMP_FullAtom_${relnam}
 	mv $tmp_root TMP_FullAtom_${relnam}
 fi
 
