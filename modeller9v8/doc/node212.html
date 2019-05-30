@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Restraints.reindex() -- renumber model restraints using another model</TITLE>
+<META NAME="description" CONTENT="Restraints.reindex() -- renumber model restraints using another model">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node213.html">
+<LINK REL="previous" HREF="node211.html">
+<LINK REL="up" HREF="node195.html">
+<LINK REL="next" HREF="node213.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4831"
+  HREF="node213.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4825"
+  HREF="node195.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4819"
+  HREF="node211.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4827"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4829"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4832"
+  HREF="node213.html">Restraints.spline()   approximate</A>
+<B> Up:</B> <A NAME="tex2html4826"
+  HREF="node195.html">The Restraints class: static</A>
+<B> Previous:</B> <A NAME="tex2html4820"
+  HREF="node211.html">Restraints.unpick()   unselect</A>
+ &nbsp; <B>  <A NAME="tex2html4828"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4830"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011717000000000000000">
+Restraints.reindex() -- renumber model restraints using another model</A>
+</H2> <A NAME="17995"></A><A NAME="CMD:Restraints.reindex"></A><A NAME="17998"></A><TT>reindex(mdl)</TT>
+<BR><DL>
+<DT><STRONG>Requirements:</STRONG></DT>
+<DD>restraints
+                             
+</DD>
+</DL>
+
+<P>
+<BLOCKQUOTE>
+This command renumbers atom indices in all restraints
+in memory. It is expected that the input restraints refer to atoms in the
+passed model <I>mdl</I><A NAME="18009"></A>; the re-indexed restraints will correspond to the current
+model. Only those restraints that have all atoms in the current model will be
+selected. You can remove the others by
+<B><A HREF="node209.html#CMD:Restraints.condense">Restraints.condense()</A></B><A NAME="18012"></A>. This command is useful when the old restraints 
+have to be used while changing from one topology model to another.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html120"
+  HREF="../examples/commands/reindex_restraints.py">examples/commands/reindex_restraints.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: restraints.reindex()
+
+# This will reindex restraints obtained previously for a simpler topology so
+# that they will now apply to a more complicated topology.
+
+from modeller import *
+from modeller.scripts import complete_pdb
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+tpl = env.libs.topology
+par = env.libs.parameters
+
+# Generate the model for the simpler topology (CA only in this case):
+tpl.read(file='$(LIB)/top_ca.lib')
+par.read(file='$(LIB)/par_ca.lib')
+
+code = '1fas'
+mdl = complete_pdb(env, code)
+mdl.write(file=code+'.ca')
+
+# Generate the restraints for the simpler topology:
+sel = selection(mdl)
+mdl.restraints.make(sel, restraint_type='stereo', spline_on_site=False)
+mdl.restraints.write(file='1fas-ca.rsr')
+sel.energy()
+
+# Generate the model for the more complicated topology:
+tpl.read(file='$(LIB)/top_heav.lib')
+par.read(file='$(LIB)/par.lib')
+
+mdl.read(file=code)
+aln = alignment(env)
+aln.append_model(mdl, atom_files=code, align_codes=code)
+aln.append_model(mdl, atom_files=code+'.ini', align_codes=code+'-ini')
+mdl.clear_topology()
+mdl.generate_topology(aln[code+'-ini'])
+mdl.transfer_xyz(aln)
+mdl.write(file='1fas.ini')
+
+mdl2 = model(env, file='1fas.ca')
+mdl.restraints.reindex(mdl2)
+mdl.restraints.write(file='1fas.rsr')
+sel = selection(mdl)
+sel.energy()
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,365 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Flowchart of comparative modeling by MODELLER</TITLE>
+<META NAME="description" CONTENT="Flowchart of comparative modeling by MODELLER">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node452.html">
+<LINK REL="previous" HREF="node448.html">
+<LINK REL="up" HREF="node438.html">
+<LINK REL="next" HREF="node452.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8417"
+  HREF="node452.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8411"
+  HREF="node438.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8405"
+  HREF="node450.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8413"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8415"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8418"
+  HREF="node452.html">Loop modeling method</A>
+<B> Up:</B> <A NAME="tex2html8412"
+  HREF="node438.html">Methods</A>
+<B> Previous:</B> <A NAME="tex2html8406"
+  HREF="node450.html">Restraints and their derivatives</A>
+ &nbsp; <B>  <A NAME="tex2html8414"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8416"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001340000000000000000"></A>
+    <A NAME="SECTION:flowchart"></A>
+<BR>
+Flowchart of comparative modeling by M<SMALL>ODELLER</SMALL>
+</H1>
+    This section describes a flowchart of comparative modeling by 
+M<SMALL>ODELLER</SMALL>, as implemented in the <TT>automodel</TT> class (see
+chapter&nbsp;<A HREF="node15.html#CHAPTERAUTOMODEL">2</A>).
+
+<P>
+Input: script file, alignment file, PDB file(s) for template(s).
+
+<P>
+Output: 
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT"><TT>job.log</TT></TD>
+<TD ALIGN="LEFT"><TT>log</TT> file</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>job.ini</TT></TD>
+<TD ALIGN="LEFT">initial conformation for optimization</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>job.rsr</TT></TD>
+<TD ALIGN="LEFT">restraints file</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>job.sch</TT></TD>
+<TD ALIGN="LEFT">VTFM schedule file</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>job.B9999????</TT></TD>
+<TD ALIGN="LEFT">PDB atom file(s) for the model(s) of the target sequence</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>job.V9999????</TT></TD>
+<TD ALIGN="LEFT">violation profiles for the model(s)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>job.D9999????</TT></TD>
+<TD ALIGN="LEFT">progress of optimization</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>job.BL9999????</TT></TD>
+<TD ALIGN="LEFT">optional loop model(s)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>job.DL9999????</TT></TD>
+<TD ALIGN="LEFT">progress of optimization for loop model(s)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>job.IL9999????</TT></TD>
+<TD ALIGN="LEFT">initial structures for loop model(s)</TD>
+</TR>
+</TABLE>
+
+<P>
+The main M<SMALL>ODELLER</SMALL> routines used in each step are given in parentheses.
+
+<P>
+
+<OL>
+<LI>Read and check the alignment between the target sequence and the template
+   structures 
+<BR>(<B><A HREF="node272.html#CMD:alignment.append">alignment.append()</A></B><A NAME="41265"></A> and <B><A HREF="node277.html#CMD:alignment.check">alignment.check()</A></B><A NAME="41270"></A>).
+
+<P>
+</LI>
+<LI>Calculate restraints on the target from its alignment with the templates:
+
+<P>
+
+<OL>
+<LI>Generate molecular topology for the target sequence
+         (<B><A HREF="node174.html#CMD:model.generatetopology">model.generate_topology()</A></B><A NAME="41275"></A>).
+      Disulfides in the target are assigned here from the equivalent 
+      disulfides in the templates (<B><A HREF="node177.html#CMD:model.patchsstemplates">model.patch_ss_templates()</A></B><A NAME="41280"></A>). Any user defined 
+      patches are also done here (as defined in the 
+      <B><A HREF="node70.html#CMD:automodel.specialpatches">automodel.special_patches()</A></B><A NAME="41285"></A> routine).
+
+<P>
+</LI>
+<LI>Calculate coordinates for atoms that have equivalent atoms in the 
+      templates as an average over all templates (<B><A HREF="node180.html#CMD:model.transferxyz">model.transfer_xyz()</A></B><A NAME="41290"></A>)
+      (alternatively, read the initial coordinates from a file).
+
+<P>
+</LI>
+<LI>Build the remaining unknown coordinates using internal coordinates 
+      from the C<SMALL>HARMM</SMALL> topology library (<B><A HREF="node179.html#CMD:model.build">model.build()</A></B><A NAME="41296"></A>).
+
+<P>
+</LI>
+<LI>Write the initial model to a file with extension <TT>.ini</TT> (<B><A HREF="node172.html#CMD:model.write">model.write()</A></B><A NAME="41301"></A>).
+
+<P>
+</LI>
+<LI>Generate stereochemical, homology-derived, and special restraints
+      (<B><A HREF="node202.html#CMD:Restraints.make">Restraints.make()</A></B><A NAME="41306"></A>)
+      (alternatively, skip this and assume the restraints file already exists):
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT">stereochemical</TD>
+<TD ALIGN="LEFT">restraint_type = 'bond angle dihedral improper'</TD>
+</TR>
+<TR><TD ALIGN="LEFT">mainchain dihedrals <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img88.png"
+ ALT="$ \Phi$">
+, <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img89.png"
+ ALT="$ \Psi$">
+</TD>
+<TD ALIGN="LEFT">restraint_type = 'phi-psi_binormal'</TD>
+</TR>
+<TR><TD ALIGN="LEFT">mainchain dihedral <IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \omega $">
+</TD>
+<TD ALIGN="LEFT">restraint_type = 'omega_dihedral'</TD>
+</TR>
+<TR><TD ALIGN="LEFT">sidechain dihedral <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img7.png"
+ ALT="$ \chi _1$">
+</TD>
+<TD ALIGN="LEFT">restraint_type = 'chi1_dihedral'</TD>
+</TR>
+<TR><TD ALIGN="LEFT">sidechain dihedral <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ \chi _2$">
+</TD>
+<TD ALIGN="LEFT">restraint_type = 'chi2_dihedral'</TD>
+</TR>
+<TR><TD ALIGN="LEFT">sidechain dihedral <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ \chi _3$">
+</TD>
+<TD ALIGN="LEFT">restraint_type = 'chi3_dihedral'</TD>
+</TR>
+<TR><TD ALIGN="LEFT">sidechain dihedral <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.png"
+ ALT="$ \chi _4$">
+</TD>
+<TD ALIGN="LEFT">restraint_type = 'chi4_dihedral'</TD>
+</TR>
+<TR><TD ALIGN="LEFT">mainchain CA-CA distance</TD>
+<TD ALIGN="LEFT">restraint_type = 'distance'</TD>
+</TR>
+<TR><TD ALIGN="LEFT">mainchain N-O distance</TD>
+<TD ALIGN="LEFT">restraint_type = 'distance'</TD>
+</TR>
+<TR><TD ALIGN="LEFT">sidechain-mainchain distance</TD>
+<TD ALIGN="LEFT">restraint_type = 'distance'</TD>
+</TR>
+<TR><TD ALIGN="LEFT">sidechain-sidechain distance</TD>
+<TD ALIGN="LEFT">restraint_type = 'distance'</TD>
+</TR>
+<TR><TD ALIGN="LEFT">ligand distance restraints</TD>
+<TD ALIGN="LEFT"><B><A HREF="node69.html#CMD:automodel.nonstdrestraints">automodel.nonstd_restraints()</A></B><A NAME="41311"></A> routine</TD>
+</TR>
+<TR><TD ALIGN="LEFT">user defined</TD>
+<TD ALIGN="LEFT"><B><A HREF="node68.html#CMD:automodel.specialrestraints">automodel.special_restraints()</A></B><A NAME="41316"></A> routine</TD>
+</TR>
+<TR><TD ALIGN="LEFT">non-bonded pairs distance</TD>
+<TD ALIGN="LEFT">restraint_type = 'sphere'; calculated on the fly</TD>
+</TR>
+</TABLE>
+
+<P>
+</LI>
+<LI>Write all restraints to a file with extension <TT>.rsr</TT> (<B><A HREF="node215.html#CMD:Restraints.write">Restraints.write()</A></B><A NAME="41321"></A>).
+   
+</LI>
+</OL>
+
+<P>
+</LI>
+<LI>Calculate model(s) that satisfy the restraints as well as possible.
+   For each model:
+
+<P>
+
+<OL>
+<LI>Generate the optimization schedule for the variable target function
+         method (VTFM).
+
+<P>
+</LI>
+<LI>Read the initial model (usually from the <TT>.ini</TT> file from 2.d)
+         (<B><A HREF="node170.html#CMD:model.read">model.read()</A></B><A NAME="41326"></A>).
+
+<P>
+</LI>
+<LI>Randomize the initial structure by adding a random number between
+      <IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img117.png"
+ ALT="$ \pm$">
+<I><A HREF="node42.html#MEMB:automodel.deviation">automodel.deviation</A></I><A NAME="41331"></A> angstroms to all atomic positions
+      (<B><A HREF="node241.html#CMD:selection.randomizexyz">selection.randomize_xyz()</A></B><A NAME="41336"></A>).
+
+<P>
+</LI>
+<LI>Optimize the model:
+      
+<UL>
+<LI>Partially optimize the model by VTFM; Repeat the following steps 
+        as many times as specified by the optimization schedule:
+
+<P>
+
+<UL>
+<LI>Select only the restraints that operate on the atoms that are
+          close enough in sequence, as specified by the current step of
+          VTFM (<B><A HREF="node206.html#CMD:Restraints.pick">Restraints.pick()</A></B><A NAME="41341"></A>).
+</LI>
+<LI>Optimize the model by conjugate gradients, using only currently 
+              selected restraints (<B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="41346"></A>).
+        
+</LI>
+</UL>
+
+<P>
+</LI>
+<LI>Refine the model by simulated annealing with molecular dynamics,
+        if so selected:
+
+<P>
+
+<UL>
+<LI>Do a short conjugate gradients optimization (<B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="41351"></A>).
+</LI>
+<LI>Increase temperature in several steps and do molecular dynamics 
+              optimization at each temperature (<B><A HREF="node255.html#CMD:moleculardynamics">molecular_dynamics()</A></B><A NAME="41356"></A>).
+</LI>
+<LI>Decrease temperature in several steps and do molecular dynamics 
+          optimization at each temperature (<B><A HREF="node255.html#CMD:moleculardynamics">molecular_dynamics()</A></B><A NAME="41361"></A>).
+</LI>
+<LI>Do a short conjugate gradients optimization (<B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="41366"></A>).
+       
+</LI>
+</UL>
+</LI>
+</UL>
+
+<P>
+</LI>
+<LI>Calculate the remaining restraint violations and write them out
+      (<B><A HREF="node246.html#CMD:selection.energy">selection.energy()</A></B><A NAME="41371"></A>).
+
+<P>
+</LI>
+<LI>Write out the final model to a file with extension <TT>.B9999????.pdb</TT>
+    where <TT>????</TT> indicates the model number (<B><A HREF="node172.html#CMD:model.write">model.write()</A></B><A NAME="41376"></A>). Also write
+    out the violations profile.
+
+<P>
+</LI>
+<LI>Superpose the models and the templates, if so selected by
+         <I><A HREF="node54.html#MEMB:automodel.finalmalign3d">automodel.final_malign3d</A></I><A NAME="41381"></A> = <TT>True</TT>, and write
+         them out (<B><A HREF="node279.html#CMD:alignment.appendmodel">alignment.append_model()</A></B><A NAME="41387"></A>, <B><A HREF="node293.html#CMD:alignment.malign3d">alignment.malign3d()</A></B><A NAME="41392"></A>).
+
+<P>
+</LI>
+<LI>Do loop modeling if so selected using the <TT>loopmodel</TT> class.
+   
+</LI>
+</OL>
+</LI>
+</OL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8417"
+  HREF="node452.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8411"
+  HREF="node438.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8405"
+  HREF="node450.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8413"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8415"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8418"
+  HREF="node452.html">Loop modeling method</A>
+<B> Up:</B> <A NAME="tex2html8412"
+  HREF="node438.html">Methods</A>
+<B> Previous:</B> <A NAME="tex2html8406"
+  HREF="node450.html">Restraints and their derivatives</A>
+ &nbsp; <B>  <A NAME="tex2html8414"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8416"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

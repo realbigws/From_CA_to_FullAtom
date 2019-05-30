@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Residue.index -- internal integer index</TITLE>
+<META NAME="description" CONTENT="Residue.index -- internal integer index">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node329.html">
+<LINK REL="previous" HREF="node327.html">
+<LINK REL="up" HREF="node323.html">
+<LINK REL="next" HREF="node329.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html6568"
+  HREF="node329.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html6562"
+  HREF="node323.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html6556"
+  HREF="node327.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html6564"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html6566"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6569"
+  HREF="node329.html">Residue.num   PDB-style</A>
+<B> Up:</B> <A NAME="tex2html6563"
+  HREF="node323.html">The Residue class: a</A>
+<B> Previous:</B> <A NAME="tex2html6557"
+  HREF="node327.html">Residue.hetatm   HETATM</A>
+ &nbsp; <B>  <A NAME="tex2html6565"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html6567"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011195000000000000000">
+Residue.index -- internal integer index</A>
+</H2> <A NAME="31900"></A><A NAME="MEMB:Residue.index"></A><BLOCKQUOTE>
+This is the index used internally to identify the residue; residues are
+numbered sequentially starting from 1.
+
+</BLOCKQUOTE>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html198"
+  HREF="../examples/commands/write_pdb_xref.py">examples/commands/write_pdb_xref.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># This demonstrates relating PDB residue numbers with residue indices.
+
+from modeller import *
+
+log.verbose()
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+
+mdl = model(env, file='2abx')
+
+print "Mapping from residue indices to PDB residue and chain names:"
+for r in mdl.residues:
+    print "%6d   %3s:%s   %s" % (r.index, r.num, r.chain.name, r.pdb_name)
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

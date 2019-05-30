@@ -1,0 +1,10 @@
+# Number of sequences:      4
+# Length of profile  :     77
+# N_PROF_ITERATIONS  :      3
+# GAP_PENALTIES_1D   :   -900.0   -50.0
+# MATRIX_OFFSET      :    0.0
+# RR_FILE            : ${MODINSTALLCVS}/modlib//as1.sim.mat
+    1 2ctx                                     X     0    71     1    71     0     0     0    0.    0.0     IRCFITPDITS---KDCPN-GHVCYTKTWCDAFCSIRGKRVDLGCAATCPTVK-TGVDIQCCST-DNCNPFPTRKRP
+    2 2abx                                     X     0    74     1    74     0     0     0    0.    0.0     IVCHTTATIPS-SAVTCPPGENLCYRKMWCDAFCSSRGKVVELGCAATCPSKK-PYEEVTCCST-DKCNHPPKRQPG
+    3 2nbt                                     X     0    66     1    66     0     0     0    0.    0.0     RTCLISPSS---TPQTCPNGQDICFLKAQCDKFCSIRGPVIEQGCVATCPQFRSNYRSLLCCTT-DNCNH-------
+    4 1fas                                     X     0    61     1    61     0     0     0    0.    0.0     TMCYSHTTTSRAILTNCG--ENSCYRKSRRHP----PKMVLGRGC--GCPPGD-DYLEVKCCTSPDKCNY-------

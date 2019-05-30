@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Sequence class: a single sequence within an alignment</TITLE>
+<META NAME="description" CONTENT="The Sequence class: a single sequence within an alignment">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node312.html">
+<LINK REL="previous" HREF="node269.html">
+<LINK REL="up" HREF="node107.html">
+<LINK REL="next" HREF="node299.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html6107"
+  HREF="node299.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html6101"
+  HREF="node107.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html6095"
+  HREF="node297.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html6103"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html6105"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6108"
+  HREF="node299.html">Sequence.range   residue</A>
+<B> Up:</B> <A NAME="tex2html6102"
+  HREF="node107.html">MODELLER command reference</A>
+<B> Previous:</B> <A NAME="tex2html6096"
+  HREF="node297.html">alignment.segment_matching()   align</A>
+ &nbsp; <B>  <A NAME="tex2html6104"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html6106"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION0011160000000000000000"></A>
+    <A NAME="SECTION:sequence"></A>
+<BR>
+The <TT>Sequence</TT> class: a single sequence within an alignment
+</H1>
+    <A NAME="CLASS:Sequence"></A><A NAME="30484"></A>
+The <TT>Sequence</TT> class contains a single sequence, in a model
+(see Section&nbsp;<A HREF="node155.html#CLASS:model">6.6</A>) or in an alignment (see
+Section&nbsp;<A HREF="node269.html#CLASS:alignment">6.15</A>).
+
+<P>
+For alignment template structures (<EM>i.e.</EM>, sequences for which a structure is also
+available) see the <TT>Structure</TT> class in Section&nbsp;<A HREF="node312.html#CLASS:Structure">6.17</A>.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html189"
+  HREF="../examples/python/alnsequence.py">examples/python/alnsequence.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for alnsequence objects
+
+from modeller import *
+
+env = environ()
+
+aln = alignment(env, file='../commands/toxin.ali')
+print "Alignment contains %d sequences:" % len(aln)
+for seq in aln:
+    print "   Sequence %s from %s contains %d residues" \
+          % (seq.code, seq.source, len(seq))
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html6109"
+  HREF="node299.html">Sequence.range -- residue range</A>
+<LI><A NAME="tex2html6110"
+  HREF="node300.html">Sequence.code -- alignment code</A>
+<LI><A NAME="tex2html6111"
+  HREF="node301.html">Sequence.atom_file -- PDB file name</A>
+<LI><A NAME="tex2html6112"
+  HREF="node302.html">Sequence.source -- source organism</A>
+<LI><A NAME="tex2html6113"
+  HREF="node303.html">Sequence.name -- protein name</A>
+<LI><A NAME="tex2html6114"
+  HREF="node304.html">Sequence.prottyp -- protein sequence type</A>
+<LI><A NAME="tex2html6115"
+  HREF="node305.html">Sequence.resolution -- structure resolution</A>
+<LI><A NAME="tex2html6116"
+  HREF="node306.html">Sequence.rfactor -- R factor</A>
+<LI><A NAME="tex2html6117"
+  HREF="node307.html">Sequence.residues -- list of all residues in the sequence</A>
+<LI><A NAME="tex2html6118"
+  HREF="node308.html">Sequence.chains -- list of all chains in the sequence</A>
+<LI><A NAME="tex2html6119"
+  HREF="node309.html">Sequence.transfer_res_prop() -- transfer residue properties</A>
+<LI><A NAME="tex2html6120"
+  HREF="node310.html">Sequence.get_num_equiv() -- get number of equivalences</A>
+<LI><A NAME="tex2html6121"
+  HREF="node311.html">Sequence.get_sequence_identity() -- get sequence identity</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

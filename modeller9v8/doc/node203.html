@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Restraints.make_distance() -- make distance restraints</TITLE>
+<META NAME="description" CONTENT="Restraints.make_distance() -- make distance restraints">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node204.html">
+<LINK REL="previous" HREF="node202.html">
+<LINK REL="up" HREF="node195.html">
+<LINK REL="next" HREF="node204.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4705"
+  HREF="node204.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4699"
+  HREF="node195.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4693"
+  HREF="node202.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4701"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4703"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4706"
+  HREF="node204.html">Restraints.unpick_all()   unselect</A>
+<B> Up:</B> <A NAME="tex2html4700"
+  HREF="node195.html">The Restraints class: static</A>
+<B> Previous:</B> <A NAME="tex2html4694"
+  HREF="node202.html">Restraints.make()   make</A>
+ &nbsp; <B>  <A NAME="tex2html4702"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4704"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001178000000000000000">
+Restraints.make_distance() -- make distance restraints</A>
+</H2> <A NAME="17637"></A><A NAME="CMD:Restraints.makedistance"></A><A NAME="17640"></A><TT>make_distance(atmsel1, atmsel2, aln, spline_on_site, restraint_group, maximal_distance, residue_span_range=(0, 99999), residue_span_sign=True, distance_rsr_model=1, basis_pdf_weight='LOCAL', basis_relative_weight=0.05, spline_dx=0.5, spline_min_points=5, spline_range=4.0, accessibility_type=8, restraint_stdev=(0.1, 1.0), restraint_stdev2=(0.0, 0.0, 0.0), surftyp=1, distngh=6.0, edat=None, io=None, exclude_distance=0.0)</TT>
+<BR><DL>
+<DT><STRONG>Requirements:</STRONG></DT>
+<DD>topology <TT>&amp;</TT> parameters
+                             
+</DD>
+</DL>
+
+<P>
+<BLOCKQUOTE>
+This command calculates and selects new distance restraints.
+See <B><A HREF="node202.html#CMD:Restraints.make">Restraints.make()</A></B><A NAME="17671"></A> for full details.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Distance restraints are generated for all pairs of atoms <IMG
+ WIDTH="24" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img66.png"
+ ALT="$ i,j$">
+ where
+atom <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ is from selection <I>atmsel1</I><A NAME="17676"></A> and atom <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ j$">
+ is from selection
+<I>atmsel2</I><A NAME="17679"></A>. Moreover, for a restraint to be created, at least one distance in
+the template structures must be less than <I>maximal_distance</I><A NAME="17682"></A> (in &#197;).
+The mean of this basis pdf is equal to the template distance and its standard
+deviation <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img68.png"
+ ALT="$ \sigma$">
+ is calculated from an analytic model specified by
+<I>distance_rsr_model</I><A NAME="17685"></A>. Use model 5 for <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+-<!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+ distances and model 
+6 for N-O distances. For models 1 through 6, this standard deviation is
+transformed by <!-- MATH
+ $\sigma' = a + b*(\sigma+W_{g})$
+ -->
+<IMG
+ WIDTH="153" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img69.png"
+ ALT="$ \sigma' = a + b*(\sigma+W_{g})$">
+ where <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.png"
+ ALT="$ a$">
+ and <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.png"
+ ALT="$ b$">
+ are given
+by <I>restraint_stdev</I><A NAME="17690"></A> and <IMG
+ WIDTH="27" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img70.png"
+ ALT="$ W_{g}$">
+ is a gap weighting function of the form
+<!-- MATH
+ $W_{g} = 0.6 * \max(0, 4-g_{av})$
+ -->
+<IMG
+ WIDTH="190" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img71.png"
+ ALT="$ W_{g} = 0.6 * \max(0, 4-g_{av})$">
+. <IMG
+ WIDTH="26" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img72.png"
+ ALT="$ g_{av}$">
+ is the average distance of the
+two residues involved in the restraint from a gap. For models 3 through 6,
+this is additionally transformed by
+<!-- MATH
+ $\sigma'' = \sigma' + \sum_{i}[d+e*\max(0,f-g_{i})]$
+ -->
+<IMG
+ WIDTH="257" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img73.png"
+ ALT="$ \sigma'' = \sigma' + \sum_{i}[d+e*\max(0,f-g_{i})]$">
+ where the sum is over each
+of the atoms <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ involved in the distance, <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img14.png"
+ ALT="$ d$">
+ <IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img74.png"
+ ALT="$ e$">
+ and <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+ are given by
+<I>restraint_stdev2</I><A NAME="17693"></A>, and <IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img76.png"
+ ALT="$ g_{i}$">
+ is the distance of each residue from a gap.
+The first six models are polynomials and depend on several structural features 
+of the template and its similarity to the target. The polynomial 
+coefficients are specified in library file <TT>'$PARAMS_LIB'</TT>. When 
+``polynomial model'' 7 is selected, the standard deviation of restraints
+is set to constant <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.png"
+ ALT="$ a$">
+. Each basis pdf in the distance pdf corresponds
+to one template structure with an equivalent distance.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>In addition, the atom pairs restrained by homology-derived restraints
+must by default not be in a chemical bond, chemical angle, dihedral angle, 
+or on an excluded pairs list. This behavior can be changed by resetting
+<I><A HREF="node128.html#MEMB:energydata.excllocal">energy_data.excl_local</A></I><A NAME="17697"></A> (see <B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="17702"></A>).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If the restrained distance for a given atom pair is less than
+<I>exclude_distance</I><A NAME="17707"></A>, that pair is also excluded from the nonbonded list.
+This is useful if you are building short distance restraints to approximate
+bonds.
+
+</BLOCKQUOTE>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4705"
+  HREF="node204.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4699"
+  HREF="node195.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4693"
+  HREF="node202.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4701"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4703"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4706"
+  HREF="node204.html">Restraints.unpick_all()   unselect</A>
+<B> Up:</B> <A NAME="tex2html4700"
+  HREF="node195.html">The Restraints class: static</A>
+<B> Previous:</B> <A NAME="tex2html4694"
+  HREF="node202.html">Restraints.make()   make</A>
+ &nbsp; <B>  <A NAME="tex2html4702"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4704"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

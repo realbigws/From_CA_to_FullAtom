@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>job.queue_task() -- submit a task to run within the job</TITLE>
+<META NAME="description" CONTENT="job.queue_task() -- submit a task to run within the job">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node422.html">
+<LINK REL="previous" HREF="node420.html">
+<LINK REL="up" HREF="node416.html">
+<LINK REL="next" HREF="node422.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7912"
+  HREF="node422.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7906"
+  HREF="node416.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7900"
+  HREF="node420.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7908"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7910"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7913"
+  HREF="node422.html">job.run_all_tasks()   run</A>
+<B> Up:</B> <A NAME="tex2html7907"
+  HREF="node416.html">Parallel job support</A>
+<B> Previous:</B> <A NAME="tex2html7901"
+  HREF="node420.html">job.slave_startup_commands   Slave</A>
+ &nbsp; <B>  <A NAME="tex2html7909"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7911"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011325000000000000000">
+job.queue_task() -- submit a task to run within the job</A>
+</H2> <A NAME="37721"></A><A NAME="CMD:job.queuetask"></A><A NAME="37724"></A><TT>queue_task(taskobj)</TT>
+<BR><BLOCKQUOTE>
+This adds the given <TT>task</TT> object to the job's queue. All tasks in the
+queue can later be run with <B><A HREF="node422.html#CMD:job.runalltasks">job.run_all_tasks()</A></B><A NAME="37744"></A> or
+<B><A HREF="node423.html#CMD:job.yieldtasksunordered">job.yield_tasks_unordered()</A></B><A NAME="37749"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The task should be a instance of a class derived from <TT>task</TT>, which
+provides a <TT>'run'</TT> method. This method will be run on the slave node; any
+arguments to this method are given on the master when the object is created,
+and are automatically passed for you to the slave. Anything you return from
+this method is automatically passed back to the master. (Note that
+<B><A HREF="node425.html#CMD:Communicator.senddata">Communicator.send_data()</A></B><A NAME="37757"></A> is used to send this data, which cannot send all
+internal M<SMALL>ODELLER</SMALL> types.)
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Note that generally you need to declare tasks in a separate <A NAME="tex2html224"
+  HREF="http://www.python.org/">Python</A> module,
+and load them in with the <TT>import</TT> statement, as the tasks are passed using
+<A NAME="tex2html225"
+  HREF="http://www.python.org/">Python</A>'s <TT>pickle</TT> module, which will otherwise give an error such as
+<TT>'AttributeError: 'module' object has no attribute 'mytask''</TT>.
+
+</BLOCKQUOTE>
+<B>Example:</B> See <B><A HREF="node422.html#CMD:job.runalltasks">job.run_all_tasks()</A></B><A NAME="37776"></A> command.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7912"
+  HREF="node422.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7906"
+  HREF="node416.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7900"
+  HREF="node420.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7908"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7910"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7913"
+  HREF="node422.html">job.run_all_tasks()   run</A>
+<B> Up:</B> <A NAME="tex2html7907"
+  HREF="node416.html">Parallel job support</A>
+<B> Previous:</B> <A NAME="tex2html7901"
+  HREF="node420.html">job.slave_startup_commands   Slave</A>
+ &nbsp; <B>  <A NAME="tex2html7909"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7911"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

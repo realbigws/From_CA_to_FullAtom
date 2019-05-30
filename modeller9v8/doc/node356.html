@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Atom class: a single atom in a model or structure</TITLE>
+<META NAME="description" CONTENT="The Atom class: a single atom in a model or structure">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node366.html">
+<LINK REL="previous" HREF="node353.html">
+<LINK REL="up" HREF="node107.html">
+<LINK REL="next" HREF="node357.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html6959"
+  HREF="node357.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html6953"
+  HREF="node107.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html6947"
+  HREF="node355.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html6955"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html6957"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6960"
+  HREF="node357.html">Atom.dvx   objective</A>
+<B> Up:</B> <A NAME="tex2html6954"
+  HREF="node107.html">MODELLER command reference</A>
+<B> Previous:</B> <A NAME="tex2html6948"
+  HREF="node355.html">Point.select_sphere()   select</A>
+ &nbsp; <B>  <A NAME="tex2html6956"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html6958"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION0011220000000000000000"></A>
+    <A NAME="SECTION:atom"></A>
+<BR>
+The <TT>Atom</TT> class: a single atom in a model or structure
+</H1>
+    <A NAME="CLASS:Atom"></A><A NAME="32733"></A>
+The <TT>Atom</TT> class holds information about a single atom, in a
+<TT>model</TT> (see <I><A HREF="node163.html#MEMB:model.atoms">model.atoms</A></I><A NAME="32807"></A>) or an alignment template structure
+(<TT>Structure</TT> class).
+The <TT>Atom</TT> class is derived from the <TT>Point</TT> class, and thus
+all <TT>Point</TT> methods (<EM>e.g.</EM>, <B><A HREF="node355.html#CMD:Point.selectsphere">Point.select_sphere()</A></B><A NAME="32821"></A>) can also be called
+on <TT>Atom</TT> objects, and all <TT>Point</TT> members (<EM>e.g.</EM><I><A HREF="node354.html#MEMB:Point.x">Point.x</A></I><A NAME="32831"></A>)
+are available. See Section&nbsp;<A HREF="node353.html#CLASS:Point">6.21</A>.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html200"
+  HREF="../examples/python/atoms.py">examples/python/atoms.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for 'atom' objects
+
+from modeller import *
+from modeller.scripts import complete_pdb
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+mdl = complete_pdb(env, "1fas")
+
+# 'mdl.atoms' is a list of all atoms in the model
+print "Name of C-alpha atom in residue 4: ", mdl.atoms['CA:4'].name
+a = mdl.atoms[0]
+print "Coordinates of first atom: %.3f, %.3f, %.3f" % (a.x, a.y, a.z)
+
+# Each 'residue' object lists its own atoms, as does each chain
+a = mdl.residues['10'].atoms[0]
+print "Biso for first atom in residue 10: %.3f" % a.biso
+
+a = mdl.chains[0].residues[-1].atoms[-1]
+print "Biso for last atom in last residue in first chain: %.3f" % a.biso
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html6961"
+  HREF="node357.html">Atom.dvx -- objective function derivative</A>
+<LI><A NAME="tex2html6962"
+  HREF="node358.html">Atom.vx -- x component of velocity</A>
+<LI><A NAME="tex2html6963"
+  HREF="node359.html">Atom.biso -- isotropic temperature factor</A>
+<LI><A NAME="tex2html6964"
+  HREF="node360.html">Atom.occ -- occupancy</A>
+<LI><A NAME="tex2html6965"
+  HREF="node361.html">Atom.charge -- electrostatic charge</A>
+<LI><A NAME="tex2html6966"
+  HREF="node362.html">Atom.mass -- mass</A>
+<LI><A NAME="tex2html6967"
+  HREF="node363.html">Atom.name -- PDB name</A>
+<LI><A NAME="tex2html6968"
+  HREF="node364.html">Atom.element -- Element symbol</A>
+<LI><A NAME="tex2html6969"
+  HREF="node365.html">Atom.residue -- residue object</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

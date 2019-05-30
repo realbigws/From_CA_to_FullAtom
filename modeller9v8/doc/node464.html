@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Running old scripts unchanged</TITLE>
+<META NAME="description" CONTENT="Running old scripts unchanged">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node465.html">
+<LINK REL="previous" HREF="node463.html">
+<LINK REL="up" HREF="node463.html">
+<LINK REL="next" HREF="node465.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8612"
+  HREF="node465.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8606"
+  HREF="node463.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8600"
+  HREF="node463.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8608"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8610"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8613"
+  HREF="node465.html">Converting TOP scripts to</A>
+<B> Up:</B> <A NAME="tex2html8607"
+  HREF="node463.html">Converting TOP scripts from</A>
+<B> Previous:</B> <A NAME="tex2html8601"
+  HREF="node463.html">Converting TOP scripts from</A>
+ &nbsp; <B>  <A NAME="tex2html8609"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8611"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001510000000000000000">
+Running old scripts unchanged</A>
+</H1>
+
+<P>
+For compatibility with old codes, M<SMALL>ODELLER</SMALL> will still run most T<SMALL>OP</SMALL> scripts. By default, the program expects to read new-style <A NAME="tex2html252"
+  HREF="http://www.python.org/">Python</A> scripts,
+but if the script file extension ends in <TT>'.top'</TT> (as in previous versions),
+it will be assumed to be a T<SMALL>OP</SMALL> file and will be run as such. Note, however,
+that this behavior is deprecated and will probably be removed entirely in a
+later release. Also bear in mind that some newer commands and features will not
+be available in T<SMALL>OP</SMALL>; thus, it is recommended that you convert your T<SMALL>OP</SMALL> scripts to <A NAME="tex2html253"
+  HREF="http://www.python.org/">Python</A>.
+
+<P>
+If you do wish to run old scripts unchanged, please note that the <B>GO_TO</B>
+function is no longer present in the T<SMALL>OP</SMALL> language. If you have code which
+makes use of this function, you should use the <B>EXIT</B> and <B>CYCLE</B>
+flow control statements instead, which either terminate a <B>DO</B> loop or
+skip to its next iteration. Single-line <B>IF</B> statements are no longer
+supported either; you should use the <B>ELSE</B> and <B>END_IF</B> statements
+to build multi-line <B>IF</B> clauses instead. See the scripts in the <TT>bin</TT>
+directory for examples.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8612"
+  HREF="node465.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8606"
+  HREF="node463.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8600"
+  HREF="node463.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8608"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8610"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8613"
+  HREF="node465.html">Converting TOP scripts to</A>
+<B> Up:</B> <A NAME="tex2html8607"
+  HREF="node463.html">Converting TOP scripts from</A>
+<B> Previous:</B> <A NAME="tex2html8601"
+  HREF="node463.html">Converting TOP scripts from</A>
+ &nbsp; <B>  <A NAME="tex2html8609"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8611"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

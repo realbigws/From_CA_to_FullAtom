@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Restraints.spline() -- approximate restraints by splines</TITLE>
+<META NAME="description" CONTENT="Restraints.spline() -- approximate restraints by splines">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node214.html">
+<LINK REL="previous" HREF="node212.html">
+<LINK REL="up" HREF="node195.html">
+<LINK REL="next" HREF="node214.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4845"
+  HREF="node214.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4839"
+  HREF="node195.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4833"
+  HREF="node212.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4841"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4843"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4846"
+  HREF="node214.html">Restraints.append()   read</A>
+<B> Up:</B> <A NAME="tex2html4840"
+  HREF="node195.html">The Restraints class: static</A>
+<B> Previous:</B> <A NAME="tex2html4834"
+  HREF="node212.html">Restraints.reindex()   renumber</A>
+ &nbsp; <B>  <A NAME="tex2html4842"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4844"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011718000000000000000">
+Restraints.spline() -- approximate restraints by splines</A>
+</H2> <A NAME="18022"></A><A NAME="CMD:Restraints.spline"></A><A NAME="18025"></A><TT>spline(form, feature, group, spline_dx=0.5, spline_range=4.0, spline_min_points=5, output='', edat=None)</TT>
+<BR><BLOCKQUOTE>
+This command calculates and selects new restraints that are
+a spline approximation of the selected restraints of the specified type. 
+The type is specified by <I>form</I><A NAME="18047"></A> (see Section&nbsp;<A HREF="node102.html#SECTION:formtypes">5.3.1</A>),
+<I>feature</I><A NAME="18050"></A> (Section&nbsp;<A HREF="node102.html#SECTION:featuretypes">5.3.1</A>) and <I>group</I><A NAME="18053"></A>
+(Table&nbsp;<A HREF="node251.html#tab:physrsrtypes">6.1</A>). It unselects the approximated restraints.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The restraint is approximated in a certain range only, determined
+differently for different mathematical forms.  For example, the
+poly-Gaussian range is from 
+<!-- MATH
+ $m - {\sf spline\_range} \times \sigma_m$
+ -->
+<IMG
+ WIDTH="157" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img77.png"
+ ALT="$ m - {\sf spline\_range}\index{spline\_range@{\sf spline\_range}} \times \sigma_m$">
+ to
+<!-- MATH
+ $M + {\sf spline\_range} \times \sigma_M$
+ -->
+<IMG
+ WIDTH="163" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img78.png"
+ ALT="$ M + {\sf spline\_range}\index{spline\_range@{\sf spline\_range}} \times \sigma_M$">
+,
+where <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img79.png"
+ ALT="$ m$">
+ and <IMG
+ WIDTH="21" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img80.png"
+ ALT="$ M$">
+ are the minimal and maximal means of the basis pdfs,
+and <IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img81.png"
+ ALT="$ \sigma_m$">
+ and <IMG
+ WIDTH="27" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img82.png"
+ ALT="$ \sigma_M$">
+ are their corresponding standard deviations.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The spline points are distributed evenly
+over this range with an interval of <I>spline_dx</I><A NAME="18062"></A>. <I>spline_dx</I><A NAME="18065"></A>
+should be equal to the scale of the peaks of the restraint that you
+want to approximate reliably. The value of the restraint beyond the
+range is determined by linear extrapolation using the first
+derivatives at the bounds.  
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If the x-range and <I>spline_dx</I><A NAME="18068"></A> are such that the number of spline 
+points would be less than <I>spline_min_points</I><A NAME="18071"></A>, <I>spline_dx</I><A NAME="18074"></A>
+is decreased so that there are <I>spline_min_points</I><A NAME="18077"></A> defining
+the ``splined'' restraint.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>output</I><A NAME="18080"></A> is set to <TT>'SPLINE'</TT>, then tables are also written out comparing
+each pair of original and splined restraints.
+
+</BLOCKQUOTE>
+
+<P>
+<B>Example:</B> See <B><A HREF="node202.html#CMD:Restraints.make">Restraints.make()</A></B><A NAME="18087"></A> command.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4845"
+  HREF="node214.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4839"
+  HREF="node195.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4833"
+  HREF="node212.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4841"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4843"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4846"
+  HREF="node214.html">Restraints.append()   read</A>
+<B> Up:</B> <A NAME="tex2html4840"
+  HREF="node195.html">The Restraints class: static</A>
+<B> Previous:</B> <A NAME="tex2html4834"
+  HREF="node212.html">Restraints.reindex()   renumber</A>
+ &nbsp; <B>  <A NAME="tex2html4842"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4844"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

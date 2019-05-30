@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>iterative_structural_align() -- obtain the best structural alignment</TITLE>
+<META NAME="description" CONTENT="iterative_structural_align() -- obtain the best structural alignment">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node414.html">
+<LINK REL="up" HREF="node414.html">
+<LINK REL="next" HREF="node416.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7815"
+  HREF="node416.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7809"
+  HREF="node414.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7805"
+  HREF="node414.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7811"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7813"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7816"
+  HREF="node416.html">Parallel job support</A>
+<B> Up:</B> <A NAME="tex2html7810"
+  HREF="node414.html">The salign module: high-level</A>
+<B> Previous:</B> <A NAME="tex2html7806"
+  HREF="node414.html">The salign module: high-level</A>
+ &nbsp; <B>  <A NAME="tex2html7812"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7814"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011311000000000000000">
+iterative_structural_align() -- obtain the best structural alignment</A>
+</H2> <A NAME="37225"></A><A NAME="CMD:iterativestructuralalign"></A><A NAME="37228"></A><TT>iterative_structural_align(aln)</TT>
+<BR><BLOCKQUOTE>
+Given an initial alignment of two or more structures, this will run
+<B><A HREF="node294.html#CMD:alignment.salign">alignment.salign()</A></B><A NAME="37237"></A> in an iterative fashion, exploring a range of suitable
+parameter values, to determine the best structural alignment, as detailed
+in [<A
+ HREF="node469.html#MadSal09">Madhusudhan <EM>et&nbsp;al.</EM>, 2009</A>].
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html220"
+  HREF="../examples/salign/salign_iterative.py">examples/salign/salign_iterative.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Illustrates the SALIGN iterative multiple structure alignment
+from modeller import *
+import modeller.salign
+
+log.none()
+env = environ()
+env.io.atom_files_directory = ['.', '../atom_files']
+
+aln = alignment(env)
+for (code, chain) in (('1is4', 'A'), ('1uld', 'D'), ('1ulf', 'B'),
+                      ('1ulg', 'B'), ('1is5', 'A')):
+    mdl = model(env, file=code, model_segment=('FIRST:'+chain, 'LAST:'+chain))
+    aln.append_model(mdl, atom_files=code, align_codes=code+chain)
+
+modeller.salign.iterative_structural_align(aln)
+
+aln.write(file='1is3A-it.pap', alignment_format='PAP')
+aln.write(file='1is3A-it.ali', alignment_format='PIR')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

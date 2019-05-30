@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Chain class: a single chain in a model or alignment</TITLE>
+<META NAME="description" CONTENT="The Chain class: a single chain in a model or alignment">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node323.html">
+<LINK REL="previous" HREF="node312.html">
+<LINK REL="up" HREF="node107.html">
+<LINK REL="next" HREF="node316.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html6356"
+  HREF="node316.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html6350"
+  HREF="node107.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html6344"
+  HREF="node314.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html6352"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html6354"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6357"
+  HREF="node316.html">Chain.name   chain</A>
+<B> Up:</B> <A NAME="tex2html6351"
+  HREF="node107.html">MODELLER command reference</A>
+<B> Previous:</B> <A NAME="tex2html6345"
+  HREF="node314.html">Structure.reread()   reread</A>
+ &nbsp; <B>  <A NAME="tex2html6353"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html6355"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION0011180000000000000000"></A>
+    <A NAME="SECTION:chain"></A>
+<BR>
+The <TT>Chain</TT> class: a single chain in a model or alignment
+</H1>
+    <A NAME="CLASS:Chain"></A><A NAME="31073"></A>
+The <TT>Chain</TT> class holds information about a single chain, in a
+<TT>model</TT> (see <I><A HREF="node308.html#MEMB:Sequence.chains">Sequence.chains</A></I><A NAME="31183"></A>), an alignment sequence, or an alignment
+template structure.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html194"
+  HREF="../examples/python/chains.py">examples/python/chains.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for 'chain' objects
+
+from modeller import *
+from modeller.scripts import complete_pdb
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+mdl = complete_pdb(env, "1b3q")
+
+# Print existing chain IDs and lengths:
+print "Chain IDs and lengths: ", [(c.name, len(c.residues)) for c in mdl.chains]
+
+# Set new chain IDs:
+mdl.chains['A'].name = 'X'
+mdl.chains['B'].name = 'Y'
+
+# Write out chain sequences:
+for c in mdl.chains:
+    c.write(file='1b3q%s.chn' % c.name, atom_file='1b3q',
+            align_code='1b3q%s' % c.name)
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html6358"
+  HREF="node316.html">Chain.name -- chain ID</A>
+<LI><A NAME="tex2html6359"
+  HREF="node317.html">Chain.residues -- all residues in the chain</A>
+<LI><A NAME="tex2html6360"
+  HREF="node318.html">Chain.atoms -- all atoms in the chain</A>
+<LI><A NAME="tex2html6361"
+  HREF="node319.html">Chain.filter() -- check if this chain passes all criteria</A>
+<LI><A NAME="tex2html6362"
+  HREF="node320.html">Chain.write() -- write out chain sequence to an alignment file</A>
+<LI><A NAME="tex2html6363"
+  HREF="node321.html">Chain.atom_file_and_code() -- get suitable names for this chain</A>
+<LI><A NAME="tex2html6364"
+  HREF="node322.html">Chain.join() -- join other chain(s) onto this one</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

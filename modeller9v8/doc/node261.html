@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>schedule() -- create a new schedule</TITLE>
+<META NAME="description" CONTENT="schedule() -- create a new schedule">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node262.html">
+<LINK REL="previous" HREF="node260.html">
+<LINK REL="up" HREF="node260.html">
+<LINK REL="next" HREF="node262.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5550"
+  HREF="node262.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5544"
+  HREF="node260.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5538"
+  HREF="node260.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5546"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5548"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5551"
+  HREF="node262.html">schedule.make_for_model()   trim</A>
+<B> Up:</B> <A NAME="tex2html5545"
+  HREF="node260.html">The schedule class: variable</A>
+<B> Previous:</B> <A NAME="tex2html5539"
+  HREF="node260.html">The schedule class: variable</A>
+ &nbsp; <B>  <A NAME="tex2html5547"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5549"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011121000000000000000">
+schedule() -- create a new schedule</A>
+</H2> <A NAME="24004"></A><A NAME="CMD:schedule"></A><A NAME="24007"></A><TT>schedule(last_scales, steps)</TT>
+<BR><BLOCKQUOTE>
+This creates a new <TT>schedule</TT> object, which can contain multiple
+schedule steps, given by the list <I>steps</I><A NAME="24035"></A>. Each step then defines some of
+the optimization parameters: (1) the optimization method; (2) maximal number
+of residues that the restraints are allowed to span
+(Section&nbsp;<A HREF="node202.html#SECTION:span">6.7.7</A>); (3) the individual scaling factors for all the
+physical restraint types. <I>last_scales</I><A NAME="24038"></A> is used by
+<B><A HREF="node262.html#CMD:schedule.makeformodel">schedule.make_for_model()</A></B><A NAME="24041"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><A NAME="24017"></A>
+The usual schedule for the variable target function part of
+optimization in comparative modeling is as follows. The residue range
+(<B><A HREF="node206.html#CMD:Restraints.pick">Restraints.pick()</A></B><A NAME="24046"></A> and Section&nbsp;<A HREF="node202.html#SECTION:span">6.7.7</A>)
+is increased with increasingly larger steps until the protein length
+is reached. The scaling of homology-derived and bonded stereochemical
+restraints increases from a small value to 1 in the initial few steps
+to allow for imperfect starting geometries, especially those that
+result from <B><A HREF="node241.html#CMD:selection.randomizexyz">selection.randomize_xyz()</A></B><A NAME="24051"></A> and long insertions or deletions.
+(For <TT>automodel</TT>, the restraints are additionally scaled by
+<I><A HREF="node114.html#MEMB:environ.schedulescale">environ.schedule_scale</A></I><A NAME="24058"></A>. This is useful when template-derived fold
+restraints have to be weakened relative to some external restraints, so that
+the fold can actually reflect these external restraints, even when they
+are quite different from the template-derived restraints.) The soft-sphere<A NAME="24062"></A>
+overlap restraints are slowly introduced only in the last four steps of the
+variable target function method to save CPU time and increase the radius
+of convergence.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>In comparative modeling by the <TT>automodel</TT> class in the default mode,
+the variable target function method is usually followed by simulated annealing
+with molecular dynamics. In this last stage, all homology-derived and 
+stereochemical restraints are generally used scaled only by
+<I><A HREF="node114.html#MEMB:environ.schedulescale">environ.schedule_scale</A></I><A NAME="24066"></A>. Thus, it is recommended that if you define your
+own schedule, the scaling factors for the last step are all 1, so that the
+energy surface followed in optimization is continuous.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>There are a number of variables defined in the <TT>automodel</TT> class
+that can be used to influence the thoroughness of both the variable
+target function and molecular dynamics parts of the optimization; see
+Section&nbsp;<A HREF="node19.html#SECTION:model-changeopt">2.2.2</A>.
+
+</BLOCKQUOTE>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html156"
+  HREF="../examples/commands/make_schedule.py">examples/commands/make_schedule.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># This will create a VTFM optimization schedule and then
+# use it to optimize the model
+
+from modeller import *
+from modeller.scripts import complete_pdb
+
+# Load in optimizer and schedule support
+from modeller import schedule, optimizers
+
+log.verbose()
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.edat.dynamic_sphere = True
+
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+code = '1fas'
+mdl = complete_pdb(env, code)
+
+# Generate the restraints:
+atmsel = selection(mdl)
+mdl.restraints.make(atmsel, restraint_type='stereo', spline_on_site=False)
+
+# Create our own library schedule:
+# 5 steps of conjugate gradients (CG), each step using a larger
+# residue range (2 up to 9999) and energy scaling factor (0.01 up to 1.0),
+# followed by 3 steps of molecular dynamics (MD) at successively lower
+# temperature. The scaling factors for the last 5 steps are always retained.
+CG = optimizers.conjugate_gradients
+MD = optimizers.molecular_dynamics
+libsched = schedule.schedule(5,
+          [ schedule.step(CG, 2, physical.values(default=0.01)),
+            schedule.step(CG, 5, physical.values(default=0.1)),
+            schedule.step(CG, 10, physical.values(default=0.2)),
+            schedule.step(CG, 50, physical.values(default=0.5)),
+            schedule.step(CG, 9999, physical.values(default=1.0)),
+            schedule.step(MD(temperature=300.), 9999, \
+                          physical.values(default=1.0)),
+            schedule.step(MD(temperature=200.), 9999, \
+                          physical.values(default=1.0)),
+            schedule.step(MD(temperature=100.), 9999, \
+                          physical.values(default=1.0)) ])
+
+# Make a trimmed schedule suitable for our model, and scale it by schedule_scale
+mysched = libsched.make_for_model(mdl) * env.schedule_scale
+
+# Write the trimmed schedule to a file
+fh = open(code+'.sch', 'w')
+mysched.write(fh)
+fh.close()
+
+# Optimize for all steps in the schedule
+for step in mysched:
+    step.optimize(atmsel, output='REPORT', max_iterations=200)
+
+mdl.write(file=code+'.B')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5550"
+  HREF="node262.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5544"
+  HREF="node260.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5538"
+  HREF="node260.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5546"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5548"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5551"
+  HREF="node262.html">schedule.make_for_model()   trim</A>
+<B> Up:</B> <A NAME="tex2html5545"
+  HREF="node260.html">The schedule class: variable</A>
+<B> Previous:</B> <A NAME="tex2html5539"
+  HREF="node260.html">The schedule class: variable</A>
+ &nbsp; <B>  <A NAME="tex2html5547"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5549"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

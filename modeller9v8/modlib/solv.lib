@@ -1,0 +1,149 @@
+# Version: November 4, 2003
+#
+# LIBRARY OF ATOMIC SOLVATION PARAMETERS FOR MODELLER
+# by Min-yi "minime" Shen
+# for MODELLER 7.6s
+#
+#
+# The library contains solvation parameter of each CHARMM atom type for 
+# each solvation model. (in kcal/mol/A**2)
+#
+# The names and order of the atom types in this file must match those
+# in radii.lib.
+#
+# Number of solvation models:
+   6
+#      RSOL   GBSA    ASP   ASPW   SCKS   OONS    JRF
+H     0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! polar H
+HC    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! N-ter H
+HA    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! nonpolar H
+HT    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! TIPS3P WATER HYDROGEN
+HP    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! aromatic H
+HB    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! backbone H
+HR1   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! his he1, (+) his HG,HD2
+HR2   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! (+) his HE1
+HR3   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! neutral his HG, HD2
+HS    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! cys
+C     1.800  0.117  0.004  0.012  0.033  0.008  0.216 ! polar C
+CA    1.800  0.117  0.004  0.012  0.033 -0.008 -0.678 ! aromatic C
+CT1   1.800  0.117  0.004  0.012  0.033  0.008  0.216 ! aliphatic sp3 C for CH
+CT2   1.800  0.117  0.004  0.012  0.033  0.008  0.216 ! aliphatic sp3 C for CH2
+CT3   1.800  0.117  0.004  0.012  0.033  0.008  0.216 ! aliphatic sp3 C for CH3
+CPH1  1.800  0.117  0.004  0.012  0.033 -0.008 -0.678 ! his CG and CD2 carbons
+CPH2  1.800  0.117  0.004  0.012  0.033 -0.008 -0.678 ! his CE1 carbon
+CPT   1.800  0.117  0.004  0.012  0.033 -0.008 -0.678 ! trp C between rings
+CY    1.800  0.117  0.004  0.012  0.033 -0.008 -0.678 ! TRP C in pyrrole ring
+CP1   1.800  0.117  0.004  0.012  0.033 -0.008 -0.678 ! tetrahedral C (proline CA)
+CP2   1.800  0.117  0.004  0.012  0.033 -0.008 -0.678 ! tetrahedral C (proline CB/CG) ?
+CP3   1.800  0.117  0.004  0.012  0.033 -0.008 -0.678 ! tetrahedral C (proline CD) ?
+CC    1.800  0.117  0.004  0.012  0.033  0.427 -0.732 ! carbonyl C for sidechains asn,asp,gln,glu
+CD    1.800  0.117  0.004  0.012  0.033  0.427 -0.732 ! carbonyl C for none amides, asp,glu,cter
+CPA   1.800  0.117  0.004  0.012  0.033 -0.008 -0.678 ! heme alpha-C ?
+CPB   1.800  0.117  0.004  0.012  0.033 -0.008 -0.678 ! heme beta-C ?
+CPM   1.800  0.117  0.004  0.012  0.033 -0.008 -0.678 ! heme meso-C ?
+CM    1.800  0.117  0.004  0.012  0.033 -0.008 -0.678 ! heme CO carbon ?
+CS    1.800  0.117  0.004  0.012  0.033  0.008  0.216 ! thiolate carbon ?
+N     1.600  0.117 -0.113 -0.116 -0.018 -0.132 -0.312 ! proline N
+NR1   1.600  0.117 -0.113 -0.116 -0.018 -1.212 -1.212 ! neutral his protonated ring nitrogen ?
+NR2   1.600  0.117 -0.113 -0.116 -0.018 -0.132 -0.312 ! neutral his unprotonated ring nitrogen ?
+NR3   1.600  0.117 -0.169 -0.116 -0.018 -1.212 -1.212 ! charged his ring nitrogen ?
+NH1   1.600  0.117 -0.113 -0.116 -0.018 -0.132 -0.312 ! peptide nitrogen
+NH2   1.600  0.117 -0.113 -0.116 -0.018 -0.132 -0.312 ! amide nitrogen
+NH3   1.600  0.117 -0.169 -0.186 -0.018 -0.132 -0.312 ! ammonium nitrogen
+NC2   1.600  0.117 -0.113 -0.116 -0.018 -0.132 -0.312 ! guanidinium nitrogen ?
+NY    1.600  0.117 -0.113 -0.116 -0.018 -0.132 -0.312 ! TRP N in pyrrole ring ?
+NP    1.600  0.117 -0.169 -0.116 -0.018 -1.212 -1.212 ! Proline ring NH2+ (N-terminal)
+NPH   1.600  0.117 -0.113 -0.116 -0.018 -0.132 -0.312 ! heme pyrrole N ?
+NP1   1.600  0.117 -0.113 -0.116 -0.018 -0.132 -0.312 ! heme pyrrole N ?
+PA    1.800  0.117  0.000  0.000  0.000  0.000  0.000 ! PB ; correct
+PB    1.800  0.117  0.000  0.000  0.000  0.000  0.000 ! PB ; correct
+O     1.550  0.117 -0.113 -0.116 -0.018  0.000  0.000 ! carbonyl oxygen
+OB    1.550  0.117 -0.113 -0.116 -0.018  0.000  0.000 ! carbonyl oxygen in acetic acid
+OC    1.550  0.117 -0.166 -0.175 -0.018  0.000  0.000 ! carboxylate oxygen
+OH1   1.550  0.117 -0.113 -0.116 -0.018  0.000  0.000 ! hydroxyl oxygen
+OS    1.550  0.117 -0.113 -0.116 -0.018  0.000  0.000 ! ester oxygen
+OT    1.550  0.117 -0.113 -0.116 -0.018  0.000  0.000 ! TIPS3P WATER OXYGEN
+OM    1.550  0.117 -0.113 -0.116 -0.018  0.000  0.000 ! heme CO/O2 oxygen
+CAH   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Helical CA 
+CAS   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Strand CA
+CAT   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Turn CA
+VCC   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+VCCC  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+CCCL  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+CCCP  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+V6RF  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+V6RY  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+VCCN  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+VCCO  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+VCO2  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+VCON  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+VCOH  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+VCS   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+VCSC  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+VN3C  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+V5RH  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+VNH3  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+CH3E  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+CH2E  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! HH model
+S     2.000  0.117  0.000  0.000  0.000  0.000  0.000 ! sulphur
+SM    2.000  0.117  0.000  0.000  0.000  0.000  0.000 ! sulfur C-S-S-C type
+SS    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! thiolate sulfur
+CAL   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! calcium 2+
+ZN    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! zinc (II) cation
+FE    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! heme iron 56
+UNDF  0.050  0.117  0.000  0.000  0.000  0.000  0.000 ! undefined
+OE    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! ether oxygen
+MMG   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! magnesium (II), coordination no 6
+MK    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! potassium, coordination no 6
+CE1   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! for alkene; RHC=CR
+CE2   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! for alkene; H2C=CR
+CN1   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid carbonyl carbon
+CN1A  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! NAD+/NADH amide carbonyl carbon
+CN2   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid aromatic carbon to amide
+CN3   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid aromatic carbon 
+CN3A  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! NAD+ aromatic carbon
+CN3B  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! NAD+ aromatic carbon
+CN3C  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! NADH aromatic carbon
+CN3D  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid aromatic carbon for 5MC
+CN4   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid purine C8 and ADE C2  
+CN5   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid purine C4 and C5
+CN6   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid sp3 ribose ring carbon
+CN6B  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid sp3 ribose ring carbon, C1'
+CN6C  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid sp3 deoxyribose ring carbon, C2'
+CN7   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid carbon (equivalent to protein CT1)
+CN8   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid carbon (equivalent to protein CT2)
+CN9   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid carbon (equivalent to protein CT3)
+DUM   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! dummy atom
+HA1   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! for alkene; RHC=CR
+HA2   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! for alkene; H2C=CR
+HE    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! helium
+HN1   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid amine proton
+HN2   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid ring nitrogen proton
+HN3   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid aromatic carbon proton
+HN3B  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! NAD+ aromatic hydrogen
+HN4   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid phosphate hydroxyl proton
+HN5   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid ribose hydroxyl proton
+HN6   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid ribose aliphatic proton
+HN7   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid proton (equivalent to protein HA)
+MG    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Magnesium Ion
+NE    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! neon
+NN1   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid amide nitrogen
+NN2   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid protonated ring nitrogen
+NN2G  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid protonated ring nitrogen, gua N1
+NN2U  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid protonated ring nitrogen, ura N3
+NN3   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid unprotonated ring nitrogen 
+NN3A  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid unprotonated ring nitrogen, ade N1 and N3
+NN3I  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid unprotonated ring nitrogen, inosine N3
+NN4   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid purine N7
+NN5   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid sp2 amine nitrogen
+ON1   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid carbonyl oxygen
+ON1C  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid carbonyl oxygen, cyt O2
+ON2   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid phosphate ester oxygen
+ON2B  0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid phosphate ester oxygen, tyr-phosphate
+ON3   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid =O in phosphate 
+ON4   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid phosphate hydroxyl oxygen
+ON5   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid ribose hydroxyl oxygen
+ON6   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Nucleic acid ribose ring oxygen
+P     0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! phosphorus
+P2    0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! pyrophosphate phosphorus
+SOD   0.000  0.117  0.000  0.000  0.000  0.000  0.000 ! Sodium Ion

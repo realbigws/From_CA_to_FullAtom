@@ -1,0 +1,6 @@
+#!/bin/sh -v
+mod9v8 energy.py
+mod9v8 optimize.py
+mod9v8 gbsa.py
+mod9v8 debug_function.py
+mod9v8 excluded_pair.py

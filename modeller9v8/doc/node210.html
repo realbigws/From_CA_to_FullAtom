@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Restraints.add() -- add restraint</TITLE>
+<META NAME="description" CONTENT="Restraints.add() -- add restraint">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node211.html">
+<LINK REL="previous" HREF="node209.html">
+<LINK REL="up" HREF="node195.html">
+<LINK REL="next" HREF="node211.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4803"
+  HREF="node211.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4797"
+  HREF="node195.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4791"
+  HREF="node209.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4799"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4801"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4804"
+  HREF="node211.html">Restraints.unpick()   unselect</A>
+<B> Up:</B> <A NAME="tex2html4798"
+  HREF="node195.html">The Restraints class: static</A>
+<B> Previous:</B> <A NAME="tex2html4792"
+  HREF="node209.html">Restraints.condense()   remove</A>
+ &nbsp; <B>  <A NAME="tex2html4800"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4802"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011715000000000000000">
+Restraints.add() -- add restraint</A>
+</H2> <A NAME="17927"></A><A NAME="CMD:Restraints.add"></A><A NAME="17930"></A><TT>add(*args)</TT>
+<BR><BLOCKQUOTE>
+This command adds one or more restraints to the end of the
+restraints list and selects them. It should be given one or more arguments,
+which are the restraints to add. These are mathematical form objects, as
+described in Section <A HREF="node102.html#SECTION:formtypes">5.3.1</A>, or secondary structure objects,
+as described in Section <A HREF="node216.html#SECTION:secstructure">6.8</A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>This command is also useful for specifying <EM>cis</EM>-peptide bonds from your own
+scripts, using the <B><A HREF="node412.html#CMD:cispeptide">cispeptide()</A></B><A NAME="17941"></A> command.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html119"
+  HREF="../examples/commands/add_restraint.py">examples/commands/add_restraint.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: restraints.add(), restraints.unpick()
+
+# This will enforce cis conformation for Pro-56.
+
+# Make a model and stereochemical restraints:
+
+from modeller import *
+from modeller.scripts import complete_pdb, cispeptide
+
+log.level(output=1, notes=1, warnings=1, errors=1, memory=0)
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+code = '1fas'
+mdl = complete_pdb(env, code)
+rsr = mdl.restraints
+atmsel = selection(mdl)
+rsr.make(atmsel, restraint_type='stereo', spline_on_site=False)
+
+# Change the Pro-56 restraint from trans to cis:
+a = mdl.atoms
+cispeptide(rsr, atom_ids1=(a['O:56'], a['C:56'], a['N:57'], a['CA:57']),
+                atom_ids2=(a['CA:56'], a['C:56'], a['N:57'], a['CA:57']))
+
+# Constrain the distance between alpha carbons in residues 5 and 15 to
+# be less than 10 angstroms:
+rsr.add(forms.upper_bound(group=physical.xy_distance,
+                          feature=features.distance(a['CA:5'], a['CA:15']),
+                          mean=10., stdev=0.1))
+
+rsr.write(file='1fas.rsr')
+atmsel.energy()
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

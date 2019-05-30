@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>molecular_dynamics() -- optimize atoms given restraints, with MD</TITLE>
+<META NAME="description" CONTENT="molecular_dynamics() -- optimize atoms given restraints, with MD">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node256.html">
+<LINK REL="previous" HREF="node254.html">
+<LINK REL="up" HREF="node252.html">
+<LINK REL="next" HREF="node256.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5465"
+  HREF="node256.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5459"
+  HREF="node252.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5453"
+  HREF="node254.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5461"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5463"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5466"
+  HREF="node256.html">actions.write_structure()   write</A>
+<B> Up:</B> <A NAME="tex2html5460"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Previous:</B> <A NAME="tex2html5454"
+  HREF="node254.html">quasi_newton()   optimize</A>
+ &nbsp; <B>  <A NAME="tex2html5462"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5464"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011113000000000000000">
+molecular_dynamics() -- optimize atoms given restraints, with MD</A>
+</H2> <A NAME="23131"></A><A NAME="CMD:moleculardynamics"></A><A NAME="23134"></A><TT>molecular_dynamics(output='NO_REPORT', cap_atom_shift=0.2, md_time_step=4.0, init_velocities=True, temperature=293.0, md_return='FINAL', equilibrate=999999, guide_factor=0.0, guide_time=0.0, friction=0.0, residue_span_range=(0, 99999), **vars)</TT>
+<BR><A NAME="22830"></A>
+<DL>
+<DT><STRONG>Output:</STRONG></DT>
+<DD><I>molpdf</I><A NAME="23141"></A>
+                             
+</DD>
+</DL>
+
+<P>
+<DL>
+<DT><STRONG>Requirements:</STRONG></DT>
+<DD>restraints
+                             
+</DD>
+</DL>
+
+<P>
+<BLOCKQUOTE>
+This command creates a new <A NAME="tex2html147"
+  HREF="http://www.python.org/">Python</A> optimizer object. Calling the
+object's <TT>optimize</TT> method with an atom selection then performs a molecular
+dynamics optimization at a fixed temperature. This is the most basic version
+of the iterative solver of the Newton's equations of motion. The integrator
+uses the Verlet algorithm [<A
+ HREF="node469.html#Ver67">Verlet, 1967</A>]. All atomic masses are set to that 
+of carbon 12.
+A brief description of the algorithm is given in
+Section&nbsp;<A HREF="node445.html#SECTION:energydesc">A.2</A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The molecular dynamics optimizer pretends that the natural logarithm
+of the molecular pdf is energy in kcal/mole. <I>md_time_step</I><A NAME="23175"></A> is the time
+step in femtoseconds. <I>temperature</I><A NAME="23178"></A> is the temperature of the system
+in Kelvin. <I>max_iterations</I><A NAME="23181"></A> determines the number of MD steps.
+If <I>md_return</I><A NAME="23184"></A> is <TT>'FINAL'</TT> the last structure is returned as
+the MODEL. If <I>md_return</I><A NAME="23188"></A> is <TT>'MINIMAL'</TT> then the structure with
+the lowest value of the objective function on the whole trajectory is 
+returned as the MODEL.
+Rescaling of velocities is done every <I>equilibrate</I><A NAME="23192"></A> steps to match
+the specified temperature. Atomic shifts along one axis are limited by
+<I>cap_atom_shift</I><A NAME="23195"></A>. This value should be smaller than
+<I><A HREF="node122.html#MEMB:energydata.updatedynamic">energy_data.update_dynamic</A></I><A NAME="23198"></A>. If <I>init_velocities</I><A NAME="23203"></A> = <TT>True</TT>, the
+velocity arrays are initialized, otherwise they are not. In that case,
+the final velocities from the previous run are used as the initial
+velocities for the current run.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If both <I>guide_factor</I><A NAME="23207"></A> and <I>guide_time</I><A NAME="23210"></A> are non-zero, self-guided
+molecular dynamics [<A
+ HREF="node469.html#Wu99">Wu &amp; Wang, 1999</A>] is carried out.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>See <B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="23213"></A> for a description of the other parameters
+and the <I>edat</I><A NAME="23218"></A> and <I>actions</I><A NAME="23221"></A> optional keyword arguments.
+
+</BLOCKQUOTE>
+
+<P>
+<B>Example:</B> See <B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="23227"></A> command.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5465"
+  HREF="node256.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5459"
+  HREF="node252.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5453"
+  HREF="node254.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5461"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5463"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5466"
+  HREF="node256.html">actions.write_structure()   write</A>
+<B> Up:</B> <A NAME="tex2html5460"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Previous:</B> <A NAME="tex2html5454"
+  HREF="node254.html">quasi_newton()   optimize</A>
+ &nbsp; <B>  <A NAME="tex2html5462"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5464"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

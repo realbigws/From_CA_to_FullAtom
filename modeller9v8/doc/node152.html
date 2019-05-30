@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Topology.make() -- make a subset topology library</TITLE>
+<META NAME="description" CONTENT="Topology.make() -- make a subset topology library">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node153.html">
+<LINK REL="previous" HREF="node151.html">
+<LINK REL="up" HREF="node143.html">
+<LINK REL="next" HREF="node153.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html3936"
+  HREF="node153.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html3930"
+  HREF="node143.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html3924"
+  HREF="node151.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html3932"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html3934"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3937"
+  HREF="node153.html">Topology.submodel   select</A>
+<B> Up:</B> <A NAME="tex2html3931"
+  HREF="node143.html">The Libraries class: stereochemical</A>
+<B> Previous:</B> <A NAME="tex2html3925"
+  HREF="node151.html">Parameters.read()   read</A>
+ &nbsp; <B>  <A NAME="tex2html3933"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html3935"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001159000000000000000">
+Topology.make() -- make a subset topology library</A>
+</H2> <A NAME="12023"></A><A NAME="CMD:Topology.make"></A><A NAME="12026"></A><TT>make(submodel)</TT>
+<BR><A NAME="make-topology-model"></A>
+<P>
+<BLOCKQUOTE>
+This command makes a residue topology library
+from the most detailed C<SMALL>HARMM</SMALL> topology library, which contains all atoms,
+including all hydrogens (corresponding to <I><A HREF="node153.html#MEMB:Topology.submodel">Topology.submodel</A></I><A NAME="12047"></A> = 1). There are 
+currently ten residue topologies, all of which are defined in library <TT>$MODELS_LIB</TT>. For example, the default non-hydrogen atom topology is selected
+by <I>submodel</I><A NAME="12052"></A> = 3. For each <I>submodel</I><A NAME="12055"></A> and residue
+type, the <TT>$MODELS_LIB</TT> library lists those atoms in the full 
+atom set that are part of the specified topology.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>This command works by deleting all the entries that contain non-existing atoms
+from the original topology file. The charge of each removed atom is
+redistributed equally between the atoms directly bonded to it (if any of these
+atoms is in turn marked for deletion, the charge is instead placed on that
+atom's bonded neighbors, and so on). Any remaining charge is then spread
+around the entire residue, in proportion to the absolute charge of each atom.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>One must carefully test topology files produced in
+this way. Library <TT>$RADII_LIB</TT> must specify atomic radii for each
+atom in each residue type for each topology model. <I>submodel</I><A NAME="12058"></A> must
+be an integer from 1 to 10. On exit from this routine,
+<I><A HREF="node153.html#MEMB:Topology.submodel">Topology.submodel</A></I><A NAME="12061"></A> is set to <I>submodel</I><A NAME="12066"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>For more information about the topology
+library, see the FAQ Section&nbsp;<A HREF="node36.html#SECTION:faq">3.1</A>, Questions&nbsp;<A HREF="node36.html#FAQ:restop">8</A> and
+<A HREF="node36.html#FAQ:respatch">9</A>. 
+                             
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html93"
+  HREF="../examples/commands/make_topology_model.py">examples/commands/make_topology_model.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: topology.make(), topology.write()
+
+# This creates a topology library for heavy atoms from the
+# CHARMM all-atom topology library:
+
+from modeller import *
+
+env = environ()
+
+tpl = env.libs.topology
+# Read CHARMM all-atom topology library:
+tpl.read(file='${LIB}/top.lib')
+
+# Keep only heavy atoms (TOPOLOGY_MODEL = 3)
+tpl.make(submodel=3)
+
+# Write the resulting topology library to a new file:
+tpl.write(file='top_heav.lib')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html3936"
+  HREF="node153.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html3930"
+  HREF="node143.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html3924"
+  HREF="node151.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html3932"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html3934"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3937"
+  HREF="node153.html">Topology.submodel   select</A>
+<B> Up:</B> <A NAME="tex2html3931"
+  HREF="node143.html">The Libraries class: stereochemical</A>
+<B> Previous:</B> <A NAME="tex2html3925"
+  HREF="node151.html">Parameters.read()   read</A>
+ &nbsp; <B>  <A NAME="tex2html3933"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html3935"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

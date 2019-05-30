@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Using MODELLER for comparative modeling</TITLE>
+<META NAME="description" CONTENT="Using MODELLER for comparative modeling">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node11.html">
+<LINK REL="up" HREF="node6.html">
+<LINK REL="next" HREF="node13.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1440"
+  HREF="node13.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1434"
+  HREF="node6.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1430"
+  HREF="node11.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1436"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1438"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1441"
+  HREF="node13.html">Preparing input files</A>
+<B> Up:</B> <A NAME="tex2html1435"
+  HREF="node6.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html1431"
+  HREF="node11.html">Method for comparative protein</A>
+ &nbsp; <B>  <A NAME="tex2html1437"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1439"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00660000000000000000"></A><A NAME="2159"></A>
+<A NAME="SECTION:tutorial"></A>
+<BR>
+Using M<SMALL>ODELLER</SMALL> for comparative modeling
+</H1>
+
+<P>
+Simple demonstrations of M<SMALL>ODELLER</SMALL> in all steps of comparative protein structure 
+modeling, including fold assignment, sequence-structure alignment, model building, and 
+model assessment, can be found in references listed at 
+<A NAME="tex2html17"
+  HREF="http://salilab.org/modeller//documentation.html"><TT>http://salilab.org/modeller/documentation.html</TT></A>. A number of additional tools 
+useful in comparative modeling are listed
+at <A NAME="tex2html18"
+  HREF="http://salilab.org/bioinformatics_resources.shtml"><TT>http://salilab.org/bioinformatics_resources.shtml</TT></A>. Specifically, users
+have access to M<SMALL>OD</SMALL>B<SMALL>ASE</SMALL>, a comprehensive database of comparative 
+models for all known protein sequences detectably related to at least one known
+protein structure; <A NAME="tex2html19"
+  HREF="http://salilab.org/modweb/">M<SMALL>OD</SMALL>W<SMALL>EB</SMALL></A>, a web server for automated comparative protein 
+structure modeling; and <A NAME="tex2html20"
+  HREF="http://salilab.org/modloop/">M<SMALL>OD</SMALL>L<SMALL>OOP</SMALL></A>, a web server for automated modeling of loops
+in protein structures. For ``frequently-asked-questions'' (FAQ), see 
+Section&nbsp;<A HREF="node36.html#SECTION:faq">3.1</A>.
+
+<P>
+The rest of this section is a `hands on' description of the most basic use of 
+M<SMALL>ODELLER</SMALL> in comparative modeling, in which the input are Protein Data Bank 
+(PDB) atom files of known protein structures, and their alignment with the
+target sequence to be modeled, and the output is a model for the target that
+includes all
+non-hydrogen atoms. Although M<SMALL>ODELLER</SMALL> can find template structures as well as
+calculate sequence and structure alignments, it is better in the difficult cases
+to identify the templates and prepare the alignment carefully by other means. 
+The alignment can also contain very short segments such as loops, secondary structure 
+motifs, <EM>etc</EM>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1442"
+  HREF="node13.html">Preparing input files</A>
+<UL>
+<LI><A NAME="tex2html1443"
+  HREF="node13.html#SECTION00661100000000000000">Atom files</A>
+<LI><A NAME="tex2html1444"
+  HREF="node13.html#SECTION00661200000000000000">Alignment file</A>
+<LI><A NAME="tex2html1445"
+  HREF="node13.html#SECTION00661300000000000000">Script file</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1446"
+  HREF="node14.html">Running M<SMALL>ODELLER</SMALL></A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1440"
+  HREF="node13.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1434"
+  HREF="node6.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1430"
+  HREF="node11.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1436"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1438"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1441"
+  HREF="node13.html">Preparing input files</A>
+<B> Up:</B> <A NAME="tex2html1435"
+  HREF="node6.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html1431"
+  HREF="node11.html">Method for comparative protein</A>
+ &nbsp; <B>  <A NAME="tex2html1437"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1439"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

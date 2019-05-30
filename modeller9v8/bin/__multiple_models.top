@@ -1,0 +1,26 @@
+# Purpose : calculate several models from the initial structure and restraints
+#
+# Input   : MODEL, CSRFILE, SCHFILE, ROOT_NAME, DEVIATION, MD_LEVEL,
+#           RAND_METHOD
+#
+# Output  : schedule in file SCHFILE, final models in files ROOT_NAME.B*,
+#           debugging output in files ROOT_NAME.D*
+#
+
+SUBROUTINE ROUTINE = 'multiple_models'
+
+   DO ID2 = STARTING_MODEL, ENDING_MODEL, 1
+     SET  FINAL_MODEL = 'default'
+     CALL ROUTINE     = 'single_model'
+   END_DO
+
+   IF ARGUMENTS = DO_LOOPS 1, OPERATION = 'EQ'
+     # Do thorough loop modeling if so selected, for each *.B9999???? model:
+     DO ID2 = STARTING_MODEL, ENDING_MODEL, 1
+       SET ROOT_NAME = SEQUENCE, FILE_ID = '.B', FILE_EXT = PDB_EXT, ID1 = 9999
+       CALL ROUTINE = 'loop', LOOP_MODEL = '${DEFAULT}'
+     END_DO
+   END_IF
+
+RETURN
+END_SUBROUTINE

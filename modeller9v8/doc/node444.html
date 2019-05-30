@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Multiple comparisons</TITLE>
+<META NAME="description" CONTENT="Multiple comparisons">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node443.html">
+<LINK REL="up" HREF="node439.html">
+<LINK REL="next" HREF="node445.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8275"
+  HREF="node445.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8269"
+  HREF="node439.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8265"
+  HREF="node443.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8271"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8273"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8276"
+  HREF="node445.html">Optimization of the objective</A>
+<B> Up:</B> <A NAME="tex2html8270"
+  HREF="node439.html">Dynamic programming for sequence</A>
+<B> Previous:</B> <A NAME="tex2html8266"
+  HREF="node443.html">Similarity versus distance scores</A>
+ &nbsp; <B>  <A NAME="tex2html8272"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8274"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001315000000000000000"></A>
+   <A NAME="sec:multiple"></A>
+<BR>
+Multiple comparisons
+</H2>
+
+<P>
+In the discussion of the previous section, we have assumed that the
+sequences or structures would be compared in a pairwise manner.
+However, such pairwise comparisons of several related proteins may not
+be self consistent, <I>ie</I> the following transitivity rule can be
+broken: If residue <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.png"
+ ALT="$ a$">
+ from protein <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img181.png"
+ ALT="$ A$">
+ is equivalent to residue <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.png"
+ ALT="$ b$">
+
+in protein <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img182.png"
+ ALT="$ B$">
+ which in turn is equivalent to residue <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$ c$">
+ in protein
+<IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img183.png"
+ ALT="$ C$">
+ then the residue <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.png"
+ ALT="$ a$">
+ from protein <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img181.png"
+ ALT="$ A$">
+ must also be equivalent to
+residue <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$ c$">
+ from protein <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img183.png"
+ ALT="$ C$">
+. This property is not always attained in
+the set of usual pairwise comparisons relating a group of similar
+proteins. For this reason we proceed by simultaneously aligning all
+proteins. This is achieved by aligning the second sequence with the
+first one, the third sequence with the alignment of the first two, 
+<EM>etc</EM>. A more general tree-like growth of the multiple alignment is
+not yet implemented.
+
+<P>
+If the number of all proteins is <IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img119.png"
+ ALT="$ N$">
+, <IMG
+ WIDTH="46" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img118.png"
+ ALT="$ N-1$">
+ alignments must be made to
+obtain the final multiple comparison. It is noted that once an
+equivalence or gap is introduced it is not changed in later stages.
+
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8275"
+  HREF="node445.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8269"
+  HREF="node439.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8265"
+  HREF="node443.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8271"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8273"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8276"
+  HREF="node445.html">Optimization of the objective</A>
+<B> Up:</B> <A NAME="tex2html8270"
+  HREF="node439.html">Dynamic programming for sequence</A>
+<B> Previous:</B> <A NAME="tex2html8266"
+  HREF="node443.html">Similarity versus distance scores</A>
+ &nbsp; <B>  <A NAME="tex2html8272"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8274"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

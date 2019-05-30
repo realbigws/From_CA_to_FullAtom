@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>model.orient() -- center and orient MODEL</TITLE>
+<META NAME="description" CONTENT="model.orient() -- center and orient MODEL">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node186.html">
+<LINK REL="previous" HREF="node184.html">
+<LINK REL="up" HREF="node155.html">
+<LINK REL="next" HREF="node186.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4435"
+  HREF="node186.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4429"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4423"
+  HREF="node184.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4431"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4433"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4436"
+  HREF="node186.html">model.write_data()   write</A>
+<B> Up:</B> <A NAME="tex2html4430"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4424"
+  HREF="node184.html">model.reorder_atoms()   standardize</A>
+ &nbsp; <B>  <A NAME="tex2html4432"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4434"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011630000000000000000">
+model.orient() -- center and orient MODEL</A>
+</H2> <A NAME="14395"></A><A NAME="CMD:model.orient"></A><A NAME="14398"></A><TT>orient()</TT>
+<BR><DL>
+<DT><STRONG>Output:</STRONG></DT>
+<DD><I>OrientData</I><A NAME="14405"></A> object
+                             
+</DD>
+</DL>
+
+<P>
+<BLOCKQUOTE>
+This command translates the MODEL so that its gravity center
+is at the origin of the coordinate system and that the 
+three principal axes of the model's inertia ellipsoid 
+correspond to the <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img49.png"
+ ALT="$ x$">
+, <IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.png"
+ ALT="$ y$">
+, and <IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img51.png"
+ ALT="$ z$">
+ axes of the coordinate system.
+It may even be used for approximate superposition if
+molecules have a similar non-spherical shape. Information about
+the principal axes is written to the <TT>log</TT> file.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>On successful completion, an <I>OrientData</I><A NAME="14418"></A> object is returned; for instance,
+if you save this in a variable 'r', the following data are available:
+</BLOCKQUOTE>
+<UL>
+<LI><TT>r.translation</TT>; the translation used to transform <I>mdl</I><A NAME="14422"></A> to the center of mass
+</LI>
+<LI><TT>r.rotation</TT>; the rotation matrix used to transform <I>mdl</I><A NAME="14426"></A> (applied after the translation)
+</LI>
+</UL>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html107"
+  HREF="../examples/commands/orient_model.py">examples/commands/orient_model.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: model.orient()
+
+# This will orient the model along the principal axes of the inertia ellipsoid:
+
+from modeller import *
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+mdl = model(env)
+mdl.read(file='1fas')
+r = mdl.orient()
+mdl.write(file='1fas.ini')
+
+print "Translation: ", r.translation
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

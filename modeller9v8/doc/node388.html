@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>saxsdata.ini_saxs() -- Initialization of SAXS data</TITLE>
+<META NAME="description" CONTENT="saxsdata.ini_saxs() -- Initialization of SAXS data">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node389.html">
+<LINK REL="previous" HREF="node387.html">
+<LINK REL="up" HREF="node386.html">
+<LINK REL="next" HREF="node389.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7429"
+  HREF="node389.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7423"
+  HREF="node386.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7417"
+  HREF="node387.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7425"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7427"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7430"
+  HREF="node389.html">saxsdata.saxs_read()   Read</A>
+<B> Up:</B> <A NAME="tex2html7424"
+  HREF="node386.html">The saxsdata class: using</A>
+<B> Previous:</B> <A NAME="tex2html7418"
+  HREF="node387.html">saxsdata()   create</A>
+ &nbsp; <B>  <A NAME="tex2html7426"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7428"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011262000000000000000">
+saxsdata.ini_saxs() -- Initialization of SAXS data</A>
+</H2> <A NAME="35885"></A><A NAME="CMD:saxsdata.inisaxs"></A><A NAME="35888"></A><TT>ini_saxs(atmsel, filename='$(LIB)/formfactors-int_tab_solvation.lib', s_min=0.0, s_max=2.0, maxs=100, nmesh=100, natomtyp=15, represtyp='heav', wswitch='uniform', s_hybrid=0.0, s_low=0.0, s_hi=2.0, spaceflag='real', rho_solv=0.334, use_lookup=True, nr=5000, dr=0.1, nr_exp=300, dr_exp=1.0, use_offset=False, use_rolloff=False, use_conv=False, mixflag=False, pr_smooth=False)</TT>
+<BR><BLOCKQUOTE>
+Routine to initialize the SAXSDATA structure. Here the sampling
+  in reciprocal space needs to be specified; currently only
+  equidistant sampling is possible. Moreover, the parameters
+  for the scoring function and for its computation are set.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>s_min</I><A NAME="35928"></A> and <I>s_max</I><A NAME="35931"></A> specify the minimum and maximum frequency in
+reciprocal space, in &#197;<IMG
+ WIDTH="21" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img151.png"
+ ALT="$ ^{-1}$">
+. <I>maxs</I><A NAME="35934"></A> gives the maximum number of
+frequencies, and <I>nmesh</I><A NAME="35937"></A> the actual number (which must be less than <I>maxs</I><A NAME="35940"></A>).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>natomtyp</I><A NAME="35943"></A> gives the number of ''atoms'', <EM>i.e.</EM> scattering centers.
+<I>represtyp</I><A NAME="35947"></A> specifies the representation : 'heav', 'allh', or 'CA'.
+<I>filename</I><A NAME="35950"></A> is the name of the library for formfactors.
+<I>wswitch</I><A NAME="35953"></A> is the character for filter of scoring function: 'unity', 'sq', or
+'hybrid'. If 'hybrid', then <I>s_hybrid</I><A NAME="35956"></A> is the frequency above which <IMG
+ WIDTH="19" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img152.png"
+ ALT="$ s^2$">
+
+weighting is applied.
+<I>s_low</I><A NAME="35959"></A> and <I>s_hi</I><A NAME="35962"></A> give the lower and upper cutoff for the bandpass
+filter in &#197;<IMG
+ WIDTH="21" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img151.png"
+ ALT="$ ^{-1}$">
+.
+<I>spaceflag</I><A NAME="35965"></A> specifies how <IMG
+ WIDTH="32" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img153.png"
+ ALT="$ I(s)$">
+ should be computed. 'real' space via <IMG
+ WIDTH="37" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ P(r)$">
+
+or 'reciprocal'. 'real' is more than a magnitude faster but less accurate for
+high resolution (<IMG
+ WIDTH="53" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img154.png"
+ ALT="$ s&gt;0.5$">
+).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>rho_solv</I><A NAME="35968"></A> gives the electron density of solvent, in <IMG
+ WIDTH="22" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img155.png"
+ ALT="$ e^-$">
+&#197;<IMG
+ WIDTH="21" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img156.png"
+ ALT="$ ^{-3}$">
+. (The
+default 0.334 corresponds to H<IMG
+ WIDTH="11" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img157.png"
+ ALT="$ _2$">
+O.)
+<I>use_lookup</I><A NAME="35971"></A>, if <TT>True</TT>, uses lookup tables for SINC and COS functions,
+giving a significant increase in speed for 'reciprocal' mode.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>nr</I><A NAME="35975"></A> gives the number of points for <IMG
+ WIDTH="37" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ P(r)$">
+ sampling, and <I>dr</I><A NAME="35978"></A> the spacing
+of these points in &#197;.
+<I>nr_exp</I><A NAME="35981"></A> gives the number of points for <!-- MATH
+ $P_{exp}(r)$
+ -->
+<IMG
+ WIDTH="55" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img158.png"
+ ALT="$ P_{exp}(r)$">
+ sampling, and
+<I>dr_exp</I><A NAME="35984"></A> their spacing.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>use_offset</I><A NAME="35987"></A> is <TT>True</TT> then allowance is made for an additive constant
+in the experimental spectrum.
+If <I>use_rolloff</I><A NAME="35991"></A> is <TT>True</TT>, allowance is made for Gaussian rolloff in
+the model spectrum.
+If <I>use_conv</I><A NAME="35995"></A> is <TT>True</TT>, the spectrum is multiplied with the formfactor of
+nitrogen (&nbsp;3&#197;) spectrum.
+If <I>mixflag</I><A NAME="35999"></A> is <TT>True</TT> then more than one conformation is modeled
+simultaneously.
+If <I>pr_smooth</I><A NAME="36003"></A> is <TT>True</TT> smoothing of p(r) is done.
+
+</BLOCKQUOTE>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7429"
+  HREF="node389.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7423"
+  HREF="node386.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7417"
+  HREF="node387.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7425"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7427"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7430"
+  HREF="node389.html">saxsdata.saxs_read()   Read</A>
+<B> Up:</B> <A NAME="tex2html7424"
+  HREF="node386.html">The saxsdata class: using</A>
+<B> Previous:</B> <A NAME="tex2html7418"
+  HREF="node387.html">saxsdata()   create</A>
+ &nbsp; <B>  <A NAME="tex2html7426"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7428"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,49 @@
+    10                ... number of mathematical restraint forms
+    12                ... number of features
+    39                ... number of groups of restrs for reporting violations 
+
+ 1   Bond length potential
+ 2   Bond angle potential
+ 3   Stereochemical cosine torsion potential
+ 4   Stereochemical improper torsion potential
+ 5   Soft-sphere overlap restraints
+ 6   Lennard-Jones 6-12 potential
+ 7   Coulomb point-point electrostatic potential
+ 8   H-bonding potential
+ 9   Distance restraints 1 (CA-CA)
+10   Distance restraints 2 (N-O)
+11   Mainchain Phi dihedral restraints
+12   Mainchain Psi dihedral restraints
+13   Mainchain Omega dihedral restraints
+14   Sidechain Chi_1 dihedral restraints
+15   Sidechain Chi_2 dihedral restraints
+16   Sidechain Chi_3 dihedral restraints
+17   Sidechain Chi_4 dihedral restraints
+18   Disulfide distance restraints
+19   Disulfide angle restraints
+20   Disulfide dihedral angle restraints
+21   Lower bound distance restraints
+22   Upper bound distance restraints
+23   Distance restraints 3 (SDCH-MNCH)
+24   Sidechain Chi_5 dihedral restraints
+25   Phi/Psi pair of dihedral restraints
+26   Distance restraints 4 (SDCH-SDCH)
+27   Distance restraints 5 (X-Y)
+28   NMR distance restraints 6 (X-Y)
+29   NMR distance restraints 7 (X-Y)
+30   Minimal distance restraints
+31   Non-bonded restraints
+32   Atomic accessibility restraints
+33   Atomic density restraints
+34   Absolute position restraints
+35   Dihedral angle difference restraints
+36   GBSA implicit solvent potential
+37   EM density fitting potential
+38   SAXS restraints
+39   Symmetry restraints
+
+# Version: 5h-ab-as
+#
+# LIBRARY OF FEATURES AND THEIR CHARACTERISTICS 
+#
+# MODELLER, Copyright Andrej Sali

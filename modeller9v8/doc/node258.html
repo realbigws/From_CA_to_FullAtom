@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>actions.charmm_trajectory() -- write out a CHARMM trajectory</TITLE>
+<META NAME="description" CONTENT="actions.charmm_trajectory() -- write out a CHARMM trajectory">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node259.html">
+<LINK REL="previous" HREF="node257.html">
+<LINK REL="up" HREF="node252.html">
+<LINK REL="next" HREF="node259.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5507"
+  HREF="node259.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5501"
+  HREF="node252.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5495"
+  HREF="node257.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5503"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5505"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5508"
+  HREF="node259.html">User-defined optimizers</A>
+<B> Up:</B> <A NAME="tex2html5502"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Previous:</B> <A NAME="tex2html5496"
+  HREF="node257.html">actions.trace()   write</A>
+ &nbsp; <B>  <A NAME="tex2html5504"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5506"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011116000000000000000">
+actions.charmm_trajectory() -- write out a CHARMM trajectory</A>
+</H2> <A NAME="23353"></A><A NAME="CMD:actions.charmmtrajectory"></A><A NAME="23356"></A><TT>charmm_trajectory(skip, filename, first=False, last=False)</TT>
+<BR><BLOCKQUOTE>
+This action writes out a trajectory file in C<SMALL>HARMM</SMALL> or X-PLOR format. This is more efficient than <B><A HREF="node256.html#CMD:actions.writestructure">actions.write_structure()</A></B><A NAME="23382"></A>, as binary
+files are smaller than multiple PDB files, and only the moving (selected)
+atom coordinates are written at each step after the first. Binary trajectory
+files can be read in by visualization software such as <A NAME="tex2html150"
+  HREF="http://www.cgl.ucsf.edu/chimera/">C<SMALL>HIMERA</SMALL></A> or <A NAME="tex2html151"
+  HREF="http://www.ks.uiuc.edu/Research/vmd/">VMD</A>.
+<A NAME="tex2html149"
+  HREF="footnode.html#foot23362"><SUP>6.3</SUP></A>You will typically also need a C<SMALL>HARMM</SMALL>-format <TT>PSF</TT> file to accompany the
+trajectory, which you can obtain with <B><A HREF="node175.html#CMD:model.writepsf">model.write_psf()</A></B><A NAME="23395"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>To use, create a <TT>charmm_trajectory</TT> object, and pass it in the
+<I>actions</I><A NAME="23402"></A> argument to an optimizer object (<EM>e.g.</EM>,
+<B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="23406"></A> or <B><A HREF="node255.html#CMD:moleculardynamics">molecular_dynamics()</A></B><A NAME="23411"></A>).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>first</I><A NAME="23416"></A> is <TT>True</TT>, then the structure at step 0 (before the optimization)
+is also written out. If <I>last</I><A NAME="23420"></A> is <TT>True</TT>, then the structure of the last
+step is written, regardless of whether it is a multiple of <I>skip</I><A NAME="23424"></A>. By default,
+both are <TT>False</TT>.
+
+</BLOCKQUOTE>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html152"
+  HREF="../examples/python/trajectory.py">examples/python/trajectory.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for PSF and binary trajectory output
+
+from modeller import *
+from modeller.scripts import complete_pdb
+from modeller.optimizers import molecular_dynamics, actions
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.edat.dynamic_sphere = True
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+code = '1fas'
+mdl = complete_pdb(env, code)
+
+# Stereochemical restraints on all atoms:
+atmsel = selection(mdl)
+mdl.restraints.make(atmsel, restraint_type='stereo', spline_on_site=False)
+
+# Write a PSF
+mdl.write_psf(code+'.psf')
+
+# Run 100 steps of MD, writing a CHARMM binary trajectory every 5 steps
+md = molecular_dynamics(output='REPORT')
+md.optimize(atmsel, temperature=300, max_iterations=100,
+            actions=actions.charmm_trajectory(5, filename=code+'.dcd'))
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5507"
+  HREF="node259.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5501"
+  HREF="node252.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5495"
+  HREF="node257.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5503"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5505"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5508"
+  HREF="node259.html">User-defined optimizers</A>
+<B> Up:</B> <A NAME="tex2html5502"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Previous:</B> <A NAME="tex2html5496"
+  HREF="node257.html">actions.trace()   write</A>
+ &nbsp; <B>  <A NAME="tex2html5504"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5506"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

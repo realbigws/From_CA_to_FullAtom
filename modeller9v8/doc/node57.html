@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>automodel.max_ca_ca_distance -- Distance cutoff for CA-CA homology-derived restraints</TITLE>
+<META NAME="description" CONTENT="automodel.max_ca_ca_distance -- Distance cutoff for CA-CA homology-derived restraints">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node58.html">
+<LINK REL="previous" HREF="node56.html">
+<LINK REL="up" HREF="node41.html">
+<LINK REL="next" HREF="node58.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html2191"
+  HREF="node58.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2185"
+  HREF="node41.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2179"
+  HREF="node56.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html2187"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html2189"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html2192"
+  HREF="node58.html">automodel.max_n_o_distance   Distance</A>
+<B> Up:</B> <A NAME="tex2html2186"
+  HREF="node41.html">automodel reference</A>
+<B> Previous:</B> <A NAME="tex2html2180"
+  HREF="node56.html">automodel.trace_output   control</A>
+ &nbsp; <B>  <A NAME="tex2html2188"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html2190"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION009116000000000000000">
+automodel.max_ca_ca_distance -- Distance cutoff for CA-CA homology-derived restraints</A>
+</H2> <A NAME="5954"></A><A NAME="MEMB:automodel.maxcacadistance"></A><BLOCKQUOTE>
+This is the cutoff distance for <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+-<!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+homology-derived restraints
+(it is passed to <B><A HREF="node203.html#CMD:Restraints.makedistance">Restraints.make_distance()</A></B><A NAME="5975"></A> as the <I>maximal_distance</I><A NAME="5980"></A>
+parameter when these restraints are generated). No <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+-<!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+distances
+greater than this value will be used in building homology-derived restraints;
+thus, reducing this value from the default will typically reduce the number
+of restraints and increase the speed of optimization.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The default value of this parameter is 14.0 angstroms.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>See also <I><A HREF="node58.html#MEMB:automodel.maxnodistance">automodel.max_n_o_distance</A></I><A NAME="5985"></A>, <I><A HREF="node58.html#MEMB:automodel.maxnodistance">automodel.max_n_o_distance</A></I><A NAME="5990"></A>,
+<I><A HREF="node59.html#MEMB:automodel.maxscmcdistance">automodel.max_sc_mc_distance</A></I><A NAME="5995"></A>, and <I><A HREF="node60.html#MEMB:automodel.maxscscdistance">automodel.max_sc_sc_distance</A></I><A NAME="6000"></A>
+for similar cutoffs for the other kinds of homology-derived distance restraints.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>See also <B><A HREF="node65.html#CMD:automodel.veryfast">automodel.very_fast()</A></B><A NAME="6005"></A>, which decreases all of these distances
+from their default values.
+
+</BLOCKQUOTE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

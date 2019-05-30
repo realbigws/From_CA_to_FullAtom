@@ -1,0 +1,19 @@
+ _aln.pos         10        20        30        40        50        60
+7rsa      KETAAAKFERQHMDSSTSAASSSNYCNQMMKSRNLTKDRCKPVNTFVHESLADVQAVCSQKNVAC-KN 
+edn       ---KPPQFTWAQWFETQHINMTSQQCTNAMQVINNYQRRCKNQNTFLLTTFANVVNVCGNPNMTCPSN 
+templ     --HHHHHHHHHHH-----------GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+ _consrvd        *              *  *   *   *    ***  ***     * *  **   *  *  *
+
+
+ _aln.p   70        80        90       100       110       120       130
+7rsa      -GQTNCYQSYSTMSITDCRETGSS--KYPNCAYKTTQANKHIIVACEGN---------PYVPVHFDAS 
+edn       KTRKNCHHSGSQVPLIHCNLTTPSPQNISNCRYAQTPANMFYIVACDNRDQRRDPPQYPVVPVHLDRI 
+templ     GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+ _consrvd     **  * *      *  *  *     ** *  * **   ****            * **** *
+
+
+ _aln.pos
+7rsa      V 
+edn       I 
+templ     G
+ _consrvd

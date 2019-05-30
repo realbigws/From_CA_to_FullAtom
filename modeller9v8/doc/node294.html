@@ -1,0 +1,1140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>alignment.salign() -- align two or more sequences/structures of proteins</TITLE>
+<META NAME="description" CONTENT="alignment.salign() -- align two or more sequences/structures of proteins">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node295.html">
+<LINK REL="previous" HREF="node293.html">
+<LINK REL="up" HREF="node269.html">
+<LINK REL="next" HREF="node295.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html6045"
+  HREF="node295.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html6039"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html6033"
+  HREF="node293.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html6041"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html6043"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6046"
+  HREF="node295.html">alignment.get_suboptimals()   parse</A>
+<B> Up:</B> <A NAME="tex2html6040"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html6034"
+  HREF="node293.html">alignment.malign3d()   align</A>
+ &nbsp; <B>  <A NAME="tex2html6042"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html6044"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html6047"
+  HREF="node294.html#SECTION00111525100000000000000">Features of proteins used for alignment</A>
+<LI><A NAME="tex2html6048"
+  HREF="node294.html#SECTION00111525200000000000000">Alignment of protein sequences</A>
+<LI><A NAME="tex2html6049"
+  HREF="node294.html#SECTION00111525300000000000000">Alignment of protein structures with sequences</A>
+<LI><A NAME="tex2html6050"
+  HREF="node294.html#SECTION00111525400000000000000">Alignment of protein structures</A>
+<LI><A NAME="tex2html6051"
+  HREF="node294.html#SECTION00111525500000000000000">Sub-optimal alignments</A>
+<LI><A NAME="tex2html6052"
+  HREF="node294.html#SECTION00111525600000000000000">Alignments using external restraints</A>
+<LI><A NAME="tex2html6053"
+  HREF="node294.html#SECTION00111525700000000000000">Gap penalties and correcting for gaps</A>
+<LI><A NAME="tex2html6054"
+  HREF="node294.html#SECTION00111525800000000000000">Useful SALIGN information and commands</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H2><A NAME="SECTION00111525000000000000000">
+alignment.salign() -- align two or more sequences/structures of proteins</A>
+</H2> <A NAME="26920"></A><A NAME="CMD:alignment.salign"></A><A NAME="26923"></A><TT>salign(residue_type2='REGULAR', no_ter=False, overhang=0, off_diagonal=100, matrix_offset=0.0, gap_penalties_1d=(-900.0, -50.0), gap_penalties_2d=(3.5, 3.5, 3.5, 0.2, 4.0, 6.5, 2.0, 0.0, 0.0), gap_penalties_3d=(0.0, 1.75), feature_weights=(1.0, 0.0, 0.0, 0.0, 0.0, 0.0), rms_cutoff=3.5, fit=True, surftyp=1, fit_on_first=False, gap_function=False, align_block=0, max_gap_length=999999, align_what='BLOCK', input_weights_file=None, output_weights_file=None, weigh_sequences=False, smooth_prof_weight=10, fix_offsets=(0.0, -1.0, -2.0, -3.0, -4.0), substitution=False, comparison_type='MAT', matrix_comparison='CC', alignment_type='PROGRESSIVE', edit_file_ext=('.pdb', '_fit.pdb'), weights_type='SIMILAR', similarity_flag=False, bkgrnd_prblty_file='$(LIB)/blosum62_bkgrnd.prob', ext_tree_file=None, dendrogram_file='', matrix_scaling_factor=0.0069, auto_overhang=False, overhang_factor=0.4, overhang_auto_limit=60, local_alignment=False, improve_alignment=True, fit_atoms='CA', output='', write_whole_pdb=True, current_directory=True, write_fit=False, fit_pdbnam=True, rr_file='$(LIB)/as1.sim.mat', n_subopt=1, subopt_offset=0.0, align3d_trf=False, normalize_pp_scores=False, gap_gap_score=0.0, gap_residue_score=0.0, nsegm=2, matrix_offset_3d=-0.1, io=None)</TT>
+<BR><DL>
+<DT><STRONG>Output:</STRONG></DT>
+<DD><I>SalignData</I><A NAME="26930"></A> object
+                             
+</DD>
+</DL>
+
+<P>
+<BLOCKQUOTE>
+This command is a general dynamic programming based alignment
+procedure for aligning sequences, structures or a combination of the two. It
+is loosely based on the program COMPARER [<A
+ HREF="node469.html#SalBlu90">&#352;ali &amp; Blundell, 1990</A>]. SALIGN can be used
+to generate multiple protein structures/sequences alignments or to align two
+blocks of sequences/structures that are in memory.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>See also Section&nbsp;<A HREF="node414.html#SECTION:salign">6.31</A> for utility scripts to simplify the
+high-level usage of SALIGN.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Please note that the method is still in development, and has not yet been
+fully benchmarked. As with any other alignment method, generated alignments
+should be assessed for quality.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Broadly classifying, three different types of protein alignment categories
+are tackled by this command:
+</BLOCKQUOTE>
+<OL>
+<LI>Multiple structure alignments
+</LI>
+<LI>Aligning a structure block to a sequence block
+</LI>
+<LI>Multiple and pair-wise protein sequence alignment
+</LI>
+</OL>
+<P>
+<BLOCKQUOTE>The command incorporates the functionality of several old M<SMALL>ODELLER</SMALL> commands
+(<B><A HREF="node287.html#CMD:alignment.align">alignment.align()</A></B><A NAME="27226"></A>, <B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="27231"></A>, <B><A HREF="node289.html#CMD:alignment.malign">alignment.malign()</A></B><A NAME="27236"></A>,
+<B><A HREF="node292.html#CMD:alignment.align3d">alignment.align3d()</A></B><A NAME="27241"></A>, and <B><A HREF="node293.html#CMD:alignment.malign3d">alignment.malign3d()</A></B><A NAME="27246"></A>). Some of the examples
+below illustrate the equivalent script files to replace the old alignment
+commands with <B><A HREF="#CMD:alignment.salign">alignment.salign()</A></B><A NAME="27251"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>In addition to these, this command has several new alignment features
+including profile-profile sequence alignments and a dendrogram based multiple
+sequence/structure alignment among others.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>All pair-wise alignments make use of local or global dynamic programming.
+A switch from one to another can be effected by setting <I>local_alignment</I><A NAME="27256"></A>
+to <TT>True</TT> or <TT>False</TT>. The dynamic programming can be carried out using
+affine gap penalties (as previously used in <B><A HREF="node287.html#CMD:alignment.align">alignment.align()</A></B><A NAME="27261"></A>, by setting
+<I>gap_function</I><A NAME="27266"></A> to <TT>False</TT>) or an environment dependent gap penalty
+function (as used in <B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="27270"></A>, by setting <I>gap_function</I><A NAME="27275"></A> to
+<TT>True</TT>). (Please note that the default <I>gap_penalties_1d</I><A NAME="27279"></A> parameters
+are optimal for the affine gap penalty; see the align2d examples for reasonable
+parameters if you wish to use the environment dependent gap penalty.)
+All arguments that associated to the <B><A HREF="node287.html#CMD:alignment.align">alignment.align()</A></B><A NAME="27282"></A> and
+<B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="27287"></A> commands apply.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If at least one of the blocks in a pairwise alignment consists of structures,
+dynamic programming can be performed using structure dependent gap penalties.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>On successful completion, an <I>SalignData</I><A NAME="27292"></A> object is returned, from which
+some of the calculated data can be queried. For example, if you save this in
+a variable 'r', the following data are available:
+</BLOCKQUOTE>
+<UL>
+<LI><TT>r.aln_score</TT>; the alignment score
+</LI>
+<LI><TT>r.qscorepct</TT>; the quality score (percentage) if <I>output</I><A NAME="27297"></A> contains
+<TT>'QUALITY'</TT>
+</LI>
+</UL>
+<P>
+<H3><A NAME="SECTION00111525100000000000000">
+Features of proteins used for alignment</A>
+</H3>
+Central to the dynamic programming algorithm is the weight matrix. In SALIGN,
+this matrix is constructed by weighting the contribution from six 
+features of protein structure and sequence:
+
+<P>
+<DL>
+<DT><STRONG>Feature 1</STRONG></DT>
+<DD>is the residue type. <IMG
+ WIDTH="34" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img120.png"
+ ALT="$ W^1_{i,j}$">
+ is obtained from the residue
+type - residue type dissimilarity matrix, specified in the file <I>rr_file</I><A NAME="27301"></A>.
+<IMG
+ WIDTH="34" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img120.png"
+ ALT="$ W^1_{i,j}$">
+ dissimilarity score for positions <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ and <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ j$">
+ in the two compared
+sub-alignments is the average dissimilarity score for a comparison of all
+residues in one sub-alignment with all residues in the other sub-alignment
+(note that gaps are ignored here). Should only feature weight 1 be non-zero,
+the user has an option of considering residue-residue similarity scores
+instead of distance scores by setting <I>similarity_flag</I><A NAME="27304"></A> to <TT>True</TT>.
+(The other features are distance features, and so if their weights are non-zero,
+<I>similarity_flag</I><A NAME="27308"></A> must be turned off, which is the default.)
+
+<P>
+</DD>
+<DT><STRONG>Feature 2</STRONG></DT>
+<DD>is the inter-molecular distance for a pair of residues (unless
+<I>align3d_trf</I><A NAME="27311"></A> is <TT>True</TT>: see <B><A HREF="node292.html#CMD:alignment.align3d">alignment.align3d()</A></B><A NAME="27315"></A>). Only one atom per
+residue is of course selected, as specified by <I>fit_atoms</I><A NAME="27320"></A> (<EM>e.g.</EM>, <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+,
+although we should also allow for <IMG
+ WIDTH="24" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img121.png"
+ ALT="$ {C}_\beta$">
+ in the future, which requires an
+intervention for Gly). This `position' feature is complicated because it
+depends on the relative orientation of the structures corresponding to the two
+compared alignments. <IMG
+ WIDTH="34" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img122.png"
+ ALT="$ W^2_{i,j}$">
+ is the Euclidean distance between the
+compared positions <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ and <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ j$">
+ in the two compared sub-alignments that are
+already optimally aligned and superposed based on their coordinates alone.
+This optimal alignment is obtained by an iterative procedure as follows
+(the same as in <B><A HREF="node292.html#CMD:alignment.align3d">alignment.align3d()</A></B><A NAME="27326"></A>). The average structures for both
+sub-alignments are calculated for all sub-alignment positions with at least
+one defined selected atom. This calculation is straightforward because the
+structures within the two sub-alignments are already superposed with each
+other (see below). Then, the distance matrix for dynamic programming with affine
+gap penalties is calculated as the matrix of Euclidean distances between
+the two averages. The dynamic programming results into a new alignment,
+dependent also on the gap initiation and extension penalties
+<I>gap_penalties_3d</I><A NAME="27331"></A> (a reasonable setting is (0, 3)).
+<I>gap_penalties_3d</I><A NAME="27334"></A>[0] is a gap creation penalty (usually 0), and
+<I>gap_penalties_3d</I><A NAME="27337"></A>[1] is a gap extension penalty, say 3. When the gap
+initiation penalty is 0, pairs of positions are identified as equivalent
+when they have their selected atoms at most 2 times <I>gap_penalties_3d</I><A NAME="27340"></A>[1]
+angstroms apart in the current superposition, as described for the
+<B><A HREF="node292.html#CMD:alignment.align3d">alignment.align3d()</A></B><A NAME="27343"></A> command. The new alignment is then used to generate
+the new superposition of the two averages, and the iteration of the distance
+matrix calculation, alignment and superposition is repeated until there are
+no changes in the number of equivalent positions and in the rotation matrix
+relating the two averages.
+
+<P>
+The values of both <I>improve_alignment</I><A NAME="27348"></A> and <I>fit</I><A NAME="27351"></A> are used in the
+calculation of the position feature. That is, the initial alignment and
+the orientation of the coordinates can be selected not to change at all
+during the calculation of the inter-molecular distance matrix.
+
+<P>
+When the calculation of the inter-molecular distance matrix is finished, all
+the structures in the second sub-alignment are rotated and translated
+following the optimal rotation and translation of the second average on the
+first average. These superpositions prepare the individual structures for the
+next of the <IMG
+ WIDTH="41" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img123.png"
+ ALT="$ n-1$">
+ stages of the progressive multiple alignment, and also
+orient all the structures for writing out to atom files with a <TT>'_fit.pdb'</TT>
+extension if <I>write_fit</I><A NAME="27355"></A> = <TT>True</TT>. If <I>fit_pdbnam</I><A NAME="27359"></A> = <TT>False</TT>, the
+PDB filenames in the output alignment file will not have the <TT>'_fit.pdb'</TT>
+extensions. Thus, feature 2 needs to be selected by
+<I>feature_weight</I><A NAME="27364"></A>[2]&nbsp;<IMG
+ WIDTH="29" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img124.png"
+ ALT="$ &gt; 0$">
+ if you wish to write out the structures
+superposed according to the tree-following procedure; also, <I>fit_on_first</I><A NAME="27367"></A>
+must be <TT>False</TT>, otherwise the structures are written out superposed on the
+first structure according to the final alignment (see also below).
+
+<P>
+The alignment produced within the routine that calculates <IMG
+ WIDTH="29" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img125.png"
+ ALT="$ W^2$">
+ does not
+generally correspond to the alignment calculated based on <IMG
+ WIDTH="21" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img126.png"
+ ALT="$ W$">
+. Therefore, the
+multiply superposed structures are not necessarily superposed based on the
+final multiple alignment produced by <B><A HREF="#CMD:alignment.salign">alignment.salign()</A></B><A NAME="27371"></A>. If you wish such
+a superposition, you can use <B><A HREF="node293.html#CMD:alignment.malign3d">alignment.malign3d()</A></B><A NAME="27376"></A> with <I>fit</I><A NAME="27381"></A> = <TT>False</TT>
+and <I>write_fit</I><A NAME="27385"></A> = <TT>True</TT> (the meaning of <I>fit</I><A NAME="27389"></A> is different between
+<B><A HREF="#CMD:alignment.salign">alignment.salign()</A></B><A NAME="27392"></A> and <B><A HREF="node293.html#CMD:alignment.malign3d">alignment.malign3d()</A></B><A NAME="27397"></A>).
+
+<P>
+Unless the position feature is selected, the initial alignment does not matter.
+If the position feature is selected, a good starting alignment is a multiple
+sequence alignment, obtained either by <B><A HREF="node289.html#CMD:alignment.malign">alignment.malign()</A></B><A NAME="27402"></A> or by
+<B><A HREF="#CMD:alignment.salign">alignment.salign()</A></B><A NAME="27407"></A> used without the position feature (the initial
+alignment can also be prepared using the position feature). If the position
+feature is used, each pair of structures needs to have at least 3 aligned
+residues at all points during the alignment.
+
+<P>
+There are several possibilities as to the final orientation of the input
+coordinates. If <I>fit_on_first</I><A NAME="27412"></A> is <TT>True</TT>, all the coordinate sets are
+superposed on the first structure, using the final multi-feature multiple
+alignment. If <I>fit_on_first</I><A NAME="27416"></A> is <TT>False</TT>, and position feature was used,
+and <I>fit</I><A NAME="27420"></A> was <TT>True</TT>, the coordinates will be superposed in the
+progressive manner guided by the tree, by the routine that calculates the
+inter-molecular distance matrices; this superposition is based only on the
+positions of the selected atoms (feature 2), not on other features such as
+residue type, secondary, structure, <EM>etc</EM>. If <I>improve_alignment</I><A NAME="27425"></A> is
+<TT>False</TT>, it does not make much sense to have <I>fit</I><A NAME="27429"></A> = <TT>True</TT>
+(use <I>fit_on_first</I><A NAME="27433"></A> = <TT>True</TT>).
+
+<P>
+For local alignments, the matrix offset variable is <I>matrix_offset_3d</I><A NAME="27437"></A>.
+
+<P>
+</DD>
+<DT><STRONG>Feature 3</STRONG></DT>
+<DD>is the fractional sidechain accessibility. The pair-wise
+residue-residue dissimilarity is calculated by classifying residues into the
+buried (<IMG
+ WIDTH="37" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img127.png"
+ ALT="$ &lt;15$">
+%), semi-exposed, and exposed classes (<IMG
+ WIDTH="37" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img128.png"
+ ALT="$ &gt;30$">
+%). The
+dissimilarity is 0 for equal classes or if the absolute difference in the
+accessibility is less than 5%, 1 for neighboring classes and 2 for
+the buried-exposed match.  The position-position dissimilarity is the
+average residue-residue dissimilarity for comparing all residues from
+one group to all residues in the other group (gaps are ignored).
+
+<P>
+</DD>
+<DT><STRONG>Feature 4</STRONG></DT>
+<DD>is the secondary structure type, distinguishing between helix,
+strand, and other. The pair-wise residue-residue dissimilarity is 0 for
+equal classes, 1 for `helix' or `strand' matched to `other', and 2 for
+`helix' matched to 'strand'. Position-position dissimilarity is calculated
+in the same way as for feature 3.
+
+<P>
+</DD>
+<DT><STRONG>Feature 5</STRONG></DT>
+<DD>is the local conformation. A pair-wise residue-residue score
+is DRMSD between the selected atoms (<I>fit_atoms</I><A NAME="27440"></A>) from the segments of
+(2*nsegm + 1) residues centered on the two matched residues. Position-position
+dissimilarity is calculated in the same way as for feature 3.
+
+<P>
+</DD>
+<DT><STRONG>Feature 6</STRONG></DT>
+<DD>is a user specified feature for which a external matrix (in 
+M<SMALL>ODELLER</SMALL> matrix format; see the substitution matrices in the <TT>modlib</TT>
+directory for examples) has to be specified using <I>input_weights_file</I><A NAME="27445"></A>.
+The user can input either a similarity matrix (<I>weights_type</I><A NAME="27448"></A> = <TT>SIMILAR</TT>)
+or a distance matrix (<I>weights_type</I><A NAME="27452"></A> = <TT>DISTANCE</TT>).
+
+<P>
+</DD>
+</DL>
+
+<P>
+
+<H3><A NAME="SECTION00111525200000000000000">
+Alignment of protein sequences</A>
+</H3>
+
+<UL>
+<LI><B>Multiple protein sequence alignment</B> 
+<BR>
+Aligning multiple sequences is similar to aligning multiple structures, 
+the difference being that for sequence alignments only the first feature weight
+can be non-zero (the other features require coordinates). This is the default
+for <I>feature_weights</I><A NAME="27456"></A>.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html180"
+  HREF="../examples/salign/salign_multiple_seq.py">examples/salign/salign_multiple_seq.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Illustrates the SALIGN multiple sequence alignment
+from modeller import *
+
+log.verbose()
+env = environ()
+env.io.atom_files_directory = ['.', '../atom_files']
+
+aln = alignment(env, file='malign_in.ali')
+
+aln.salign(overhang=30, gap_penalties_1d=(-450, -50),
+           alignment_type='tree', output='ALIGNMENT')
+
+aln.write(file='malign.ali', alignment_format='PIR')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+</LI>
+<LI><B>Alignment of two sequence blocks</B> 
+<BR>
+Two blocks of sequences can be aligned using the information contained within
+each of the multiple sequence blocks [<A
+ HREF="node469.html#MarSal04">Mart&#237;-Renom <EM>et&nbsp;al.</EM>, 2004</A>].
+Pairs of sequence blocks are aligned using SALIGN the same way in which 
+<B><A HREF="node287.html#CMD:alignment.align">alignment.align()</A></B><A NAME="27464"></A> aligned sequence blocks; to align two blocks, simply
+proceed as normal, but set <I>align_block</I><A NAME="27469"></A> to the number of sequences in
+the first block (the rest of the sequences are placed in the second block) and
+set <I>alignment_what</I><A NAME="27472"></A> to <TT>BLOCK</TT>. Also, since this kind of alignment is
+effected only between two blocks, <I>alignment_type</I><A NAME="27476"></A> is set to <TT>PAIRWISE</TT>.
+
+<P>
+</LI>
+<LI><B>Alignment of protein sequences by their profiles</B> 
+<BR>
+As for pairwise alignment of sequence blocks, above, two blocks can be
+aligned by their profiles. <I>align_block</I><A NAME="27480"></A>
+demarcates the end of the first block and <I>align_what</I><A NAME="27483"></A> is set to <TT>PROFILE</TT>
+indicating that the blocks will be aligned using their profiles, and
+<I>alignment_type</I><A NAME="27487"></A> is set to <TT>PAIRWISE</TT>.
+The weight matrix for dynamic programming is created by comparing the sequence
+information in the two blocks. Two kinds of comparisons can be performed:
+  
+<OL>
+<LI>A correlation coefficient of the variation of the the 20 amino acids at
+  each position (<I>comparison_type</I><A NAME="27491"></A> is set to <TT>PSSM</TT>).
+</LI>
+<LI>Comparing the residue substitution matrices implied at each position of
+  the two blocks (<I>comparison_type</I><A NAME="27495"></A> is set to <TT>MAT</TT>).
+  
+</LI>
+</OL>
+Matrix comparisons are of three types:
+taking the maximum, average or correlation coefficient of residue-residue 
+substitution at the aligned positions (<I>matrix_comparison</I><A NAME="27499"></A> set to <TT>MAX</TT>, 
+<TT>AVE</TT> or <TT>CC</TT>).
+
+<P>
+Profile comparisons are done in similarity space rather than distance space,
+so <I>similarity_flag</I><A NAME="27505"></A> should be set to <TT>True</TT>. They will also currently
+only work with feature 1 (since feature 1 is the only feature which works both
+in similarity and in distance space) - the weights for all other features
+must be set to zero.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html181"
+  HREF="../examples/salign/salign_profile_profile.py">examples/salign/salign_profile_profile.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># profile-profile alignment using salign
+from modeller import *
+
+log.level(1, 0, 1, 1, 1)
+env = environ()
+
+aln = alignment(env, file='mega_prune.faa', alignment_format='FASTA')
+
+aln.salign(rr_file='${LIB}/blosum62.sim.mat',
+           gap_penalties_1d=(-500, 0), output='',
+           align_block=15,   # no. of seqs. in first MSA
+           align_what='PROFILE',
+           alignment_type='PAIRWISE',
+           comparison_type='PSSM',  # or 'MAT' (Caution: Method NOT benchmarked
+                                    # for 'MAT')
+           similarity_flag=True,    # The score matrix is not rescaled
+           substitution=True,       # The BLOSUM62 substitution values are
+                                    # multiplied to the corr. coef.
+           #write_weights=True,
+           #output_weights_file='test.mtx', # optional, to write weight matrix
+           smooth_prof_weight=10.0) # For mixing data with priors
+
+#write out aligned profiles (MSA)
+aln.write(file='salign.ali', alignment_format='PIR')
+
+# Make a pairwise alignment of two sequences
+aln = alignment(env, file='salign.ali', alignment_format='PIR',
+                align_codes=('12asA', '1b8aA'))
+aln.write(file='salign_pair.ali', alignment_format='PIR')
+aln.write(file='salign_pair.pap', alignment_format='PAP')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+</LI>
+</UL>
+
+<P>
+
+<H3><A NAME="SECTION00111525300000000000000">
+Alignment of protein structures with sequences</A>
+</H3>
+As stated earlier, all <B><A HREF="node287.html#CMD:alignment.align">alignment.align()</A></B><A NAME="27514"></A> and <B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="27519"></A> related
+commands apply to <B><A HREF="#CMD:alignment.salign">alignment.salign()</A></B><A NAME="27524"></A> too. The example below is a 
+<B><A HREF="#CMD:alignment.salign">alignment.salign()</A></B><A NAME="27529"></A> equivalent of <B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="27534"></A> (and 
+<B><A HREF="node287.html#CMD:alignment.align">alignment.align()</A></B><A NAME="27539"></A>). For a description of the <I>gap_penalties_2d</I><A NAME="27544"></A> see the 
+section on <B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="27547"></A>.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html182"
+  HREF="../examples/salign/salign_align2d.py">examples/salign/salign_align2d.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># align2d/align using salign
+
+# parameters to be input by the user
+# 1.  gap_penalties_1d
+# 2.  gap_penalties_2d
+# 3.  input alignment file
+
+from modeller import *
+log.verbose()
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+
+aln = alignment(env, file='align2d_in.ali', align_codes='all')
+aln.salign(rr_file='$(LIB)/as1.sim.mat',  # Substitution matrix used
+           output='',
+           max_gap_length=20,
+           gap_function=True,              # If False then align2d not done
+           feature_weights=(1., 0., 0., 0., 0., 0.),
+           gap_penalties_1d=(-100, 0),
+           gap_penalties_2d=(3.5, 3.5, 3.5, 0.2, 4.0, 6.5, 2.0, 0.0, 0.0),
+           # d.p. score matrix
+           #write_weights=True, output_weights_file='salign.mtx'
+           similarity_flag=True)   # Ensuring that the dynamic programming
+                                   # matrix is not scaled to a difference matrix
+aln.write(file='align2d.ali', alignment_format='PIR')
+aln.write(file='align2d.pap', alignment_format='PAP')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+Caution: The values of <I>gap_penalties_2d</I><A NAME="27557"></A> have been optimized for
+similarity matrices. If using a distance matrix, you will need to derive new
+optimized values.
+
+<P>
+
+<H3><A NAME="SECTION00111525400000000000000">
+Alignment of protein structures</A>
+</H3>
+Structure alignments can make use of all the 5 structure/sequence features
+as well as the 6th user provided feature matrix. Pairwise alignments of
+structures can make use of the constant gap penalties or the environment 
+dependent gap penalties. Multiple structure alignments are constructed from
+pairwise structure alignments.
+
+<P>
+This section describes the use of SALIGN to produce a single alignment of
+multiple structures. If the best output alignment is desired, it is recommended
+to run SALIGN in an iterative fashion, to determine the best parameter values.
+A utility script is provided for this purpose - see
+<B><A HREF="node415.html#CMD:iterativestructuralalign">iterative_structural_align()</A></B><A NAME="27560"></A>.
+
+<P>
+
+<UL>
+<LI><B>Pairwise protein structure alignment</B> 
+<BR>
+For optimal pairwise alignments it is suggested to call SALIGN multiple times,
+typically 2-3 times. The first SALIGN call will give an initial alignment which
+is refined in the subsequent calls. Usually, feature 2 is made non-zero only
+during the 'refinement' stage as rigid body refinement is done at the position
+implied by the alignment in memory. 
+
+<P>
+</LI>
+<LI><B>Tree Multiple Structure Alignments</B> 
+<BR>
+When <I>alignment_type</I><A NAME="27565"></A> is set to <TT>tree</TT>, a dendrogram of the <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img45.png"
+ ALT="$ n$">
+ proteins 
+in memory is calculated using the selected features. The multiple alignment is 
+then a progression of <IMG
+ WIDTH="41" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img123.png"
+ ALT="$ n-1$">
+ pairwise alignments of the growing sub-alignments.
+A sub-alignment is an alignment of <IMG
+ WIDTH="31" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img129.png"
+ ALT="$ &lt;n$">
+ proteins. The pairwise alignment of two 
+sub-alignments is achieved using affine or environment dependent gap penalties,
+depending on whether <I>gap_function</I><A NAME="27569"></A> is set to <TT>False</TT> or <TT>True</TT> 
+(arguments to the <B><A HREF="node287.html#CMD:alignment.align">alignment.align()</A></B><A NAME="27574"></A> and <B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="27579"></A> commands 
+apply).
+
+<P>
+</LI>
+<LI><B>Progressive Multiple Structure Alignments</B> 
+<BR>
+If <I>alignment_type</I><A NAME="27584"></A> is set to <TT>progressive</TT>, the multiple alignment
+follows only the last part of the `tree' alignment where, in <IMG
+ WIDTH="41" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img123.png"
+ ALT="$ n-1$">
+ alignments,
+all the structures/sequences are successively aligned to the first one on the
+list.
+</LI>
+</UL>
+
+<P>
+The alignment of proteins within a sub-alignment does not change when the
+sub-alignment is aligned with another protein or sub-alignment. The pairwise
+alignment of sub-alignments is guided by the dendrogram. First, the most
+similar pair of proteins are aligned. Second, the next most similar pair of
+proteins are aligned, or the third protein is aligned with the sub-alignment
+of the first two, as indicated by the dendrogram. This greedy, progressive
+procedure requires <IMG
+ WIDTH="41" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img123.png"
+ ALT="$ n-1$">
+ steps to align all <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img45.png"
+ ALT="$ n$">
+ proteins, and each step
+requires a pairwise alignment of two sub-alignments.
+
+<P>
+If in a multiple alignment, overhangs are to be penalized differently for
+the pairs of alignments that create the multiple, <I>auto_overhang</I><A NAME="27588"></A> can be 
+set to <TT>True</TT>. This will ensure that the value of <I>overhang</I><A NAME="27592"></A> changes as
+<I>overhang_factor</I><A NAME="27595"></A> times the numerical difference in the residues of the 
+pair. Further, this is only effected if the difference is greater than 
+<I>overhang_auto_limit</I><A NAME="27598"></A>.
+
+<P>
+The dendrogram can be written out in a separate file by specifying the 
+file name to <I>dendrogram_file</I><A NAME="27601"></A>.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html183"
+  HREF="../examples/salign/salign_multiple_struc.py">examples/salign/salign_multiple_struc.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Illustrates the SALIGN multiple structure/sequence alignment
+from modeller import *
+
+log.verbose()
+env = environ()
+env.io.atom_files_directory = ['.', '../atom_files']
+
+aln = alignment(env)
+for (code, chain) in (('1is4', 'A'), ('1uld', 'D'), ('1ulf', 'B'),
+                      ('1ulg', 'B'), ('1is5', 'A')):
+    mdl = model(env, file=code, model_segment=('FIRST:'+chain, 'LAST:'+chain))
+    aln.append_model(mdl, atom_files=code, align_codes=code+chain)
+
+for (weights, write_fit, whole) in (((1., 0., 0., 0., 1., 0.), False, True),
+                                    ((1., 0.5, 1., 1., 1., 0.), False, True),
+                                    ((1., 1., 1., 1., 1., 0.), True, False)):
+    aln.salign(rms_cutoff=3.5, normalize_pp_scores=False,
+               rr_file='$(LIB)/as1.sim.mat', overhang=30,
+               gap_penalties_1d=(-450, -50),
+               gap_penalties_3d=(0, 3), gap_gap_score=0, gap_residue_score=0,
+               dendrogram_file='1is3A.tree',
+               alignment_type='tree', # If 'progresive', the tree is not
+                                      # computed and all structues will be
+                                      # aligned sequentially to the first
+               #ext_tree_file='1is3A_exmat.mtx', # Tree building can be avoided
+                                                 # if the tree is input
+               feature_weights=weights, # For a multiple sequence alignment only
+                                        # the first feature needs to be non-zero
+               improve_alignment=True, fit=True, write_fit=write_fit,
+               write_whole_pdb=whole, output='ALIGNMENT QUALITY')
+
+aln.write(file='1is3A.pap', alignment_format='PAP')
+aln.write(file='1is3A.ali', alignment_format='PIR')
+
+# The number of equivalent positions at different RMS_CUTOFF values can be
+# computed by changing the RMS value and keeping all feature weights = 0
+aln.salign(rms_cutoff=1.0,
+           normalize_pp_scores=False, rr_file='$(LIB)/as1.sim.mat', overhang=30,
+           gap_penalties_1d=(-450, -50), gap_penalties_3d=(0, 3),
+           gap_gap_score=0, gap_residue_score=0, dendrogram_file='1is3A.tree',
+           alignment_type='progressive', feature_weights=[0]*6,
+           improve_alignment=False, fit=False, write_fit=True,
+           write_whole_pdb=False, output='QUALITY')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+
+<H3><A NAME="SECTION00111525500000000000000">
+Sub-optimal alignments</A>
+</H3>
+The weight matrix can be offset at random, many times
+over, to generate several `sub-optimal' alignments. The number of sub-optimal
+alignments to be output can be specified with <I>n_subopt</I><A NAME="27609"></A>. Though the matrix
+positions at which these offsets are applied cannot be controlled, the user
+can choose by how much the matrix will be offset (<I>subopt_offset</I><A NAME="27612"></A>). The
+suboptimal alignments are written into the file 'suboptimal_alignments.out'
+in a simple format. For each such alignment, an <TT>'ALIGNMENT:'</TT> line is written,
+containing in order
+
+<UL>
+<LI>the number of the suboptimal alignment
+</LI>
+<LI>the start, end and length of the alignment
+</LI>
+<LI>the number of aligned positions
+</LI>
+<LI>the score of the alignment
+</LI>
+<LI>three final fields for internal use
+</LI>
+</UL>
+After this the two sequences are written as <TT>'SEQ1'</TT> and <TT>'SEQ2'</TT>, as a simple
+mapping from alignment positions to sequences.
+
+<P>
+The suboptimal alignment file can be converted into a set of real alignments
+using the <B><A HREF="node295.html#CMD:alignment.getsuboptimals">alignment.get_suboptimals()</A></B><A NAME="27618"></A> method.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html184"
+  HREF="../examples/salign/salign_subopt.py">examples/salign/salign_subopt.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+
+log.verbose()
+env = environ()
+aln = alignment(env, file='fm07254_test.ali', alignment_format='PIR')
+aln.salign(feature_weights=(1., 0, 0, 0, 0, 0), gap_penalties_1d=(-450, -50),
+           n_subopt = 5, subopt_offset = 15)
+
+# Convert suboptimal alignment output file into actual alignments
+f = open('suboptimal_alignments.out')
+for (n, aln) in enumerate(aln.get_suboptimals(f)):
+    aln.write(file='fm07254_out%d.ali' % n)
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+
+<H3><A NAME="SECTION00111525600000000000000">
+Alignments using external restraints</A>
+</H3>
+<B>Fix positions:</B>
+The user can choose to have certain alignment positions "fixed" by offsetting
+the appropriate matrix entries. 
+This is done by adding a new pseudo sequence to the alignment with the align
+code <TT>._fix_pos</TT>. The residues of this pseudo sequence are integer values
+from 0 through 4 (alternatively, a blank is equivalent to 0).
+Any alignment position at which this pseudo sequence contains a '0' is treated
+normally; if, however, a non-zero integer is used, the alignment matrix is
+offset, generally making the alignment in that position more favorable (and
+more so for higher integers). The actual offset values themselves can be
+specified by the user by setting the <I>fix_offsets</I><A NAME="27628"></A> variable.
+Note that since SALIGN converts all DP scoring matrices to distance
+matrices (unless otherwise specified using <I>similarity_flag</I><A NAME="27631"></A>), the
+values of <I>fix_offsets</I><A NAME="27634"></A> used in anchoring alignment positions should be 
+numerically smaller or negative in comparison to the values in the DP matrix.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html185"
+  HREF="../examples/salign/salign_fix_positions.py">examples/salign/salign_fix_positions.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Demonstrating the use of alignment restraints, only available in
+# align2d and salign:
+from modeller import *
+
+log.verbose()
+env = environ()
+
+# The special alignment entry '_fix_pos' has to be the last entry in the
+# alignment array. Its sequence contains characters blank (or 0), 1, 2, 3,
+# and 4 at the restrained alignment positions. The residue-residue score from
+# the substitution matrix for these positions will be offset by the scalar
+# value FIX_OFFSETS[0..4].
+aln = alignment(env, file='fix_positions.ali', align_codes=('1leh', '3btoA',
+                                                            '_fix_pos'))
+
+# fix_offsets specifies the offset corresponding to character ' 1234' in the
+# _fix_pos entry in the alignment
+# (this offsets unlabeled positions for 0, the ones indicated by 1 by
+#  1000, those indicated by 2 by 2000, etc.)
+aln.salign(fix_offsets=(0, -10, -20, -30, -40),
+           gap_penalties_2d=(0, 0, 0, 0, 0, 0, 0, 0, 0), # Any values are
+                                                         # possible here
+           local_alignment=False, # Local alignment works, too
+           gap_penalties_1d=(-600, -400)) # This is best with the default value
+                                          # of gap_penalties_2d
+
+# Write it out, the _fix_pos is erased automatically in salign:
+aln.write(file='fix_positions_salign.pap', alignment_format='PAP')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<B>External weight matrix:</B> An example of using feature 6.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html186"
+  HREF="../examples/salign/salign_external_matrix.py">examples/salign/salign_external_matrix.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Reads an external matrix
+from modeller import *
+
+log.verbose()
+env = environ()
+
+aln = alignment(env, file='1dubA-1nzyA.ali', align_codes='all')
+
+aln.salign(alignment_type='pairwise', output='',
+           rr_file='$(LIB)/blosum62.sim.mat',
+           #rr_file='$(LIB)/as1.sim.mat',
+           #max_gap_length=20,
+           gap_function=False,
+           input_weights_file='external.mtx',   # External weight matrix
+           #weights_type='DISTANCE',            # type of ext. wgt. mtx
+           # ensure appropriate gap penalites for the ext. matrix
+           #feature_weights=(1., 0., 0., 0., 0., 0.), gap_penalties_1d=(30, 26),
+           #write_weights=True, output_weights_file='score.mtx',
+           feature_weights=(1., 0., 0., 0., 0., 1.),
+           gap_penalties_1d=(-500, -300))
+aln.write(file='output.ali', alignment_format='PIR')
+aln.write(file='output.pap', alignment_format='PAP')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<B>Multiple structure alignment according to a user specified dendrogram</B>
+The user has the option of inputting an <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img45.png"
+ ALT="$ n$">
+ X <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img45.png"
+ ALT="$ n$">
+ matrix from which a 
+dendrogram can be inferred. The multiple tree alignment is then confined to 
+follow this externally input dendrogram. To effect this, specify the name of
+the external matrix file with the <I>ext_tree_file</I><A NAME="27647"></A> variable.
+
+<P>
+
+<H3><A NAME="SECTION00111525700000000000000">
+Gap penalties and correcting for gaps</A>
+</H3>
+SALIGN makes use of three sets of gap penalties. <I>gap_penalties_1d</I><A NAME="27650"></A> are for
+dynamic programming making use of constant gap penalties. <I>gap_penalties_2d</I><A NAME="27653"></A>
+are when a variable function for gap penalty is used. <I>gap_penalties_3d</I><A NAME="27656"></A> is
+used along with feature 2 only, when structures are aligned by a least squares
+fit of their atomic positions.
+All SALIGN features produce some measure of residue equivalence (similarity or 
+distance scores). The scales of these scores differ depending on the feature 
+used. For optimal usage, <I>gap_penalties_1d</I><A NAME="27659"></A> should be set appropriately 
+considering the features used. 
+Note: If feature 1  is non zero and a similarity substitution matrix is 
+employed, no matter what other features are also used in conjunction, 
+<I>gap_penalties_1d</I><A NAME="27662"></A> should always take on values appropriate to the
+substitution matrix used.
+For example, if feature 1 is non zero (other features may or may not be 
+non-zero), and the residue substitution matrix used is the BLOSUM62 similarity 
+matrix, <I>gap_penalties_1d</I><A NAME="27665"></A> is set to (-450, -50) and when feature 1 is zero 
+<I>gap_penalties_1d</I><A NAME="27668"></A> is set to values appropriate for a distance matrix, 
+<EM>e.g.</EM>, (2, 3). 
+A word of caution: gap penalties have not yet been optimized for aligning
+sequences by their profiles and for structure alignments.
+
+<P>
+The gap correction function is
+<!-- MATH
+ $g_{i,j} = \frac{n_{rg}}{(n_1 n_2)} r + \frac{n_{gg}}{(n_1 n_2)} g$
+ -->
+<IMG
+ WIDTH="167" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img130.png"
+ ALT="$ g_{i,j} = \frac{n_{rg}}{(n_1 n_2)} r + \frac{n_{gg}}{(n_1 n_2)} g$">
+,
+where <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img131.png"
+ ALT="$ n_1$">
+ and <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img132.png"
+ ALT="$ n_2$">
+ are the number of proteins in the two sub-alignments,
+<IMG
+ WIDTH="27" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img133.png"
+ ALT="$ n_{rg}$">
+ is the number of gap-residue pairs, and <IMG
+ WIDTH="28" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img134.png"
+ ALT="$ n_{gg}$">
+ is the number of
+gap-gap pairs when comparing protein positions from one sub-alignment with
+protein position from the other sub-alignment, <IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img135.png"
+ ALT="$ r$">
+ is <I>gap_residue_score</I><A NAME="27672"></A>
+and <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img136.png"
+ ALT="$ g$">
+ is <I>gap_gap_score</I><A NAME="27675"></A>. The smaller (even negative) is
+<I>gap_gap_score</I><A NAME="27678"></A>, and the larger is <I>gap_residue_score</I><A NAME="27681"></A>, the more will
+the gaps be aligned with gaps.
+
+<P>
+
+<H3><A NAME="SECTION00111525800000000000000">
+Useful SALIGN information and commands</A>
+</H3>
+The <B><A HREF="#CMD:alignment.salign">alignment.salign()</A></B><A NAME="27684"></A> command uses position-position dissimilarity
+scores (except when <I>similarity_flag</I><A NAME="27689"></A> is switched on), as opposed to
+similarity scores. This convention applies to all the features, including the
+residue-residue similarities read from the <I>rr_file</I><A NAME="27692"></A>; however, if a residue
+type - residue type similarity matrix is read in, it is automatically
+converted into the distance matrix by <!-- MATH
+ $D = \max_{i,j} S_{i,j}  - S$
+ -->
+<IMG
+ WIDTH="141" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img137.png"
+ ALT="$ D = \max_{i,j} S_{i,j} - S$">
+.
+In addition, it is also scaled linearly such that the residue-residue
+dissimilarity scores range from 0 to 1 (to facilitate weighting this feature
+with other features).
+
+<P>
+For each pairwise alignment, the weight matrix <IMG
+ WIDTH="21" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img126.png"
+ ALT="$ W$">
+ has dimensions <IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img119.png"
+ ALT="$ N$">
+ and <IMG
+ WIDTH="21" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img80.png"
+ ALT="$ M$">
+
+that correspond to the lengths of the sub-alignments to be aligned based on
+the weight matrix <IMG
+ WIDTH="21" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img126.png"
+ ALT="$ W$">
+. The dissimilarity score for aligning position <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ with
+position <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ j$">
+ is calculated as
+<!-- MATH
+ $W_{i,j} = \sum_f [ \frac{\omega_f}{\sum_f \omega_f} W^f_{i,j} ] + g_{i,j}$
+ -->
+<IMG
+ WIDTH="203" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img138.png"
+ ALT="$ W_{i,j} = \sum_f [ \frac{\omega_f}{\sum_f \omega_f} W^f_{i,j} ] + g_{i,j}$">
+,
+where the sum runs over all selected features <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+, and <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img136.png"
+ ALT="$ g$">
+ is a function that
+may be used to correct the <IMG
+ WIDTH="34" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img139.png"
+ ALT="$ W_{i,j}$">
+ score for the presence of gaps within the
+sub-alignments (see below). A feature <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+ is selected when its weight
+<IMG
+ WIDTH="22" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img140.png"
+ ALT="$ \omega_f$">
+ (specified in <I>feature_weights</I><A NAME="27695"></A>) is non-zero. The matrices
+<IMG
+ WIDTH="30" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img141.png"
+ ALT="$ W^f$">
+ are normalized to have the mean of 0 and standard deviation of 1 when
+<I>normalize_pp_scores</I><A NAME="27698"></A> is <TT>True</TT>, but it is recommended not to use this
+option for now (<EM>i.e.</EM>, use <I>feature_weights</I><A NAME="27703"></A> to scale the contributions of
+the different features to the final <IMG
+ WIDTH="21" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img126.png"
+ ALT="$ W$">
+). The weights of 1 will weigh the
+different features approximately evenly (the residue-residue dissimilarities
+of feature 1 are scaled to a range from 0 to 1, the position differences of
+feature 2 are in angstroms, the fractional solvent accessibility scores of
+feature 3 and the secondary structure scores of feature 4 range from 0 to 2,
+and the DRMS difference of feature 5 is expressed in angstroms).
+
+<P>
+If you enable verbose logging with <B><A HREF="node404.html#CMD:log.verbose">log.verbose()</A></B><A NAME="27706"></A>, there will be more 
+output in the <TT>'log'</TT> file, such as the dendrogram. The dendrogram can also be 
+written out in a separate file by specifying the file name to 
+<I>dendrogram_file</I><A NAME="27712"></A>.
+
+<P>
+Argument <I>output</I><A NAME="27715"></A> can contain the following values:
+
+<UL>
+<LI><TT>'ALIGNMENT'</TT>: the alignments in the first <IMG
+ WIDTH="41" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img142.png"
+ ALT="$ n-2$">
+ stages of the pairwise
+alignment of sub-alignments are written out.
+
+<P>
+</LI>
+<LI><TT>'QUALITY'</TT>: the final alignment is used to obtain pairwise least-squares
+superpositions and the corresponding average and minimal numbers of pairs of
+aligned residues that are within <I>rms_cutoff</I><A NAME="27720"></A> &#197; in all pairs of
+aligned structures. These numbers can be used as absolute quality measures
+for the final multiple alignment. This option requires the coordinate files
+for the aligned proteins.
+</LI>
+</UL>
+
+<P>
+If <I>write_fit</I><A NAME="27723"></A> is <TT>True</TT>, the fitted atom files are written out in their
+fitted orientations. For this and other options below, also read the text
+above.
+
+<P>
+If <I>output_weights_file</I><A NAME="27727"></A> is specified, the dynamic programming weight
+matrix is written out into the file. (If it is <TT>None</TT>, no file is written
+out.)
+
+<P>
+If <I>current_directory</I><A NAME="27731"></A> is <TT>True</TT>, the output <TT>_pdb.fit</TT> files will
+be written to the current directory. Otherwise, the output will be in the
+directory with the original files.
+
+<P>
+If <I>write_whole_pdb</I><A NAME="27735"></A> is <TT>True</TT>, the whole PDB files are written out;
+otherwise only the parts corresponding to the aligned sequences are output.
+
+<P>
+If <I>fit</I><A NAME="27739"></A> is <TT>False</TT>, the initial superposition is not changed. This is
+useful when all the structures have to be compared with a given alignment
+as is, without changing their relative orientation.
+
+<P>
+If <I>fit_on_first</I><A NAME="27743"></A> is <TT>True</TT>, the structures are fit to the first
+structure according to the final alignment before they are written out.
+
+<P>
+If <I>improve_alignment</I><A NAME="27747"></A> is <TT>False</TT>, the initial alignment is not changed,
+though the structures may still be superimposed if <I>fit</I><A NAME="27751"></A> = <TT>True</TT>. This
+is useful when all the structures have to be superimposed with the initial
+alignment.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html6045"
+  HREF="node295.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html6039"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html6033"
+  HREF="node293.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html6041"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html6043"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6046"
+  HREF="node295.html">alignment.get_suboptimals()   parse</A>
+<B> Up:</B> <A NAME="tex2html6040"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html6034"
+  HREF="node293.html">alignment.malign3d()   align</A>
+ &nbsp; <B>  <A NAME="tex2html6042"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html6044"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

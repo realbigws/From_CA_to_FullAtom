@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>alignment.append() -- read sequences and/or their alignment</TITLE>
+<META NAME="description" CONTENT="alignment.append() -- read sequences and/or their alignment">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node273.html">
+<LINK REL="previous" HREF="node271.html">
+<LINK REL="up" HREF="node269.html">
+<LINK REL="next" HREF="node273.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5737"
+  HREF="node273.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5731"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5725"
+  HREF="node271.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5733"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5735"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5738"
+  HREF="node273.html">alignment.clear()   delete</A>
+<B> Up:</B> <A NAME="tex2html5732"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5726"
+  HREF="node271.html">alignment.comments   alignment</A>
+ &nbsp; <B>  <A NAME="tex2html5734"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5736"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011153000000000000000">
+alignment.append() -- read sequences and/or their alignment</A>
+</H2> <A NAME="25472"></A><A NAME="CMD:alignment.append"></A>  
+<A NAME="25475"></A><TT>append(file, align_codes='all', atom_files=None, remove_gaps=True, alignment_format='PIR', io=None, allow_alternates=False)</TT>
+<BR><A NAME="24561"></A>
+<DL>
+<DT><STRONG>Output:</STRONG></DT>
+<DD><I>end_of_file</I><A NAME="25482"></A>
+                             
+</DD>
+</DL>
+
+<P>
+<BLOCKQUOTE>
+This command reads the sequence(s) and/or their alignment from 
+a text file. Only sequences with the specified codes are read in;
+<I>align_codes</I><A NAME="25526"></A> = <TT>'all'</TT> can be used to read all sequences. The sequences
+are added to any currently in the alignment.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>There are several alignment formats:
+</BLOCKQUOTE>
+<P>
+<OL>
+<LI>The <TT>'PIR'</TT> format resembles that of the PIR sequence database. It
+is described in Section&nbsp;<A HREF="node454.html#alignmentformat">B.1</A> and is used for
+comparative modeling because it allows for additional data about 
+the proteins that are useful for automated access to the atomic coordinates.
+
+<P>
+</LI>
+<LI>The <TT>'FASTA'</TT> format resembles the <TT>'PIR'</TT> format but has a 
+missing second `comment' line and a missing star at the end of each 
+sequence.
+
+<P>
+</LI>
+<LI>The <TT>'PAP'</TT> format is nicer to look at but contains less
+information and is not used by other programs. When used in 
+conjunction with PDB files, the PDB files must contain 
+exactly the residues in the sequences in the <TT>'PAP'</TT> file; <EM>i.e.</EM>, it
+is not possible to use only a segment of a PDB file. In addition, the 
+<TT>'PAP'</TT> protein codes must be expandable into proper PDB atom filenames,
+as described in Section&nbsp;<A HREF="node97.html#SECTIONFILENAME">5.1.3</A>. Alternatively, a list of
+PDB file names can be specified with the <I>atom_files</I><A NAME="25537"></A> parameter, in the
+same order as the sequences read from the alignment file. (<I>atom_files</I><A NAME="25540"></A> is
+not used for other alignment formats.)
+The protein sequence can now start in any column (this was limited to
+column 11 before release 5).
+
+<P>
+</LI>
+<LI>The <TT>'QUANTA'</TT> format can be used to communicate with the 
+<A NAME="tex2html159"
+  HREF="http://www.accelrys.com/quanta/">Q<SMALL>UANTA</SMALL></A> program. You are not supposed to mix <TT>'QUANTA'</TT> format with any other
+format because the <TT>'QUANTA'</TT> format contains residue numbers which do 
+not occur in the other formats and are difficult to guess correctly.  
+M<SMALL>ODELLER</SMALL> can write out alignments in the <TT>'QUANTA'</TT> format but cannot read
+them in.
+
+<P>
+</LI>
+<LI>The <TT>'INSIGHT'</TT> format is very similar to the <TT>'PAP'</TT> format
+and can sometimes be used to communicate with the
+<A NAME="tex2html160"
+  HREF="http://www.accelrys.com/insight/">I<SMALL>NSIGHT</SMALL>II</A> program. When used in conjunction with PDB files, the
+same rules as for the <TT>'PAP'</TT> format apply.
+
+<P>
+</LI>
+<LI>The <TT>'PSS'</TT> format is in the .horiz format used by PSI-PRED to report
+secondary structure predictions of sequences. A confidence of the prediction
+is also reported as an integer value between 0 and 9 (high).
+
+<P>
+</LI>
+</OL>
+<P>
+<BLOCKQUOTE>If <I>remove_gaps</I><A NAME="25559"></A> = <TT>True</TT>, positions with gaps in all selected
+sequences are removed from the alignment.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The <I>io</I><A NAME="25563"></A> argument is required since PIR files can contain empty sequences
+or ranges; in this case, the sequence or range is read from the corresponding
+PDB file.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>allow_alternates</I><A NAME="25566"></A> = <TT>True</TT>, and reading a <TT>'PIR'</TT> file where `.' is
+used to force M<SMALL>ODELLER</SMALL> to read the sequence range from the corresponding PDB
+file (see Section&nbsp;<A HREF="node454.html#alignmentformat">B.1</A>), then the search for matches between
+the alignment sequence and PDB is made a little more flexible. Not only will
+an exact equivalence of one-letter codes be considered a match, but each
+residue's alternate (as defined by the STD column in <TT>'modlib/restyp.lib'</TT>)
+will also count as a match; for example, B (ASX) in the alignment will be
+considered a match for N (ASN) in the PDB, while G (GLY) in the alignment will
+match any non-standard residue in the PDB for which an explicit equivalence
+has not been defined (the DEFATM behavior in <TT>'modlib/restyp.lib'</TT>). The
+alignment sequence will be modified to match the exact sequence from the PDB.
+This is useful if the alignment sequence is extracted from a database containing
+'cleaned' sequences, <EM>e.g.</EM> that created by <B><A HREF="node377.html#CMD:sequencedb.read">sequence_db.read()</A></B><A NAME="25576"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>For <TT>'PIR'</TT> and <TT>'FASTA'</TT> files, the <I>end_of_file</I><A NAME="25583"></A> variable is set to
+<TT>1</TT> if M<SMALL>ODELLER</SMALL> reached the end of the file during the read, or
+<TT>0</TT> otherwise.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>This command can raise a <TT>FileFormatError</TT><A NAME="25590"></A> if the alignment file format is
+invalid, or a <TT>SequenceMismatchError</TT><A NAME="25592"></A> if a <TT>'PIR'</TT> sequence does not match
+that read from PDB (when an empty range is given).
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html161"
+  HREF="../examples/commands/read_alignment.py">examples/commands/read_alignment.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: alignment.append(), alignment.write(),
+#              alignment.check()
+
+# Read an alignment, write it out in the 'PAP' format, and
+# check the alignment of the N-1 structures as well as the
+# alignment of the N-th sequence with each of the N-1 structures.
+
+from modeller import *
+
+log.level(output=1, notes=1, warnings=1, errors=1, memory=0)
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+
+aln = alignment(env)
+aln.append(file='toxin.ali', align_codes='all')
+aln.write(file='toxin.pap', alignment_format='PAP')
+aln.write(file='toxin.fasta', alignment_format='FASTA')
+aln.check()
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5737"
+  HREF="node273.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5731"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5725"
+  HREF="node271.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5733"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5735"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5738"
+  HREF="node273.html">alignment.clear()   delete</A>
+<B> Up:</B> <A NAME="tex2html5732"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5726"
+  HREF="node271.html">alignment.comments   alignment</A>
+ &nbsp; <B>  <A NAME="tex2html5734"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5736"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

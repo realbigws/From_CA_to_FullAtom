@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Symmetry restraints</TITLE>
+<META NAME="description" CONTENT="Symmetry restraints">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node105.html">
+<LINK REL="up" HREF="node101.html">
+<LINK REL="next" HREF="node107.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html2924"
+  HREF="node107.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2918"
+  HREF="node101.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2914"
+  HREF="node105.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html2920"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html2922"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html2925"
+  HREF="node107.html">MODELLER command reference</A>
+<B> Up:</B> <A NAME="tex2html2919"
+  HREF="node101.html">Spatial restraints</A>
+<B> Previous:</B> <A NAME="tex2html2915"
+  HREF="node105.html">Rigid bodies</A>
+ &nbsp; <B>  <A NAME="tex2html2921"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html2923"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001035000000000000000"></A>
+<A NAME="SECTION:symmetry"></A><A NAME="8416"></A>
+<A NAME="8417"></A>
+<BR>
+Symmetry restraints
+</H2>
+
+<P>
+You can restrain two groups of atoms to be the same during optimization of the
+objective function. This is achieved by adding the sum of squares of the
+differences between the equivalent distances (similar to distance R<SMALL>MS</SMALL> deviation) to the objective function being optimized.
+See Equation&nbsp;<A HREF="node450.html#eq:symmetry">A.98</A>.
+
+<P>
+After creating a <TT>symmetry</TT> object, you can call its <TT>append</TT> function
+to add additional pairs of groups. This allows some equivalent atoms to be
+weighted more strongly than others. Finally, add the <TT>symmetry</TT> object to
+the <I><A HREF="node200.html#MEMB:Restraints.symmetry">Restraints.symmetry</A></I><A NAME="8894"></A> list.
+
+<P>
+<A NAME="8898"></A><TT>symmetry(set1, set2, weight)</TT>
+<BR>
+Creates a new symmetry restraint which will constrain the interatomic distances
+in <TT>set1</TT> to be the same as in <TT>set2</TT>. (The <TT>append</TT> function takes the
+same parameters.) Both sets are just lists of atoms or objects which contain
+atoms, such as <TT>Residue</TT> or <TT>selection</TT> objects. Note that each
+set must contain the same number of atoms. Note also that the order is
+important. (If using <TT>selection</TT> objects, the atoms are always sorted
+in the same order as seen in the PDB file.)
+
+<P>
+See Section <A HREF="node28.html#SECTION:model-multichain">2.2.11</A> for an example of using symmetry
+restraints with the <TT>automodel</TT> class.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html85"
+  HREF="../examples/commands/define_symmetry.py">examples/commands/define_symmetry.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: model.symmetry.define()
+
+# This will force two copies of 1fas to have similar mainchain
+# conformation.
+
+from modeller import *
+from modeller.scripts import complete_pdb
+from modeller.optimizers import conjugate_gradients, molecular_dynamics
+
+log.level(1, 1, 1, 1, 0)
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+def defsym(mdl, seg1, seg2):
+    sel1 = selection(mdl.residue_range(*seg1)).only_mainchain()
+    sel2 = selection(mdl.residue_range(*seg2)).only_mainchain()
+    mdl.restraints.symmetry.append(symmetry(sel1, sel2, 1.0))
+
+# Generate two copies of a segment:
+mdl = complete_pdb(env, '2abx', model_segment=('1:A', '74:B'))
+mdl.rename_segments(segment_ids=('A', 'B'), renumber_residues=(1, 1))
+
+myedat = energy_data(dynamic_sphere = False)
+atmsel = selection(mdl)
+atmsel.energy(edat=myedat)
+atmsel.randomize_xyz(deviation=6.0)
+# Define the two segments (chains in this case) to be identical:
+defsym(mdl, seg1=('1:A', '74:A'), seg2=('1:B', '74:B'))
+
+# Create optimizer objects
+cg = conjugate_gradients()
+md = molecular_dynamics(md_return='FINAL')
+
+# Make them identical by optimizing the initial randomized structure
+# without any other restraints:
+atmsel.energy(edat=myedat)
+mdl.write(file='define_symmetry-1.atm')
+cg.optimize(atmsel, max_iterations=300, edat=myedat)
+mdl.write(file='define_symmetry-2.atm')
+atmsel.energy(edat=myedat)
+
+# Now optimize with stereochemical restraints so that the
+# result is not so distorted a structure (still distorted
+# because optimization is not thorough):
+myedat.dynamic_sphere = True
+mdl.restraints.make(atmsel, restraint_type='stereo', spline_on_site=False,
+                    edat=myedat)
+atmsel.randomize_xyz(deviation=3.0)
+for method in (cg, md, cg):
+    method.optimize(atmsel, max_iterations=300, edat=myedat, output='REPORT')
+mdl.write(file='define_symmetry-3.atm')
+atmsel.energy(edat=myedat)
+
+# Report on symmetry violations
+mdl.restraints.symmetry.report(0.3)
+
+# Create a blank alignment so that superpose uses its 1:1 default
+aln = alignment(env)
+
+mdl = model(env, file='define_symmetry-3.atm', model_segment=('1:A', '74:A'))
+mdl2 = model(env, file='define_symmetry-3.atm', model_segment=('1:B', '74:B'))
+atmsel = selection(mdl).only_mainchain()
+atmsel.superpose(mdl2, aln)
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2924"
+  HREF="node107.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2918"
+  HREF="node101.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2914"
+  HREF="node105.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html2920"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html2922"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html2925"
+  HREF="node107.html">MODELLER command reference</A>
+<B> Up:</B> <A NAME="tex2html2919"
+  HREF="node101.html">Spatial restraints</A>
+<B> Previous:</B> <A NAME="tex2html2915"
+  HREF="node105.html">Rigid bodies</A>
+ &nbsp; <B>  <A NAME="tex2html2921"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html2923"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

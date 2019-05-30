@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Restraints.pick() -- pick restraints for selected atoms</TITLE>
+<META NAME="description" CONTENT="Restraints.pick() -- pick restraints for selected atoms">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node207.html">
+<LINK REL="previous" HREF="node205.html">
+<LINK REL="up" HREF="node195.html">
+<LINK REL="next" HREF="node207.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4747"
+  HREF="node207.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4741"
+  HREF="node195.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4735"
+  HREF="node205.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4743"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4745"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4748"
+  HREF="node207.html">Restraints.unpick_redundant()   unselect</A>
+<B> Up:</B> <A NAME="tex2html4742"
+  HREF="node195.html">The Restraints class: static</A>
+<B> Previous:</B> <A NAME="tex2html4736"
+  HREF="node205.html">Restraints.clear()   delete</A>
+ &nbsp; <B>  <A NAME="tex2html4744"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4746"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011711000000000000000">
+Restraints.pick() -- pick restraints for selected atoms</A>
+</H2> <A NAME="17728"></A><A NAME="CMD:Restraints.pick"></A><A NAME="17731"></A><TT>pick(atmsel, residue_span_range=(0, 99999), restraint_sel_atoms=1, restraints_filter=physical.values(default=-999.000000))</TT>
+<BR><BLOCKQUOTE>
+This command selects some or all of the restraints currently 
+in memory. 
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The selection is added to any existing selected restraints; if instead you want
+to select only these restraints, call <B><A HREF="node204.html#CMD:Restraints.unpickall">Restraints.unpick_all()</A></B><A NAME="17762"></A> first.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>This command runs over all restraints in memory, including
+the currently unselected restraints. Be careful about this: If you have
+some unselected restraints in memory, <B><A HREF="#CMD:Restraints.pick">Restraints.pick()</A></B><A NAME="17767"></A> may select them;
+if you wish to prevent this, do <B><A HREF="node208.html#CMD:Restraints.removeunpicked">Restraints.remove_unpicked()</A></B><A NAME="17772"></A> before calling
+<B><A HREF="#CMD:Restraints.pick">Restraints.pick()</A></B><A NAME="17777"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>A static restraint is selected if all or at least <I>restraint_sel_atoms</I><A NAME="17782"></A>
+of its atoms are within the atom selection <I>atmsel</I><A NAME="17785"></A>, if it is strong enough
+based on its standard 
+deviations or force constants (see the next paragraph), and if it does not 
+span fewer residues than <I>residue_span_range</I><A NAME="17788"></A>[0], or more than
+<I>residue_span_range</I><A NAME="17791"></A>[1]. (Restraints which act on only a single atom are not
+subject to this range check.) Note that here <I>restraint_sel_atoms</I><A NAME="17794"></A> is used
+for <I>all</I> restraints, while the <B><A HREF="node202.html#CMD:Restraints.make">Restraints.make()</A></B><A NAME="17797"></A> command and
+optimizers (Section&nbsp;<A HREF="node252.html#SECTION:optimizers">6.11</A>) use it for all restraint types
+<I>except</I> non-bonded pairs.
+(<I><A HREF="node134.html#MEMB:energydata.nonbondedselatoms">energy_data.nonbonded_sel_atoms</A></I><A NAME="17802"></A> is used for non-bonded pairs by these
+routines.)
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>To decide if a restraint is strong enough, the current standard 
+deviations or force constants are compared with the corresponding 
+<I>restraints_filter</I><A NAME="17807"></A>[physical_restraint_type]. A harmonic restraint, 
+lower and upper bounds, and multi-modal Gaussian restraints are selected
+if the (smallest) standard deviation is less than the corresponding
+<I>restraints_filter</I><A NAME="17810"></A>[i]. The cosine energy term is selected if its 
+force constant is larger than the corresponding <I>restraints_filter</I><A NAME="17813"></A>[i]. 
+Restraints with other mathematical forms (including user-defined forms)
+are always selected, as is any restraint of physical type <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ if
+<I>restraints_filter</I><A NAME="17816"></A>[i] = <IMG
+ WIDTH="41" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img36.png"
+ ALT="$ -999$">
+.
+The <I>restraints_filter</I><A NAME="17819"></A> angles have to be specified in radians.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html118"
+  HREF="../examples/commands/pick_restraints.py">examples/commands/pick_restraints.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: restraints.pick(), restraints.condense()
+
+# This will pick only restraints that include at least one
+# mainchain (CA, N, C, O) atom and write them to a file.
+
+from modeller import *
+from modeller.scripts import complete_pdb
+
+log.verbose()
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+mdl = complete_pdb(env, '1fas')
+
+allsel = selection(mdl)
+mdl.restraints.make(allsel, restraint_type='stereo', spline_on_site=False)
+allsel.energy()
+
+atmsel = allsel.only_atom_types('CA N C O')
+mdl.restraints.pick(atmsel, restraint_sel_atoms=1)
+# Delete the unselected restraints from memory:
+mdl.restraints.condense()
+atmsel.energy()
+
+mdl.restraints.write(file='1fas.rsr')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4747"
+  HREF="node207.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4741"
+  HREF="node195.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4735"
+  HREF="node205.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4743"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4745"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4748"
+  HREF="node207.html">Restraints.unpick_redundant()   unselect</A>
+<B> Up:</B> <A NAME="tex2html4742"
+  HREF="node195.html">The Restraints class: static</A>
+<B> Previous:</B> <A NAME="tex2html4736"
+  HREF="node205.html">Restraints.clear()   delete</A>
+ &nbsp; <B>  <A NAME="tex2html4744"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4746"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

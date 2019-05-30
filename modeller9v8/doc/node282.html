@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>alignment.write() -- write sequences and/or their alignment</TITLE>
+<META NAME="description" CONTENT="alignment.write() -- write sequences and/or their alignment">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node283.html">
+<LINK REL="previous" HREF="node281.html">
+<LINK REL="up" HREF="node269.html">
+<LINK REL="next" HREF="node283.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5877"
+  HREF="node283.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5871"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5865"
+  HREF="node281.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5873"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5875"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5878"
+  HREF="node283.html">alignment.edit()   edit</A>
+<B> Up:</B> <A NAME="tex2html5872"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5866"
+  HREF="node281.html">alignment.append_profile()   add</A>
+ &nbsp; <B>  <A NAME="tex2html5874"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5876"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00111513000000000000000">
+alignment.write() -- write sequences and/or their alignment</A>
+</H2> <A NAME="25852"></A><A NAME="CMD:alignment.write"></A>        
+<A NAME="25855"></A><TT>write(file, alignment_format='PIR', alignment_features='INDICES CONSERVATION', align_block=0, align_alignment=False)</TT>
+<BR><A NAME="24712"></A>
+<BLOCKQUOTE>
+This command writes the whole alignment to a text file.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>file</I><A NAME="25924"></A> can be either a file name or a <B><A HREF="node410.html#CMD:modfile.File">modfile.File()</A></B><A NAME="25927"></A> object open in write
+mode (in which case the alignment is appended to the file).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>alignment_format</I><A NAME="25932"></A> selects the format to write the alignment in; see
+<B><A HREF="node272.html#CMD:alignment.append">alignment.append()</A></B><A NAME="25935"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The <TT>'PAP'</TT> format, which corresponds to a relatively nice looking
+alignment, has several additional formatting options that can be
+selected by the <I>alignment_features</I><A NAME="25941"></A> variable.
+This scalar variable can contain any combination of the following keywords:
+</BLOCKQUOTE>
+<P>
+<UL>
+<LI><TT>'INDICES'</TT>, the alignment position indices;
+
+<P>
+</LI>
+<LI><TT>'CONSERVATION'</TT>, a star for each absolutely conserved position;
+
+<P>
+</LI>
+<LI><TT>'ACCURACY'</TT>, the alignment accuracy indices, scaled between 0-9,
+as calculated by <B><A HREF="node290.html#CMD:alignment.consensus">alignment.consensus()</A></B><A NAME="25947"></A>;
+
+<P>
+</LI>
+<LI><TT>'HELIX'</TT>, average content of helical residues for
+structures 1 - <I>align_block</I><A NAME="25953"></A> at each position,
+0 for 0% and 9 for 100%, as calculated by <B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="25956"></A>.
+
+<P>
+</LI>
+<LI><TT>'BETA'</TT>, average content of <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \beta $">
+-strand residues for
+structures 1 - <I>align_block</I><A NAME="25963"></A> at each position,
+0 for 0% and 9 for 100%, as calculated `by <B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="25966"></A>.
+
+<P>
+</LI>
+<LI><TT>'ACCESSIBILITY'</TT>, average relative sidechain buriedness for 
+structures 1 - <I>align_block</I><A NAME="25972"></A>, 0 for 0% (100% accessibility) and 
+9 for 100% (0% accessibility), as calculated by <B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="25975"></A>;
+
+<P>
+</LI>
+<LI><TT>'STRAIGHTNESS'</TT>, average mainchain straightness
+structures 1 - <I>align_block</I><A NAME="25981"></A> at each position
+0 for 0% and 9 for 100%, as calculated by <B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="25984"></A>.
+
+<P>
+</LI>
+<LI><TT>'PRED_SS'</TT>, predicted secondary structure (H,E,C)
+</LI>
+<LI><TT>'CONF_SS'</TT>, confidence of predicted secondary structure 
+(0(low) - 9(high))
+</LI>
+</UL>
+<P>
+<BLOCKQUOTE>Options <TT>'HELIX'</TT>, <TT>'BETA'</TT>, <TT>'ACCESSIBILITY'</TT>, and <TT>'STRAIGHTNESS'</TT> 
+are valid only after executing command <B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="25995"></A>, where the 
+corresponding quantities are defined. They refer to the 3D profile 
+defined for the first <I>align_block</I><A NAME="26000"></A>
+structures (run <B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="26003"></A> with <I>fit</I><A NAME="26008"></A> = <TT>False</TT> to prepare
+these structural data without changing the input alignment).
+Similarly, the <TT>'ACCURACY'</TT> option is valid only after the 
+<B><A HREF="node290.html#CMD:alignment.consensus">alignment.consensus()</A></B><A NAME="26013"></A> command.
+Options <TT>'PRED_SS'</TT> and <TT>'CONF_SS'</TT> are best exercised after reading in
+a ".PSS" file of secondary structure predictions. In the case of multiple
+sequences, it may be necessary to use the command
+<B><A HREF="node309.html#CMD:Sequence.transferresprop">Sequence.transfer_res_prop()</A></B><A NAME="26020"></A> first.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>align_alignment</I><A NAME="26025"></A> and <I>align_block</I><A NAME="26028"></A> are used to ensure correct 
+indication of identical alignment positions, depending on whether
+sequences or two blocks of sequences were aligned: For sequences 
+(<I>align_alignment</I><A NAME="26031"></A> = <TT>False</TT> and <I>align_block</I><A NAME="26035"></A> is ignored), a
+<TT>'*'</TT> indicating a conserved position is printed where all sequences
+have the same residue type. For blocks (<I>align_alignment</I><A NAME="26039"></A> = <TT>True</TT> 
+and <I>align_block</I><A NAME="26043"></A> indicates the last sequence of the first block),
+a <TT>'*'</TT> is printed only where
+the two blocks have the same order of residue types (there has to be
+the same number of sequences in both blocks). The blocks option is
+useful when comparing two alignments, possibly aligned by the
+<B><A HREF="node287.html#CMD:alignment.align">alignment.align()</A></B><A NAME="26047"></A> command.
+
+</BLOCKQUOTE>
+
+<P>
+<B>Example:</B> See <B><A HREF="node272.html#CMD:alignment.append">alignment.append()</A></B><A NAME="26055"></A> command.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5877"
+  HREF="node283.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5871"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5865"
+  HREF="node281.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5873"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5875"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5878"
+  HREF="node283.html">alignment.edit()   edit</A>
+<B> Up:</B> <A NAME="tex2html5872"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5866"
+  HREF="node281.html">alignment.append_profile()   add</A>
+ &nbsp; <B>  <A NAME="tex2html5874"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5876"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

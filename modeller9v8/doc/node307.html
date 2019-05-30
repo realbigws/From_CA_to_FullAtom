@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Sequence.residues -- list of all residues in the sequence</TITLE>
+<META NAME="description" CONTENT="Sequence.residues -- list of all residues in the sequence">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node308.html">
+<LINK REL="previous" HREF="node306.html">
+<LINK REL="up" HREF="node298.html">
+<LINK REL="next" HREF="node308.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html6246"
+  HREF="node308.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html6240"
+  HREF="node298.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html6234"
+  HREF="node306.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html6242"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html6244"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6247"
+  HREF="node308.html">Sequence.chains   list</A>
+<B> Up:</B> <A NAME="tex2html6241"
+  HREF="node298.html">The Sequence class: a</A>
+<B> Previous:</B> <A NAME="tex2html6235"
+  HREF="node306.html">Sequence.rfactor   R</A>
+ &nbsp; <B>  <A NAME="tex2html6243"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html6245"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011169000000000000000">
+Sequence.residues -- list of all residues in the sequence</A>
+</H2> <A NAME="30671"></A><A NAME="MEMB:Sequence.residues"></A><A NAME="SECTION:residueid"></A>
+<P>
+<BLOCKQUOTE>
+This is a standard <A NAME="tex2html190"
+  HREF="http://www.python.org/">Python</A> list of all the residues in the
+sequence. This can be used to query individual residue properties
+(<EM>e.g.</EM> amino acid type) or to specify residues for use in restraints, <EM>etc</EM>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Residues can be individually accessed in two ways:
+</BLOCKQUOTE>
+<UL>
+<LI>A string of the form 'RESIDUE_#[:CHAIN_ID]', where
+RESIDUE_# is a five character residue number as it occurs in the PDB file
+of a model, and the optional CHAIN_ID is the single character chain id as
+it occurs in the PDB file. For example, if <TT>'s'</TT> is a <TT>Sequence</TT> object,
+PDB residue '10' in chain 'A' is given by <TT>'s.residues['10:A']'</TT>; if the
+chain has no chain id, <TT>'s.residues['10']'</TT> would be sufficient. Note that
+the quotes are required to force the use of PDB numbers.
+
+<P>
+</LI>
+<LI>By numeric index, starting from zero, in standard <A NAME="tex2html191"
+  HREF="http://www.python.org/">Python</A> fashion. For
+example, if <TT>'s'</TT> is a <TT>Sequence</TT> object, <TT>'s.residues[1]'</TT> is the second
+residue. Contrast with <TT>'s.residues['1']'</TT> above, which returns the residue
+with PDB number '1'.
+</LI>
+</UL>
+<P>
+<BLOCKQUOTE>See Section&nbsp;<A HREF="node323.html#CLASS:Residue">6.19</A> for more information about <TT>Residue</TT>
+objects.
+See also <B><A HREF="node166.html#CMD:model.residuerange">model.residue_range()</A></B><A NAME="30711"></A>, for getting a contiguous range of
+residues in a model.
+
+</BLOCKQUOTE>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html6246"
+  HREF="node308.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html6240"
+  HREF="node298.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html6234"
+  HREF="node306.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html6242"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html6244"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6247"
+  HREF="node308.html">Sequence.chains   list</A>
+<B> Up:</B> <A NAME="tex2html6241"
+  HREF="node298.html">The Sequence class: a</A>
+<B> Previous:</B> <A NAME="tex2html6235"
+  HREF="node306.html">Sequence.rfactor   R</A>
+ &nbsp; <B>  <A NAME="tex2html6243"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html6245"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

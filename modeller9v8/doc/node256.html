@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>actions.write_structure() -- write out the model coordinates</TITLE>
+<META NAME="description" CONTENT="actions.write_structure() -- write out the model coordinates">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node257.html">
+<LINK REL="previous" HREF="node255.html">
+<LINK REL="up" HREF="node252.html">
+<LINK REL="next" HREF="node257.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5479"
+  HREF="node257.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5473"
+  HREF="node252.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5467"
+  HREF="node255.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5475"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5477"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5480"
+  HREF="node257.html">actions.trace()   write</A>
+<B> Up:</B> <A NAME="tex2html5474"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Previous:</B> <A NAME="tex2html5468"
+  HREF="node255.html">molecular_dynamics()   optimize</A>
+ &nbsp; <B>  <A NAME="tex2html5476"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5478"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011114000000000000000">
+actions.write_structure() -- write out the model coordinates</A>
+</H2> <A NAME="23232"></A><A NAME="CMD:actions.writestructure"></A><A NAME="23235"></A><TT>write_structure(skip, filepattern, write_all_atoms=True, first=False, last=False, start=0)</TT>
+<BR><BLOCKQUOTE>
+This action writes out a file containing the current optimizer
+structure, every <I>skip</I><A NAME="23263"></A> steps during the optimization. It should be specified
+in the <I>actions</I><A NAME="23266"></A> argument to an optimizer object (<EM>e.g.</EM>,
+<B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="23270"></A> or <B><A HREF="node255.html#CMD:moleculardynamics">molecular_dynamics()</A></B><A NAME="23275"></A>).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>filepattern</I><A NAME="23280"></A> is a C-style format string, used to construct filenames. It
+should contain a <TT>%d</TT> format, which is substituted with the model number
+(<EM>e.g.</EM>, specifying <TT>'file%d.pdb'</TT> would generate files called <TT>'file0.pdb'</TT>,
+<TT>'file1.pdb'</TT>, <TT>'file2.pdb'</TT>, <EM>etc</EM>). The model number will start with
+<I>start</I><A NAME="23290"></A> (or 0, if not given).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>write_all_atoms</I><A NAME="23293"></A> is <TT>True</TT> (the default) then all atoms in the model
+are written out to the structure file, whether or not they are selected.
+If <TT>False</TT>, only selected atoms are written out.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>first</I><A NAME="23298"></A> is <TT>True</TT>, then the structure at step 0 (before the optimization)
+is also written out. If <I>last</I><A NAME="23302"></A> is <TT>True</TT>, then the structure of the last
+step is written, regardless of whether it is a multiple of <I>skip</I><A NAME="23306"></A>. By default,
+both are <TT>False</TT>.
+
+</BLOCKQUOTE>
+
+<P>
+<B>Example:</B> See <B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="23313"></A> command.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5479"
+  HREF="node257.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5473"
+  HREF="node252.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5467"
+  HREF="node255.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5475"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5477"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5480"
+  HREF="node257.html">actions.trace()   write</A>
+<B> Up:</B> <A NAME="tex2html5474"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Previous:</B> <A NAME="tex2html5468"
+  HREF="node255.html">molecular_dynamics()   optimize</A>
+ &nbsp; <B>  <A NAME="tex2html5476"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5478"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

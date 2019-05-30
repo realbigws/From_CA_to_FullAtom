@@ -1,0 +1,2 @@
+#!/bin/sh
+rm -f align2d.ali align2d.pap salign_pair.* salign.ali *.log output.* fix_positions_salign.pap 1is3A.* 1is3A-it.* *_fit.pdb 1bml.sol suboptimal_alignments.out 1bml.psa fm07254_out*.ali malign.ali

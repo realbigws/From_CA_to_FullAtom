@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>MODELLER programming interface (API)</TITLE>
+<META NAME="description" CONTENT="MODELLER programming interface (API)">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node433.html">
+<LINK REL="up" HREF="node432.html">
+<LINK REL="next" HREF="node438.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8138"
+  HREF="node438.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8132"
+  HREF="node432.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8128"
+  HREF="node436.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8134"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8136"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8139"
+  HREF="node438.html">Methods</A>
+<B> Up:</B> <A NAME="tex2html8133"
+  HREF="node432.html">MODELLER low-level programming</A>
+<B> Previous:</B> <A NAME="tex2html8129"
+  HREF="node436.html">User-defined energy terms</A>
+ &nbsp; <B>  <A NAME="tex2html8135"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8137"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001220000000000000000"></A>
+    <A NAME="SECTION:api"></A>
+<BR>
+M<SMALL>ODELLER</SMALL> programming interface (API)
+</H1>
+    On most platforms, the core of the M<SMALL>ODELLER</SMALL> program is actually a
+dynamic library (<TT>'.so'</TT>, <TT>'.dylib'</TT> or <TT>'.dll'</TT> file). The M<SMALL>ODELLER</SMALL> program
+itself is just a thin 'wrapper' which uses both this library and the
+<A NAME="tex2html238"
+  HREF="http://www.python.org/">Python</A> library to run scripts.
+
+<P>
+You can use the M<SMALL>ODELLER</SMALL> library in your own programs. To do this, you must
+use the API functions defined in the M<SMALL>ODELLER</SMALL> header files, a collection
+of <TT>'.h'</TT> files which usually can be found in the
+<TT>$MODINSTALL9v8/src/include</TT> directory, when compiling your program,
+and then link against the M<SMALL>ODELLER</SMALL> library. It is most straightforward to
+do this in C (which we will use here as an example) although any language
+which can interface with C libraries can be used. See the comments in the main
+header file <TT>'modeller.h'</TT> for simple usage instructions.
+
+<P>
+The <A NAME="tex2html239"
+  HREF="http://www.python.org/">Python</A> interface is also built from these header files, using the
+<A NAME="tex2html244"
+  HREF="http://www.swig.org/">SWIG</A> package. All of the files used to build this interface can be found
+in the <TT>$MODINSTALL9v8/src/swig</TT> directory. You can use these to build
+an interface for a different version of <A NAME="tex2html240"
+  HREF="http://www.python.org/">Python</A>; see the <TT>'README'</TT> file in
+this directory for instructions.
+
+<P>
+If you run <TT>mod9v8 --cflags</TT>, it will output the necessary C
+compiler flags for you to be able to include the M<SMALL>ODELLER</SMALL> header(s).
+Similarly, the <TT>--libs</TT> option outputs the linker flags needed to
+link with the M<SMALL>ODELLER</SMALL> library.
+
+<P>
+In many cases, it is more convenient to implement <I>extensions</I> to
+M<SMALL>ODELLER</SMALL> in C. These can work together with the main M<SMALL>ODELLER</SMALL> code and any
+<A NAME="tex2html241"
+  HREF="http://www.python.org/">Python</A> scripts, and can be much faster than implementing the code in <A NAME="tex2html242"
+  HREF="http://www.python.org/">Python</A>.
+See <TT>'cuser_feat.py'</TT>, <TT>'cuser_form.py'</TT> and <TT>'cuser_term.py'</TT> in
+the <TT>examples/c-extensions/</TT> directory for examples.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html243"
+  HREF="../examples/commands/c-example.c">examples/commands/c-example.c</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>#include &lt;glib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+#include &lt;modeller.h&gt;
+
+/* Example of using Modeller from a C program. This simply reads in a PDB
+ * file, prints out some data from that file, and then writes out a new
+ * file in MMCIF format.
+ *
+ * To compile, use (where XXX is your Modeller version):
+ * gcc -Wall -o c-example c-example.c `modXXX --cflags --libs` \
+ *     `pkg-config --cflags --libs glib-2.0`
+ * (If you use a compiler other than gcc, or a non-Unix system, you may need
+ * to run 'modXXX --cflags --libs' manually and construct suitable compiler
+ * options by hand.)
+ *
+ * To run, you must ensure that the Modeller dynamic libraries are in your
+ * search path. This can be done on most systems by adding the directory
+ * reported by 'modXXX --libs' to the LD_LIBRARY_PATH environment variable.
+ * (On Mac, set DYLD_LIBRARY_PATH instead. On Windows, PATH. On AIX, LIBPATH.)
+ *
+ * You must also ensure that Modeller knows where it was installed,
+ * and what the license key is. You can either do this by setting the
+ * MODINSTALLXXX and KEY_MODELLERXXX environment variables accordingly, or
+ * by calling the mod_install_dir_set() and mod_license_key_set() functions
+ * before you call mod_start(). For example, if Modeller is installed in
+ * /lib/modeller on a 32-bit Linux system, the following would work from the
+ * command line (all on one line), where KEY is your license key:
+ *     KEY_MODELLERXXX=KEY MODINSTALLXXX=/lib/modeller/
+ *     LD_LIBRARY_PATH=/lib/modeller/lib/i386-intel8 ./c-example
+ */
+
+/* Exit, reporting the Modeller error, iff one occurred. */
+void handle_error(int ierr)
+{
+  if (ierr != 0) {
+    GError *err = mod_error_get();
+    fprintf(stderr, "Modeller error: %s\n", err-&gt;message);
+    g_error_free(err);
+    exit(1);
+  }
+}
+
+int main(void)
+{
+  struct mod_libraries *libs;
+  struct mod_model *mdl;
+  struct mod_io_data *io;
+  struct mod_file *fh;
+  int ierr, *sel1, nsel1;
+
+  /* Uncomment these lines to hard code install location and license key,
+     rather than setting MODINSTALLXXX and KEY_MODELLERXXX environment
+     variables (see above) */
+  /* mod_install_dir_set("/lib/modeller"); */
+  /* mod_license_key_set("KEY"); */
+
+  mod_start(&amp;ierr);
+  handle_error(ierr);
+  mod_header_write();
+
+  mod_log_set(2, 1);
+  libs = mod_libraries_new(NULL);
+  mod_libraries_read_libs(libs, "${LIB}/restyp.lib", &amp;ierr);
+  handle_error(ierr);
+  mod_libraries_rand_seed_set(libs, -8123);
+
+  mdl = mod_model_new(NULL);
+  io = mod_io_data_new();
+  mod_model_read(mdl, io, libs, "../atom_files/2nbt.pdb", "PDB",
+                 "FIRST:@LAST:  ", 7, &amp;ierr);
+  handle_error(ierr);
+  printf("Model of %s solved at resolution %f, rfactor %f\n", mdl-&gt;seq.name,
+         mdl-&gt;seq.resol, mdl-&gt;seq.rfactr);
+  fh = mod_file_open("new.cif", "w");
+  if (fh) {
+    mod_selection_all(mdl, &amp;sel1, &amp;nsel1);
+    mod_model_write(mdl, libs, sel1, nsel1, fh, "MMCIF", 0, 1, &amp;ierr);
+    g_free(sel1);
+    mod_file_close(fh, &amp;ierr);
+  }
+  handle_error(ierr);
+  mod_libraries_free(libs);
+  mod_model_free(mdl);
+  mod_io_data_free(io);
+
+  mod_end();
+  return 0;
+}
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8138"
+  HREF="node438.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8132"
+  HREF="node432.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8128"
+  HREF="node436.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8134"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8136"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8139"
+  HREF="node438.html">Methods</A>
+<B> Up:</B> <A NAME="tex2html8133"
+  HREF="node432.html">MODELLER low-level programming</A>
+<B> Previous:</B> <A NAME="tex2html8129"
+  HREF="node436.html">User-defined energy terms</A>
+ &nbsp; <B>  <A NAME="tex2html8135"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8137"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

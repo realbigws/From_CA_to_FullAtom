@@ -1,0 +1,281 @@
+# Purpose: refine hot spots in a model using Molecular Dynamics and 
+#          Conjugate Gradients. If RSTRS_REFINED = 0, hot spots are
+#          those atoms that violate stereochemical restraints (excluding
+#          mainchain and sidechain dihedral angles phi,psi,omega,chi_i, but
+#          including hard sphere overlap) than 4 standard deviations. These are
+#          then refined. If 1, atoms that violate important homology-derived
+#          restraints for more than 4 standard deviations are also hot spots.
+#          If 2, any sufficiently violated restraints are hotspots.
+#
+# Input  : CSRFILE, RSTRS_REFINED
+#
+# Assuming that a topology library and the model are already in memory.
+#               
+
+SUBROUTINE ROUTINE = 'refine'
+   STRING_IF STRING_ARGUMENTS = MD_LEVEL 'none', OPERATION = 'EQ'
+     RETURN
+   END_IF
+
+   # Get precise radii:
+   # SET TOPOLOGY_MODEL = 3
+   # READ_TOPOLOGY FILE = '${LIB}/top_heav.lib'
+
+   # Get model with hot spots:
+   # READ_MODEL FILE = MODEL
+
+   # obtain bond connectivities for local optimization (sequence from MODEL)
+   # (this is only needed when RSTRS_REFINED >= 1)
+   # DELETE_ALIGNMENT
+   # CALL ROUTINE = 'create_topology'
+
+   # Save the current model:
+   STRING_IF STRING_ARGUMENTS = FIT_IN_REFINE 'NO_FIT', OPERATION = 'NE'
+     WRITE_MODEL FILE = TO_BE_REFINED.TMP
+   END_IF
+
+   # Reset schedule to all restraints with factors of 1:
+   # MAKE_SCHEDULE
+   # SET SCHEDULE_STEP = N_SCHEDULE
+
+   # Get all static restraints:
+   # (already there by default)
+   # CALL ROUTINE = 'rd_restraints' 
+   # CALL ROUTINE = 'select_atoms'
+   # PICK_RESTRAINTS ADD_RESTRAINTS = off
+
+   SET MAX_ITERATIONS_STORE = MAX_ITERATIONS
+
+   # Possibly skip selecting hot atoms only and optimize all atoms:
+   IF ARGUMENTS = REFINE_HOT_ONLY 1, OPERATION = 'EQ'
+
+     SET VIOL_REP_STORE  = VIOL_REPORT_CUT
+
+     # Refine only hotspots that have badly violated stereochemical restraints:
+     IF ARGUMENTS = RSTRS_REFINED 0, OPERATION = 'EQ'
+       SET VIOL_REPORT_CUT = 4 4 4 4 4 999 999 999 999 999 999 999 999 999 999 999 999 4 4 4 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999 999
+     END_IF
+
+     # Refine hotspots that have badly violated stereochemical
+     # restraints and the important homology-derived restraints:
+     IF ARGUMENTS = RSTRS_REFINED 1, OPERATION = 'EQ'
+       SET VIOL_REPORT_CUT = 4 4 4 4 4 999 999 999 4 4 999 999 4 999 999 999 999 4 4 4 999 999 4 999 4 4 999 999 999 999 999 999 999 999 999 999 999 999 999
+     END_IF
+
+     # Refine hotspots that have badly violated any kind of restraints
+     IF ARGUMENTS = RSTRS_REFINED 2, OPERATION = 'EQ'
+       SET VIOL_REPORT_CUT = 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+     END_IF
+   
+     # Pick hot atoms (must use RESIDUE mode because of sidechains):
+     SET PICK_HOT_CUTOFF = 4.5, SELECTION_MODE  = 'RESIDUE', EXTEND_HOT_SPOT = 0
+     PICK_HOT_ATOMS 
+
+     SET VIOL_REPORT_CUT = VIOL_REP_STORE
+
+     # Pick all corresponding (violated and others) restraints:
+     PICK_RESTRAINTS ADD_RESTRAINTS = off
+
+     # Local optimization to prevent MD explosions:
+     OPTIMIZE OPTIMIZATION_METHOD = 1, MAX_ITERATIONS = 100
+
+   END_IF
+
+   # Do simulated annealing MD:
+   CALL ROUTINE = MD_LEVEL
+
+   # Possibly skip 'HOT CG' after MD:
+   IF ARGUMENTS = REFINE_HOT_ONLY 1, OPERATION = 'EQ'
+     # Get conjugate gradients refined hot spots:
+     OPTIMIZE OPTIMIZATION_METHOD = 1, MAX_ITERATIONS = 200
+
+     # Get all static restraints again and select all atoms
+     # CALL ROUTINE = 'rd_restraints'
+     CALL ROUTINE = 'select_atoms'
+     PICK_RESTRAINTS ADD_RESTRAINTS = off
+
+   END_IF
+
+   # Get a final conjugate gradients refined structure:
+   OPTIMIZE OPTIMIZATION_METHOD = 1, MAX_ITERATIONS = 200
+
+   # Evaluate gross changes between the initial and final refined model:
+   STRING_IF STRING_ARGUMENTS = FIT_IN_REFINE 'NO_FIT', OPERATION = 'INDEX'
+     # Do nothing
+   ELSE
+     DELETE_ALIGNMENT
+     READ_MODEL2 FILE = 'TO_BE_REFINED.TMP'
+     PICK_ATOMS ATOM_TYPES = 'CA', PICK_ATOMS_SET = 1
+     SUPERPOSE
+     PICK_ATOMS ATOM_TYPES = 'ALL'
+     SUPERPOSE
+     CALL ROUTINE = 'select_atoms'
+     # Delete TO_BE_REFINED.TMP
+     SET OPERATION = 'CONCATENATE'
+     STRING_OPERATE STRING_ARGUMENTS = ' ./' OUTPUT_DIRECTORY, RESULT = FILE
+     STRING_OPERATE STRING_ARGUMENTS = FILE '/TO_BE_REFINED.TMP'
+     DELETE_FILE
+   END_IF
+
+   # Restore some TOP variables which are likely to be used afterwards
+   SET MAX_ITERATIONS  = MAX_ITERATIONS_STORE
+
+RETURN
+END_SUBROUTINE
+
+
+SUBROUTINE ROUTINE = 'refine_1'
+   # at T=1000, max_atom_shift for 4fs is cca 0.15 A.
+   SET UPDATE_DYNAMIC = 0.39
+   # SET UPDATE_DYNAMIC = 0.39, CONTACT_SHELL = 4.0
+   SET CAP_ATOM_SHIFT = UPDATE_DYNAMIC, MD_TIME_STEP = 4.0
+
+   # Equilibration:
+
+   SET MAX_ITERATIONS = 50, EQUILIBRATE = 10, OPTIMIZATION_METHOD = 3
+
+   OPTIMIZE TEMPERATURE = 150.0, MD_RETURN = 'FINAL', INIT_VELOCITIES = on
+   OPTIMIZE TEMPERATURE = 400.0, MD_RETURN = 'FINAL', INIT_VELOCITIES = off
+   OPTIMIZE TEMPERATURE =1000.0, MD_RETURN = 'FINAL'
+
+   # Sampling:
+
+   SET EQUILIBRATE = 100, MAX_ITERATIONS = 300
+
+   OPTIMIZE TEMPERATURE =1000.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 800.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 500.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 300.0, MD_RETURN = 'FINAL'
+
+   RETURN
+END_SUBROUTINE
+
+
+SUBROUTINE ROUTINE = 'refine_2'
+   # at T=1000, max_atom_shift for 4fs is cca 0.15 A.
+   SET UPDATE_DYNAMIC = 0.39
+   # SET UPDATE_DYNAMIC = 0.39, CONTACT_SHELL = 4.0
+   SET CAP_ATOM_SHIFT = UPDATE_DYNAMIC, MD_TIME_STEP = 4.0
+
+   # Equilibration:
+
+   SET MAX_ITERATIONS = 100, EQUILIBRATE = 20, OPTIMIZATION_METHOD = 3
+
+   OPTIMIZE TEMPERATURE = 150.0, MD_RETURN = 'FINAL', INIT_VELOCITIES = on
+   OPTIMIZE TEMPERATURE = 250.0, MD_RETURN = 'FINAL', INIT_VELOCITIES = off
+   OPTIMIZE TEMPERATURE = 500.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE =1000.0, MD_RETURN = 'FINAL'
+
+   # Sampling:
+
+   SET EQUILIBRATE = 100, MAX_ITERATIONS = 400
+
+   OPTIMIZE TEMPERATURE =1000.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 800.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 500.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 300.0, MD_RETURN = 'FINAL'
+
+   RETURN
+END_SUBROUTINE
+
+
+
+SUBROUTINE ROUTINE = 'refine_3'
+   # at T=1000, max_atom_shift for 4fs is cca 0.15 A.
+   SET UPDATE_DYNAMIC = 0.39
+   # SET UPDATE_DYNAMIC = 0.39, CONTACT_SHELL = 4.0
+   SET CAP_ATOM_SHIFT = UPDATE_DYNAMIC, MD_TIME_STEP = 4.0
+
+   # Equilibration:
+
+   SET MAX_ITERATIONS = 200, EQUILIBRATE = 20, OPTIMIZATION_METHOD = 3
+
+   OPTIMIZE TEMPERATURE = 150.0, MD_RETURN = 'FINAL', INIT_VELOCITIES = on
+   OPTIMIZE TEMPERATURE = 250.0, MD_RETURN = 'FINAL', INIT_VELOCITIES = off
+   OPTIMIZE TEMPERATURE = 400.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 700.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE =1000.0, MD_RETURN = 'FINAL'
+
+   # Sampling:
+
+   SET EQUILIBRATE = 200, MAX_ITERATIONS = 600
+
+   OPTIMIZE TEMPERATURE =1000.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 800.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 600.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 500.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 400.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 300.0, MD_RETURN = 'FINAL'
+
+   RETURN
+END_SUBROUTINE
+
+
+
+SUBROUTINE ROUTINE = 'refine_4'
+   # at T=1000, max_atom_shift for 4fs is cca 0.15 A.
+   SET UPDATE_DYNAMIC = 0.39
+   # SET UPDATE_DYNAMIC = 0.39, CONTACT_SHELL = 4.0
+   SET CAP_ATOM_SHIFT = UPDATE_DYNAMIC, MD_TIME_STEP = 4.0
+
+   # Equilibration:
+
+   SET MAX_ITERATIONS = 300, EQUILIBRATE = 20, OPTIMIZATION_METHOD = 3
+
+   OPTIMIZE TEMPERATURE = 150.0, MD_RETURN = 'FINAL', INIT_VELOCITIES = on
+   OPTIMIZE TEMPERATURE = 250.0, MD_RETURN = 'FINAL', INIT_VELOCITIES = off
+   OPTIMIZE TEMPERATURE = 400.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 700.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE =1000.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE =1300.0, MD_RETURN = 'FINAL'
+
+   # Sampling:
+
+   SET EQUILIBRATE = 200, MAX_ITERATIONS = 1000
+
+   OPTIMIZE TEMPERATURE =1300.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE =1000.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 800.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 600.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 500.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 430.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 370.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 320.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 300.0, MD_RETURN = 'FINAL'
+
+   RETURN
+END_SUBROUTINE
+
+
+
+SUBROUTINE ROUTINE = 'refine_5'
+   # at T=1000, max_atom_shift for 4fs is cca 0.15 A.
+   SET UPDATE_DYNAMIC = 0.39
+   # SET UPDATE_DYNAMIC = 0.39, CONTACT_SHELL = 4.0
+   SET CAP_ATOM_SHIFT = UPDATE_DYNAMIC, MD_TIME_STEP = 10.0
+
+   # Equilibration:
+
+   SET MAX_ITERATIONS = 200, EQUILIBRATE = 20, OPTIMIZATION_METHOD = 3
+
+   OPTIMIZE TEMPERATURE = 150.0, MD_RETURN = 'FINAL', INIT_VELOCITIES = on
+   OPTIMIZE TEMPERATURE = 250.0, MD_RETURN = 'FINAL', INIT_VELOCITIES = off
+   OPTIMIZE TEMPERATURE = 400.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 700.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE =1000.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE =1500.0, MD_RETURN = 'FINAL'
+
+   # Sampling:
+
+   SET EQUILIBRATE = 200, MAX_ITERATIONS = 2000
+
+   OPTIMIZE TEMPERATURE =1500.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE =1000.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 800.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 600.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 500.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 400.0, MD_RETURN = 'FINAL'
+   OPTIMIZE TEMPERATURE = 300.0, MD_RETURN = 'FINAL'
+
+   RETURN
+END_SUBROUTINE

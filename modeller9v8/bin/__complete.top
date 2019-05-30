@@ -1,0 +1,36 @@
+# To put any missing (heavy) atoms on the model and to reorder the atoms 
+# according to the MODELLER/CHARMM order:
+#
+# Input : MODEL; filename of the input atom file
+# Output: complete model in memory 
+#
+
+SUBROUTINE ROUTINE = 'complete'
+
+# Use this to put on heavy atoms only:
+READ_TOPOLOGY FILE = '${LIB}/top_heav.lib'
+
+# Use this to put on all atoms, including hydrogens:
+# READ_TOPOLOGY FILE = '${LIB}/top.lib'
+
+READ_PARAMETERS FILE = '${LIB}/par.lib'
+
+# read the sequence from the input atom file:
+READ_MODEL FILE = MODEL
+
+# generate the internal coordinates
+GENERATE_TOPOLOGY
+CALL ROUTINE = 'special_patches'
+
+# copy the known atom coordinates from MODEL to model in the memory
+DELETE_ALIGNMENT
+SEQUENCE_TO_ALI ATOM_FILES = MODEL, ALIGN_CODES = MODEL
+SEQUENCE_TO_ALI ADD_SEQUENCE = on, ATOM_FILES = ATOM_FILES MODEL, ;
+                ALIGN_CODES = ALIGN_CODES MODEL
+TRANSFER_XYZ
+
+# Fill in the coordinates for the missing atoms:
+BUILD_MODEL INITIALIZE_XYZ = 'OFF'
+
+RETURN
+END_SUBROUTINE

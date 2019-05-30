@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>User-defined energy terms</TITLE>
+<META NAME="description" CONTENT="User-defined energy terms">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node435.html">
+<LINK REL="up" HREF="node433.html">
+<LINK REL="next" HREF="node437.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8126"
+  HREF="node437.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8120"
+  HREF="node433.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8116"
+  HREF="node435.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8122"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8124"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8127"
+  HREF="node437.html">MODELLER programming interface (API)</A>
+<B> Up:</B> <A NAME="tex2html8121"
+  HREF="node433.html">User-defined features and restraint</A>
+<B> Previous:</B> <A NAME="tex2html8117"
+  HREF="node435.html">User-defined restraint forms</A>
+ &nbsp; <B>  <A NAME="tex2html8123"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8125"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001213000000000000000"></A>
+<A NAME="SECTION:userterm"></A>
+<BR>
+User-defined energy terms
+</H2>
+
+<P>
+To create a new energy term, derive a new class from the base
+<TT>terms.energy_term</TT>. You should then override the <TT>eval</TT> function.
+You can also override the <TT>__init__</TT> function if you want to define
+function parameters. Objects of this class can then be created and added
+to the <I><A HREF="node136.html#MEMB:energydata.energyterms">energy_data.energy_terms</A></I><A NAME="38551"></A> list.
+
+<P>
+The <TT>eval</TT> function is called from M<SMALL>ODELLER</SMALL> with a <TT>model</TT> object,
+and the indices of all selected atoms. You should return the
+objective function contribution and, if requested, the derivatives with
+respect to the Cartesian coordinates.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html237"
+  HREF="../examples/python/user_term.py">examples/python/user_term.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+from modeller.scripts import complete_pdb
+
+env = environ()
+log.verbose()
+env.io.atom_files_directory = ['../atom_files']
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+class MyTerm(terms.energy_term):
+    """Custom energy term, which tries to force all atoms to one side of
+       the x=10.0A plane"""
+
+    _physical_type = physical.absposition
+
+    # Override the __init__ function so that we can pass in a 'strength'
+    # parameter
+    def __init__(self, strength):
+        self.strength = strength
+        terms.energy_term.__init__(self)
+
+    def eval(self, mdl, deriv, indats):
+        atoms = self.indices_to_atoms(mdl, indats)
+        e = 0.
+        dvx = [0.] * len(indats)
+        dvy = [0.] * len(indats)
+        dvz = [0.] * len(indats)
+        for (num, at) in enumerate(atoms):
+            # Enforce a linearly increasing potential in the x direction
+            if at.x &gt; 10.0:
+                e += (at.x - 10.0) * self.strength
+                dvx[num] += self.strength
+        if deriv:
+            return (e, dvx, dvy, dvz)
+        else:
+            return e
+
+t = env.edat.energy_terms
+t.append(MyTerm(strength=1.0))
+
+mdl = complete_pdb(env, "1fdn")
+sel = selection(mdl)
+print sel.energy()
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

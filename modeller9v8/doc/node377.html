@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>sequence_db.read() -- read a database of sequences</TITLE>
+<META NAME="description" CONTENT="sequence_db.read() -- read a database of sequences">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node378.html">
+<LINK REL="previous" HREF="node376.html">
+<LINK REL="up" HREF="node375.html">
+<LINK REL="next" HREF="node378.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7272"
+  HREF="node378.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7266"
+  HREF="node375.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7260"
+  HREF="node376.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7268"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7270"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7273"
+  HREF="node378.html">sequence_db.write()   write</A>
+<B> Up:</B> <A NAME="tex2html7267"
+  HREF="node375.html">The sequence_db class: using</A>
+<B> Previous:</B> <A NAME="tex2html7261"
+  HREF="node376.html">sequence_db()   create</A>
+ &nbsp; <B>  <A NAME="tex2html7269"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7271"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011242000000000000000">
+sequence_db.read() -- read a database of sequences</A>
+</H2> <A NAME="34244"></A><A NAME="CMD:sequencedb.read"></A><A NAME="34247"></A><TT>read(chains_list, seq_database_file, seq_database_format, clean_sequences=True, minmax_db_seq_len=(0, 999999))</TT>
+<BR><BLOCKQUOTE>
+This command will read a database of sequences, either in the 
+<TT>PIR</TT>, <TT>FASTA</TT>, or <TT>BINARY</TT> format. 
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If the format is <TT>PIR</TT> or <TT>FASTA</TT>: 
+</BLOCKQUOTE>
+<P>
+ 
+<UL>
+<LI>It is possible to clean
+all sequences of non-standard residue types by setting
+<I>clean_sequences</I><A NAME="34290"></A> to <TT>True</TT>. 
+
+<P>
+</LI>
+<LI>Sequences shorter than <I>minmax_db_seq_len</I><A NAME="34294"></A>[0] and
+longer than <I>minmax_db_seq_len</I><A NAME="34297"></A>[1] are eliminated.
+
+<P>
+</LI>
+<LI>Only sequences whose codes are listed in the <I>chains_list</I><A NAME="34300"></A> 
+file are read from the <I>seq_database_file</I><A NAME="34303"></A> of sequences.
+If <I>chains_list</I><A NAME="34306"></A> is <TT>all</TT>, all sequences in the  <I>seq_database_file</I><A NAME="34310"></A>
+file are read in, and there is no need for the <I>chains_list</I><A NAME="34313"></A> file.
+</LI>
+</UL>
+<P>
+<BLOCKQUOTE>For the <TT>PIR</TT> and <TT>FASTA</TT> formats, make sure the order
+of sequences in the <I>chains_list</I><A NAME="34318"></A> and <I>seq_database_file</I><A NAME="34321"></A> 
+is the same for faster access (there can of course be 
+more sequences in the sequence file than there are sequence
+codes in the codes file).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Additionally, if the sequences are in 'PIR' format, then
+the protein type and resolution fields are stored in the
+database format. (see Section&nbsp;<A HREF="node454.html#alignmentformat">B.1</A> for
+description of 'PIR' fields).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The protein type field is encoded in a single letter format. 
+'S' for sequence and 'X' for structures of any kind. This 
+information is transferred to the profile arrays when using 
+<B><A HREF="node372.html#CMD:profile.build">profile.build()</A></B><A NAME="34324"></A>. (See also <B><A HREF="node368.html#CMD:profile.read">profile.read()</A></B><A NAME="34329"></A>). 
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The resolution field is used to pick representatives from the
+clusters in <B><A HREF="node381.html#CMD:sequencedb.filter">sequence_db.filter()</A></B><A NAME="34334"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>None of the options above apply to the <TT>BINARY</TT> format, which,
+in return, is very fast (<EM>i.e.</EM>, 3 seconds for 300 MB of 800,000 
+sequences in the TrEMBL database). Binary files are standard <A NAME="tex2html207"
+  HREF="http://hdf.ncsa.uiuc.edu/HDF5/">HDF5</A> files
+(see Section&nbsp;<A HREF="node462.html#binaryformat">B.4</A>).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Note that the entire sequence database is stored in memory. Thus, extremely
+large databases, such as <A NAME="tex2html208"
+  HREF="http://www.pir.uniprot.org/">U<SMALL>NI</SMALL>P<SMALL>ROT</SMALL></A>, will require your computer to have a
+large amount of system memory (RAM) available, to store the database and to
+provide working space. In cases where the database
+requires more than 2 gigabytes of memory, you will also need to use a 64-bit
+machine, such as Alpha, Itanium, or x86_64 (Opteron/EM64T).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If you are intending to read in a sequence database simply to write it out
+again in binary format, you should consider using the <B><A HREF="node379.html#CMD:sequencedb.convert">sequence_db.convert()</A></B><A NAME="34346"></A>
+function instead, as this does not need to keep the whole database in memory.
+
+</BLOCKQUOTE>
+
+<P>
+<B>Example:</B> See <B><A HREF="node372.html#CMD:profile.build">profile.build()</A></B><A NAME="34354"></A> command.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7272"
+  HREF="node378.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7266"
+  HREF="node375.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7260"
+  HREF="node376.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7268"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7270"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7273"
+  HREF="node378.html">sequence_db.write()   write</A>
+<B> Up:</B> <A NAME="tex2html7267"
+  HREF="node375.html">The sequence_db class: using</A>
+<B> Previous:</B> <A NAME="tex2html7261"
+  HREF="node376.html">sequence_db()   create</A>
+ &nbsp; <B>  <A NAME="tex2html7269"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7271"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

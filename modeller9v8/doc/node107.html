@@ -1,0 +1,884 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>MODELLER command reference</TITLE>
+<META NAME="description" CONTENT="MODELLER command reference">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node432.html">
+<LINK REL="previous" HREF="node93.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node108.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html2938"
+  HREF="node108.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2932"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2926"
+  HREF="node106.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html2934"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html2936"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html2939"
+  HREF="node108.html">Key for command descriptions</A>
+<B> Up:</B> <A NAME="tex2html2933"
+  HREF="manual.html">MODELLER A Program for</A>
+<B> Previous:</B> <A NAME="tex2html2927"
+  HREF="node106.html">Symmetry restraints</A>
+ &nbsp; <B>  <A NAME="tex2html2935"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html2937"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001100000000000000000">
+M<SMALL>ODELLER</SMALL> command reference</A>
+</H1>
+    <BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html2940"
+  HREF="node108.html">Key for command descriptions</A>
+<LI><A NAME="tex2html2941"
+  HREF="node109.html">The <TT>environ</TT> class: M<SMALL>ODELLER</SMALL> environment</A>
+<UL>
+<LI><A NAME="tex2html2942"
+  HREF="node110.html">environ() -- create a new M<SMALL>ODELLER</SMALL> environment</A>
+<LI><A NAME="tex2html2943"
+  HREF="node111.html">environ.io -- default input parameters</A>
+<LI><A NAME="tex2html2944"
+  HREF="node112.html">environ.edat -- default objective function parameters</A>
+<LI><A NAME="tex2html2945"
+  HREF="node113.html">environ.libs -- M<SMALL>ODELLER</SMALL> libraries</A>
+<LI><A NAME="tex2html2946"
+  HREF="node114.html">environ.schedule_scale -- energy function scaling factors</A>
+<LI><A NAME="tex2html2947"
+  HREF="node115.html">environ.dendrogram() -- clustering</A>
+<LI><A NAME="tex2html2948"
+  HREF="node116.html">environ.principal_components() -- clustering</A>
+<LI><A NAME="tex2html2949"
+  HREF="node117.html">environ.system() -- execute system command</A>
+<LI><A NAME="tex2html2950"
+  HREF="node118.html">environ.make_pssmdb() -- Create a database of PSSMs given a list of profiles</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2951"
+  HREF="node119.html">The <TT>energy_data</TT> class: objective function parameters</A>
+<UL>
+<LI><A NAME="tex2html2952"
+  HREF="node120.html">energy_data() -- create a new set of objective function parameters</A>
+<LI><A NAME="tex2html2953"
+  HREF="node121.html">energy_data.contact_shell -- nonbond distance cutoff</A>
+<LI><A NAME="tex2html2954"
+  HREF="node122.html">energy_data.update_dynamic -- nonbond recalculation threshold</A>
+<LI><A NAME="tex2html2955"
+  HREF="node123.html">energy_data.sphere_stdv -- soft-sphere standard deviation</A>
+<LI><A NAME="tex2html2956"
+  HREF="node124.html">energy_data.dynamic_sphere -- calculate soft-sphere overlap restraints</A>
+<LI><A NAME="tex2html2957"
+  HREF="node125.html">energy_data.dynamic_lennard -- calculate Lennard-Jones restraints</A>
+<LI><A NAME="tex2html2958"
+  HREF="node126.html">energy_data.dynamic_coulomb -- calculate Coulomb restraints</A>
+<LI><A NAME="tex2html2959"
+  HREF="node127.html">energy_data.dynamic_modeller -- calculate non-bonded spline restraints</A>
+<LI><A NAME="tex2html2960"
+  HREF="node128.html">energy_data.excl_local -- exclude certain local pairs of atoms</A>
+<LI><A NAME="tex2html2961"
+  HREF="node129.html">energy_data.radii_factor -- scale atomic radii</A>
+<LI><A NAME="tex2html2962"
+  HREF="node130.html">energy_data.lennard_jones_switch -- Lennard-Jones switching parameters</A>
+<LI><A NAME="tex2html2963"
+  HREF="node131.html">energy_data.coulomb_switch -- Coulomb switching parameters</A>
+<LI><A NAME="tex2html2964"
+  HREF="node132.html">energy_data.relative_dielectric -- relative dielectric</A>
+<LI><A NAME="tex2html2965"
+  HREF="node133.html">energy_data.covalent_cys -- use disulfide bridges in residue distance</A>
+<LI><A NAME="tex2html2966"
+  HREF="node134.html">energy_data.nonbonded_sel_atoms -- control interaction with picked atoms</A>
+<LI><A NAME="tex2html2967"
+  HREF="node135.html">energy_data.nlogn_use -- select non-bond list generation algorithm</A>
+<LI><A NAME="tex2html2968"
+  HREF="node136.html">energy_data.energy_terms -- user-defined global energy terms</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2969"
+  HREF="node137.html">The <TT>io_data</TT> class: coordinate file input parameters</A>
+<UL>
+<LI><A NAME="tex2html2970"
+  HREF="node138.html">io_data() -- create a new input parameters object</A>
+<LI><A NAME="tex2html2971"
+  HREF="node139.html">io_data.hetatm -- whether to read HETATM records</A>
+<LI><A NAME="tex2html2972"
+  HREF="node140.html">io_data.hydrogen -- whether to read hydrogen atoms</A>
+<LI><A NAME="tex2html2973"
+  HREF="node141.html">io_data.water -- whether to read water molecules</A>
+<LI><A NAME="tex2html2974"
+  HREF="node142.html">io_data.atom_files_directory -- search path for coordinate files</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2975"
+  HREF="node143.html">The <TT>Libraries</TT> class: stereochemical parameters and molecular topology</A>
+<UL>
+<LI><A NAME="tex2html2976"
+  HREF="node144.html">Libraries.topology -- topology library information</A>
+<LI><A NAME="tex2html2977"
+  HREF="node145.html">Libraries.parameters -- parameter library information</A>
+<LI><A NAME="tex2html2978"
+  HREF="node146.html">Topology.append() -- append residue topology library</A>
+<LI><A NAME="tex2html2979"
+  HREF="node147.html">Topology.clear() -- clear residue topology library</A>
+<LI><A NAME="tex2html2980"
+  HREF="node148.html">Topology.read() -- read residue topology library</A>
+<LI><A NAME="tex2html2981"
+  HREF="node149.html">Parameters.append() -- append parameters library</A>
+<LI><A NAME="tex2html2982"
+  HREF="node150.html">Parameters.clear() -- clear parameters library</A>
+<LI><A NAME="tex2html2983"
+  HREF="node151.html">Parameters.read() -- read parameters library</A>
+<LI><A NAME="tex2html2984"
+  HREF="node152.html">Topology.make() -- make a subset topology library</A>
+<LI><A NAME="tex2html2985"
+  HREF="node153.html">Topology.submodel -- select topology model type</A>
+<LI><A NAME="tex2html2986"
+  HREF="node154.html">Topology.write() -- write residue topology library</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html2987"
+  HREF="node155.html">The <TT>model</TT> class: handling of atomic coordinates, and model building</A>
+<UL>
+<LI><A NAME="tex2html2988"
+  HREF="node156.html">model() -- create a new 3D model</A>
+<LI><A NAME="tex2html2989"
+  HREF="node157.html">model.seq_id -- sequence identity between the model and templates</A>
+<LI><A NAME="tex2html2990"
+  HREF="node158.html">model.resolution -- resolution of protein structure</A>
+<LI><A NAME="tex2html2991"
+  HREF="node159.html">model.last_energy -- last objective function value</A>
+<LI><A NAME="tex2html2992"
+  HREF="node160.html">model.remark -- text remark(s)</A>
+<LI><A NAME="tex2html2993"
+  HREF="node161.html">model.restraints -- all static restraints which act on the model</A>
+<LI><A NAME="tex2html2994"
+  HREF="node162.html">model.group_restraints -- all restraints which act on atom groups</A>
+<LI><A NAME="tex2html2995"
+  HREF="node163.html">model.atoms -- all atoms in the model</A>
+<LI><A NAME="tex2html2996"
+  HREF="node164.html">model.point() -- return a point in Cartesian space</A>
+<LI><A NAME="tex2html2997"
+  HREF="node165.html">model.atom_range() -- return a subset of all atoms</A>
+<LI><A NAME="tex2html2998"
+  HREF="node166.html">model.residue_range() -- return a subset of all residues</A>
+<LI><A NAME="tex2html2999"
+  HREF="node167.html">model.get_insertions() -- return a list of all insertions</A>
+<LI><A NAME="tex2html3000"
+  HREF="node168.html">model.get_deletions() -- return a list of all deletions</A>
+<LI><A NAME="tex2html3001"
+  HREF="node169.html">model.loops() -- return a list of all loops</A>
+<LI><A NAME="tex2html3002"
+  HREF="node170.html">model.read() -- read coordinates for MODEL</A>
+<LI><A NAME="tex2html3003"
+  HREF="node171.html">model.build_sequence() -- build model from a sequence of one-letter codes</A>
+<LI><A NAME="tex2html3004"
+  HREF="node172.html">model.write() -- write MODEL</A>
+<LI><A NAME="tex2html3005"
+  HREF="node173.html">model.clear_topology() -- clear model topology</A>
+<LI><A NAME="tex2html3006"
+  HREF="node174.html">model.generate_topology() -- generate MODEL topology</A>
+<LI><A NAME="tex2html3007"
+  HREF="node175.html">model.write_psf() -- write molecular topology to PSF file</A>
+<LI><A NAME="tex2html3008"
+  HREF="node176.html">model.patch() -- patch MODEL topology</A>
+<LI><A NAME="tex2html3009"
+  HREF="node177.html">model.patch_ss_templates() -- guess MODEL disulfides from templates</A>
+<LI><A NAME="tex2html3010"
+  HREF="node178.html">model.patch_ss() -- guess MODEL disulfides from model structure</A>
+<LI><A NAME="tex2html3011"
+  HREF="node179.html">model.build() -- build MODEL coordinates from topology</A>
+<LI><A NAME="tex2html3012"
+  HREF="node180.html">model.transfer_xyz() -- copy templates' coordinates to MODEL</A>
+<LI><A NAME="tex2html3013"
+  HREF="node181.html">model.res_num_from() -- residue numbers from MODEL2 to MODEL</A>
+<LI><A NAME="tex2html3014"
+  HREF="node182.html">model.rename_segments() -- rename MODEL segments</A>
+<LI><A NAME="tex2html3015"
+  HREF="node183.html">model.to_iupac() -- standardize certain dihedral angles</A>
+<LI><A NAME="tex2html3016"
+  HREF="node184.html">model.reorder_atoms() -- standardize order of MODEL atoms</A>
+<LI><A NAME="tex2html3017"
+  HREF="node185.html">model.orient() -- center and orient MODEL</A>
+<LI><A NAME="tex2html3018"
+  HREF="node186.html">model.write_data() -- write derivative model data</A>
+<LI><A NAME="tex2html3019"
+  HREF="node187.html">model.make_region() -- define a random surface patch of atoms</A>
+<LI><A NAME="tex2html3020"
+  HREF="node188.html">model.color() -- color MODEL according to alignment</A>
+<LI><A NAME="tex2html3021"
+  HREF="node189.html">model.make_chains() -- Fetch sequences from PDB file</A>
+<LI><A NAME="tex2html3022"
+  HREF="node190.html">model.saxs_intens() -- Calculate SAXS intensity from model</A>
+<LI><A NAME="tex2html3023"
+  HREF="node191.html">model.saxs_pr() -- Calculate <IMG
+ WIDTH="37" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1.png"
+ ALT="$ P(r)$">
+ of model</A>
+<LI><A NAME="tex2html3024"
+  HREF="node192.html">model.saxs_chifun() -- Calculate SAXS score chi from model</A>
+<LI><A NAME="tex2html3025"
+  HREF="node193.html">model.assess_ga341() -- assess a model with the GA341 method</A>
+<LI><A NAME="tex2html3026"
+  HREF="node194.html">model.assess_normalized_dope() -- assess a model with the normalized DOPE method</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3027"
+  HREF="node195.html">The <TT>Restraints</TT> class: static restraints</A>
+<UL>
+<LI><A NAME="tex2html3028"
+  HREF="node196.html">Restraints.rigid_bodies -- all rigid bodies</A>
+<LI><A NAME="tex2html3029"
+  HREF="node197.html">Restraints.pseudo_atoms -- all pseudo atoms</A>
+<LI><A NAME="tex2html3030"
+  HREF="node198.html">Restraints.excluded_pairs -- all excluded pairs</A>
+<LI><A NAME="tex2html3031"
+  HREF="node199.html">Restraints.nonbonded_pairs -- all nonbonded pairs</A>
+<LI><A NAME="tex2html3032"
+  HREF="node200.html">Restraints.symmetry -- all symmetry restraints</A>
+<LI><A NAME="tex2html3033"
+  HREF="node201.html">Restraints.symmetry.report() -- report violated symmetry restraints</A>
+<LI><A NAME="tex2html3034"
+  HREF="node202.html">Restraints.make() -- make restraints</A>
+<LI><A NAME="tex2html3035"
+  HREF="node203.html">Restraints.make_distance() -- make distance restraints</A>
+<LI><A NAME="tex2html3036"
+  HREF="node204.html">Restraints.unpick_all() -- unselect all restraints</A>
+<LI><A NAME="tex2html3037"
+  HREF="node205.html">Restraints.clear() -- delete all restraints</A>
+<LI><A NAME="tex2html3038"
+  HREF="node206.html">Restraints.pick() -- pick restraints for selected atoms</A>
+<LI><A NAME="tex2html3039"
+  HREF="node207.html">Restraints.unpick_redundant() -- unselect redundant restraints</A>
+<LI><A NAME="tex2html3040"
+  HREF="node208.html">Restraints.remove_unpicked() -- remove unselected restraints</A>
+<LI><A NAME="tex2html3041"
+  HREF="node209.html">Restraints.condense() -- remove unselected or redundant restraints</A>
+<LI><A NAME="tex2html3042"
+  HREF="node210.html">Restraints.add() -- add restraint</A>
+<LI><A NAME="tex2html3043"
+  HREF="node211.html">Restraints.unpick() -- unselect restraints</A>
+<LI><A NAME="tex2html3044"
+  HREF="node212.html">Restraints.reindex() -- renumber model restraints using another model</A>
+<LI><A NAME="tex2html3045"
+  HREF="node213.html">Restraints.spline() -- approximate restraints by splines</A>
+<LI><A NAME="tex2html3046"
+  HREF="node214.html">Restraints.append() -- read spatial restraints</A>
+<LI><A NAME="tex2html3047"
+  HREF="node215.html">Restraints.write() -- write spatial restraints</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3048"
+  HREF="node216.html">The <TT>secondary_structure</TT> module: secondary structure restraints</A>
+<UL>
+<LI><A NAME="tex2html3049"
+  HREF="node217.html">alpha() -- make an <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$ \alpha $">
+-helix</A>
+<LI><A NAME="tex2html3050"
+  HREF="node218.html">strand() -- make a <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \beta $">
+-strand</A>
+<LI><A NAME="tex2html3051"
+  HREF="node219.html">sheet() -- make a <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \beta $">
+-sheet</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3052"
+  HREF="node220.html">The <TT>selection</TT> class: handling of sets of atom coordinates</A>
+<UL>
+<LI><A NAME="tex2html3053"
+  HREF="node221.html">selection() -- create a new selection</A>
+<LI><A NAME="tex2html3054"
+  HREF="node222.html">selection.add() -- add objects to selection</A>
+<LI><A NAME="tex2html3055"
+  HREF="node223.html">selection.extend_by_residue() -- extend selection by residue</A>
+<LI><A NAME="tex2html3056"
+  HREF="node224.html">selection.by_residue() -- make sure all residues are fully selected</A>
+<LI><A NAME="tex2html3057"
+  HREF="node225.html">selection.select_sphere() -- select all atoms within radius</A>
+<LI><A NAME="tex2html3058"
+  HREF="node226.html">selection.only_mainchain() -- select only mainchain atoms</A>
+<LI><A NAME="tex2html3059"
+  HREF="node227.html">selection.only_sidechain() -- select only sidechain atoms</A>
+<LI><A NAME="tex2html3060"
+  HREF="node228.html">selection.only_atom_types() -- select only atoms of given types</A>
+<LI><A NAME="tex2html3061"
+  HREF="node229.html">selection.only_residue_types() -- select only atoms of given residue type</A>
+<LI><A NAME="tex2html3062"
+  HREF="node230.html">selection.only_std_residues() -- select only standard residues</A>
+<LI><A NAME="tex2html3063"
+  HREF="node231.html">selection.only_no_topology() -- select only residues without topology</A>
+<LI><A NAME="tex2html3064"
+  HREF="node232.html">selection.only_het_residues() -- select only HETATM residues</A>
+<LI><A NAME="tex2html3065"
+  HREF="node233.html">selection.only_water_residues() -- select only water residues</A>
+<LI><A NAME="tex2html3066"
+  HREF="node234.html">selection.only_defined() -- select only atoms with defined coordinates</A>
+<LI><A NAME="tex2html3067"
+  HREF="node235.html">selection.write() -- write selection coordinates to a file</A>
+<LI><A NAME="tex2html3068"
+  HREF="node236.html">selection.translate() -- translate all coordinates</A>
+<LI><A NAME="tex2html3069"
+  HREF="node237.html">selection.rotate_origin() -- rotate coordinates about origin</A>
+<LI><A NAME="tex2html3070"
+  HREF="node238.html">selection.rotate_mass_center() -- rotate coordinates about mass center</A>
+<LI><A NAME="tex2html3071"
+  HREF="node239.html">selection.transform() -- transform coordinates with a matrix</A>
+<LI><A NAME="tex2html3072"
+  HREF="node240.html">selection.mutate() -- mutate selected residues</A>
+<LI><A NAME="tex2html3073"
+  HREF="node241.html">selection.randomize_xyz() -- randomize selected coordinates</A>
+<LI><A NAME="tex2html3074"
+  HREF="node242.html">selection.superpose() -- superpose model on selection given alignment</A>
+<LI><A NAME="tex2html3075"
+  HREF="node243.html">selection.rotate_dihedrals() -- change dihedral angles</A>
+<LI><A NAME="tex2html3076"
+  HREF="node244.html">selection.unbuild() -- undefine coordinates</A>
+<LI><A NAME="tex2html3077"
+  HREF="node245.html">selection.hot_atoms() -- atoms violating restraints</A>
+<LI><A NAME="tex2html3078"
+  HREF="node246.html">selection.energy() -- evaluate atom selection given restraints</A>
+<LI><A NAME="tex2html3079"
+  HREF="node247.html">selection.debug_function() -- test code self-consistency</A>
+<LI><A NAME="tex2html3080"
+  HREF="node248.html">selection.assess_dope() -- assess a model selection with the DOPE method</A>
+<LI><A NAME="tex2html3081"
+  HREF="node249.html">selection.assess_dopehr() -- assess a model with the DOPE-HR method</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3082"
+  HREF="node250.html">The <TT>physical</TT> module: contributions to the objective function</A>
+<UL>
+<LI><A NAME="tex2html3083"
+  HREF="node251.html">physical.values() -- create a new set of physical values</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3084"
+  HREF="node252.html">The <TT>optimizers</TT> module: optimization of the model</A>
+<UL>
+<LI><A NAME="tex2html3085"
+  HREF="node253.html">conjugate_gradients() -- optimize atoms given restraints, with CG</A>
+<LI><A NAME="tex2html3086"
+  HREF="node254.html">quasi_newton() -- optimize atoms with quasi-Newton minimization</A>
+<LI><A NAME="tex2html3087"
+  HREF="node255.html">molecular_dynamics() -- optimize atoms given restraints, with MD</A>
+<LI><A NAME="tex2html3088"
+  HREF="node256.html">actions.write_structure() -- write out the model coordinates</A>
+<LI><A NAME="tex2html3089"
+  HREF="node257.html">actions.trace() -- write out optimization energies, <EM>etc</EM></A>
+<LI><A NAME="tex2html3090"
+  HREF="node258.html">actions.charmm_trajectory() -- write out a CHARMM trajectory</A>
+<LI><A NAME="tex2html3091"
+  HREF="node259.html">User-defined optimizers</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3092"
+  HREF="node260.html">The <TT>schedule</TT> class: variable target function optimization</A>
+<UL>
+<LI><A NAME="tex2html3093"
+  HREF="node261.html">schedule() -- create a new schedule</A>
+<LI><A NAME="tex2html3094"
+  HREF="node262.html">schedule.make_for_model() -- trim a schedule for a model</A>
+<LI><A NAME="tex2html3095"
+  HREF="node263.html">schedule.write() -- write optimization schedule</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3096"
+  HREF="node264.html">The <TT>group_restraints</TT> class: restraints on atom groups</A>
+<UL>
+<LI><A NAME="tex2html3097"
+  HREF="node265.html">group_restraints() -- create a new set of group restraints</A>
+<LI><A NAME="tex2html3098"
+  HREF="node266.html">group_restraints.append() -- read group restraint parameters</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3099"
+  HREF="node267.html">The <TT>gbsa</TT> module: implicit solvation</A>
+<UL>
+<LI><A NAME="tex2html3100"
+  HREF="node268.html">gbsa.Scorer() -- create a new scorer to evaluate GB/SA energies</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3101"
+  HREF="node269.html">The <TT>alignment</TT> class: comparison of sequences and structures</A>
+<UL>
+<LI><A NAME="tex2html3102"
+  HREF="node270.html">alignment() -- create a new alignment</A>
+<LI><A NAME="tex2html3103"
+  HREF="node271.html">alignment.comments -- alignment file comments</A>
+<LI><A NAME="tex2html3104"
+  HREF="node272.html">alignment.append() -- read sequences and/or their alignment</A>
+<LI><A NAME="tex2html3105"
+  HREF="node273.html">alignment.clear() -- delete all sequences from the alignment</A>
+<LI><A NAME="tex2html3106"
+  HREF="node274.html">alignment.read_one() -- read sequences one by one from a file</A>
+<LI><A NAME="tex2html3107"
+  HREF="node275.html">alignment.check_structure_structure() -- check template structure superpositions</A>
+<LI><A NAME="tex2html3108"
+  HREF="node276.html">alignment.check_sequence_structure() -- check sequence/structure alignment for sanity</A>
+<LI><A NAME="tex2html3109"
+  HREF="node277.html">alignment.check() -- check alignment for modeling</A>
+<LI><A NAME="tex2html3110"
+  HREF="node278.html">alignment.compare_with() -- compare two alignments</A>
+<LI><A NAME="tex2html3111"
+  HREF="node279.html">alignment.append_model() -- copy model sequence and coordinates to alignment</A>
+<LI><A NAME="tex2html3112"
+  HREF="node280.html">alignment.append_sequence() -- add a sequence from one-letter codes</A>
+<LI><A NAME="tex2html3113"
+  HREF="node281.html">alignment.append_profile() -- add profile sequences to the alignment</A>
+<LI><A NAME="tex2html3114"
+  HREF="node282.html">alignment.write() -- write sequences and/or their alignment</A>
+<LI><A NAME="tex2html3115"
+  HREF="node283.html">alignment.edit() -- edit overhangs in alignment</A>
+<LI><A NAME="tex2html3116"
+  HREF="node284.html">alignment.describe() -- describe proteins</A>
+<LI><A NAME="tex2html3117"
+  HREF="node285.html">alignment.id_table() -- calculate percentage sequence identities</A>
+<LI><A NAME="tex2html3118"
+  HREF="node286.html">alignment.compare_sequences() -- compare sequences in alignment</A>
+<LI><A NAME="tex2html3119"
+  HREF="node287.html">alignment.align() -- align two (blocks of) sequences</A>
+<LI><A NAME="tex2html3120"
+  HREF="node288.html">alignment.align2d() -- align sequences with structures</A>
+<LI><A NAME="tex2html3121"
+  HREF="node289.html">alignment.malign() -- align two or more sequences</A>
+<LI><A NAME="tex2html3122"
+  HREF="node290.html">alignment.consensus() -- consensus sequence alignment</A>
+<LI><A NAME="tex2html3123"
+  HREF="node291.html">alignment.compare_structures() -- compare 3D structures given alignment</A>
+<LI><A NAME="tex2html3124"
+  HREF="node292.html">alignment.align3d() -- align two structures</A>
+<LI><A NAME="tex2html3125"
+  HREF="node293.html">alignment.malign3d() -- align two or more structures</A>
+<LI><A NAME="tex2html3126"
+  HREF="node294.html">alignment.salign() -- align two or more sequences/structures of proteins</A>
+<UL>
+<LI><A NAME="tex2html3127"
+  HREF="node294.html#SECTION00111525100000000000000">Features of proteins used for alignment</A>
+<LI><A NAME="tex2html3128"
+  HREF="node294.html#SECTION00111525200000000000000">Alignment of protein sequences</A>
+<LI><A NAME="tex2html3129"
+  HREF="node294.html#SECTION00111525300000000000000">Alignment of protein structures with sequences</A>
+<LI><A NAME="tex2html3130"
+  HREF="node294.html#SECTION00111525400000000000000">Alignment of protein structures</A>
+<LI><A NAME="tex2html3131"
+  HREF="node294.html#SECTION00111525500000000000000">Sub-optimal alignments</A>
+<LI><A NAME="tex2html3132"
+  HREF="node294.html#SECTION00111525600000000000000">Alignments using external restraints</A>
+<LI><A NAME="tex2html3133"
+  HREF="node294.html#SECTION00111525700000000000000">Gap penalties and correcting for gaps</A>
+<LI><A NAME="tex2html3134"
+  HREF="node294.html#SECTION00111525800000000000000">Useful SALIGN information and commands</A>
+</UL>
+<LI><A NAME="tex2html3135"
+  HREF="node295.html">alignment.get_suboptimals() -- parse suboptimal alignments file</A>
+<LI><A NAME="tex2html3136"
+  HREF="node296.html">alignment.to_profile() -- convert alignment to profile format</A>
+<LI><A NAME="tex2html3137"
+  HREF="node297.html">alignment.segment_matching() -- align segments</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3138"
+  HREF="node298.html">The <TT>Sequence</TT> class: a single sequence within an alignment</A>
+<UL>
+<LI><A NAME="tex2html3139"
+  HREF="node299.html">Sequence.range -- residue range</A>
+<LI><A NAME="tex2html3140"
+  HREF="node300.html">Sequence.code -- alignment code</A>
+<LI><A NAME="tex2html3141"
+  HREF="node301.html">Sequence.atom_file -- PDB file name</A>
+<LI><A NAME="tex2html3142"
+  HREF="node302.html">Sequence.source -- source organism</A>
+<LI><A NAME="tex2html3143"
+  HREF="node303.html">Sequence.name -- protein name</A>
+<LI><A NAME="tex2html3144"
+  HREF="node304.html">Sequence.prottyp -- protein sequence type</A>
+<LI><A NAME="tex2html3145"
+  HREF="node305.html">Sequence.resolution -- structure resolution</A>
+<LI><A NAME="tex2html3146"
+  HREF="node306.html">Sequence.rfactor -- R factor</A>
+<LI><A NAME="tex2html3147"
+  HREF="node307.html">Sequence.residues -- list of all residues in the sequence</A>
+<LI><A NAME="tex2html3148"
+  HREF="node308.html">Sequence.chains -- list of all chains in the sequence</A>
+<LI><A NAME="tex2html3149"
+  HREF="node309.html">Sequence.transfer_res_prop() -- transfer residue properties</A>
+<LI><A NAME="tex2html3150"
+  HREF="node310.html">Sequence.get_num_equiv() -- get number of equivalences</A>
+<LI><A NAME="tex2html3151"
+  HREF="node311.html">Sequence.get_sequence_identity() -- get sequence identity</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3152"
+  HREF="node312.html">The <TT>Structure</TT> class: a template structure within an alignment</A>
+<UL>
+<LI><A NAME="tex2html3153"
+  HREF="node313.html">Structure.write() -- write out PDB file</A>
+<LI><A NAME="tex2html3154"
+  HREF="node314.html">Structure.reread() -- reread coordinates from atom file</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3155"
+  HREF="node315.html">The <TT>Chain</TT> class: a single chain in a model or alignment</A>
+<UL>
+<LI><A NAME="tex2html3156"
+  HREF="node316.html">Chain.name -- chain ID</A>
+<LI><A NAME="tex2html3157"
+  HREF="node317.html">Chain.residues -- all residues in the chain</A>
+<LI><A NAME="tex2html3158"
+  HREF="node318.html">Chain.atoms -- all atoms in the chain</A>
+<LI><A NAME="tex2html3159"
+  HREF="node319.html">Chain.filter() -- check if this chain passes all criteria</A>
+<LI><A NAME="tex2html3160"
+  HREF="node320.html">Chain.write() -- write out chain sequence to an alignment file</A>
+<LI><A NAME="tex2html3161"
+  HREF="node321.html">Chain.atom_file_and_code() -- get suitable names for this chain</A>
+<LI><A NAME="tex2html3162"
+  HREF="node322.html">Chain.join() -- join other chain(s) onto this one</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3163"
+  HREF="node323.html">The <TT>Residue</TT> class: a single residue in a model or alignment</A>
+<UL>
+<LI><A NAME="tex2html3164"
+  HREF="node324.html">Residue.name -- internal (CHARMM) residue type name</A>
+<LI><A NAME="tex2html3165"
+  HREF="node325.html">Residue.pdb_name -- PDB (IUPAC) type name</A>
+<LI><A NAME="tex2html3166"
+  HREF="node326.html">Residue.code -- One-letter residue type code</A>
+<LI><A NAME="tex2html3167"
+  HREF="node327.html">Residue.hetatm -- HETATM indicator</A>
+<LI><A NAME="tex2html3168"
+  HREF="node328.html">Residue.index -- internal integer index</A>
+<LI><A NAME="tex2html3169"
+  HREF="node329.html">Residue.num -- PDB-style residue number</A>
+<LI><A NAME="tex2html3170"
+  HREF="node330.html">Residue.curvature -- Mainchain curvature</A>
+<LI><A NAME="tex2html3171"
+  HREF="node331.html">Residue.atoms -- all atoms in the residue</A>
+<LI><A NAME="tex2html3172"
+  HREF="node332.html">Residue.chain -- chain object</A>
+<LI><A NAME="tex2html3173"
+  HREF="node333.html">Residue.phi -- <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$ \phi $">
+ dihedral angle</A>
+<LI><A NAME="tex2html3174"
+  HREF="node334.html">Residue.psi -- <IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ \psi $">
+ dihedral angle</A>
+<LI><A NAME="tex2html3175"
+  HREF="node335.html">Residue.omega -- <IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \omega $">
+ dihedral angle</A>
+<LI><A NAME="tex2html3176"
+  HREF="node336.html">Residue.alpha -- <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$ \alpha $">
+ dihedral angle</A>
+<LI><A NAME="tex2html3177"
+  HREF="node337.html">Residue.chi1 -- <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img7.png"
+ ALT="$ \chi _1$">
+ dihedral angle</A>
+<LI><A NAME="tex2html3178"
+  HREF="node338.html">Residue.chi2 -- <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ \chi _2$">
+ dihedral angle</A>
+<LI><A NAME="tex2html3179"
+  HREF="node339.html">Residue.chi3 -- <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ \chi _3$">
+ dihedral angle</A>
+<LI><A NAME="tex2html3180"
+  HREF="node340.html">Residue.chi4 -- <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.png"
+ ALT="$ \chi _4$">
+ dihedral angle</A>
+<LI><A NAME="tex2html3181"
+  HREF="node341.html">Residue.chi5 -- <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.png"
+ ALT="$ \chi _5$">
+ dihedral angle</A>
+<LI><A NAME="tex2html3182"
+  HREF="node342.html">Residue.get_aligned_residue() -- get aligned residue in another sequence</A>
+<LI><A NAME="tex2html3183"
+  HREF="node343.html">Residue.add_leading_gaps() -- add gap(s) before this residue</A>
+<LI><A NAME="tex2html3184"
+  HREF="node344.html">Residue.add_trailing_gaps() -- add gap(s) after this residue</A>
+<LI><A NAME="tex2html3185"
+  HREF="node345.html">Residue.remove_leading_gaps() -- remove gap(s) before this residue</A>
+<LI><A NAME="tex2html3186"
+  HREF="node346.html">Residue.remove_trailing_gaps() -- remove gap(s) after this residue</A>
+<LI><A NAME="tex2html3187"
+  HREF="node347.html">Residue.get_leading_gaps() -- get number of gaps before this residue</A>
+<LI><A NAME="tex2html3188"
+  HREF="node348.html">Residue.get_trailing_gaps() -- get number of gaps after this residue</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3189"
+  HREF="node349.html">The <TT>Dihedral</TT> class: a single dihedral in a model or alignment</A>
+<UL>
+<LI><A NAME="tex2html3190"
+  HREF="node350.html">Dihedral.value -- current value in degrees</A>
+<LI><A NAME="tex2html3191"
+  HREF="node351.html">Dihedral.atoms -- atoms defining the angle</A>
+<LI><A NAME="tex2html3192"
+  HREF="node352.html">Dihedral.dihclass -- integer dihedral class</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3193"
+  HREF="node353.html">The <TT>Point</TT> class: a point in Cartesian space</A>
+<UL>
+<LI><A NAME="tex2html3194"
+  HREF="node354.html">Point.x -- x coordinate</A>
+<LI><A NAME="tex2html3195"
+  HREF="node355.html">Point.select_sphere() -- select all atoms within radius</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3196"
+  HREF="node356.html">The <TT>Atom</TT> class: a single atom in a model or structure</A>
+<UL>
+<LI><A NAME="tex2html3197"
+  HREF="node357.html">Atom.dvx -- objective function derivative</A>
+<LI><A NAME="tex2html3198"
+  HREF="node358.html">Atom.vx -- x component of velocity</A>
+<LI><A NAME="tex2html3199"
+  HREF="node359.html">Atom.biso -- isotropic temperature factor</A>
+<LI><A NAME="tex2html3200"
+  HREF="node360.html">Atom.occ -- occupancy</A>
+<LI><A NAME="tex2html3201"
+  HREF="node361.html">Atom.charge -- electrostatic charge</A>
+<LI><A NAME="tex2html3202"
+  HREF="node362.html">Atom.mass -- mass</A>
+<LI><A NAME="tex2html3203"
+  HREF="node363.html">Atom.name -- PDB name</A>
+<LI><A NAME="tex2html3204"
+  HREF="node364.html">Atom.element -- Element symbol</A>
+<LI><A NAME="tex2html3205"
+  HREF="node365.html">Atom.residue -- residue object</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3206"
+  HREF="node366.html">The <TT>profile</TT> class: using sequence profiles</A>
+<UL>
+<LI><A NAME="tex2html3207"
+  HREF="node367.html">profile() -- create a new profile</A>
+<LI><A NAME="tex2html3208"
+  HREF="node368.html">profile.read() -- read a profile of a sequence</A>
+<LI><A NAME="tex2html3209"
+  HREF="node369.html">profile.write() -- write a profile</A>
+<LI><A NAME="tex2html3210"
+  HREF="node370.html">profile.to_alignment() -- profile to alignment</A>
+<LI><A NAME="tex2html3211"
+  HREF="node371.html">profile.scan() -- Compare a target profile against a database of profiles</A>
+<LI><A NAME="tex2html3212"
+  HREF="node372.html">profile.build() -- Build a profile for a given sequence or alignment</A>
+<LI><A NAME="tex2html3213"
+  HREF="node373.html">pssmdb() -- create a new PSSM database</A>
+<LI><A NAME="tex2html3214"
+  HREF="node374.html">pssmdb.read() -- read a PSSM database from a file</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3215"
+  HREF="node375.html">The <TT>sequence_db</TT> class: using sequence databases</A>
+<UL>
+<LI><A NAME="tex2html3216"
+  HREF="node376.html">sequence_db() -- create a new sequence database</A>
+<LI><A NAME="tex2html3217"
+  HREF="node377.html">sequence_db.read() -- read a database of sequences</A>
+<LI><A NAME="tex2html3218"
+  HREF="node378.html">sequence_db.write() -- write a database of sequences</A>
+<LI><A NAME="tex2html3219"
+  HREF="node379.html">sequence_db.convert() -- convert a database to binary format</A>
+<LI><A NAME="tex2html3220"
+  HREF="node380.html">sequence_db.search() -- search for similar sequences</A>
+<LI><A NAME="tex2html3221"
+  HREF="node381.html">sequence_db.filter() -- cluster sequences by sequence-identity</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3222"
+  HREF="node382.html">The <TT>density</TT> class: handling electron microscopy density data</A>
+<UL>
+<LI><A NAME="tex2html3223"
+  HREF="node383.html">density() -- create a new density map</A>
+<LI><A NAME="tex2html3224"
+  HREF="node384.html">density.read() -- read an EM (electron microscopy) density map file</A>
+<LI><A NAME="tex2html3225"
+  HREF="node385.html">density.grid_search() -- dock a structure into an EM (electron microscopy) density map</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3226"
+  HREF="node386.html">The <TT>saxsdata</TT> class: using small-angle X-ray (SAXS) data</A>
+<UL>
+<LI><A NAME="tex2html3227"
+  HREF="node387.html">saxsdata() -- create a new saxsdata structure</A>
+<LI><A NAME="tex2html3228"
+  HREF="node388.html">saxsdata.ini_saxs() -- Initialization of SAXS data</A>
+<LI><A NAME="tex2html3229"
+  HREF="node389.html">saxsdata.saxs_read() -- Read in SAXS data</A>
+<LI><A NAME="tex2html3230"
+  HREF="node390.html">saxsdata.saxs_pr_read() -- Read in P(r) data</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3231"
+  HREF="node391.html">The <TT>info</TT> object: obtaining information about the M<SMALL>ODELLER</SMALL> build</A>
+<UL>
+<LI><A NAME="tex2html3232"
+  HREF="node392.html">info.version -- the full M<SMALL>ODELLER</SMALL> version number</A>
+<LI><A NAME="tex2html3233"
+  HREF="node393.html">info.version_info -- the version number, as a tuple</A>
+<LI><A NAME="tex2html3234"
+  HREF="node394.html">info.build_date -- the date this binary was built</A>
+<LI><A NAME="tex2html3235"
+  HREF="node395.html">info.exe_type -- the executable type of this binary</A>
+<LI><A NAME="tex2html3236"
+  HREF="node396.html">info.debug -- this binary's debug flag</A>
+<LI><A NAME="tex2html3237"
+  HREF="node397.html">info.bindir -- M<SMALL>ODELLER</SMALL> binary directory</A>
+<LI><A NAME="tex2html3238"
+  HREF="node398.html">info.time_mark() -- print current date, time, and CPU time</A>
+<LI><A NAME="tex2html3239"
+  HREF="node399.html">info.jobname -- name of the current job</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3240"
+  HREF="node400.html">The <TT>log</TT> object: controlling the amount of output</A>
+<UL>
+<LI><A NAME="tex2html3241"
+  HREF="node401.html">log.level() -- Set all log output levels</A>
+<LI><A NAME="tex2html3242"
+  HREF="node402.html">log.none() -- display no log output</A>
+<LI><A NAME="tex2html3243"
+  HREF="node403.html">log.minimal() -- display minimal log output</A>
+<LI><A NAME="tex2html3244"
+  HREF="node404.html">log.verbose() -- display verbose log output</A>
+<LI><A NAME="tex2html3245"
+  HREF="node405.html">log.very_verbose() -- display verbose log output, and dynamic memory information</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3246"
+  HREF="node406.html">The <TT>modfile</TT> module: handling of files</A>
+<UL>
+<LI><A NAME="tex2html3247"
+  HREF="node407.html">modfile.default() -- generate an `automatic' filename</A>
+<LI><A NAME="tex2html3248"
+  HREF="node408.html">modfile.delete() -- delete a file</A>
+<LI><A NAME="tex2html3249"
+  HREF="node409.html">modfile.inquire() -- check if file exists</A>
+<LI><A NAME="tex2html3250"
+  HREF="node410.html">modfile.File() -- open a handle to a M<SMALL>ODELLER</SMALL> file</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3251"
+  HREF="node411.html">The <TT>scripts</TT> module: utility scripts</A>
+<UL>
+<LI><A NAME="tex2html3252"
+  HREF="node412.html">cispeptide() -- creates cis-peptide stereochemical restraints</A>
+<LI><A NAME="tex2html3253"
+  HREF="node413.html">complete_pdb() -- read a PDB file, and fill in any missing atoms</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3254"
+  HREF="node414.html">The <TT>salign</TT> module: high-level usage of SALIGN</A>
+<UL>
+<LI><A NAME="tex2html3255"
+  HREF="node415.html">iterative_structural_align() -- obtain the best structural alignment</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html3256"
+  HREF="node416.html">Parallel job support</A>
+<UL>
+<LI><A NAME="tex2html3257"
+  HREF="node417.html">job() -- create a new parallel job</A>
+<LI><A NAME="tex2html3258"
+  HREF="node418.html">sge_pe_job() -- create a job using all Sun GridEngine (SGE) slave processes</A>
+<LI><A NAME="tex2html3259"
+  HREF="node419.html">sge_qsub_job() -- create a job which can be expanded with Sun GridEngine 'qsub'</A>
+<LI><A NAME="tex2html3260"
+  HREF="node420.html">job.slave_startup_commands -- Slave startup commands</A>
+<LI><A NAME="tex2html3261"
+  HREF="node421.html">job.queue_task() -- submit a task to run within the job</A>
+<LI><A NAME="tex2html3262"
+  HREF="node422.html">job.run_all_tasks() -- run all queued tasks, and return results</A>
+<LI><A NAME="tex2html3263"
+  HREF="node423.html">job.yield_tasks_unordered() -- run all queued tasks, and yield unordered results</A>
+<LI><A NAME="tex2html3264"
+  HREF="node424.html">job.start() -- start all slaves for message-passing</A>
+<LI><A NAME="tex2html3265"
+  HREF="node425.html">Communicator.send_data() -- send data</A>
+<LI><A NAME="tex2html3266"
+  HREF="node426.html">Communicator.get_data() -- get data</A>
+<LI><A NAME="tex2html3267"
+  HREF="node427.html">slave.run_cmd() -- run a command on the slave</A>
+<LI><A NAME="tex2html3268"
+  HREF="node428.html">local_slave() -- create a slave running on the local machine</A>
+<LI><A NAME="tex2html3269"
+  HREF="node429.html">sge_pe_slave() -- create a slave running on a Sun GridEngine parallel environment slave node</A>
+<LI><A NAME="tex2html3270"
+  HREF="node430.html">sge_qsub_slave() -- create a 'qsub' slave running on a Sun GridEngine node</A>
+<LI><A NAME="tex2html3271"
+  HREF="node431.html">ssh_slave() -- create a slave on a remote host accessed via ssh</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

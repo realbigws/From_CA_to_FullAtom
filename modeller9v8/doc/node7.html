@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>What is MODELLER?</TITLE>
+<META NAME="description" CONTENT="What is MODELLER?">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node8.html">
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="node6.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1372"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1366"
+  HREF="node6.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1360"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1368"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1370"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1373"
+  HREF="node8.html">MODELLER bibliography</A>
+<B> Up:</B> <A NAME="tex2html1367"
+  HREF="node6.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html1361"
+  HREF="node6.html">Introduction</A>
+ &nbsp; <B>  <A NAME="tex2html1369"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1371"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00610000000000000000">
+What is M<SMALL>ODELLER</SMALL>?</A>
+</H1>
+
+<P>
+M<SMALL>ODELLER</SMALL> is a computer program that models three-dimensional structures of 
+proteins and their assemblies by satisfaction of spatial restraints. 
+
+<P>
+M<SMALL>ODELLER</SMALL> is most frequently used for homology or comparative protein 
+structure modeling: The user provides an alignment of a sequence to be modeled 
+with known related structures and M<SMALL>ODELLER</SMALL> will automatically calculate 
+a model with all non-hydrogen atoms.
+
+<P>
+More generally, the input to the program are 
+restraints on the spatial structure of the amino acid sequence(s) 
+and ligands to be modeled. The output is a 3D structure that satisfies 
+these restraints as well as possible.
+Restraints can in principle be derived from a number of 
+different sources. These include related protein structures (comparative 
+modeling), NMR experiments (NMR refinement), rules of secondary 
+structure packing (combinatorial modeling), cross-linking experiments,
+fluorescence spectroscopy, image reconstruction in electron microscopy,
+site-directed mutagenesis, intuition, residue-residue and atom-atom 
+potentials of mean force, <EM>etc</EM>. The restraints can operate on distances, 
+angles, dihedral angles, pairs of dihedral angles and some other spatial 
+features defined by atoms or pseudo atoms. Presently, M<SMALL>ODELLER</SMALL> 
+automatically derives the restraints only from the known related structures 
+and their alignment with the target sequence.
+
+<P>
+A 3D model is obtained by optimization of a molecular probability 
+density function (pdf). The molecular pdf for comparative modeling
+is optimized with the variable target function procedure in Cartesian space 
+that employs methods of conjugate gradients and molecular dynamics with 
+simulated annealing.
+
+<P>
+M<SMALL>ODELLER</SMALL> can also perform multiple comparison of protein sequences and/or 
+structures, clustering of proteins, and searching of sequence databases. 
+The program is used with a scripting language and does not include any 
+graphics. It is written in standard F<SMALL>ORTRAN</SMALL>&nbsp;90 and will run on U<SMALL>NIX</SMALL>,
+Windows, or Mac computers.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1372"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1366"
+  HREF="node6.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1360"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1368"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1370"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1373"
+  HREF="node8.html">MODELLER bibliography</A>
+<B> Up:</B> <A NAME="tex2html1367"
+  HREF="node6.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html1361"
+  HREF="node6.html">Introduction</A>
+ &nbsp; <B>  <A NAME="tex2html1369"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1371"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

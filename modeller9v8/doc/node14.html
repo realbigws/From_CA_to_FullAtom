@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Running MODELLER</TITLE>
+<META NAME="description" CONTENT="Running MODELLER">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node13.html">
+<LINK REL="up" HREF="node12.html">
+<LINK REL="next" HREF="node15.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1474"
+  HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1468"
+  HREF="node12.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1464"
+  HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1470"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1472"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1475"
+  HREF="node15.html">Automated comparative modeling with</A>
+<B> Up:</B> <A NAME="tex2html1469"
+  HREF="node12.html">Using MODELLER for comparative</A>
+<B> Previous:</B> <A NAME="tex2html1465"
+  HREF="node13.html">Preparing input files</A>
+ &nbsp; <B>  <A NAME="tex2html1471"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1473"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00662000000000000000"></A>
+<A NAME="SECTION:running"></A>
+<BR>
+Running M<SMALL>ODELLER</SMALL>
+</H2>
+
+<P>
+To run M<SMALL>ODELLER</SMALL> with the script file <TT>model-default.py</TT> above, do the
+following:
+
+<P>
+
+<OL>
+<LI>Open a command line prompt:
+  
+<UL>
+<LI><B>On Linux/Unix:</B> <TT>ssh</TT> to the machine, or open an xterm or
+        GNOME Terminal.
+</LI>
+<LI><B>On Windows:</B> Click on the `Modeller' link on your Start Menu. This
+        will give you a Windows Command Prompt, set up for you to run M<SMALL>ODELLER</SMALL>.
+</LI>
+<LI><B>On Mac OS X:</B> <TT>ssh</TT> to the machine, or open the Terminal
+        application.
+  
+</LI>
+</UL>
+
+<P>
+</LI>
+<LI>Change to the directory containing the script and alignment files you
+      created earlier, using the <TT>'cd'</TT> command.
+
+<P>
+</LI>
+<LI>Run M<SMALL>ODELLER</SMALL> itself by typing the following at the command prompt:
+
+<P>
+<TT>mod9v8 model-default.py</TT>
+</LI>
+</OL>
+
+<P>
+A number of intermediary files are created as the program proceeds. After 
+about 10 seconds on a modern PC, the final <TT>1fdx</TT> model 
+is written to file <TT>1fdx.B99990001.pdb</TT>. Examine the <TT>model-default.log</TT> 
+file for information about the run. In particular, one should always
+check the output of the <B><A HREF="node277.html#CMD:alignment.check">alignment.check()</A></B><A NAME="2292"></A> command, which you can
+find by searching for `<TT>check_a</TT>'. Also, check for warning
+and error messages by searching for `<TT>W&gt;</TT>' and `<TT>E&gt;</TT>',
+respectively. There should be no error messages; most often, there are 
+some warning messages that can usually be ignored.
+
+<P>
+<A NAME="2217"></A>
+(Note: if you have <A NAME="tex2html25"
+  HREF="http://www.python.org/">Python</A> installed on your system, you may be able to use
+M<SMALL>ODELLER</SMALL> as an ordinary Python module. This works automatically on Mac
+OS X, Windows with <A NAME="tex2html26"
+  HREF="http://www.python.org/">Python</A> 2.3, 2.4 or 2.5, or using the RPM install on Linux
+with <A NAME="tex2html27"
+  HREF="http://www.python.org/">Python</A> 2.3, 2.4 or 2.5.
+On other systems, you may need to set the <TT>PYTHONPATH</TT> and
+<TT>LD_LIBRARY_PATH</TT> variables, or create symlinks to the relevant directories,
+so that your system can find the M<SMALL>ODELLER</SMALL> Python modules and dynamic
+libraries, respectively.)
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1474"
+  HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1468"
+  HREF="node12.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1464"
+  HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1470"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1472"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1475"
+  HREF="node15.html">Automated comparative modeling with</A>
+<B> Up:</B> <A NAME="tex2html1469"
+  HREF="node12.html">Using MODELLER for comparative</A>
+<B> Previous:</B> <A NAME="tex2html1465"
+  HREF="node13.html">Preparing input files</A>
+ &nbsp; <B>  <A NAME="tex2html1471"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1473"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

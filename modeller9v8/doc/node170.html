@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>model.read() -- read coordinates for MODEL</TITLE>
+<META NAME="description" CONTENT="model.read() -- read coordinates for MODEL">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node171.html">
+<LINK REL="previous" HREF="node169.html">
+<LINK REL="up" HREF="node155.html">
+<LINK REL="next" HREF="node171.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4225"
+  HREF="node171.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4219"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4213"
+  HREF="node169.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4221"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4223"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4226"
+  HREF="node171.html">model.build_sequence()   build</A>
+<B> Up:</B> <A NAME="tex2html4220"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4214"
+  HREF="node169.html">model.loops()   return</A>
+ &nbsp; <B>  <A NAME="tex2html4222"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4224"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011615000000000000000">
+model.read() -- read coordinates for MODEL</A>
+</H2> <A NAME="13517"></A><A NAME="CMD:model.read"></A><A NAME="13520"></A><TT>read(file, model_format='PDB', model_segment=('FIRST:@', 'LAST:'), io=None)</TT>
+<BR><A NAME="12539"></A>
+<BLOCKQUOTE>
+This command reads the atomic coordinates, atom 
+names, residue names, residue numbers, isotropic temperature factors
+and segment specifications for MODEL, assigns residue types, and defines
+the dihedral angles listed in the <TT>$RESDIH_LIB</TT> library.
+For <TT>CHARMM</TT> and <TT>UHBD</TT> file formats, it also reads the atomic 
+charges. However, it does not assign C<SMALL>HARMM</SMALL> and M<SMALL>ODELLER</SMALL> atom types, 
+internal coordinates, charges (in the case of the <TT>'PDB'</TT> format), or patches 
+(such as disulfides); to make these assignments, which are necessary for 
+almost all energy commands, use <B><A HREF="node174.html#CMD:model.generatetopology">model.generate_topology()</A></B><A NAME="13553"></A>. All real and pseudo 
+atoms are selected. <A NAME="13530"></A>The PDB residue type <TT>'HIS'</TT> is
+assigned the
+C<SMALL>HARMM</SMALL> residue type <TT>'HSD'</TT>, which is the neutral His with H on ND1.
+The PDB types <TT>'ASP'</TT> and <TT>'GLU'</TT> are assigned the corresponding charged
+C<SMALL>HARMM</SMALL> residue types, as are <TT>'LYS'</TT> and <TT>'ARG'</TT>. These conventions
+are relevant only if Coulomb<A NAME="13565"></A> terms and/or hydrogens are used.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>model_segment</I><A NAME="13567"></A> sets the beginning and ending residue identifiers 
+for the contiguous sequence of residues to be read from the PDB file 
+(this option does not work yet for the other file formats). The format 
+of residue identifiers is described in Section&nbsp;<A HREF="node454.html#alignmentformat">B.1</A>. 
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Note that this command reads in the model file directly, and does no special
+handling to ensure the file is suitable for energy evaluations (<EM>e.g.</EM>, that it
+has no missing atoms). If you want to read in a PDB file from PDB or generated
+from an experiment or some other program, it is recommended that you use the
+<B><A HREF="node413.html#CMD:completepdb">complete_pdb()</A></B><A NAME="13571"></A> script instead.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>For PDB files with alternate locations (characters in column 17 of ATOM or
+HETATM records), M<SMALL>ODELLER</SMALL> reads only the first alternate location encountered
+for each residue. (This differs from older versions of M<SMALL>ODELLER</SMALL>, which would
+read only alternate locations marked with A or 1.)
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The model's R value is read from appropriately formatted PDB REMARKs and is
+available as <I><A HREF="node306.html#MEMB:Sequence.rfactor">Sequence.rfactor</A></I><A NAME="13580"></A>. The first valid R value (not free R) found in
+the PDB file is used.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Some M<SMALL>ODELLER</SMALL>-specific REMARKs are also read from PDB files if they are
+present. See <B><A HREF="node172.html#CMD:model.write">model.write()</A></B><A NAME="13587"></A> for a list of such REMARKs.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>This command can raise a <TT>FileFormatError</TT><A NAME="13592"></A> if the atom file format is
+invalid.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html97"
+  HREF="../examples/commands/read_model.py">examples/commands/read_model.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: model.read(), model.write()
+
+# This will read a PDB file and write a CHARMM atom file without atomic charges
+# or radii. For assigning charges and radii, see the all_hydrogen.py script.
+
+from modeller import *
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+
+mdl = model(env)
+mdl.read(file='1fas')
+mdl.write(file='1fas.crd', model_format='CHARMM')
+mdl.write(file='1fas.cif', model_format='MMCIF')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4225"
+  HREF="node171.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4219"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4213"
+  HREF="node169.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4221"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4223"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4226"
+  HREF="node171.html">model.build_sequence()   build</A>
+<B> Up:</B> <A NAME="tex2html4220"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4214"
+  HREF="node169.html">model.loops()   return</A>
+ &nbsp; <B>  <A NAME="tex2html4222"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4224"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

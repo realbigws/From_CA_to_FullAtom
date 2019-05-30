@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>selection.transform() -- transform coordinates with a matrix</TITLE>
+<META NAME="description" CONTENT="selection.transform() -- transform coordinates with a matrix">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node240.html">
+<LINK REL="previous" HREF="node238.html">
+<LINK REL="up" HREF="node220.html">
+<LINK REL="next" HREF="node240.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5237"
+  HREF="node240.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5231"
+  HREF="node220.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5225"
+  HREF="node238.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5233"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5235"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5238"
+  HREF="node240.html">selection.mutate()   mutate</A>
+<B> Up:</B> <A NAME="tex2html5232"
+  HREF="node220.html">The selection class: handling</A>
+<B> Previous:</B> <A NAME="tex2html5226"
+  HREF="node238.html">selection.rotate_mass_center()   rotate</A>
+ &nbsp; <B>  <A NAME="tex2html5234"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5236"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011919000000000000000">
+selection.transform() -- transform coordinates with a matrix</A>
+</H2> <A NAME="20551"></A><A NAME="CMD:selection.transform"></A><A NAME="20554"></A><TT>transform(matrix)</TT>
+<BR><BLOCKQUOTE>
+This transforms all the selection's coordinates using the given 3x3 matrix. This
+can be used to perform rotations, translations, shears, <EM>etc</EM>.
+
+</BLOCKQUOTE>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html129"
+  HREF="../examples/commands/rotate_model.py">examples/commands/rotate_model.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: selection.transform(), selection.translate(),
+# selection.rotate_origin()
+
+# This will orient a model as specified:
+
+from modeller import *
+
+# Read the structure:
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+mdl = model(env, file='1fas')
+# Select all atoms
+s = selection(mdl)
+
+# Translate 1 angstrom along the x axis:
+s.translate([1, 0, 0])
+
+# Transform with a rotation matrix (no change in this example):
+s.transform([[1, 0, 0],
+             [0, 1, 0],
+             [0, 0, 1]])
+
+# Rotate 90 degrees about the axis, through the origin:
+s.rotate_origin([1, 1, 1], 90)
+
+mdl.write(file='1fas.ini')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

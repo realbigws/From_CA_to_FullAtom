@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>io_data() -- create a new input parameters object</TITLE>
+<META NAME="description" CONTENT="io_data() -- create a new input parameters object">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node139.html">
+<LINK REL="previous" HREF="node137.html">
+<LINK REL="up" HREF="node137.html">
+<LINK REL="next" HREF="node139.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html3731"
+  HREF="node139.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html3725"
+  HREF="node137.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html3719"
+  HREF="node137.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html3727"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html3729"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3732"
+  HREF="node139.html">io_data.hetatm   whether</A>
+<B> Up:</B> <A NAME="tex2html3726"
+  HREF="node137.html">The io_data class: coordinate</A>
+<B> Previous:</B> <A NAME="tex2html3720"
+  HREF="node137.html">The io_data class: coordinate</A>
+ &nbsp; <B>  <A NAME="tex2html3728"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html3730"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001141000000000000000">
+io_data() -- create a new input parameters object</A>
+</H2> <A NAME="11447"></A><A NAME="CMD:iodata"></A><A NAME="11450"></A><TT>io_data(copy=None, **kwargs)</TT>
+<BR>
+<P>
+<BLOCKQUOTE>
+This creates a new <TT>io_data</TT> object, with default parameters. You can,
+however, specify any of these parameters when you create the object:
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<TT>io = io_data(hetatm=True)
+</TT></BLOCKQUOTE></BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Alternatively, you can set parameters in an existing object:
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<TT>io.hetatm = True
+</TT></BLOCKQUOTE></BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Many commands use <TT>io_data</TT> objects. However, for convenience, the
+<TT>environ</TT> class also contains an <TT>io_data</TT> object, as
+<I><A HREF="node111.html#MEMB:environ.io">environ.io</A></I><A NAME="11487"></A>. This is used as the default if you do not give an
+<TT>io_data</TT> parameter, so you can set this to change the input
+configuration used by all functions:
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>
+<BLOCKQUOTE>
+<TT>env = environ() 
+<BR>
+env.io.hetatm = True
+</TT></BLOCKQUOTE></BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Please note that <I><A HREF="node139.html#MEMB:iodata.hetatm">io_data.hetatm</A></I><A NAME="11494"></A>, <I><A HREF="node140.html#MEMB:iodata.hydrogen">io_data.hydrogen</A></I><A NAME="11499"></A> and
+<I><A HREF="node141.html#MEMB:iodata.water">io_data.water</A></I><A NAME="11504"></A> are ignored when reading <TT>UHBD</TT> files. When reading
+<TT>CHARMM</TT> files, <I><A HREF="node139.html#MEMB:iodata.hetatm">io_data.hetatm</A></I><A NAME="11511"></A> is ignored.
+
+</BLOCKQUOTE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>profile.read() -- read a profile of a sequence</TITLE>
+<META NAME="description" CONTENT="profile.read() -- read a profile of a sequence">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node369.html">
+<LINK REL="previous" HREF="node367.html">
+<LINK REL="up" HREF="node366.html">
+<LINK REL="next" HREF="node369.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7142"
+  HREF="node369.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7136"
+  HREF="node366.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7130"
+  HREF="node367.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7138"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7140"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7143"
+  HREF="node369.html">profile.write()   write</A>
+<B> Up:</B> <A NAME="tex2html7137"
+  HREF="node366.html">The profile class: using</A>
+<B> Previous:</B> <A NAME="tex2html7131"
+  HREF="node367.html">profile()   create</A>
+ &nbsp; <B>  <A NAME="tex2html7139"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7141"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011232000000000000000">
+profile.read() -- read a profile of a sequence</A>
+</H2> <A NAME="33257"></A><A NAME="CMD:profile.read"></A><A NAME="33260"></A><TT>read(file, profile_format)</TT>
+<BR><BLOCKQUOTE>
+This command will read a profile from a specified
+file. Two formats are supported: <TT>TEXT</TT> and <TT>BINARY</TT>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>For the format of text files, see Section&nbsp;<A HREF="node461.html#profileformat">B.3</A>.
+Binary format files are standard <A NAME="tex2html201"
+  HREF="http://hdf.ncsa.uiuc.edu/HDF5/">HDF5</A> files (see Section&nbsp;<A HREF="node462.html#binaryformat">B.4</A>).
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html202"
+  HREF="../examples/commands/read_profile.py">examples/commands/read_profile.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example file for: profile.read(), profile.to_alignment()
+
+from modeller import *
+
+env = environ()
+
+# Create a new, blank, profile
+prf = profile(env)
+
+# Read in the profile file
+prf.read(file='toxin.prf', profile_format='TEXT')
+
+# Convert the profile to alignment
+aln = prf.to_alignment()
+
+# Write out the alignment
+aln.write(file='readprofile.pir', alignment_format='PIR')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

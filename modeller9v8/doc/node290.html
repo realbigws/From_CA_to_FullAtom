@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>alignment.consensus() -- consensus sequence alignment</TITLE>
+<META NAME="description" CONTENT="alignment.consensus() -- consensus sequence alignment">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node291.html">
+<LINK REL="previous" HREF="node289.html">
+<LINK REL="up" HREF="node269.html">
+<LINK REL="next" HREF="node291.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5989"
+  HREF="node291.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5983"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5977"
+  HREF="node289.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5985"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5987"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5990"
+  HREF="node291.html">alignment.compare_structures()   compare</A>
+<B> Up:</B> <A NAME="tex2html5984"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5978"
+  HREF="node289.html">alignment.malign()   align</A>
+ &nbsp; <B>  <A NAME="tex2html5986"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5988"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00111521000000000000000">
+alignment.consensus() -- consensus sequence alignment</A>
+</H2> <A NAME="26536"></A><A NAME="CMD:alignment.consensus"></A><A NAME="26539"></A><TT>consensus(align_block=0, gap_penalties_1d=(-900.0, -50.0), weigh_sequences=False, input_weights_file=None, output_weights_file=None, weights_type='SIMILAR', smooth_prof_weight=10)</TT>
+<BR><BLOCKQUOTE>
+This command is similar to <B><A HREF="node287.html#CMD:alignment.align">alignment.align()</A></B><A NAME="26550"></A> except that a
+consensus alignment of two blocks of sequences is produced. A
+consensus alignment is obtained from a consensus similarity matrix
+using the specified gap penalties and the global dynamic programming
+method.  The consensus similarity matrix is obtained by aligning the
+two blocks of sequences many times with different parameters and
+methods and counting how many times each pair was aligned. This command
+is still experimental and no detailed description is given at this time.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>This command also produces the alignment accuracy that can be printed
+out by the <B><A HREF="node282.html#CMD:alignment.write">alignment.write()</A></B><A NAME="26555"></A> command in the <TT>'PAP'</TT> format (0
+inaccurate, 9 accurate). If the gap initiation penalty is 0, the
+gap extension penalty of say 0.4 means that only those positions will
+be equivalenced that were aligned in at least 80% of the individual 
+alignments (<EM>i.e.</EM>, 2 times 0.40).
+                             
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html172"
+  HREF="../examples/commands/align_consensus.py">examples/commands/align_consensus.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: alignment.consensus()
+
+# This will read 2 sequences and prepare a consensus alignment
+# from many different pairwise alignments.
+
+from modeller import *
+env = environ()
+
+aln = alignment(env)
+aln.append(file='toxin.ali', align_codes=('2ctx', '2abx'))
+aln.consensus(gap_penalties_1d=(0, 0.4), align_block=1)
+aln.write(file='toxin-seq.pap', alignment_format='PAP')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5989"
+  HREF="node291.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5983"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5977"
+  HREF="node289.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5985"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5987"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5990"
+  HREF="node291.html">alignment.compare_structures()   compare</A>
+<B> Up:</B> <A NAME="tex2html5984"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5978"
+  HREF="node289.html">alignment.malign()   align</A>
+ &nbsp; <B>  <A NAME="tex2html5986"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5988"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

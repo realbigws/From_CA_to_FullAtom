@@ -1,0 +1,230 @@
+# Version: August 13, 1993
+#
+# LIBRARY OF RESIDUE DIHEDRAL ANGLES
+#
+# MODELLER 1.1, Copyright Andrej Sali
+#
+#
+# This file contains residue dihedral angle definitions for a lot of residue 
+# types. Each residue has one definition for each existing dihedral angle 
+# type. There can only be up to one dihedral angle of a certain type per
+# residue. The currently existing dihedral angle types are: phi, psi, omega, 
+# chi1, chi2, chi3, chi4, and chi5 (disulfide). These angles can then be used 
+# in a number of MODELLER commands for restraining, changing, and evaluating 
+# the geometry of a protein model.
+# 
+# IUPAC atom names are used to define dihedral angles. They are exactly
+# the same as the atom types in the CHARMM 22 topology library. As a 
+# consequence, there are two small differences with the IUPAC atom names as 
+# used in the PDB files: CHARMM ILE CD --> PDB ILE CD1 and LEU CD1 <--> CD2 
+# (with identical changes for the hydrogen atoms; the differences in the
+# carboxy terminus oxygen atoms are irrelevant here). MODELLER works internally
+# with CHARMM 22 conventions. The PDB format is dealt with only during input or
+# output. Be sure you take these conventions into account in all programs 
+# that are using this library file (dih.f). The order of residues in this 
+# file should not be important. Another potential difficuly is that it
+# appears that in CHARMM 19, LEU CD1 and CD2 are labelled as in the PDB and
+# no conversion is necessary; this can be seen from the fact that LEU CB 
+# pseudo-chirality IMPR entry is such that no CD1/CD2 swap is neccessary 
+# to calculate chi2 correctly (files param19.inp and toph19.inp). 
+#
+# For MODELLER 7v0 the CHARMM topology library was changed to conform to PDB, 
+# so the considerations above do not apply.
+#
+# The preferred geometries of the dihedral angle types are also specified
+# as pdf's which are the weighted sums of Gaussians. The weights, means, 
+# and standard deviations were obtained with ALBASE_1 high resolution 
+# structures, mdt2, plot2, and asgl1 (fitting and plotting); the data 
+# and results are in the ~/constr2/mnch and ~/constr2/chi1234 directories.
+#
+# Means and standard deviations are from fitting Gaussians to the histograms, 
+# but weights come from the class frequencies. For each type of a sidechain 
+# dihedral angle class for each residue, the classes are ordered according to 
+# their decreasing weights. The ordering for mainchain dihedral angle
+# classes is the same for all residue types.
+#
+# Cys sidehchain means and standard deviations are from the half-cystines
+# in disulfide bridges; weights are from all Cys residues. Except for the 
+# small differences in weights of different classes, half-cystine and
+# cysteines can be considered the same as far as the dihedral angle data
+# in this file are concerned.
+#
+# It should be noted that for some mainchain dihedral angle classes Gaussians
+# do not have the same means and standard deviations here as the mainchain
+# conformation classes defined in MNCH.LIB file (eg Gly Psi). MODELLER should
+# use MAINCHAIN_CLASS (MNCH.LIB) for restraining mainchain, and CHIi_CLASS
+# (RESDIH.LIB) for restraining sidechains (SIDECHAIN_CLASS [SDCH.LIB] and
+# PHI/PSI_CLASS [RESDIH.LIB] should be ignored when restraining sidechain
+# and mainchain, respectively).
+#
+# CHARMM conventions with some extensions are used to indicate atoms from
+# other residues:
+#
+# Previous residue: '-';
+# Next     residue: '+';
+# Nextnext residue: '#';
+# Do not find it  : '_';
+#
+#
+# RES ATOMS              N  WEIGHTS              MEANS                 DEVIATIONS        RANGES
+#
+Alpha Phi Psi Omega chi1 chi2 chi3 chi4 chi5
+22
+ALA    4
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.552 0.064 0.382    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+CYS    9
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.380 0.035 0.583    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.301 0.088 0.610    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    SG     3  0.516 0.300 0.182    -65.2  181.4   63.6    12.1 10.9 13.1    -120    0   120  240      0 120
+CA    CB    SG    _SG    3  0.453 0.244 0.303    -75.9   75.2  188.7    21.0 19.6 27.2    -130    5     5  125    125 230
+CB    SG    _SG   _CB    2  0.500 0.500          -85.3   95.0            7.6 12.2         -180    0     0  180
+_CA   _CB   _SG   SG     3  0.453 0.244 0.303    -75.9   75.2  188.7    21.0 19.6 27.2    -130    5     5  125    125 230
+_N    _CA   _CB   _SG    3  0.516 0.300 0.182    -65.2  181.4   63.6    12.1 10.9 13.1    -120    0   120  240      0 120
+ASP    6
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.533 0.061 0.405    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.405 0.178 0.415    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.502 0.323 0.171    -69.9  185.9   63.3     9.9 11.9  8.3    -120    0   120  240      0 120
+CA    CB    CG    OD1    2  0.500 0.500          -14.2  160.5           32.6 38.6         -105   75    75  255
+GLU    7
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.632 0.030 0.337    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.544 0.074 0.381    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.541 0.336 0.122    -68.0  184.9   61.6    10.7 13.0 11.5    -120    0   120  240      0 120
+CA    CB    CG    CD     3  0.629 0.212 0.159    179.0  -69.6   73.2    14.2 19.0 16.0     125  230  -130   10     10 125
+CB    CG    CD    OE1    2  0.469 0.531            0.0  180.0           73.3 29.7         -120  120   120  240
+PHE    6
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.427 0.019 0.552    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.366 0.079 0.554    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.540 0.320 0.139    -66.5  181.7   63.1     9.7 10.3  8.9    -120    0   120  240      0 120
+CA    CB    CG    CD1    2  0.500 0.500          -84.0   84.0           13.0 13.0         -180    0     0  180
+GLY    4
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.308 0.457 0.234    -68.8   82.8  180.0    12.0 15.5 50.0    -105    0     0  127    127 255
+N     CA    C     +N     3  0.154 0.390 0.455    -42.1    3.2  180.0     5.9 23.2 27.2     -85  -29   -29   87     87 275
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+HIS    6
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.440 0.054 0.504    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.364 0.155 0.479    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.535 0.330 0.132    -65.0  185.7   62.1    12.1 10.2 15.8    -120    0   120  240      0 120
+CA    CB    CG    ND1    3  0.483 0.406 0.111    -82.7   83.2  170.5    21.3 23.9 20.0    -145    0     0  137    137 215
+HSE    6
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.440 0.054 0.504    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.364 0.155 0.479    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.535 0.330 0.132    -65.0  185.7   62.1    12.1 10.2 15.8    -120    0   120  240      0 120
+CA    CB    CG    ND1    3  0.483 0.406 0.111    -82.7   83.2  170.5    21.3 23.9 20.0    -145    0     0  137    137 215
+HSP    6
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.440 0.054 0.504    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.364 0.155 0.479    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.535 0.330 0.132    -65.0  185.7   62.1    12.1 10.2 15.8    -120    0   120  240      0 120
+CA    CB    CG    ND1    3  0.483 0.406 0.111    -82.7   83.2  170.5    21.3 23.9 20.0    -145    0     0  137    137 215
+ILE    6
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.418 0.009 0.571    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.376 0.030 0.593    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG1    3  0.710 0.152 0.135    -63.1   62.7  190.8     9.0  6.9  9.6    -120    0     0  120    120 240
+CA    CB    CG1   CD1    3  0.752 0.146 0.100    168.9  -60.8   68.0    10.0 10.3 10.0     110  240  -120   10     10 110
+LYS    8
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.539 0.045 0.415    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.472 0.101 0.426    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.531 0.363 0.106    -67.0  185.4   63.5    12.5 12.1 14.1    -120    0   120  240      0 120
+CA    CB    CG    CD     3  0.689 0.168 0.139    168.9  -60.8   68.0    10.0 10.3 10.0     132  240  -120    0      0 132
+CB    CG    CD    CE     3  0.134 0.715 0.151    179.3  -72.0   73.0    16.4 26.9 31.7     130  230  -130    0      0 130
+CG    CD    CE    NZ     3  0.609 0.198 0.193    178.7  -66.8   72.6    20.0 22.0 28.6     120  240  -120    0      0 120
+LEU    6
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.549 0.016 0.434    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.442 0.058 0.499    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.620 0.349 0.030    -64.2  180.7   62.0     9.9  8.7 15.2    -120    0   120  240      0 120
+CA    CB    CG    CD1    3  0.543 0.407 0.048    184.7   64.8  -65.0     9.7 10.1 10.0     120  250   -10  120   -110  10
+MET    7
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.529 0.027 0.443    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.451 0.064 0.484    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.574 0.349 0.075    -66.7  184.9   66.6    10.6 12.4 14.7    -120    0   120  240      0 120
+CA    CB    CG    SD     3  0.618 0.243 0.136    178.4  -66.7   70.4    13.8 12.7  9.1     120  240  -120    0      0 120
+CB    CG    SD    CE     3  0.362 0.336 0.298    -73.5  69.6   182.6    19.7 14.1 20.0    -127    0     0  120    120 233
+ASN    6
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.391 0.125 0.482    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.316 0.273 0.409    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.517 0.313 0.165    -68.9  187.4   63.5    11.2 11.7  9.1    -120    0   120  240      0 120
+CA    CB    CG    OD1    2  0.427 0.571          -36.1  123.5           37.2 72.6         -127   50    50  233
+PRO    7
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      1  1.000                -62.9                  11.0              -180  180
+N     CA    C     +N     2  0.377 0.622          -28.8  146.4           11.9 13.1         -120   60    60  240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.310 0.419 0.268    -26.7   29.8   -0.3     6.5  7.7 16.1    -180  -12    12  180    -12  12
+CA    CB    CG    CD     2  0.600 0.400          -34.6   34.6            8.0  8.0         -180    0     0  180
+CB    CG    CD    N      2  0.400 0.600          -30.0   30.0           10.5  7.9         -180    0     0  180
+GLN    7
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.508 0.037 0.453    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.429 0.092 0.478    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.538 0.358 0.104    -65.6  182.7   64.1    11.0 11.4  7.8    -120    0   120  240      0 120
+CA    CB    CG    CD     3  0.647 0.189 0.164    179.7  -68.4   70.1    12.5 17.1 17.3     120  240  -120    0      0 120
+CB    CG    CD    OE1    2  0.743 0.257            0.0  180.0           70.0 40.0         -120  120   120  240
+ARG    8
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.525 0.031 0.442    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.459 0.081 0.458    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.532 0.329 0.133    -66.8  182.7   60.1    12.5 12.8  7.1    -120    0   120  240      0 120
+CA    CB    CG    CD     3  0.741 0.148 0.103    181.5  -80.0   68.0    16.0 27.6 12.0     115  230  -130    0      0 115
+CB    CG    CD    NE     3  0.415 0.302 0.275    180.0  -65.0   70.0    13.9 15.0 25.5     135  230  -130  -15    -15 135
+CG    CD    NE    CZ     3  0.554 0.254 0.183    170.9  -88.5   85.7    43.1 15.9 10.9     110  235  -125    0      0 110
+SER    5
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.472 0.036 0.490    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.373 0.101 0.524    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    OG     3  0.398 0.342 0.255     65.2  -64.5  179.9    12.3 12.4 11.2       0  120  -120    0    120 240
+THR    5
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.379 0.013 0.607    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.328 0.078 0.592    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    OG1    3  0.485 0.397 0.115    -58.8   62.9  189.4     7.0  8.8  9.9    -120    0     0  120    120 240
+VAL    5
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.390 0.008 0.600    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.328 0.032 0.638    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG1    3  0.665 0.216 0.116    175.1  -62.7   65.9     7.8  8.8 12.5     120  240  -120    0      0 120
+TRP    6
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.481 0.025 0.492    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.409 0.078 0.511    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.537 0.297 0.164    -68.1  180.8   60.6     9.0  9.1 10.0    -120    0   120  240      0 120
+CA    CB    CG    CD1    3  0.596 0.287 0.115     91.0  -93.1    0.0    17.2 11.5 23.3      40  180  -180  -55    -55  40
+TYR    6
+-CA   CA    +CA   #CA    3  0.661 0.025 0.312    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+-C    N     CA    C      3  0.377 0.028 0.593    -64.5   58.0 -115.0     7.9 10.3 28.0     -87    0     0  120   -240 -87
+N     CA    C     +N     3  0.293 0.096 0.609    -39.6   35.0  138.7    10.5 15.0 20.8    -120   -3    -3   75     75 240
+CA    C     +N    +CA    2  0.999 0.001          180.0    0.0            5.0  5.0           90  270   -90   90
+N     CA    CB    CG     3  0.561 0.312 0.125    -65.2  179.3   62.9     9.3 10.0 10.2    -120    0   120  240      0 120
+CA    CB    CG    CD1    2  0.500 0.500          -83.0   83.0           13.0 13.0         -180    0     0  180

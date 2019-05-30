@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>sequence_db.convert() -- convert a database to binary format</TITLE>
+<META NAME="description" CONTENT="sequence_db.convert() -- convert a database to binary format">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node380.html">
+<LINK REL="previous" HREF="node378.html">
+<LINK REL="up" HREF="node375.html">
+<LINK REL="next" HREF="node380.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7300"
+  HREF="node380.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7294"
+  HREF="node375.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7288"
+  HREF="node378.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7296"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7298"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7301"
+  HREF="node380.html">sequence_db.search()   search</A>
+<B> Up:</B> <A NAME="tex2html7295"
+  HREF="node375.html">The sequence_db class: using</A>
+<B> Previous:</B> <A NAME="tex2html7289"
+  HREF="node378.html">sequence_db.write()   write</A>
+ &nbsp; <B>  <A NAME="tex2html7297"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7299"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011244000000000000000">
+sequence_db.convert() -- convert a database to binary format</A>
+</H2> <A NAME="34396"></A><A NAME="CMD:sequencedb.convert"></A><A NAME="34399"></A><TT>convert(chains_list, seq_database_file, seq_database_format, outfile, clean_sequences=True, minmax_db_seq_len=(0, 999999))</TT>
+<BR><BLOCKQUOTE>
+This command will read a database of sequences, in <TT>PIR</TT> or <TT>FASTA</TT>
+format, and write it out in <TT>BINARY</TT> format. See <B><A HREF="node377.html#CMD:sequencedb.read">sequence_db.read()</A></B><A NAME="34418"></A>
+for an explanation of the parameters used. <I>outfile</I><A NAME="34423"></A> gives the name of
+the resulting binary file.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The conversion process is done one sequence at a time, so this requires
+substantially less system memory than <B><A HREF="node377.html#CMD:sequencedb.read">sequence_db.read()</A></B><A NAME="34426"></A> followed by
+<B><A HREF="node378.html#CMD:sequencedb.write">sequence_db.write()</A></B><A NAME="34431"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Any existing data in the database is discarded by this routine, and the
+database is empty when the function finishes.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html210"
+  HREF="../examples/commands/convert_sequence_db.py">examples/commands/convert_sequence_db.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+log.verbose()
+env = environ()
+
+sdb = sequence_db(env)
+sdb.convert(seq_database_file='pdb95.fsa', seq_database_format='FASTA',
+            chains_list='ALL', minmax_db_seq_len=[1, 40000],
+            clean_sequences=True, outfile='pdb95.bin')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

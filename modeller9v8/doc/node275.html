@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>alignment.check_structure_structure() -- check template structure superpositions</TITLE>
+<META NAME="description" CONTENT="alignment.check_structure_structure() -- check template structure superpositions">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node276.html">
+<LINK REL="previous" HREF="node274.html">
+<LINK REL="up" HREF="node269.html">
+<LINK REL="next" HREF="node276.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5779"
+  HREF="node276.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5773"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5767"
+  HREF="node274.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5775"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5777"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5780"
+  HREF="node276.html">alignment.check_sequence_structure()   check</A>
+<B> Up:</B> <A NAME="tex2html5774"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5768"
+  HREF="node274.html">alignment.read_one()   read</A>
+ &nbsp; <B>  <A NAME="tex2html5776"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5778"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011156000000000000000">
+alignment.check_structure_structure() -- check template structure superpositions</A>
+</H2> <A NAME="25666"></A><A NAME="CMD:alignment.checkstructurestructure"></A><A NAME="25669"></A><TT>check_structure_structure(eqvdst=6.0, io=None)</TT>
+<BR><DL>
+<DT><STRONG>Output:</STRONG></DT>
+<DD>n_exceed
+                             
+</DD>
+</DL>
+<BLOCKQUOTE>
+This command checks the alignment of the template structures
+(all but the last entry in the alignment):
+For each pairwise superposition of the templates,
+it reports those equivalent pairs of <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+ atoms that are 
+more than <I>eqvdst</I><A NAME="25684"></A> &#197; away from each other. Such pairs are almost
+certainly misaligned. The pairwise superpositions are done using the
+<!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+ atoms and the given alignment. The number of such pairs is returned.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Note that the target structures are actually changed by the superpositions
+carried out by this command. If you want to use these superpositions as a
+crude initial model for <TT>automodel</TT> model building (rather than
+setting <I><A HREF="node51.html#MEMB:automodel.initialmalign3d">automodel.initial_malign3d</A></I><A NAME="25690"></A>) please bear in mind that the later
+templates in your alignment are always fitted on the earlier templates. Thus,
+a more reliable initial model will be obtained if you list the higher coverage
+templates earlier in the <I>knowns</I><A NAME="25695"></A> variable in your <TT>automodel</TT> script
+(<EM>e.g.</EM>, always list multimeric templates before monomers).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If you want to use the original non-superposed structures, either
+avoid calling this command, or delete and recreate the alignment object
+afterwards to force it to reread the structure files.
+
+</BLOCKQUOTE>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5779"
+  HREF="node276.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5773"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5767"
+  HREF="node274.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5775"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5777"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5780"
+  HREF="node276.html">alignment.check_sequence_structure()   check</A>
+<B> Up:</B> <A NAME="tex2html5774"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5768"
+  HREF="node274.html">alignment.read_one()   read</A>
+ &nbsp; <B>  <A NAME="tex2html5776"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5778"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

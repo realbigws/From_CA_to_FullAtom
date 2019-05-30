@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>alignment.check() -- check alignment for modeling</TITLE>
+<META NAME="description" CONTENT="alignment.check() -- check alignment for modeling">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node278.html">
+<LINK REL="previous" HREF="node276.html">
+<LINK REL="up" HREF="node269.html">
+<LINK REL="next" HREF="node278.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5807"
+  HREF="node278.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5801"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5795"
+  HREF="node276.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5803"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5805"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5808"
+  HREF="node278.html">alignment.compare_with()   compare</A>
+<B> Up:</B> <A NAME="tex2html5802"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5796"
+  HREF="node276.html">alignment.check_sequence_structure()   check</A>
+ &nbsp; <B>  <A NAME="tex2html5804"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5806"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011158000000000000000">
+alignment.check() -- check alignment for modeling</A>
+</H2> <A NAME="25718"></A><A NAME="CMD:alignment.check"></A>  
+<A NAME="25721"></A><TT>check(io=None)</TT>
+<BR><BLOCKQUOTE>
+This command evaluates an alignment to be used for
+comparative modeling, by calling <B><A HREF="node275.html#CMD:alignment.checkstructurestructure">alignment.check_structure_structure()</A></B><A NAME="25731"></A>
+and <B><A HREF="node276.html#CMD:alignment.checksequencestructure">alignment.check_sequence_structure()</A></B><A NAME="25736"></A>.
+
+</BLOCKQUOTE>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html163"
+  HREF="../examples/commands/read_alignment.py">examples/commands/read_alignment.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: alignment.append(), alignment.write(),
+#              alignment.check()
+
+# Read an alignment, write it out in the 'PAP' format, and
+# check the alignment of the N-1 structures as well as the
+# alignment of the N-th sequence with each of the N-1 structures.
+
+from modeller import *
+
+log.level(output=1, notes=1, warnings=1, errors=1, memory=0)
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+
+aln = alignment(env)
+aln.append(file='toxin.ali', align_codes='all')
+aln.write(file='toxin.pap', alignment_format='PAP')
+aln.write(file='toxin.fasta', alignment_format='FASTA')
+aln.check()
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

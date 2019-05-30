@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>job.start() -- start all slaves for message-passing</TITLE>
+<META NAME="description" CONTENT="job.start() -- start all slaves for message-passing">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node425.html">
+<LINK REL="previous" HREF="node423.html">
+<LINK REL="up" HREF="node416.html">
+<LINK REL="next" HREF="node425.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7954"
+  HREF="node425.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7948"
+  HREF="node416.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7942"
+  HREF="node423.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7950"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7952"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7955"
+  HREF="node425.html">Communicator.send_data()   send</A>
+<B> Up:</B> <A NAME="tex2html7949"
+  HREF="node416.html">Parallel job support</A>
+<B> Previous:</B> <A NAME="tex2html7943"
+  HREF="node423.html">job.yield_tasks_unordered()   run</A>
+ &nbsp; <B>  <A NAME="tex2html7951"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7953"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011328000000000000000">
+job.start() -- start all slaves for message-passing</A>
+</H2> <A NAME="37838"></A><A NAME="CMD:job.start"></A><A NAME="37841"></A><TT>start()</TT>
+<BR><BLOCKQUOTE>
+This starts all non-running slaves in the job, such that they can later be
+used for message passing. (There is no need to call this command if using the
+task interface, as the slaves are automatically started when required.)
+
+</BLOCKQUOTE>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html228"
+  HREF="../examples/python/parallel-msg.py">examples/python/parallel-msg.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+from modeller.parallel import *
+
+# Create an empty parallel job, and then add a single slave process running
+# on the local machine
+j = job()
+j.append(local_slave())
+
+# Start all slave processes (note: this will only work if 'modxxx' - where
+# xxx is the Modeller version - is in the PATH; if not, use modeller_path
+# to specify an alternate location)
+j.start()
+
+# Have each slave read in a PDB file (provided by us, the master) and
+# return the PDB resolution back to us
+for slave in j:
+    slave.run_cmd('''
+env = environ()
+env.io.atom_files_directory = ["../atom_files"]
+log.verbose()
+code = master.get_data()
+mdl = model(env, file=code)
+master.send_data(mdl.resolution)
+''')
+    slave.send_data('1fdn')
+    data = slave.get_data()
+    print slave, "returned model resolution: ", data
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

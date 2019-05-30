@@ -1,0 +1,82 @@
+# INCLUDE
+#
+# DEFINE_STRING VARIABLES = SEQUENCE MODEL CSRFILE
+# 
+# # Input:
+# SET MODEL = 'chym10.B99990001'     # one PDB structure
+# SET ROOT_NAME = 'chym10'
+# SET FILE_ID   = '.B'
+# SET FILE_EXT  = ' '
+# SET CSRFILE = 'chym10.rsr'         # restraints file
+# SET EXPAND_CONTROL = 9999 9999 STARTING_MODEL ENDING_MODEL 0
+# 
+# # Output: cluster.ini ... initial cluster average
+# #         cluster.opt ... optimized cluster average
+# #         cluster.deb ... objective function trace
+# #         occupancy.dat ... for plotting with cluster-plot.top
+#
+# SET CLUSTER_CUT = 1.5
+# SET CLUSTER_METHOD = 'RMSD' # 'RMSD' | 'MAXIMAL_DISTANCE'
+# 
+# CALL ROUTINE = 'cluster'
+# 
+# STOP
+
+
+# Will only work with isomorphous templates.
+SUBROUTINE ROUTINE = 'cluster'
+  # Cutoff for defining clusters of template residues (all atom):
+  IF ARGUMENTS CLUSTER_CUT 0, OPERATION = 'LT'
+    SET CLUSTER_CUT = 1.5
+  END_IF
+
+  READ_MODEL FILE = MODEL, ALIGN_CODES = ROOT_NAME
+  SEQUENCE_TO_ALI ADD_SEQUENCE = off
+  EXPAND_ALIGNMENT
+  MALIGN3D GAP_PENALTIES_3D = 0 3, FIT = off
+  SET ADD_SEQUENCE = on
+  SEQUENCE_TO_ALI ATOM_FILES = ATOM_FILES 'cluster.opt', ;
+                  ALIGN_CODES = ALIGN_CODES 'cluster'
+  TRANSFER_XYZ
+  WRITE_MODEL FILE = 'cluster.ini'
+
+  READ_TOPOLOGY FILE = '$(LIB)/top_heav.lib'
+  READ_PARAMETERS FILE = '$(LIB)/par.lib'
+  READ_RESTRAINTS FILE = CSRFILE
+  GENERATE_TOPOLOGY SEQUENCE = 'cluster'
+  # Create the disulfide bonds using equivalent disulfide bonds in templates:
+  PATCH_SS_TEMPLATES
+  CALL ROUTINE = 'special_patches'
+  CALL ROUTINE = 'select_atoms'
+  PICK_RESTRAINTS ADD_RESTRAINTS = off
+  CONDENSE_RESTRAINTS
+  ENERGY OUTPUT = 'long', NONBONDED_SEL_ATOMS = 1
+  SWITCH_TRACE FILE = 'cluster.deb', TRACE_OUTPUT = 5
+  OPTIMIZE
+  ENERGY
+  WRITE_MODEL FILE = 'cluster.opt'
+  COMPARE FIT = on
+
+  # Do this only to produce the occupancy.dat file that can be plotted
+  # with 'asgl cluster-plot' (the plot will show how the templates and
+  # the optimized cluster-averaged model cluster at each residue position):
+  MALIGN3D GAP_PENALTIES_3D = 0 2, FIT = off
+  SEQUENCE_TO_ALI
+  TRANSFER_XYZ
+
+  # You can also grep OBJECTIVE FUNCTION VALUES from the *B* files and
+  # plot the results by 'asgl objective-plot.top':
+  #
+  # grep OBJECTIVE *B* cluster.opt | awk -F\: '{print $3}' >! objective.dat
+
+  RETURN
+END_SUBROUTINE
+
+
+# Not needed for those disulfides that appear in MODEL.
+# SUBROUTINE ROUTINE = 'special_patches'
+#   PATCH RESIDUE_TYPE = DISU, RESIDUE_IDS =  30  46
+#   PATCH RESIDUE_TYPE = DISU, RESIDUE_IDS = 123 188
+#   PATCH RESIDUE_TYPE = DISU, RESIDUE_IDS = 154 167
+#   RETURN
+# END_SUBROUTINE

@@ -1,0 +1,13 @@
+# Purpose: generate default patches
+# Input  : MODEL (after GENERATE_MODEL)
+# Output : patched MODEL
+
+# Derive the presence of disulfides from template structures
+# (you can still define the additional disulfide in the
+#  special_patches TOP routine)
+
+SUBROUTINE ROUTINE = 'default_patches'
+  READ_ALIGNMENT FILE = ALNFILE, ALIGN_CODES = KNOWNS SEQUENCE
+  PATCH_SS_TEMPLATES
+  RETURN
+END_SUBROUTINE

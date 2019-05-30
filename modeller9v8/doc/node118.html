@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>environ.make_pssmdb() -- Create a database of PSSMs given a list of profiles</TITLE>
+<META NAME="description" CONTENT="environ.make_pssmdb() -- Create a database of PSSMs given a list of profiles">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node117.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node119.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html3431"
+  HREF="node119.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html3425"
+  HREF="node109.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html3421"
+  HREF="node117.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html3427"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html3429"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3432"
+  HREF="node119.html">The energy_data class: objective</A>
+<B> Up:</B> <A NAME="tex2html3426"
+  HREF="node109.html">The environ class: MODELLER</A>
+<B> Previous:</B> <A NAME="tex2html3422"
+  HREF="node117.html">environ.system()   execute</A>
+ &nbsp; <B>  <A NAME="tex2html3428"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html3430"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001129000000000000000">
+environ.make_pssmdb() -- Create a database of PSSMs given a list of profiles</A>
+</H2> <A NAME="10087"></A><A NAME="CMD:environ.makepssmdb"></A><A NAME="10090"></A><TT>make_pssmdb(profile_list_file, pssmdb_name, profile_format='TEXT', rr_file='$(LIB)/as1.sim.mat', matrix_offset=0.0, matrix_scaling_factor=0.0069, pssm_weights_type='HH1')</TT>
+<BR><BLOCKQUOTE>
+This command takes a list of profiles, specified in
+<I>profile_list_file</I><A NAME="10112"></A>, to calculate their Position Specific
+Scoring Matrices (PSSM) and create a database of these PSSMs for use
+in <B><A HREF="node371.html#CMD:profile.scan">profile.scan()</A></B><A NAME="10115"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The profiles listed in <I>profile_list_file</I><A NAME="10120"></A> should be in a format
+that is understood by <B><A HREF="node368.html#CMD:profile.read">profile.read()</A></B><A NAME="10123"></A>. For instance, like those created
+by <B><A HREF="node372.html#CMD:profile.build">profile.build()</A></B><A NAME="10128"></A> or <B><A HREF="node296.html#CMD:alignment.toprofile">alignment.to_profile</A></B><A NAME="10133"></A>. See documentation under
+<B><A HREF="node368.html#CMD:profile.read">profile.read()</A></B><A NAME="10138"></A> for help on <I>profile_format</I><A NAME="10143"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>rr_file</I><A NAME="10146"></A> is the residue-residue substitution matrix to use
+when calculating the position-specific scoring matrix (PSSM). The
+current implementation is optimized only for the BLOSUM62 matrix.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>matrix_offset</I><A NAME="10149"></A> is the value by which the scoring matrix
+is offset during dynamic programing. For the BLOSUM62 matrix use a value
+of -450.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>pssmdb_name</I><A NAME="10152"></A> is the name for the output PSSM database.
+</BLOCKQUOTE>
+<P>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html90"
+  HREF="../examples/commands/ppscan.py">examples/commands/ppscan.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: profile.scan()
+
+from modeller import *
+
+env = environ()
+
+# First create a database of PSSMs
+env.make_pssmdb(profile_list_file = 'profiles.list',
+                matrix_offset     = -450,
+                rr_file           = '${LIB}/blosum62.sim.mat',
+                pssmdb_name       = 'profiles.pssm',
+                profile_format    = 'TEXT',
+                pssm_weights_type = 'HH1')
+
+# Read in the target profile
+prf = profile(env, file='T3lzt-uniprot90.prf', profile_format='TEXT')
+
+# Read the PSSM database
+psm = pssmdb(env, pssmdb_name = 'profiles.pssm', pssmdb_format = 'text')
+
+# Scan against all profiles in the 'profiles.list' file
+# The score_statistics flag is set to false since there are not
+# enough database profiles to calculate statistics.
+prf.scan(profile_list_file = 'profiles.list',
+         psm               = psm,
+         matrix_offset     = -450,
+         ccmatrix_offset   = -100,
+         rr_file           = '${LIB}/blosum62.sim.mat',
+         gap_penalties_1d  = (-700, -70),
+         score_statistics  = False,
+         output_alignments = True,
+         output_score_file = None,
+         profile_format    = 'TEXT',
+         max_aln_evalue    = 1,
+         aln_base_filename = 'T3lzt-ppscan',
+         pssm_weights_type = 'HH1',
+         summary_file      = 'T3lzt-ppscan.sum')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html3431"
+  HREF="node119.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html3425"
+  HREF="node109.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html3421"
+  HREF="node117.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html3427"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html3429"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3432"
+  HREF="node119.html">The energy_data class: objective</A>
+<B> Up:</B> <A NAME="tex2html3426"
+  HREF="node109.html">The environ class: MODELLER</A>
+<B> Previous:</B> <A NAME="tex2html3422"
+  HREF="node117.html">environ.system()   execute</A>
+ &nbsp; <B>  <A NAME="tex2html3428"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html3430"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

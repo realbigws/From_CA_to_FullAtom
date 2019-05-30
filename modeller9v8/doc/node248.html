@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>selection.assess_dope() -- assess a model selection with the DOPE method</TITLE>
+<META NAME="description" CONTENT="selection.assess_dope() -- assess a model selection with the DOPE method">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node249.html">
+<LINK REL="previous" HREF="node247.html">
+<LINK REL="up" HREF="node220.html">
+<LINK REL="next" HREF="node249.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5363"
+  HREF="node249.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5357"
+  HREF="node220.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5351"
+  HREF="node247.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5359"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5361"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5364"
+  HREF="node249.html">selection.assess_dopehr()   assess</A>
+<B> Up:</B> <A NAME="tex2html5358"
+  HREF="node220.html">The selection class: handling</A>
+<B> Previous:</B> <A NAME="tex2html5352"
+  HREF="node247.html">selection.debug_function()   test</A>
+ &nbsp; <B>  <A NAME="tex2html5360"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5362"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011928000000000000000">
+selection.assess_dope() -- assess a model selection with the DOPE method</A>
+</H2> <A NAME="21184"></A><A NAME="CMD:selection.assessdope"></A><A NAME="21187"></A><TT>assess_dope(**vars)</TT>
+<BR>
+<P>
+<DL>
+<DT><STRONG>Output:</STRONG></DT>
+<DD><I>molpdf</I><A NAME="21194"></A>
+                             
+</DD>
+</DL>
+
+<P>
+<BLOCKQUOTE>
+This command assesses the quality of the selected atoms in the
+model using the DOPE (Discrete Optimized Protein Energy)
+method [<A
+ HREF="node469.html#SheSal06">Shen &amp; &#352;ali, 2006</A>]. This is a statistical potential optimized for model
+assessment. As with <B><A HREF="node193.html#CMD:model.assessga341">model.assess_ga341()</A></B><A NAME="21216"></A>, the benchmark set used to
+develop this method contained only single-chain proteins, and thus no
+guarantees can be made about the applicability of the method to multiple-chain
+systems.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>DOPE uses the standard M<SMALL>ODELLER</SMALL> energy function, so any of the arguments
+accepted by <B><A HREF="node246.html#CMD:selection.energy">selection.energy()</A></B><A NAME="21223"></A> can also be used here. (Note also that the
+model's topology must be set up in order to calculate the energy, which can
+be done for you by the <B><A HREF="node413.html#CMD:completepdb">complete_pdb()</A></B><A NAME="21228"></A> script.)
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Only the DOPE energy itself is returned by this command (all other components
+of the M<SMALL>ODELLER</SMALL> energy function, such as stereochemical restraints,
+Lennard-Jones<A NAME="21234"></A> interactions, homology-derived restraints, <EM>etc</EM>, are ignored)
+unless you manually set <I>schedule_scale</I><A NAME="21237"></A>. See <B><A HREF="node246.html#CMD:selection.energy">selection.energy()</A></B><A NAME="21240"></A> for more
+details. Note also that any intra-rigid body distances are <EM>not</EM> considered
+as part of the DOPE assessment (see Section&nbsp;<A HREF="node105.html#SECTION:rigidbody">5.3.4</A>), so if you
+have any defined rigid bodies, you may want to consider turning them off before
+requesting this assessment.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The DOPE model score is designed for selecting the best structure from a
+collection of models built by M<SMALL>ODELLER</SMALL>. (For example, you could build multiple
+<TT>automodel</TT> models by setting <I><A HREF="node53.html#MEMB:automodel.endingmodel">automodel.ending_model</A></I><A NAME="21249"></A>, and select
+the model that returns the lowest DOPE score.) The score is unnormalized with
+respect to the protein size and has an arbitrary scale, therefore scores from
+different proteins cannot be compared directly. If you wish to do this, use
+<B><A HREF="node194.html#CMD:model.assessnormalizeddope">model.assess_normalized_dope()</A></B><A NAME="21254"></A> instead, which returns a Z-score.
+                             
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html141"
+  HREF="../examples/assessment/assess_dope.py">examples/assessment/assess_dope.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: selection.assess_dope()
+
+from modeller import *
+from modeller.scripts import complete_pdb
+
+env = environ()
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+# Read a model previously generated by Modeller's automodel class
+mdl = complete_pdb(env, '../atom_files/1fdx.B99990001.pdb')
+
+# Select all atoms in the first chain
+atmsel = selection(mdl.chains[0])
+
+score = atmsel.assess_dope()
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5363"
+  HREF="node249.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5357"
+  HREF="node220.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5351"
+  HREF="node247.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5359"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5361"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5364"
+  HREF="node249.html">selection.assess_dopehr()   assess</A>
+<B> Up:</B> <A NAME="tex2html5358"
+  HREF="node220.html">The selection class: handling</A>
+<B> Previous:</B> <A NAME="tex2html5352"
+  HREF="node247.html">selection.debug_function()   test</A>
+ &nbsp; <B>  <A NAME="tex2html5360"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5362"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

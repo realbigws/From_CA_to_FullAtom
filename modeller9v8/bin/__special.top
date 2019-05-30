@@ -1,0 +1,11 @@
+SUBROUTINE ROUTINE = 'special_restraints'
+  # for example, a cis-peptide bond between residue 4 and Proline 5:
+  # CALL ROUTINE = 'cispeptide', ATOM_IDS1 =  'O:4' 'C:4' 'N:5' 'CA:5', ;
+  #                              ATOM_IDS2 = 'CA:4' 'C:4' 'N:5' 'CA:5'
+  RETURN
+END_SUBROUTINE
+
+SUBROUTINE ROUTINE = 'special_patches'
+  # for example, user defined disulfides go here:
+  RETURN
+END_SUBROUTINE

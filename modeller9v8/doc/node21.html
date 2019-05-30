@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Building a model from multiple templates</TITLE>
+<META NAME="description" CONTENT="Building a model from multiple templates">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node22.html">
+<LINK REL="previous" HREF="node20.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node22.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1604"
+  HREF="node22.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1598"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1592"
+  HREF="node20.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1600"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1602"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1605"
+  HREF="node22.html">Building an all hydrogen</A>
+<B> Up:</B> <A NAME="tex2html1599"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1593"
+  HREF="node20.html">Getting a very fast</A>
+ &nbsp; <B>  <A NAME="tex2html1601"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1603"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00724000000000000000"></A>
+<A NAME="SECTION:model-multiple"></A>
+<BR>
+Building a model from multiple templates
+</H2>
+
+<P>
+It is straightforward a to build a model using information from multiple
+templates -- simply provide an alignment between all of the templates and
+your target sequence, and list all of the templates in the <I>knowns</I><A NAME="2951"></A>
+argument, as demonstrated below. M<SMALL>ODELLER</SMALL> will automatically combine the
+templates; there is no need to superpose the structures (although you can
+request that this is done by setting <I><A HREF="node51.html#MEMB:automodel.initialmalign3d">automodel.initial_malign3d</A></I><A NAME="2956"></A>).
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html38"
+  HREF="../examples/automodel/model-multiple.py">examples/automodel/model-multiple.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Homology modeling with multiple templates
+from modeller import *              # Load standard Modeller classes
+from modeller.automodel import *    # Load the automodel class
+
+log.verbose()    # request verbose output
+env = environ()  # create a new MODELLER environment to build this model in
+
+# directories for input atom files
+env.io.atom_files_directory = ['.', '../atom_files']
+
+a = automodel(env,
+              alnfile  = 'align-multiple.ali', # alignment filename
+              knowns   = ('5fd1', '1bqx'),     # codes of the templates
+              sequence = '1fdx')               # code of the target
+a.starting_model= 1                 # index of the first model
+a.ending_model  = 1                 # index of the last model
+                                    # (determines how many models to calculate)
+a.make()                            # do the actual homology modeling
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html39"
+  HREF="../examples/automodel/align-multiple.ali">examples/automodel/align-multiple.ali</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>C; A multiple alignment in the PIR format; used in tutorial
+
+&gt;P1;5fd1
+structureX:5fd1:1    :A:106  :A:ferredoxin:Azotobacter vinelandii: 1.90: 0.19
+AFVVTDNCIKCKYTDCVEVCPVDCFYEGPNFLVIHPDECIDCALCEPECPAQAIFSEDEVPEDMQEFIQLNAELA
+EVWPNITEKKDPLPDAEDWDGVKGKLQHLER*
+
+&gt;P1;1bqx
+structureN:1bqx:   1 :A: 77  :A:ferredoxin:Bacillus schlegelii:-1.00:-1.00
+AYVITEPCIGTKCASCVEVCPVDCIHEGEDQYYIDPDVCIDCGACEAVCPVSAIYHEDFVPEEWKSYIQKNRDFF
+KK-----------------------------*
+
+&gt;P1;1fdx
+sequence:1fdx:1    : :54   : :ferredoxin:Peptococcus aerogenes: 2.00:-1.00
+AYVINDSC--IACGACKPECPVNIIQGS--IYAIDADSCIDCGSCASVCPVGAPNPED-----------------
+-------------------------------*
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

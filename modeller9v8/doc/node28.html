@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Building multi-chain models with symmetry</TITLE>
+<META NAME="description" CONTENT="Building multi-chain models with symmetry">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node29.html">
+<LINK REL="previous" HREF="node27.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node29.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1702"
+  HREF="node29.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1696"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1690"
+  HREF="node27.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1698"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1700"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1703"
+  HREF="node29.html">Accessing output data after</A>
+<B> Up:</B> <A NAME="tex2html1697"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1691"
+  HREF="node27.html">Adding additional restraints to</A>
+ &nbsp; <B>  <A NAME="tex2html1699"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1701"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION007211000000000000000"></A>
+<A NAME="SECTION:model-multichain"></A>
+<BR>
+Building multi-chain models with symmetry
+</H2>
+
+<P>
+M<SMALL>ODELLER</SMALL> can build models of multi-chain proteins in exactly the same way
+as single-chain models; simply add one or more chain break ('/') characters
+to your alignment file in the appropriate locations.
+
+<P>
+(You can also build multimeric models from monomeric templates (just use gaps
+in your alignment for the missing chains in your templates). However, note that
+since M<SMALL>ODELLER</SMALL> will have no information about the interfaces between your
+monomers in this case, your models will probably be poor, so you will have to
+add additional distance restraints, or find a multimeric template.)
+
+<P>
+(Note that when building models containing multiple chains, you will need to
+specify the chain ID whenever you refer to a residue. See Section
+<A HREF="node307.html#SECTION:residueid">6.16.9</A>. By default, your chains will be labeled A, B, <EM>etc</EM>
+but you can change this by relabeling the chains by calling
+<B><A HREF="node182.html#CMD:model.renamesegments">model.rename_segments()</A></B><A NAME="3109"></A> from within the <B><A HREF="node70.html#CMD:automodel.specialpatches">automodel.special_patches()</A></B><A NAME="3114"></A>
+method.)
+
+<P>
+In the example below, the two chains are also constrained to have similar
+conformations by use of symmetry restraints. Just as for the example in
+Section <A HREF="node27.html#SECTION:model-addrsr">2.2.10</A>, this involves redefining the
+<B><A HREF="node68.html#CMD:automodel.specialrestraints">automodel.special_restraints()</A></B><A NAME="3119"></A> routine. In this case we also redefine
+the <B><A HREF="node71.html#CMD:automodel.useraftersinglemodel">automodel.user_after_single_model()</A></B><A NAME="3124"></A> routine, to print some
+information about the symmetry restraints after building each model.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html47"
+  HREF="../examples/automodel/model-multichain.py">examples/automodel/model-multichain.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Homology modeling by the automodel class
+#
+# Demonstrates how to build multi-chain models, and symmetry restraints
+#
+from modeller import *
+from modeller.automodel import *    # Load the automodel class
+
+log.verbose()
+
+# Override the 'special_restraints' and 'user_after_single_model' methods:
+class MyModel(automodel):
+    def special_restraints(self, aln):
+        # Constrain the A and B chains to be identical (but only restrain
+        # the C-alpha atoms, to reduce the number of interatomic distances
+        # that need to be calculated):
+        s1 = selection(self.chains['A']).only_atom_types('CA')
+        s2 = selection(self.chains['B']).only_atom_types('CA')
+        self.restraints.symmetry.append(symmetry(s1, s2, 1.0))
+    def user_after_single_model(self):
+        # Report on symmetry violations greater than 1A after building
+        # each model:
+        self.restraints.symmetry.report(1.0)
+
+env = environ()
+# directories for input atom files
+env.io.atom_files_directory = ['.', '../atom_files']
+
+# Be sure to use 'MyModel' rather than 'automodel' here!
+a = MyModel(env,
+            alnfile  = 'twochain.ali' ,     # alignment filename
+            knowns   = '2abx',              # codes of the templates
+            sequence = '1hc9')              # code of the target
+
+a.starting_model= 1                # index of the first model
+a.ending_model  = 1                # index of the last model
+                                   # (determines how many models to calculate)
+a.make()                           # do homology modeling
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html48"
+  HREF="../examples/automodel/twochain.ali">examples/automodel/twochain.ali</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>C; example for building multi-chain protein models
+
+&gt;P1;2abx
+structureX:2abx:   1 :A:74 :B:bungarotoxin:bungarus multicinctus:2.5:-1.00
+IVCHTTATIPSSAVTCPPGENLCYRKMWCDAFCSSRGKVVELGCAATCPSKKPYEEVTCCSTDKCNHPPKRQPG/
+IVCHTTATIPSSAVTCPPGENLCYRKMWCDAFCSSRGKVVELGCAATCPSKKPYEEVTCCSTDKCNHPPKRQPG*
+
+&gt;P1;1hc9
+sequence:1hc9:   1 :A:148:B:undefined:undefined:-1.00:-1.00
+IVCHTTATSPISAVTCPPGENLCYRKMWCDVFCSSRGKVVELGCAATCPSKKPYEEVTCCSTDKCNPHPKQRPG/
+IVCHTTATSPISAVTCPPGENLCYRKMWCDAFCSSRGKVVELGCAATCPSKKPYEEVTCCSTDKCNPHPKQRPG*
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1702"
+  HREF="node29.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1696"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1690"
+  HREF="node27.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1698"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1700"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1703"
+  HREF="node29.html">Accessing output data after</A>
+<B> Up:</B> <A NAME="tex2html1697"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1691"
+  HREF="node27.html">Adding additional restraints to</A>
+ &nbsp; <B>  <A NAME="tex2html1699"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1701"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>model.patch_ss_templates() -- guess MODEL disulfides from templates</TITLE>
+<META NAME="description" CONTENT="model.patch_ss_templates() -- guess MODEL disulfides from templates">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node178.html">
+<LINK REL="previous" HREF="node176.html">
+<LINK REL="up" HREF="node155.html">
+<LINK REL="next" HREF="node178.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4323"
+  HREF="node178.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4317"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4311"
+  HREF="node176.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4319"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4321"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4324"
+  HREF="node178.html">model.patch_ss()   guess</A>
+<B> Up:</B> <A NAME="tex2html4318"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4312"
+  HREF="node176.html">model.patch()   patch</A>
+ &nbsp; <B>  <A NAME="tex2html4320"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4322"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011622000000000000000">
+model.patch_ss_templates() -- guess MODEL disulfides from templates</A>
+</H2> <A NAME="14040"></A><A NAME="CMD:model.patchsstemplates"></A><A NAME="14043"></A><TT>patch_ss_templates(aln, io=None)</TT>
+<BR><BLOCKQUOTE>
+This command defines and patches disulfide bonds in the
+MODEL using an alignment of the MODEL sequence with one or more template 
+structures. The MODEL sequence has to be the last sequence in the alignment,
+<I>aln</I><A NAME="14055"></A>. The template structures are all the other proteins in the alignment.
+All Cys-Cys pairs in the target sequence that are aligned with at least
+one template disulfide are defined as disulfide bonds themselves.
+The covalent connectivity is patched accordingly.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>This command should be run after <B><A HREF="node174.html#CMD:model.generatetopology">model.generate_topology()</A></B><A NAME="14058"></A> and before
+<B><A HREF="node202.html#CMD:Restraints.make">Restraints.make()</A></B><A NAME="14063"></A> to ensure that the disulfides are restrained
+properly by the bond length, angle, and dihedral angle restraints and
+that no SG-SG non-bonded interactions are applied. 
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The disulfide
+bond, angle and dihedral angle restraints have their own physical
+restraint type separate from the other bond, angle and dihedral angle
+restraints (Table&nbsp;<A HREF="node251.html#tab:physrsrtypes">6.1</A>).
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html100"
+  HREF="../examples/commands/patch_disulfides.py">examples/commands/patch_disulfides.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: model.patch_ss_templates() and model.patch_ss()
+
+# This will patch CYS-CYS disulfide bonds using disulfides in aligned templates:
+
+from modeller import *
+
+log.verbose()
+env = environ()
+env.io.atom_files_directory = ['.', '../atom_files']
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+# Read the sequence, calculate its topology, and coordinates:
+aln = alignment(env, file='toxin.ali', align_codes=('2ctx', '2abx'))
+# Superpose the two template structures without changing the alignment.
+# This is for TRANSFER_XYZ to work properly. It relies on not reading
+# the atom files again before TRANSFER_XYZ.
+aln.malign3d(fit=False) # This is for TRANSFER_XYZ to work properly.
+# Restore the alignment, and add in the model sequence, 1fas:
+aln.clear()
+aln.append(file='toxin.ali', align_codes=('2ctx', '2abx', '1fas'))
+mdl = model(env)
+mdl.generate_topology(aln['1fas'])
+mdl.transfer_xyz(aln)
+mdl.build(initialize_xyz=True, build_method='INTERNAL_COORDINATES')
+mdl.write(file='1fas.noSS')
+# Create the disulfide bonds using equivalent disulfide bonds in templates:
+mdl.patch_ss_templates(aln)
+
+# Create the stereochemical restraints
+sel = selection(mdl)
+mdl.restraints.make(sel, restraint_type='stereo', spline_on_site=False)
+
+# Calculate energy to test the disulfide restraints (bonds, angles, dihedrals):
+sel.energy()
+
+mdl.read(file='1fas.noSS')
+# Create the disulfide bonds guessing by coordinates
+mdl.patch_ss()
+
+# Create the stereochemical restraints
+mdl.restraints.make(sel, restraint_type='stereo', spline_on_site=False)
+
+# Calculate energy to test the disulfide restraints (bonds, angles, dihedrals):
+sel.energy()
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4323"
+  HREF="node178.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4317"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4311"
+  HREF="node176.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4319"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4321"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4324"
+  HREF="node178.html">model.patch_ss()   guess</A>
+<B> Up:</B> <A NAME="tex2html4318"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4312"
+  HREF="node176.html">model.patch()   patch</A>
+ &nbsp; <B>  <A NAME="tex2html4320"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4322"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

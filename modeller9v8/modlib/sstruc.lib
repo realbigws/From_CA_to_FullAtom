@@ -1,0 +1,35 @@
+# SECONDARY STRUCTURE MOTIF LIBRARY 
+#
+# FIXED FORMAT!: 'ENTRY: SS_TYPE MATRIX_DIMENSION DRMS_CUT MAX_D_CUT 
+#                        KINK_DRMS_CUT KINK_MAX_D_CUT MAX_LENGTH
+#                 ENTRY: 2I3, 6F5.2
+#
+# The order of motifs is important because each motif supersedes
+# previous motifs.
+#
+# Also, the beta motif has to be of type 1 and the helix motif has
+# to be of type 2. The helix motif is supposed to be the first in the 
+# list of motifs, so that it has the priority over other motifs when
+# there is some overlap.
+
+ENTRY:  2  5 0.50 0.90 0.80 1.50 0.00 6.00 ALPHA HELIX
+   0.000   3.802   5.518   5.541   6.683
+   3.802   0.000   3.802   5.519   5.556
+   5.518   3.802   0.000   3.801   5.530
+   5.541   5.519   3.801   0.000   3.801
+   6.683   5.556   5.530   3.801   0.000
+
+ENTRY:  1  5 0.80 1.00 1.30 1.60 6.1 5.00 BETA STRAND
+   0.000   3.804   6.601   9.678  12.679
+   3.804   0.000   3.802   6.607   9.665
+   6.601   3.802   0.000   3.803   6.558
+   9.678   6.607   3.803   0.000   3.803
+  12.679   9.665   6.558   3.803   0.000
+
+# ENTRY:  2  6 0.50 0.90 0.60 1.30 0.00 6.00 ALPHA HELIX
+#    0.000   3.802   5.506   5.543   6.723   8.943
+#    3.802   0.000   3.801   5.513   5.555   6.773
+#    5.506   3.801   0.000   3.801   5.518   5.560
+#    5.543   5.513   3.801   0.000   3.801   5.536
+#    6.723   5.555   5.518   3.801   0.000   3.801
+#    8.943   6.773   5.560   5.536   3.801   0.000

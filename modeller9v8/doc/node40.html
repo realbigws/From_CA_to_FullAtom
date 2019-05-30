@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Comparative modeling class reference</TITLE>
+<META NAME="description" CONTENT="Comparative modeling class reference">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node93.html">
+<LINK REL="previous" HREF="node35.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node41.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1869"
+  HREF="node41.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1863"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1857"
+  HREF="node39.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1865"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1867"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1870"
+  HREF="node41.html">automodel reference</A>
+<B> Up:</B> <A NAME="tex2html1864"
+  HREF="manual.html">MODELLER A Program for</A>
+<B> Previous:</B> <A NAME="tex2html1858"
+  HREF="node39.html">Changes since release 9v6</A>
+ &nbsp; <B>  <A NAME="tex2html1866"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1868"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00900000000000000000"></A>
+    <A NAME="CHAPTERAUTOMODELREF"></A>
+<BR>
+Comparative modeling class reference
+</H1>
+    <BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1871"
+  HREF="node41.html"><TT>automodel</TT> reference</A>
+<UL>
+<LI><A NAME="tex2html1872"
+  HREF="node42.html">automodel() -- prepare to build one or more comparative models</A>
+<LI><A NAME="tex2html1873"
+  HREF="node43.html">automodel.library_schedule -- select optimization schedule</A>
+<LI><A NAME="tex2html1874"
+  HREF="node44.html">automodel.md_level -- control the model refinement level</A>
+<LI><A NAME="tex2html1875"
+  HREF="node45.html">automodel.outputs -- all output data for generated models</A>
+<LI><A NAME="tex2html1876"
+  HREF="node46.html">automodel.rand_method -- control initial model randomization</A>
+<LI><A NAME="tex2html1877"
+  HREF="node47.html">automodel.generate_method -- control initial model generation</A>
+<LI><A NAME="tex2html1878"
+  HREF="node48.html">automodel.max_var_iterations -- select length of optimizations</A>
+<LI><A NAME="tex2html1879"
+  HREF="node49.html">automodel.repeat_optimization -- number of times to repeat optimization</A>
+<LI><A NAME="tex2html1880"
+  HREF="node50.html">automodel.max_molpdf -- objective function cutoff</A>
+<LI><A NAME="tex2html1881"
+  HREF="node51.html">automodel.initial_malign3d -- initial template alignment</A>
+<LI><A NAME="tex2html1882"
+  HREF="node52.html">automodel.starting_model -- first model to build</A>
+<LI><A NAME="tex2html1883"
+  HREF="node53.html">automodel.ending_model -- last model to build</A>
+<LI><A NAME="tex2html1884"
+  HREF="node54.html">automodel.final_malign3d -- final template-model alignment</A>
+<LI><A NAME="tex2html1885"
+  HREF="node55.html">automodel.write_intermediates -- write intermediate files during optimization</A>
+<LI><A NAME="tex2html1886"
+  HREF="node56.html">automodel.trace_output -- control optimization output</A>
+<LI><A NAME="tex2html1887"
+  HREF="node57.html">automodel.max_ca_ca_distance -- Distance cutoff for CA-CA homology-derived restraints</A>
+<LI><A NAME="tex2html1888"
+  HREF="node58.html">automodel.max_n_o_distance -- Distance cutoff for N-O homology-derived restraints</A>
+<LI><A NAME="tex2html1889"
+  HREF="node59.html">automodel.max_sc_mc_distance -- Distance cutoff for sidechain-mainchain homology-derived restraints</A>
+<LI><A NAME="tex2html1890"
+  HREF="node60.html">automodel.max_sc_sc_distance -- Distance cutoff for sidechain-sidechain homology-derived restraints</A>
+<LI><A NAME="tex2html1891"
+  HREF="node61.html">automodel.get_optimize_actions() -- get actions to carry out during the initial optimization</A>
+<LI><A NAME="tex2html1892"
+  HREF="node62.html">automodel.get_refine_actions() -- get actions to carry out during the refinement</A>
+<LI><A NAME="tex2html1893"
+  HREF="node63.html">automodel.select_atoms() -- select region for optimization</A>
+<LI><A NAME="tex2html1894"
+  HREF="node64.html">automodel.auto_align() -- generate an automatic initial alignment</A>
+<LI><A NAME="tex2html1895"
+  HREF="node65.html">automodel.very_fast() -- request rapid optimization</A>
+<LI><A NAME="tex2html1896"
+  HREF="node66.html">automodel.make() -- build all models</A>
+<LI><A NAME="tex2html1897"
+  HREF="node67.html">automodel.cluster() -- cluster all built models</A>
+<LI><A NAME="tex2html1898"
+  HREF="node68.html">automodel.special_restraints() -- add additional restraints</A>
+<LI><A NAME="tex2html1899"
+  HREF="node69.html">automodel.nonstd_restraints() -- add restraints on ligands</A>
+<LI><A NAME="tex2html1900"
+  HREF="node70.html">automodel.special_patches() -- add additional patches to the topology</A>
+<LI><A NAME="tex2html1901"
+  HREF="node71.html">automodel.user_after_single_model() -- analyze or refine each model</A>
+<LI><A NAME="tex2html1902"
+  HREF="node72.html">automodel.get_model_filename() -- get the model PDB name</A>
+<LI><A NAME="tex2html1903"
+  HREF="node73.html">automodel.use_parallel_job() -- parallelize model building</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1904"
+  HREF="node74.html"><TT>allhmodel</TT> reference</A>
+<UL>
+<LI><A NAME="tex2html1905"
+  HREF="node75.html">allhmodel() -- prepare to build all-hydrogen models</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1906"
+  HREF="node76.html"><TT>loopmodel</TT> reference</A>
+<UL>
+<LI><A NAME="tex2html1907"
+  HREF="node77.html">loopmodel() -- prepare to build models with loop refinement</A>
+<LI><A NAME="tex2html1908"
+  HREF="node78.html">loopmodel.loop.md_level -- control the loop model refinement level</A>
+<LI><A NAME="tex2html1909"
+  HREF="node79.html">loopmodel.loop.max_var_iterations -- select length of optimizations</A>
+<LI><A NAME="tex2html1910"
+  HREF="node80.html">loopmodel.loop.library_schedule -- select optimization schedule</A>
+<LI><A NAME="tex2html1911"
+  HREF="node81.html">loopmodel.loop.starting_model -- first loop model to build</A>
+<LI><A NAME="tex2html1912"
+  HREF="node82.html">loopmodel.loop.ending_model -- last loop model to build</A>
+<LI><A NAME="tex2html1913"
+  HREF="node83.html">loopmodel.loop.write_selection_only -- write PBDs containing only the loops</A>
+<LI><A NAME="tex2html1914"
+  HREF="node84.html">loopmodel.loop.outputs -- all output data for generated loop models</A>
+<LI><A NAME="tex2html1915"
+  HREF="node85.html">loopmodel.select_loop_atoms() -- select region for loop optimization</A>
+<LI><A NAME="tex2html1916"
+  HREF="node86.html">loopmodel.get_loop_model_filename() -- get the model PDB name</A>
+<LI><A NAME="tex2html1917"
+  HREF="node87.html">loopmodel.user_after_single_loop_model() -- analyze or refine each loop model</A>
+<LI><A NAME="tex2html1918"
+  HREF="node88.html">loopmodel.read_potential() -- read in the loop modeling potential</A>
+<LI><A NAME="tex2html1919"
+  HREF="node89.html">loopmodel.build_ini_loop() -- create the initial conformation of the loop</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1920"
+  HREF="node90.html"><TT>dope_loopmodel</TT> reference</A>
+<UL>
+<LI><A NAME="tex2html1921"
+  HREF="node91.html">dope_loopmodel() -- prepare to build models with DOPE loop refinement</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1922"
+  HREF="node92.html"><TT>dopehr_loopmodel</TT> reference</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

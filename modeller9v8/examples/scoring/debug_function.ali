@@ -1,0 +1,14 @@
+C; family: snake toxin
+C; class: small disulphide
+
+>P1;2ctx
+structureX:2ctx:1    :A:71   :A:alpha-cobratoxin:Naja naja Siamensis: 2.40:19.50
+IRCFITPDITS--KDCPN-GHVCYTKTWCDAFCSIRGKRVDLGCAATCPTVK-TGVDIQCCSTDNCNPFPTRKRP*
+
+>P1;2nbt
+structureN:2nbt:1    :A:66   :A:neuronal bungarotoxin:Bungarus multicinctus:-1.00:-1.00
+RTCLISPSS--TPQTCPNGQDICFLKAQCDKFCSIRGPVIEQGCVATCPQFRSNYRSLLCCTTDNCNH-------*
+
+>P1;1fas
+sequence:1fas:.    :.:.    :.:fasciculin 1:Dendroaspis angusticeps: 1.80:14.90
+TMCYSHT--------------------------------------------------------------------*

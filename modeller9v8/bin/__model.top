@@ -1,0 +1,88 @@
+# Purpose: calculate model(s) using some restraints, possibly obtained
+#          from the alignment of a sequence with related structure(s).
+#
+# Input  : ALNFILE, KNOWNS, SEQUENCE, DATABASE_DIRECTORY,
+#           DEVIATION, TOPLIB, PARLIB, GENERATE_METHOD, RAND_METHOD, 
+#           MD_LEVEL
+#
+# Output : stereochemical and homology restraints in file CSRFILE
+#          schedule in file SCHFILE, final model in file FINAL_MODEL,
+#          debugging output in .D
+#          MODEL, CSRFILE, SCHFILE, FINAL_MODEL, REFINED_MODEL
+
+SUBROUTINE ROUTINE = 'model'
+
+  # get the filenames from SEQUENCE:
+  CALL ROUTINE = 'getnames'
+
+  # getting restraints and the initial model from the alignment:
+  CALL ROUTINE = 'homcsr'
+
+  # exit early?
+  IF ARGUMENTS = EXIT_STAGE 1, OPERATION = 'GE'
+    RETURN
+  END_IF
+
+  # Read all restraints once for the whole job (except when loops are
+  # done when restraints are read for each *.B9999???? model):
+  CALL ROUTINE = 'rd_restraints'
+
+  # getting model(s) (topology library must be in memory; ensured
+  # now by one of the three GENERATE_METHOD routines):
+  CALL ROUTINE = 'multiple_models'
+
+  IF ARGUMENTS=FINAL_MALIGN3D 1, OPERATION='EQ'
+
+      SET FILE_EXT = PDB_EXT
+      SET EDIT_FILE_EXT = PDB_EXT '_fit.pdb'
+# --- MALIGN3D on all templates and all .B models:
+      CALL ROUTINE = 'fit_models_on_template'
+      IF ARGUMENTS = DO_LOOPS 1, OPERATION = 'EQ'
+        DO ID2 = STARTING_MODEL ENDING_MODEL 1
+          CALL ROUTINE = 'fit_loop_models'
+        END_DO
+      END_IF
+
+  END_IF
+
+RETURN
+END_SUBROUTINE
+
+#
+# _fit.pdb extension for the output whole models, superposed on the template
+#
+# Input: ALNFILE, KNOWNS, SEQUENCE, ROOT_NAME, FILE_EXT
+#
+SUBROUTINE ROUTINE = 'fit_models_on_template'
+      SET ADD_SEQUENCE = OFF
+      READ_ALIGNMENT FILE = ALNFILE, ALIGN_CODES = KNOWNS SEQUENCE
+      SET FILE_ID = '.B'
+      EXPAND_ALIGNMENT EXPAND_CONTROL = 9999 9999 STARTING_MODEL ENDING_MODEL 0
+      # To take care of the '.' in segment specs:
+      WRITE_ALIGNMENT FILE = '.tmp.ali', ALIGNMENT_FORMAT = 'PIR'
+      READ_ALIGNMENT FILE = '.tmp.ali'
+      DELETE_FILE FILE = '.tmp.ali'
+      # superpose all on the first structure in the alignment:
+      COMPARE FIT = on, OUTPUT = 'SHORT'
+      MALIGN3D GAP_PENALTIES_3D = 0 3, WRITE_WHOLE_PDB = off, WRITE_FIT = on, ;
+               FIT = off, CURRENT_DIRECTORY = on
+RETURN
+END_SUBROUTINE
+
+#
+# _fit.pdb extension for the output loop models, superposed on their whole .B*_fit.pdb structure
+#
+# Input: ID2
+#
+SUBROUTINE ROUTINE = 'fit_loop_models'
+    READ_MODEL FILE = 'default', FILE_EXT = '_fit.pdb', FILE_ID = '.B', ROOT_NAME = SEQUENCE, ID1 = 9999
+    SEQUENCE_TO_ALI ALIGN_CODES = SEQUENCE, ATOM_FILES = LOOP_MODEL, ADD_SEQUENCE = off
+    SEQUENCE_TO_ALI ADD_SEQUENCE = on, ALIGN_CODES = ALIGN_CODES SEQUENCE, ATOM_FILES = ATOM_FILES LOOP_MODEL
+    DO ID1 = LOOP_STARTING_MODEL,LOOP_ENDING_MODEL,1
+      READ_MODEL2 FILE = 'default' , FILE_EXT = '', FILE_ID = '.BL'
+      PICK_ATOMS PICK_ATOMS_SET = 1, ATOM_TYPES = 'CA'
+      SUPERPOSE FIT = 'ON'
+      WRITE_MODEL2 FILE = 'default', FILE_EXT = '_fit.pdb', FILE_ID = '.BL'
+    END_DO
+    RETURN
+END_SUBROUTINE

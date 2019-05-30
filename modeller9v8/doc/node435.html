@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>User-defined restraint forms</TITLE>
+<META NAME="description" CONTENT="User-defined restraint forms">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node436.html">
+<LINK REL="previous" HREF="node434.html">
+<LINK REL="up" HREF="node433.html">
+<LINK REL="next" HREF="node436.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8114"
+  HREF="node436.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8108"
+  HREF="node433.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8102"
+  HREF="node434.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8110"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8112"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8115"
+  HREF="node436.html">User-defined energy terms</A>
+<B> Up:</B> <A NAME="tex2html8109"
+  HREF="node433.html">User-defined features and restraint</A>
+<B> Previous:</B> <A NAME="tex2html8103"
+  HREF="node434.html">User-defined feature types</A>
+ &nbsp; <B>  <A NAME="tex2html8111"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8113"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001212000000000000000">
+User-defined restraint forms</A>
+</H2>
+
+<P>
+To create a new restraint form, derive a new class from the base
+<TT>forms.restraint_form</TT>. You should then override the following
+functions: <TT>__init__</TT>, <TT>eval</TT>, <TT>vmin</TT>, <TT>rvmin</TT>, <TT>min_mean</TT>,
+<TT>vheavy</TT>, <TT>rvheavy</TT>, and <TT>heavy_mean</TT>. Note that presently you can
+<EM>only</EM> derive from this base class, not from M<SMALL>ODELLER</SMALL> built-in forms.
+
+<P>
+Restraint forms can act on one or more features (each of which has an
+accompanying integer modality, which you can use for any purpose), and can
+take any number of floating-point parameters
+as input. The features and parameters are stored in <TT>self._features</TT>
+and <TT>self._parameters</TT> respectively, but for convenience the base
+constructor <TT>restraint_form.__init__</TT> can set initial values for these.
+
+<P>
+The <TT>eval</TT> function is called from M<SMALL>ODELLER</SMALL> with the current feature values,
+their types and modalities, and the parameter vector. You should return the
+objective function contribution and, if requested, the derivatives with
+respect to each feature. The feature types are required by the <TT>deltaf</TT>
+function, which returns the difference between the current feature value and
+the mean (a simple subtraction is not sufficient, as some feature types are
+periodic). Note that you must use the passed parameter vector, as the class
+is not persistent, and as such the <TT>self._parameters</TT> variable (or any other
+object variable you may have set) is not available to this function.
+
+<P>
+The other functions are used to return the minimal
+and heavy restraint violations (both absolute and relative; see
+Section&nbsp;<A HREF="node102.html#SECTION:restraintviol">5.3.1</A>) and the means. The heavy and minimal
+means correspond to the global and local minima.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html236"
+  HREF="../examples/python/user_form.py">examples/python/user_form.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+from modeller.scripts import complete_pdb
+
+env = environ()
+
+env.io.atom_files_directory = ['../atom_files']
+log.verbose()
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+class MyGauss(forms.restraint_form):
+    """An implementation of Modeller's harmonic/Gaussian restraint (type 3)
+       in pure Python"""
+
+    rt = 0.5900991    # RT at 297.15K, in kcal/mol
+
+    def __init__(self, group, feature, mean, stdev):
+        forms.restraint_form.__init__(self, group, feature, 0, (mean, stdev))
+
+    def eval(self, feats, iftyp, modal, param, deriv):
+        (mean, stdev) = param
+        delt = self.deltaf(feats[0], mean, iftyp[0])
+        val = self.rt * 0.5 * delt**2  / stdev**2
+        if deriv:
+            fderv = self.rt * delt / stdev**2
+            return val, [fderv]
+        else:
+            return val
+
+    def vmin(self, feats, iftyp, modal, param):
+        (mean, stdev) = param
+        return self.deltaf(feats[0], mean, iftyp[0])
+
+    def rvmin(self, feats, iftyp, modal, param):
+        (mean, stdev) = param
+        return self.deltaf(feats[0], mean, iftyp[0]) / stdev
+
+    def min_mean(self, feats, iftyp, modal, param):
+        (mean, stdev) = param
+        return [mean]
+
+    # There is only one minimum, so the 'heavy' mean is the same as the 'min'
+    vheavy = vmin
+    rvheavy = rvmin
+    heavy_mean = min_mean
+
+mdl = complete_pdb(env, "1fdn")
+sel = selection(mdl)
+rsr = mdl.restraints
+at = mdl.atoms
+rsr.add(MyGauss(group=physical.bond,
+                feature=features.distance(at['CB:1'], at['CA:1']),
+                mean=1.5380, stdev=0.0364))
+sel.energy()
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8114"
+  HREF="node436.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8108"
+  HREF="node433.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8102"
+  HREF="node434.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8110"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8112"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8115"
+  HREF="node436.html">User-defined energy terms</A>
+<B> Up:</B> <A NAME="tex2html8109"
+  HREF="node433.html">User-defined features and restraint</A>
+<B> Previous:</B> <A NAME="tex2html8103"
+  HREF="node434.html">User-defined feature types</A>
+ &nbsp; <B>  <A NAME="tex2html8111"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8113"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

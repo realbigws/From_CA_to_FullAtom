@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>alignment.compare_with() -- compare two alignments</TITLE>
+<META NAME="description" CONTENT="alignment.compare_with() -- compare two alignments">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node279.html">
+<LINK REL="previous" HREF="node277.html">
+<LINK REL="up" HREF="node269.html">
+<LINK REL="next" HREF="node279.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5821"
+  HREF="node279.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5815"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5809"
+  HREF="node277.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5817"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5819"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5822"
+  HREF="node279.html">alignment.append_model()   copy</A>
+<B> Up:</B> <A NAME="tex2html5816"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5810"
+  HREF="node277.html">alignment.check()   check</A>
+ &nbsp; <B>  <A NAME="tex2html5818"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5820"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011159000000000000000">
+alignment.compare_with() -- compare two alignments</A>
+</H2> <A NAME="25746"></A><A NAME="CMD:alignment.comparewith"></A>     
+<A NAME="25749"></A><TT>compare_with(aln)</TT>
+<BR><DL>
+<DT><STRONG>Output:</STRONG></DT>
+<DD>Percent residue-residue equivalence
+                             
+</DD>
+</DL>
+<BLOCKQUOTE>
+This command compares two pairwise alignments read by the
+<B><A HREF="node272.html#CMD:alignment.append">alignment.append()</A></B><A NAME="25760"></A> commands. The alignment
+of the first sequence with the second sequence in <I>aln</I><A NAME="25765"></A> is
+evaluated with respect to the current alignment. The numbers are not symmetric;
+<EM>i.e.</EM>, they will change if the sequences or alignments are swapped.
+The output in the <TT>log</TT> file is self-explanatory. The percentage of equivalent
+residue-residue pairs in the two alignments is returned.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html164"
+  HREF="../examples/commands/compare_alignments.py">examples/commands/compare_alignments.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: alignment.compare_with(), alignment.append_model()
+
+# Compare two alignments of two proteins each. In this case, the first
+# alignment is a sequence-sequence alignment and the second alignment
+# is a structure-structure alignment.
+
+from modeller import *
+log.level(1, 1, 1, 1, 0)
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+
+# Generate and save sequence-sequence alignment:
+aln = alignment(env)
+for code in ('1fas', '2ctx'):
+    mdl = model(env, file=code)
+    aln.append_model(mdl=mdl, align_codes=code, atom_files=code)
+aln.align(gap_penalties_1d=(-600, -400))
+aln.write(file='toxin-seq.ali')
+
+# Generate and save structure-structure alignment:
+aln.align3d(gap_penalties_3d=(0, 2.0))
+aln.write(file='toxin-str.ali')
+
+# Compare the two pairwise alignments:
+aln  = alignment(env, file='toxin-seq.ali', align_codes='all')
+aln2 = alignment(env, file='toxin-str.ali', align_codes='all')
+aln.compare_with(aln2)
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

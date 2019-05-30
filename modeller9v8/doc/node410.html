@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>modfile.File() -- open a handle to a MODELLER file</TITLE>
+<META NAME="description" CONTENT="modfile.File() -- open a handle to a MODELLER file">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node409.html">
+<LINK REL="up" HREF="node406.html">
+<LINK REL="next" HREF="node411.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7746"
+  HREF="node411.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7740"
+  HREF="node406.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7736"
+  HREF="node409.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7742"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7744"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7747"
+  HREF="node411.html">The scripts module: utility</A>
+<B> Up:</B> <A NAME="tex2html7741"
+  HREF="node406.html">The modfile module: handling</A>
+<B> Previous:</B> <A NAME="tex2html7737"
+  HREF="node409.html">modfile.inquire()   check</A>
+ &nbsp; <B>  <A NAME="tex2html7743"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7745"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011294000000000000000">
+modfile.File() -- open a handle to a M<SMALL>ODELLER</SMALL> file</A>
+</H2> <A NAME="36802"></A><A NAME="CMD:modfile.File"></A><A NAME="36807"></A><TT>File(filename, mode='r')</TT>
+<BR><BLOCKQUOTE>
+This opens a file and returns a handle object, which can be used for methods
+that need an open file, such as <B><A HREF="node274.html#CMD:alignment.readone">alignment.read_one()</A></B><A NAME="36822"></A>. The file is closed
+automatically when the handle object is deleted, or explicitly by calling its
+<TT>close</TT> method.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The <I>mode</I><A NAME="36828"></A> argument functions similarly to that used by C or <A NAME="tex2html219"
+  HREF="http://www.python.org/">Python</A>; <EM>i.e.</EM>,
+the following modes are acceptable: <TT>'r'</TT>, <TT>'w'</TT>, <TT>'rb'</TT> and <TT>'wb'</TT>, to open
+a file for reading in text mode, writing in text mode, reading in binary mode,
+or writing in binary mode, respectively. Note that while only Windows operating
+systems make a distinction between text and binary mode, M<SMALL>ODELLER</SMALL> will do
+some additional checks on text format files to catch common mistakes
+(<EM>e.g.</EM>, trying to read a Unicode rather than plain text file) so you should use
+the <TT>'b'</TT> suffix on all platforms if you are using binary files.
+
+</BLOCKQUOTE>
+<B>Example:</B> See <B><A HREF="node274.html#CMD:alignment.readone">alignment.read_one()</A></B><A NAME="36846"></A> command.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7746"
+  HREF="node411.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7740"
+  HREF="node406.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7736"
+  HREF="node409.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7742"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7744"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7747"
+  HREF="node411.html">The scripts module: utility</A>
+<B> Up:</B> <A NAME="tex2html7741"
+  HREF="node406.html">The modfile module: handling</A>
+<B> Previous:</B> <A NAME="tex2html7737"
+  HREF="node409.html">modfile.inquire()   check</A>
+ &nbsp; <B>  <A NAME="tex2html7743"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7745"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

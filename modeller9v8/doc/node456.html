@@ -1,0 +1,254 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Restraints</TITLE>
+<META NAME="description" CONTENT="Restraints">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node457.html">
+<LINK REL="previous" HREF="node455.html">
+<LINK REL="up" HREF="node455.html">
+<LINK REL="next" HREF="node457.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8499"
+  HREF="node457.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8493"
+  HREF="node455.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8487"
+  HREF="node455.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8495"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8497"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8500"
+  HREF="node457.html">Excluded pairs</A>
+<B> Up:</B> <A NAME="tex2html8494"
+  HREF="node455.html">Restraints file</A>
+<B> Previous:</B> <A NAME="tex2html8488"
+  HREF="node455.html">Restraints file</A>
+ &nbsp; <B>  <A NAME="tex2html8496"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8498"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001421000000000000000">
+Restraints</A>
+</H2>
+An 'R' line should look like:
+
+<P>
+<PRE>
+R Form Modality Feature Group Numb_atoms Numb_parameters Numb_Feat (Modal2 Feat2 NumAt2 ...) Atom_indices Parameters
+</PRE>
+
+<P>
+These parameters encode the restraints information as given in
+Section&nbsp;<A HREF="node101.html#SECTION:restraints">5.3</A>.
+
+<P>
+Here, <TT>Form</TT> is the restraint form type (see
+Table&nbsp;<A HREF="#tab:numform">B.1</A>). <TT>Modality</TT> is an integer argument to <TT>Form</TT>,
+and specifies the number of single Gaussians in a poly-Gaussian pdf,
+number of terms in a multiple binormal,
+periodicity <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img45.png"
+ ALT="$ n$">
+ of the cosine in the cosine potential, and the number of spline
+points for cubic splines. <TT>Feature</TT> is the feature that this restraint
+acts on (see Table&nbsp;<A HREF="#tab:numfeat">B.2</A>.) <TT>Group</TT> is the physical feature
+type, and should be an index from Table&nbsp;<A HREF="node251.html#tab:physrsrtypes">6.1</A>.
+<TT>Numb_atoms</TT> is the total number of atoms this restraint acts on,
+<TT>Numb_parameters</TT> is the number of defined parameters, and <TT>Numb_Feat</TT>
+is the number of features the restraint acts on. <TT>Numb_Feat</TT> is typically
+1, except for the multiple binormal (where it should be 2) and ND spline (where
+it can be any number). In cases where <TT>Numb_Feat</TT> is greater than 1, the
+modality, feature type, and number of atoms of each subsequent feature should
+be listed in order after <TT>Numb_Feat</TT>. (Note that <TT>Numb_atoms</TT> is the
+number of atoms acted on by the entire restraint, while <TT>NumAt2</TT> refers
+just to the atoms acted on by the 2nd feature.) Finally, the integer atom
+indices and floating point parameters are listed.
+
+<P>
+For example,
+<PRE>
+R    3   1   1   1   2   2   1  437   28       1.5000    0.1000
+</PRE>
+will create a Gaussian restraint on the distance between atoms 437 and 28,
+with mean of 1.5 and standard deviation of 0.1.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="41785"></A>
+<TABLE>
+<CAPTION><STRONG>Table B.1:</STRONG>
+<EM>Numerical restraint forms</EM></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" ALIGN="CENTER">
+<TR><TD ALIGN="RIGHT">Numeric form</TD>
+<TD ALIGN="LEFT">Form type</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">1</TD>
+<TD ALIGN="LEFT"><TT>forms.lower_bound</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="LEFT"><TT>forms.upper_bound</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">3</TD>
+<TD ALIGN="LEFT"><TT>forms.gaussian</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">4</TD>
+<TD ALIGN="LEFT"><TT>forms.multi_gaussian</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">5</TD>
+<TD ALIGN="LEFT"><TT>forms.lennard_jones</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">6</TD>
+<TD ALIGN="LEFT"><TT>forms.coulomb</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">7</TD>
+<TD ALIGN="LEFT"><TT>forms.cosine</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">8</TD>
+<TD ALIGN="LEFT"><TT>forms.factor</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">9</TD>
+<TD ALIGN="LEFT"><TT>forms.multi_binormal</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">10</TD>
+<TD ALIGN="LEFT"><TT>forms.spline</TT> or <TT>forms.nd_spline</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">50+</TD>
+<TD ALIGN="LEFT">user-defined restraint forms</TD>
+</TR>
+</TABLE>
+</DIV>
+
+<A NAME="tab:numform"></A>
+<BR> 
+                 <DIV ALIGN="CENTER">
+ 
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="41804"></A>
+<TABLE>
+<CAPTION><STRONG>Table B.2:</STRONG>
+<EM>Numerical feature types</EM></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" ALIGN="CENTER">
+<TR><TD ALIGN="RIGHT">Numeric feature</TD>
+<TD ALIGN="LEFT">Feature type</TD>
+</TR>
+<TR><TD ALIGN="RIGHT">1</TD>
+<TD ALIGN="LEFT"><TT>features.distance</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="LEFT"><TT>features.angle</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">3,4</TD>
+<TD ALIGN="LEFT"><TT>features.dihedral</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">6</TD>
+<TD ALIGN="LEFT"><TT>features.minimal_distance</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">7</TD>
+<TD ALIGN="LEFT"><TT>features.solvent_access</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">8</TD>
+<TD ALIGN="LEFT"><TT>features.density</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">9</TD>
+<TD ALIGN="LEFT"><TT>features.x_coordinate</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">10</TD>
+<TD ALIGN="LEFT"><TT>features.y_coordinate</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">11</TD>
+<TD ALIGN="LEFT"><TT>features.z_coordinate</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">12</TD>
+<TD ALIGN="LEFT"><TT>features.dihedral_diff</TT></TD>
+</TR>
+<TR><TD ALIGN="RIGHT">50+</TD>
+<TD ALIGN="LEFT">user-defined feature types</TD>
+</TR>
+</TABLE>
+</DIV>
+
+<A NAME="tab:numfeat"></A>
+<BR> 
+                 <DIV ALIGN="CENTER">
+ 
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8499"
+  HREF="node457.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8493"
+  HREF="node455.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8487"
+  HREF="node455.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8495"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8497"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8500"
+  HREF="node457.html">Excluded pairs</A>
+<B> Up:</B> <A NAME="tex2html8494"
+  HREF="node455.html">Restraints file</A>
+<B> Previous:</B> <A NAME="tex2html8488"
+  HREF="node455.html">Restraints file</A>
+ &nbsp; <B>  <A NAME="tex2html8496"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8498"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

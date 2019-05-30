@@ -1,0 +1,28 @@
+# Purpose: To create the filenames for various file types
+#
+# Input  : SEQUENCE (1 entry)
+#
+# Output : 
+#    
+#
+SUBROUTINE ROUTINE = 'getnames'
+
+  # Redefine only if undefined to allow definition by a user:
+  STRING_IF STRING_ARGUMENTS = MODEL 'undefined', OPERATION = 'EQ'
+    STRING_OPERATE OPERATION = CONCATENATE, STRING_ARGUMENTS = SEQUENCE '.ini', RESULT = MODEL
+  END_IF
+
+  STRING_IF STRING_ARGUMENTS = CSRFILE 'undefined', OPERATION = 'EQ'
+    STRING_OPERATE OPERATION = CONCATENATE, STRING_ARGUMENTS = SEQUENCE '.rsr',  RESULT = CSRFILE
+  END_IF
+
+  STRING_OPERATE OPERATION = 'CONCATENATE', ;
+                  STRING_ARGUMENTS = SEQUENCE '.sch',  RESULT = SCHFILE
+
+  STRING_OPERATE OPERATION = 'CONCATENATE', ;
+                 STRING_ARGUMENTS = SEQUENCE '.mat',  RESULT = MATRIX_FILE
+
+  SET ROOT_NAME = SEQUENCE
+
+  RETURN
+END_SUBROUTINE

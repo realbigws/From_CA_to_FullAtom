@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>density.grid_search() -- dock a structure into an EM (electron microscopy) density map</TITLE>
+<META NAME="description" CONTENT="density.grid_search() -- dock a structure into an EM (electron microscopy) density map">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node384.html">
+<LINK REL="up" HREF="node382.html">
+<LINK REL="next" HREF="node386.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7383"
+  HREF="node386.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7377"
+  HREF="node382.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7373"
+  HREF="node384.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7379"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7381"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7384"
+  HREF="node386.html">The saxsdata class: using</A>
+<B> Up:</B> <A NAME="tex2html7378"
+  HREF="node382.html">The density class: handling</A>
+<B> Previous:</B> <A NAME="tex2html7374"
+  HREF="node384.html">density.read()   read</A>
+ &nbsp; <B>  <A NAME="tex2html7380"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7382"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011253000000000000000">
+density.grid_search() -- dock a structure into an EM (electron microscopy) density map</A>
+</H2> <A NAME="35380"></A><A NAME="CMD:density.gridsearch"></A><A NAME="35383"></A><TT>grid_search(em_pdb_name, chains_num, em_density_format='XPLOR', num_structures=1, dock_order='INPUT', start_type='CENTER', translate_type='NONE', number_of_steps=1, angular_step_size=0, temperature=293.0, best_docked_models=1, em_fit_output_file='em_fit.out')</TT>
+<BR><DL>
+<DT><STRONG>Requirements:</STRONG></DT>
+<DD>PDB files
+                             
+</DD>
+</DL>
+
+<P>
+<BLOCKQUOTE>
+This command docks a structure of a protein/domain (probe) into a given EM
+density map. See original paper for the description of the method and the most
+recommended protocols [<A
+ HREF="node469.html#Topf05">Topf <EM>et&nbsp;al.</EM>, 2005</A>].
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The probe is specified by the variable <I>em_pdb_name</I><A NAME="35420"></A>. Before starting the
+protocol, the probe is positioned on the EM density grid based on the
+<I>start_type</I><A NAME="35423"></A> variable:
+</BLOCKQUOTE>
+<P>
+<UL>
+<LI><TT>'CENTER'</TT> will translate the center of mass of the probe to the center
+of the grid.
+
+<P>
+</LI>
+<LI><TT>'ENTIRE'</TT> will divide the grid into cells similar in volume to the
+probe, and will translate the probe to the center of each of these cells
+consecutively.
+
+<P>
+</LI>
+<LI><TT>'SPECIFIC'</TT> will use the
+coordinates specified by the user (the input PDB coordinates) as a starting
+position. 
+</LI>
+</UL>
+<P>
+<BLOCKQUOTE>The best fit between the probe and the EM density map is obtained by changing
+the position of the model so as to maximize the cross-correlation between the
+probe density and the EM density. See <B><A HREF="node384.html#CMD:density.read">density.read()</A></B><A NAME="35429"></A> for the density
+fitting procedure, controlled by the <I>density_type</I><A NAME="35434"></A> variable.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The optimization of the cross-correlation score is performed by a 6D search of
+the probe on the EM grid, based on the variable <I>translate_type</I><A NAME="35437"></A>. If
+<TT>'NONE'</TT> is specified, only a rotational search over the three rotational
+Euler angles (<IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$ \phi $">
+, <IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img150.png"
+ ALT="$ \theta$">
+, <IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ \psi $">
+) is performed, with no translations.
+<I>angular_step_size</I><A NAME="35441"></A> gives the maximal step size of searching for all
+combinations of Euler angles, which is recommended to be 30 degrees. The best
+fit from this coarse search is refined by a finer local search in all three
+Euler angles. For a protein of 150 residues this calculation typically takes
+less than 0.5 minutes on a 3.0 GHz Intel Xeon processor. 
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>translate_type</I><A NAME="35444"></A> is <TT>'RANDOM'</TT>, a Monte Carlo (MC) optimization is
+performed, and the number of MC steps has to be specified
+(by <I>number_of_steps</I><A NAME="35448"></A>). A single MC step consists of (i) a random
+translation of the probe for one voxel on the EM grid, (ii) a search for the
+three Euler angles that maximize cross-correlation score, and (iii) an
+application of the Metropolis criterion [<A
+ HREF="node469.html#MetRosRos53">Metropolis <EM>et&nbsp;al.</EM>, 1953</A>]. The temperature
+used for the Metropolis criterion is specified in <I>temperature</I><A NAME="35451"></A> (typically
+about 5000 units). This calculation typically takes about 1-2 minutes.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>When <I>translate_type</I><A NAME="35454"></A> is <TT>'EXHAUSTIVE'</TT>, a local search is performed with
+the probe on the grid. The optimal orientations at its original position and
+all 26 (<EM>i.e.</EM>, 3x3x3 - 1) neighboring grid points are obtained successively by
+enumerating all three Euler angles. A Monte Carlo criterion is applied to
+each one of these 27 optimal orientations (usually with temperature lower
+than 5000, but this number has to be adjusted according to the optimization). <I>number_of_steps</I><A NAME="35459"></A> gives the number of steps for which this
+process is repeated (typically 25 times). When the EM density map covers
+only the probe model and <I>start_type</I><A NAME="35462"></A> is either <TT>'CENTER'</TT> or <TT>'SPECIFIC'</TT>, 
+this protocol can be used for a translational and rotational refinement
+of the initial placement of the model on the grid. 
+When <I>start_type</I><A NAME="35467"></A> is <TT>'ENTIRE'</TT> this protocol will
+be applied for a local search only in those cells where the randomly oriented
+probe gives a positive cross-correlation score. The calculation typically
+takes about 10-15 minutes. 
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>best_docked_models</I><A NAME="35471"></A> specifies how many best-fitted models should be
+saved by the program. This becomes more important at decreasing resolutions,
+as the best solution will not necessarily have the highest cross-correlation
+score.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>em_fit_output_file</I><A NAME="35474"></A> names an output file which will be used to record
+the progress of the optimization.
+
+</BLOCKQUOTE>
+
+<P>
+<DL>
+<DT><STRONG>Output:</STRONG></DT>
+<DD><DL>
+<DT><STRONG>targ_1_1.pdb</STRONG></DT>
+<DD>The fitted coordinates file. The name is formed by
+    taking the first 4 letters from your input PDB file and adding
+    <TT>'_1_1.pdb'</TT>. If  <I>best_docked_models</I><A NAME="35491"></A> = 2, you will get also
+    targ_1_2.pdb, and so on. If you use the option <I>start_type</I><A NAME="35494"></A>=<TT>ENTIRE</TT>,
+    it will add targ_2_1.pdb, targ_2_2.pdb and so on. 
+
+<P>
+</DD>
+<DT><STRONG>bestCC_targ</STRONG></DT>
+<DD>The results file which reports the CCF, with the number
+    of required solutions (as indicated in <I>best_docked_models</I><A NAME="35498"></A>).
+
+<P>
+</DD>
+<DT><STRONG>targ_best.MRC</STRONG></DT>
+<DD>The fitted structure converted to a map.
+
+<P>
+</DD>
+<DT><STRONG>targ_init_1.pdb</STRONG></DT>
+<DD>The initial structure superposed in the center of
+    mass (if <I>start_type</I><A NAME="35501"></A>=<TT>CENTER</TT>), or in a specific location
+    (if <I>start_type</I><A NAME="35505"></A>=<TT>SPECIFIC</TT>).
+
+<P>
+</DD>
+<DT><STRONG>targ_init.MRC</STRONG></DT>
+<DD>The initial structure converted to a map.
+
+<P>
+</DD>
+<DT><STRONG>EM_map.MRC</STRONG></DT>
+<DD>This is your original density map. It's a test to see if
+    M<SMALL>ODELLER</SMALL> is reading it correctly.
+</DD>
+</DL>
+</DD>
+</DL>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html213"
+  HREF="../examples/commands/em_grid_search.py">examples/commands/em_grid_search.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+
+log.verbose()
+env = environ()
+
+den = density(env, file='1cuk-a2.mrc', em_density_format='MRC',
+              voxel_size=1., resolution=8., em_map_size=40,
+              cc_func_type='CCF', density_type='SPHERE')
+
+den.grid_search(em_density_format='MRC', num_structures=1,
+                em_pdb_name=['1cuk-a2.pdb'], chains_num=[1],
+                start_type='CENTER', number_of_steps=1, angular_step_size=30.,
+                temperature=0., best_docked_models=1,
+                em_fit_output_file='test-cr.log')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7383"
+  HREF="node386.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7377"
+  HREF="node382.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7373"
+  HREF="node384.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7379"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7381"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7384"
+  HREF="node386.html">The saxsdata class: using</A>
+<B> Up:</B> <A NAME="tex2html7378"
+  HREF="node382.html">The density class: handling</A>
+<B> Previous:</B> <A NAME="tex2html7374"
+  HREF="node384.html">density.read()   read</A>
+ &nbsp; <B>  <A NAME="tex2html7380"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7382"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

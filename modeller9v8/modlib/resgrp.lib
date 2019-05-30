@@ -1,0 +1,31 @@
+# Version: August 13, 1993
+#
+# LIBRARY OF RESIDUE GROUPINGS
+#
+# MODELLER 1.1, Copyright Andrej Sali
+#
+#
+# This file contains various residue groupings that can be selected in MDT.
+#
+# No empty or comment lines are allowed between BEGIN_GROUP and END_GROUP.
+#
+
+
+#
+# 1) The mainchain conformation groups:
+#
+
+BEGIN_GROUPING
+ACDEFHIKLMNQRSTVWY
+G
+P
+END_GROUPING
+
+
+# 2) The hydrophobicity groups:
+#
+
+BEGIN_GROUPING
+ACFGILMPVWY
+EHKNQRST
+END_GROUPING

@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>model.to_iupac() -- standardize certain dihedral angles</TITLE>
+<META NAME="description" CONTENT="model.to_iupac() -- standardize certain dihedral angles">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node184.html">
+<LINK REL="previous" HREF="node182.html">
+<LINK REL="up" HREF="node155.html">
+<LINK REL="next" HREF="node184.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4407"
+  HREF="node184.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4401"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4395"
+  HREF="node182.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4403"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4405"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4408"
+  HREF="node184.html">model.reorder_atoms()   standardize</A>
+<B> Up:</B> <A NAME="tex2html4402"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4396"
+  HREF="node182.html">model.rename_segments()   rename</A>
+ &nbsp; <B>  <A NAME="tex2html4404"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4406"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011628000000000000000">
+model.to_iupac() -- standardize certain dihedral angles</A>
+</H2> <A NAME="14359"></A><A NAME="CMD:model.toiupac"></A><A NAME="14362"></A><TT>to_iupac()</TT>
+<BR><BLOCKQUOTE>
+This routine swaps specific pairs of atoms within some
+residues of MODEL so that certain dihedral angles are within <IMG
+ WIDTH="32" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img48.png"
+ ALT="$ \pm 90$">
+<IMG
+ WIDTH="11" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img27.png"
+ ALT="$ {}^{o}$">
+,
+satisfying the IUPAC convention [<A
+ HREF="node469.html#IUPAC70">IUPAC-IUB, 1970</A>,<A
+ HREF="node469.html#KenKlyLif70">Kendrew <EM>et&nbsp;al.</EM>, 1970</A>]. 
+These residues, pairs of atoms, and dihedral angles are:
+</BLOCKQUOTE>
+<UL>
+<LI>Phe, Tyr: (CD1, CD2), (CE1, CE2); <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ \chi _2$">
+;
+</LI>
+<LI>Asp: (OD1, OD2); <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ \chi _2$">
+;
+</LI>
+<LI>Glu: (OE1, OE2); <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ \chi _3$">
+;
+</LI>
+<LI>Arg: (NH1, NH2); <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.png"
+ ALT="$ \chi _4$">
+.
+</LI>
+</UL>
+<P>
+<BLOCKQUOTE>It is possible that for distorted sidechains, neither of the two
+possibilities satisfies the IUPAC convention. In such a case, a 
+warning message is written to the <TT>log</TT> file.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html105"
+  HREF="../examples/commands/iupac_model.py">examples/commands/iupac_model.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># This will swap certain atom names in some planar sidechains to satisfy
+# the IUPAC convention.
+
+from modeller import *
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+log.level(1, 1, 1, 1, 0)
+
+mdl = model(env, file='2abx')
+mdl.to_iupac()
+mdl.write(file='2abx.iup')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

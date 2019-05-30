@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Function</TITLE>
+<META NAME="description" CONTENT="Function">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node447.html">
+<LINK REL="previous" HREF="node445.html">
+<LINK REL="up" HREF="node445.html">
+<LINK REL="next" HREF="node447.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8311"
+  HREF="node447.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8305"
+  HREF="node445.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8299"
+  HREF="node445.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8307"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8309"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8312"
+  HREF="node447.html">Optimizers</A>
+<B> Up:</B> <A NAME="tex2html8306"
+  HREF="node445.html">Optimization of the objective</A>
+<B> Previous:</B> <A NAME="tex2html8300"
+  HREF="node445.html">Optimization of the objective</A>
+ &nbsp; <B>  <A NAME="tex2html8308"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8310"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001321000000000000000">
+Function</A>
+</H2>
+
+<P>
+M<SMALL>ODELLER</SMALL> minimizes the <I>objective function</I> <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img184.png"
+ ALT="$ F$">
+ with respect to 
+Cartesian coordinates of <!-- MATH
+ $\sim 10,000$
+ -->
+<IMG
+ WIDTH="68" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img185.png"
+ ALT="$ \sim 10,000$">
+ atoms (3D points) that form a
+<I>system</I> (one or more molecules):
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:defobjfunc"></A><!-- MATH
+ \begin{equation}
+F = F({\bf R}) = F_{symm} + \sum_i c_i ({\bf f}_i, {\bf p}_i)
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="247" HEIGHT="48" ALIGN="MIDDLE" BORDER="0"
+ SRC="img186.png"
+ ALT="$\displaystyle F = F({\bf R}) = F_{symm} + \sum_i c_i ({\bf f}_i, {\bf p}_i)$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.5)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="51" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img187.png"
+ ALT="$ F_{symm}$">
+ is an optional symmetry term defined in 
+Eq.&nbsp;<A HREF="node450.html#eq:symmetry">A.98</A>,
+<IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img188.png"
+ ALT="$ \bf R$">
+ are Cartesian coordinates of all atoms, <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$ c$">
+ is a restraint
+<IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+, <IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img189.png"
+ ALT="$ {\bf f}$">
+ is a geometric feature of a molecule, and <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img190.png"
+ ALT="$ {\bf p}$">
+ are
+parameters. For a 10,000 atom system there can be on the 
+order of 200,000 restraints.  The form of
+<IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$ c$">
+ is simple; it includes a quadratic function, cosine, a weighted sum of a few
+Gaussian functions, Coulomb<A NAME="39540"></A> law, Lennard-Jones<A NAME="39541"></A> potential,
+cubic splines, and some other simple functions.  The geometric features 
+presently include a distance, an angle, a dihedral angle, a pair of dihedral
+angles between two, three, four atoms and eight atoms, respectively,
+the shortest distance in the set of distances (not documented
+further), solvent accessibility in <IMG
+ WIDTH="23" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img30.png"
+ ALT="$ \AA^2$">
+, and atom density 
+expressed as the number of atoms around the central atom.
+A pair of dihedral angles can be used to restrain such strongly
+correlated features as the mainchain dihedral angles <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img88.png"
+ ALT="$ \Phi$">
+ and
+<IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img89.png"
+ ALT="$ \Psi$">
+. Each of the restraints also depends on a few parameters <IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img191.png"
+ ALT="$ {\bf
+p}_i$">
+ that generally vary from a restraint to a restraint.  Some
+restraints can restrain <I>pseudo-atoms</I> such as a gravity center of
+several atoms.
+
+<P>
+M<SMALL>ODELLER</SMALL> allows some atoms to be <I>fixed</I> during optimization; 
+<EM>i.e.</EM>, only selected atoms are allowed to be moved. Similarly, M<SMALL>ODELLER</SMALL> 
+also allows only a subset of all restraints to be actually used in the
+calculation of the objective function. Each subset is indicated by a
+list of indices specifying the selected atoms or restraints.
+
+<P>
+There are two kinds of restraints, <I>static</I> and <I>dynamic</I>,
+that both contribute to the objective function as indicated in
+Eq.&nbsp;<A HREF="#eq:defobjfunc">A.5</A>:
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+F = F_{symm} + F_s + F_d \; .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="167" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img192.png"
+ ALT="$\displaystyle F = F_{symm} + F_s + F_d \; .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.6)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+The static restraints and their parameters are pre-defined; <EM>i.e.</EM>, they
+are given before the call to the optimizer and are not changed during
+optimization. The dynamic restraints are re-generated repeatedly
+during optimization. Usually, the CPU time is spent evenly between the
+two kinds of restraints, although the dynamic restraints become more
+important as the size of the system increases. All dynamic restraints
+are always selected and they can restrain only pairs of atoms. In all
+other respects, the two kinds of restraints are the same.
+
+<P>
+The dynamic restraints are obtained from a <I>dynamic pairs list</I>
+(the non-bonded pairs list). Each dynamic pair corresponds to at least
+one restraint, which may or may not be violated. The dynamic pairs
+list includes only the pairs of atoms that satisfy the following three
+conditions: (1) One or both atoms in a pair are allowed to move.  (2)
+The two atoms are not connected through one, two, or three chemical bonds.
+(3) The two atoms are closer than a preset cutoff distance (<EM>e.g.</EM>, 4
+&#197;). There are on the order of 5000 atom pairs in the dynamic pairs
+list when only soft-sphere<A NAME="39549"></A> overlap restraints are used. Currently, the 
+restraint types on the dynamic atom pairs that can be selected include
+the soft-sphere<A NAME="39550"></A> overlap, Lennard-Jones<A NAME="39551"></A>, Coulomb<A NAME="39552"></A> interactions, and
+M<SMALL>ODELLER</SMALL> non-bonded spline restraints.
+
+<P>
+The existence of the dynamic pairs list is justified by the fact that 
+dynamic pairs are usually a small fraction of all possible
+atom-atom pairs (<!-- MATH
+ $N \cdot (N-1)/2$
+ -->
+<IMG
+ WIDTH="100" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img193.png"
+ ALT="$ N \cdot (N-1)/2$">
+, where <IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img119.png"
+ ALT="$ N$">
+ is the number of atoms
+in a system). The use of the dynamic pairs list becomes especially
+beneficent as the size of the system increases.
+
+<P>
+The actual algorithm for creating the dynamic pairs list varies with
+the size of the system, whether or not all atoms are allowed to
+move, or whether or not the user wants to include the fixed environment
+in the calculation of non-bonded restraints involving the selected
+atoms. See Section&nbsp;<A HREF="node252.html#SECTION:optimizers">6.11</A> for more information.
+
+<P>
+The hash-function algorithm is used to determine whether or not two atoms 
+are a dynamic atom pair. This algorithm is about 20 times slower than
+a lookup table but it requires much less memory and still spends a
+negligible fraction of the total CPU time. A hash-function table is
+prepared only once before the start of the optimization and any other operation
+involving an evaluation of the objective function (<EM>e.g.</EM>, 
+<B><A HREF="node246.html#CMD:selection.energy">selection.energy()</A></B><A NAME="39557"></A>, <B><A HREF="node245.html#CMD:selection.hotatoms">selection.hot_atoms()</A></B><A NAME="39562"></A>,
+Section&nbsp;<A HREF="node252.html#SECTION:optimizers">6.11</A>).
+
+<P>
+The dynamic pairs list is not necessarily re-generated each time the
+objective function is evaluated, although the contribution of the
+restraint to the objective function is calculated in each call to the
+objective function routine with the current values of the Cartesian
+coordinates. The dynamic pairs list is
+re-generated only when maximal atomic shifts accumulate to a value
+larger than a preset cutoff. This cutoff is chosen such that there
+cannot be a violation of a restraint without having its atom pair on
+the dynamic pairs list. The dynamic pairs list is recalculated in
+<IMG
+ WIDTH="50" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img194.png"
+ ALT="$ \sim 20\%$">
+ and <IMG
+ WIDTH="42" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img195.png"
+ ALT="$ \sim 2\%$">
+ of the objective function calls at the
+beginning and the end of optimization, respectively.
+
+<P>
+Each evaluation of the objective function or of its first derivatives
+with respect to the Cartesian coordinates involves the following
+steps:
+
+<P>
+
+<OL>
+<LI>Calculate non-fixed pseudo-atoms from the current atomic positions.
+
+<P>
+</LI>
+<LI>Update the dynamic pairs list, if necessary.
+
+<P>
+</LI>
+<LI>Calculate the violations of selected restraints and all other 
+quantities that are shared between the calculations of the objective
+function and its derivatives.
+
+<P>
+</LI>
+<LI>Sum the contributions of all violated restraints to the
+objective function and the derivatives.
+</LI>
+</OL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8311"
+  HREF="node447.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8305"
+  HREF="node445.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8299"
+  HREF="node445.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8307"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8309"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8312"
+  HREF="node447.html">Optimizers</A>
+<B> Up:</B> <A NAME="tex2html8306"
+  HREF="node445.html">Optimization of the objective</A>
+<B> Previous:</B> <A NAME="tex2html8300"
+  HREF="node445.html">Optimization of the objective</A>
+ &nbsp; <B>  <A NAME="tex2html8308"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8310"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

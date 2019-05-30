@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Topology.append() -- append residue topology library</TITLE>
+<META NAME="description" CONTENT="Topology.append() -- append residue topology library">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node147.html">
+<LINK REL="previous" HREF="node145.html">
+<LINK REL="up" HREF="node143.html">
+<LINK REL="next" HREF="node147.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html3852"
+  HREF="node147.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html3846"
+  HREF="node143.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html3840"
+  HREF="node145.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html3848"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html3850"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3853"
+  HREF="node147.html">Topology.clear()   clear</A>
+<B> Up:</B> <A NAME="tex2html3847"
+  HREF="node143.html">The Libraries class: stereochemical</A>
+<B> Previous:</B> <A NAME="tex2html3841"
+  HREF="node145.html">Libraries.parameters   parameter</A>
+ &nbsp; <B>  <A NAME="tex2html3849"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html3851"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001153000000000000000">
+Topology.append() -- append residue topology library</A>
+</H2> <A NAME="11844"></A><A NAME="CMD:Topology.append"></A><A NAME="11847"></A><TT>append(file)</TT>
+<BR><BLOCKQUOTE>
+This command reads residue topologies from the topology library
+given by <I>file</I><A NAME="11872"></A>, such as the C<SMALL>HARMM</SMALL>&nbsp;22 topology file
+[<A
+ HREF="node469.html#CHARMM98">MacKerell <EM>et&nbsp;al.</EM>, 1998</A>] (it also reads which subsets of atoms correspond
+to each <I><A HREF="node153.html#MEMB:Topology.submodel">Topology.submodel</A></I><A NAME="11876"></A> from library <TT>'MODELS_LIB'</TT>). This
+file must include atomic connectivities of residues and patching
+residues, and the internal coordinates for minimum energy residue
+conformations. Patching residues modify residues; for example,
+N-terminus, C-terminus and disulfide bonds are defined by patching the
+original topology. This information is used for generating the
+molecular topology and possibly for calculating an initial
+conformation.
+To define your entries in the topology library,
+see the FAQ Section&nbsp;<A HREF="node36.html#SECTION:faq">3.1</A>, Questions&nbsp;<A HREF="node36.html#FAQ:restop">8</A> and
+<A HREF="node36.html#FAQ:respatch">9</A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>This command also sets <I><A HREF="node153.html#MEMB:Topology.submodel">Topology.submodel</A></I><A NAME="11882"></A> appropriately to match the
+topology library, assuming a suitable header is found in the library file
+(see <I><A HREF="node153.html#MEMB:Topology.submodel">Topology.submodel</A></I><A NAME="11887"></A>). For example, the default topology for comparative
+modeling by M<SMALL>ODELLER</SMALL> includes only non-hydrogen atoms
+(<I><A HREF="node153.html#MEMB:Topology.submodel">Topology.submodel</A></I><A NAME="11894"></A> = <TT>3</TT>).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The new residue topologies are added to the existing residue topologies. (To
+replace the old topology, call <B><A HREF="node147.html#CMD:Topology.clear">Topology.clear()</A></B><A NAME="11900"></A> first.)
+If the topology for a residue is duplicated, only the last definition is kept.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Not all the features of the C<SMALL>HARMM</SMALL>&nbsp;22 topology library are implemented in
+M<SMALL>ODELLER</SMALL>, although a C<SMALL>HARMM</SMALL> file should be read in successfully. A
+variety of topology files for different kinds of models can be
+prepared by the <B><A HREF="node152.html#CMD:Topology.make">Topology.make()</A></B><A NAME="11909"></A> command.
+
+</BLOCKQUOTE>
+
+<P>
+<B>Example:</B> See <B><A HREF="node176.html#CMD:model.patch">model.patch()</A></B><A NAME="11917"></A> command.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html3852"
+  HREF="node147.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html3846"
+  HREF="node143.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html3840"
+  HREF="node145.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html3848"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html3850"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3853"
+  HREF="node147.html">Topology.clear()   clear</A>
+<B> Up:</B> <A NAME="tex2html3847"
+  HREF="node143.html">The Libraries class: stereochemical</A>
+<B> Previous:</B> <A NAME="tex2html3841"
+  HREF="node145.html">Libraries.parameters   parameter</A>
+ &nbsp; <B>  <A NAME="tex2html3849"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html3851"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

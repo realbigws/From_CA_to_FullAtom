@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>model.build() -- build MODEL coordinates from topology</TITLE>
+<META NAME="description" CONTENT="model.build() -- build MODEL coordinates from topology">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node180.html">
+<LINK REL="previous" HREF="node178.html">
+<LINK REL="up" HREF="node155.html">
+<LINK REL="next" HREF="node180.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4351"
+  HREF="node180.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4345"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4339"
+  HREF="node178.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4347"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4349"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4352"
+  HREF="node180.html">model.transfer_xyz()   copy</A>
+<B> Up:</B> <A NAME="tex2html4346"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4340"
+  HREF="node178.html">model.patch_ss()   guess</A>
+ &nbsp; <B>  <A NAME="tex2html4348"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4350"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011624000000000000000">
+model.build() -- build MODEL coordinates from topology</A>
+</H2> <A NAME="14104"></A><A NAME="CMD:model.build"></A>     
+<A NAME="14107"></A><TT>build(build_method, initialize_xyz)</TT>
+<BR><DL>
+<DT><STRONG>Requirements:</STRONG></DT>
+<DD>topology file <TT>&amp;</TT> parameters file <TT>&amp;</TT> MODEL topology
+                             
+</DD>
+</DL>
+
+<P>
+<BLOCKQUOTE>
+This command builds Cartesian coordinates of the MODEL.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>initialize_xyz</I><A NAME="14135"></A> is <TT>True</TT>, all coordinates are built. Otherwise
+only the undefined coordinates are built. The latter is useful because
+some coordinates may be undefined after the <B><A HREF="node170.html#CMD:model.read">model.read()</A></B><A NAME="14139"></A> or 
+<B><A HREF="node180.html#CMD:model.transferxyz">model.transfer_xyz()</A></B><A NAME="14144"></A> command.
+The undefined coordinates have a value of <IMG
+ WIDTH="45" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.png"
+ ALT="$ -999.$">
+ when written to
+a PDB file.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>build_method</I><A NAME="14149"></A> is <TT>'INTERNAL_COORDINATES'</TT>,
+the Cartesian coordinates are built from the
+ideal values of the internal coordinates as obtained from the IC
+entries in the residue topology library. If an appropriate IC entry does
+not exist, the ideal value of the internal coordinate is calculated
+from the corresponding energy term in the parameter library. If some
+coordinates still cannot be built, they are set to values
+close to those of the neighboring atoms. If even this fails, they
+are set randomly.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>build_method</I><A NAME="14153"></A> is <TT>'3D_INTERPOLATION'</TT>,
+the Cartesian coordinates are built by linearly interpolating between the
+two defined atoms that span the contiguous undefined segment of atoms.
+In this mode, both the mainchain and sidechain conformations of
+all inserted residues are random and distorted. This build-up mode 
+is useful because it may eliminate a knot and minimize the 
+extended nature of the insertion obtained by <I>build_method</I><A NAME="14157"></A> = 
+<TT>'INTERNAL_COORDINATES'</TT>. In the end, the coordinates of each of the
+interpolated atoms are slightly randomized (<!-- MATH
+ $\pm 0.2\AA$
+ -->
+<IMG
+ WIDTH="49" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.png"
+ ALT="$ \pm 0.2\AA$">
+) to prevent 
+numerical problems with colinear angles and colinear dihedral angles.
+If one or both of the spanning atoms are undefined, the <TT>'ONE_STICK'</TT> 
+option (below) is used.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>build_method</I><A NAME="14162"></A> is <TT>'ONE_STICK'</TT>, the Cartesian coordinates are 
+built by ``growing'' them linearly out of the N-terminal spanning atom
+(C-terminal atom for the undefined N-terminal), away from the gravity center 
+of all the defined atoms. If there are no spanning atoms, the spanning atom 
+is defined randomly. 
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>build_method</I><A NAME="14166"></A> is <TT>'TWO_STICKS'</TT>, the loop is broken into two equal 
+pieces and the <TT>'ONE_STICK'</TT> algorithm is applied to both halves of the 
+loop separately.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html101"
+  HREF="../examples/commands/build_model.py">examples/commands/build_model.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: model.build()
+# This will build a model for a given sequence in an extended conformation.
+
+from modeller import *
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+# Read the sequence from a file (does not have to be part of an alignment):
+aln = alignment(env, file='toxin.ali', align_codes='1fas')
+# Calculate its molecular topology:
+mdl = model(env)
+mdl.generate_topology(aln['1fas'])
+# Calculate its Cartesian coordinates using internal coordinates and
+# parameters if necessary:
+mdl.build(initialize_xyz=True, build_method='INTERNAL_COORDINATES')
+
+# Add PDB remarks for readability
+mdl.remark = """REMARK   4 Extended-chain model of 1fas
+REMARK   4 Built from internal coordinates only"""
+
+# Write the coordinates to a PDB file:
+mdl.write(file='1fas.ini')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4351"
+  HREF="node180.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4345"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4339"
+  HREF="node178.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4347"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4349"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4352"
+  HREF="node180.html">model.transfer_xyz()   copy</A>
+<B> Up:</B> <A NAME="tex2html4346"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4340"
+  HREF="node178.html">model.patch_ss()   guess</A>
+ &nbsp; <B>  <A NAME="tex2html4348"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4350"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,437 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Pairwise comparison</TITLE>
+<META NAME="description" CONTENT="Pairwise comparison">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node441.html">
+<LINK REL="previous" HREF="node439.html">
+<LINK REL="up" HREF="node439.html">
+<LINK REL="next" HREF="node441.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8221"
+  HREF="node441.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8215"
+  HREF="node439.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8209"
+  HREF="node439.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8217"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8219"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8222"
+  HREF="node441.html">Variable gap penalty</A>
+<B> Up:</B> <A NAME="tex2html8216"
+  HREF="node439.html">Dynamic programming for sequence</A>
+<B> Previous:</B> <A NAME="tex2html8210"
+  HREF="node439.html">Dynamic programming for sequence</A>
+ &nbsp; <B>  <A NAME="tex2html8218"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8220"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001311000000000000000"></A>
+<A NAME="SECTION:dp"></A>
+<BR>
+Pairwise comparison
+</H2>
+
+<P>
+The residue by residue scores <IMG
+ WIDTH="30" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img160.png"
+ ALT="$ W_{ij}$">
+ can be used directly in the
+sequence alignment algorithm of Needleman &amp; Wunsch [<A
+ HREF="node469.html#NeeWun70">Needleman &amp; Wunsch, 1970</A>]
+to obtain the comparison of two protein sequences or structures. The only
+difference between the two types of comparison is in the type
+of the comparison matrix. In the case of sequence, the amino acid 
+substitution matrix is used. In the case of 3D structure, the Euclidean 
+distance (or some function of it) between two equivalent atoms in 
+the current optimal superposition is used [<A
+ HREF="node469.html#SalBlu90">&#352;ali &amp; Blundell, 1990</A>].
+
+<P>
+The problem of the optimal alignment of two sequences as addressed by
+the algorithm of Needleman &amp; Wunsch is as follows. We are given two
+sequences of elements and an <IMG
+ WIDTH="21" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img80.png"
+ ALT="$ M$">
+ times <IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img119.png"
+ ALT="$ N$">
+ score matrix <IMG
+ WIDTH="21" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img161.png"
+ ALT="$ \cal W$">
+ where
+<IMG
+ WIDTH="21" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img80.png"
+ ALT="$ M$">
+ and <IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img119.png"
+ ALT="$ N$">
+ are the numbers of elements in the first and second
+sequence. The scoring matrix is composed of scores <IMG
+ WIDTH="30" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img160.png"
+ ALT="$ W_{ij}$">
+ describing
+differences between elements <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ and <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ j$">
+ from the first and second
+sequence respectively. The goal is to obtain an optimal set of
+equivalences that match elements of the first sequence to the elements
+of the second sequence. The equivalence assignments are subject to the
+following ``progression rule'': for elements <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ and <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img162.png"
+ ALT="$ k$">
+ from the
+first sequence and elements <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ j$">
+ and <IMG
+ WIDTH="9" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img107.png"
+ ALT="$ l$">
+ from the second sequence, if
+element <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ is equivalenced to element <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ j$">
+, if element <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img162.png"
+ ALT="$ k$">
+ is
+equivalenced to element <IMG
+ WIDTH="9" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img107.png"
+ ALT="$ l$">
+ and if <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img162.png"
+ ALT="$ k$">
+ is greater than <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+, <IMG
+ WIDTH="9" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img107.png"
+ ALT="$ l$">
+
+must also be greater than <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ j$">
+. The optimal set of equivalences is the
+one with the smallest alignment score. The alignment score is a sum of
+scores corresponding to matched elements, also increased for
+occurrences of non-equivalenced elements (<I>ie</I> gaps). For a detailed
+discussion of this and related problems see [<A
+ HREF="node469.html#SanKru83">Sankoff &amp; Kruskal, 1983</A>].
+
+<P>
+We summarize the dynamic programming formulae used by M<SMALL>ODELLER</SMALL> to
+obtain the optimal alignment since they differ slightly from those
+already published [<A
+ HREF="node469.html#SelAlg74">Sellers, 1974</A>,<A
+ HREF="node469.html#Got82">Gotoh, 1982</A>]. The recursive dynamic
+programming formulae that give a matrix <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img163.png"
+ ALT="$ \cal D$">
+ are:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:29"></A><!-- MATH
+ \begin{equation}
+\begin{array}{ccl}
+  D_{i,j} & = & \min \left\{ \begin{array}{l}
+                          P_{i,j}                 \\
+                          D_{i-1,j-1} + W_{i,j}   \\
+                          Q_{i,j}
+                 \end{array} \right.      \vspace{0.2in} \\
+  P_{i,j} & = & \min \left\{ \begin{array}{l}
+                         D_{i-1,j} + g(1)         \\
+                         P_{i-1,j} + v
+                 \end{array} \right.      \vspace{0.2in} \\
+  Q_{i,j} & = & \min \left\{ \begin{array}{l}
+                         D_{i,j-1} + g(1)         \\
+                         Q_{i,j-1} + v
+                 \end{array} \right.      \vspace{0.7in}
+  \end{array}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="232" HEIGHT="276" BORDER="0"
+ SRC="img164.png"
+ ALT="\begin{displaymath}\begin{array}{ccl} D_{i,j} &amp; = &amp; \min \left\{ \begin{array}{l...
+...\\ Q_{i,j-1} + v \end{array} \right. \vspace{0.7in} \end{array}\end{displaymath}"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.1)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="30" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img165.png"
+ ALT="$ g(l)$">
+ is a linear gap penalty function:
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:30"></A><!-- MATH
+ \begin{equation}
+g(l) = u + v \cdot l \, .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="111" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img166.png"
+ ALT="$\displaystyle g(l) = u + v \cdot l \, .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.2)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Note that only a vector is needed for the storage of <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img167.png"
+ ALT="$ P$">
+ and <IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img168.png"
+ ALT="$ Q$">
+.  The
+uppermost formula in Eq.&nbsp;<A HREF="#eq:29">A.1</A> is calculated for <IMG
+ WIDTH="48" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img169.png"
+ ALT="$ i=M$">
+ and
+<IMG
+ WIDTH="47" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img170.png"
+ ALT="$ j=N$">
+. Variable <IMG
+ WIDTH="9" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img107.png"
+ ALT="$ l$">
+ is a gap length and parameters <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img105.png"
+ ALT="$ u$">
+ and <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img106.png"
+ ALT="$ v$">
+ are
+gap-penalty constants.
+
+<P>
+The arrays <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img163.png"
+ ALT="$ \cal D$">
+, <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img171.png"
+ ALT="$ \cal P$">
+ and <IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img172.png"
+ ALT="$ \cal Q$">
+ are initialized as follows:
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:31"></A><!-- MATH
+ \begin{equation}
+\begin{array}{ccl}
+  D_{i,0} & = & \left\{ \begin{array}{lc}
+			 0,    &       i \leq e   \\
+			 g(i-e), & e  <  i \leq N
+                 \end{array}  \right.         \vspace{0.2in}  \\
+  D_{0,j} & = & \left\{ \begin{array}{lc}
+			 0,    &       j \leq e   \\
+\par
+g(j-e), & e  <  j \leq N
+                 \end{array}  \right.        \vspace{0.2in}   \\
+  P_{i,0} & = & Q_{i,0} = \infty , \qquad i = 1,2,\ldots,M  \vspace{0.1in} \\
+  P_{0,j} & = & Q_{0,j} = \infty , \qquad j = 1,2,\ldots,N
+ \end{array}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="280" HEIGHT="188" BORDER="0"
+ SRC="img173.png"
+ ALT="\begin{displaymath}\begin{array}{ccl} D_{i,0} &amp; = &amp; \left\{ \begin{array}{lc} 0,...
+...j} &amp; = &amp; Q_{0,j} = \infty , \qquad j = 1,2,\ldots,N \end{array}\end{displaymath}"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.3)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where parameter <IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img74.png"
+ ALT="$ e$">
+ is the maximal number of elements at sequence
+termini which are not penalized with a gap-penalty if not
+equivalenced. A segment at the terminus of length <IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img74.png"
+ ALT="$ e$">
+ is termed an
+``overhang''. Note a difference from [<A
+ HREF="node469.html#Got82">Gotoh, 1982</A>] in the
+initialization of the <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img171.png"
+ ALT="$ \cal P$">
+ and <IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img172.png"
+ ALT="$ \cal Q$">
+ arrays. Also note that
+only vectors <IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img174.png"
+ ALT="$ Q_i$">
+ and <IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img175.png"
+ ALT="$ P_j$">
+ need to be stored in computer, not the
+whole arrays.
+
+<P>
+The minimal score <IMG
+ WIDTH="41" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img176.png"
+ ALT="$ d_{M,N}$">
+ is obtained from
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:32"></A><!-- MATH
+ \begin{equation}
+d_{M,N} = \min(D_{i,N}, D_{M,j})
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="178" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img177.png"
+ ALT="$\displaystyle d_{M,N} = \min(D_{i,N}, D_{M,j})$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.4)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ $i = M,M-1,\ldots,M-e \quad \hbox{and} \quad j =
+N,N-1,\ldots,N-e$
+ -->
+<IMG
+ WIDTH="404" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img178.png"
+ ALT="$ i = M,M-1,\ldots,M-e \quad \hbox{and} \quad j =
+N,N-1,\ldots,N-e$">
+ to allow for the overhangs. The equivalence
+assignments are obtained by backtracking in matrix <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img163.png"
+ ALT="$ \cal D$">
+.
+Backtracking starts from the element <!-- MATH
+ $D_{i,j} = d_{M,N}$
+ -->
+<IMG
+ WIDTH="90" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img179.png"
+ ALT="$ D_{i,j} = d_{M,N}$">
+.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8221"
+  HREF="node441.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8215"
+  HREF="node439.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8209"
+  HREF="node439.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8217"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8219"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8222"
+  HREF="node441.html">Variable gap penalty</A>
+<B> Up:</B> <A NAME="tex2html8216"
+  HREF="node439.html">Dynamic programming for sequence</A>
+<B> Previous:</B> <A NAME="tex2html8210"
+  HREF="node439.html">Dynamic programming for sequence</A>
+ &nbsp; <B>  <A NAME="tex2html8218"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8220"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

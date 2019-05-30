@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>The Residue class: a single residue in a model or alignment</TITLE>
+<META NAME="description" CONTENT="The Residue class: a single residue in a model or alignment">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node349.html">
+<LINK REL="previous" HREF="node315.html">
+<LINK REL="up" HREF="node107.html">
+<LINK REL="next" HREF="node324.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html6473"
+  HREF="node324.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html6467"
+  HREF="node107.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html6461"
+  HREF="node322.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html6469"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html6471"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6474"
+  HREF="node324.html">Residue.name   internal</A>
+<B> Up:</B> <A NAME="tex2html6468"
+  HREF="node107.html">MODELLER command reference</A>
+<B> Previous:</B> <A NAME="tex2html6462"
+  HREF="node322.html">Chain.join()   join</A>
+ &nbsp; <B>  <A NAME="tex2html6470"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html6472"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION0011190000000000000000"></A>
+    <A NAME="SECTION:residue"></A>
+<BR>
+The <TT>Residue</TT> class: a single residue in a model or alignment
+</H1>
+    <A NAME="CLASS:Residue"></A><A NAME="31658"></A>
+The <TT>Residue</TT> class holds information about a single residue in
+a sequence (see <I><A HREF="node307.html#MEMB:Sequence.residues">Sequence.residues</A></I><A NAME="31860"></A>).
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html197"
+  HREF="../examples/python/residues.py">examples/python/residues.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for 'residue' objects
+
+from modeller import *
+from modeller.scripts import complete_pdb
+
+def analyze_seq(description, seq):
+    """Simple 'analysis' of a sequence of residues, from a model or alignment"""
+    numcys = 0
+    for res in seq:
+        if res.pdb_name == 'CYS':
+            numcys += 1
+    print "%s contains %d residues, of which %d are CYS" \
+          % (description, len(seq), numcys)
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+mdl = complete_pdb(env, "1fas")
+
+# 'mdl.residues' is a list of all residues in the model
+print "1-letter code of 1st residue: ", mdl.residues[0].code
+print "PDB name of residue '10': ", mdl.residues['10:'].pdb_name
+
+# Get the first aligned sequence from a file
+aln = alignment(env, file='../commands/toxin.ali')
+firstseq = aln[0]
+
+# Analyze all residues in the model, a subset, and all residues in the
+# alignment sequence
+analyze_seq("Model 1fas", mdl.residues)
+analyze_seq("First 10 residues of 1fas", mdl.residue_range('1:', '10:'))
+analyze_seq("Aligned sequence %s" % firstseq.code, firstseq.residues)
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html6475"
+  HREF="node324.html">Residue.name -- internal (CHARMM) residue type name</A>
+<LI><A NAME="tex2html6476"
+  HREF="node325.html">Residue.pdb_name -- PDB (IUPAC) type name</A>
+<LI><A NAME="tex2html6477"
+  HREF="node326.html">Residue.code -- One-letter residue type code</A>
+<LI><A NAME="tex2html6478"
+  HREF="node327.html">Residue.hetatm -- HETATM indicator</A>
+<LI><A NAME="tex2html6479"
+  HREF="node328.html">Residue.index -- internal integer index</A>
+<LI><A NAME="tex2html6480"
+  HREF="node329.html">Residue.num -- PDB-style residue number</A>
+<LI><A NAME="tex2html6481"
+  HREF="node330.html">Residue.curvature -- Mainchain curvature</A>
+<LI><A NAME="tex2html6482"
+  HREF="node331.html">Residue.atoms -- all atoms in the residue</A>
+<LI><A NAME="tex2html6483"
+  HREF="node332.html">Residue.chain -- chain object</A>
+<LI><A NAME="tex2html6484"
+  HREF="node333.html">Residue.phi -- <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img4.png"
+ ALT="$ \phi $">
+ dihedral angle</A>
+<LI><A NAME="tex2html6485"
+  HREF="node334.html">Residue.psi -- <IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ \psi $">
+ dihedral angle</A>
+<LI><A NAME="tex2html6486"
+  HREF="node335.html">Residue.omega -- <IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \omega $">
+ dihedral angle</A>
+<LI><A NAME="tex2html6487"
+  HREF="node336.html">Residue.alpha -- <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$ \alpha $">
+ dihedral angle</A>
+<LI><A NAME="tex2html6488"
+  HREF="node337.html">Residue.chi1 -- <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img7.png"
+ ALT="$ \chi _1$">
+ dihedral angle</A>
+<LI><A NAME="tex2html6489"
+  HREF="node338.html">Residue.chi2 -- <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ \chi _2$">
+ dihedral angle</A>
+<LI><A NAME="tex2html6490"
+  HREF="node339.html">Residue.chi3 -- <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ \chi _3$">
+ dihedral angle</A>
+<LI><A NAME="tex2html6491"
+  HREF="node340.html">Residue.chi4 -- <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.png"
+ ALT="$ \chi _4$">
+ dihedral angle</A>
+<LI><A NAME="tex2html6492"
+  HREF="node341.html">Residue.chi5 -- <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.png"
+ ALT="$ \chi _5$">
+ dihedral angle</A>
+<LI><A NAME="tex2html6493"
+  HREF="node342.html">Residue.get_aligned_residue() -- get aligned residue in another sequence</A>
+<LI><A NAME="tex2html6494"
+  HREF="node343.html">Residue.add_leading_gaps() -- add gap(s) before this residue</A>
+<LI><A NAME="tex2html6495"
+  HREF="node344.html">Residue.add_trailing_gaps() -- add gap(s) after this residue</A>
+<LI><A NAME="tex2html6496"
+  HREF="node345.html">Residue.remove_leading_gaps() -- remove gap(s) before this residue</A>
+<LI><A NAME="tex2html6497"
+  HREF="node346.html">Residue.remove_trailing_gaps() -- remove gap(s) after this residue</A>
+<LI><A NAME="tex2html6498"
+  HREF="node347.html">Residue.get_leading_gaps() -- get number of gaps before this residue</A>
+<LI><A NAME="tex2html6499"
+  HREF="node348.html">Residue.get_trailing_gaps() -- get number of gaps after this residue</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

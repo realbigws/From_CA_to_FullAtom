@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Defining loop regions for refinement</TITLE>
+<META NAME="description" CONTENT="Defining loop regions for refinement">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node34.html">
+<LINK REL="previous" HREF="node32.html">
+<LINK REL="up" HREF="node31.html">
+<LINK REL="next" HREF="node34.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1771"
+  HREF="node34.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1765"
+  HREF="node31.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1759"
+  HREF="node32.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1767"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1769"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1772"
+  HREF="node34.html">Refining an existing PDB</A>
+<B> Up:</B> <A NAME="tex2html1766"
+  HREF="node31.html">Loop optimization</A>
+<B> Previous:</B> <A NAME="tex2html1760"
+  HREF="node32.html">Automatic loop refinement after</A>
+ &nbsp; <B>  <A NAME="tex2html1768"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1770"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00732000000000000000">
+Defining loop regions for refinement</A>
+</H2>
+
+<P>
+By default, the <TT>loopmodel</TT> class selects all `loop' regions in your
+model for refinement, defined as any insertion in the alignment (<EM>i.e.</EM>, a region
+of the target where template information is not available). You can override
+this and select any set of atoms of your choosing by redefining the
+<B><A HREF="node85.html#CMD:loopmodel.selectloopatoms">loopmodel.select_loop_atoms()</A></B><A NAME="3249"></A> routine. (This routine should return a
+<TT>selection</TT> object; see Section&nbsp;<A HREF="node23.html#SECTION:model-segment">2.2.6</A> or
+Section&nbsp;<A HREF="node220.html#CLASS:selection">6.9</A> for further information.)
+
+<P>
+This example also demonstrates how to automatically assess each generated
+loop model.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html56"
+  HREF="../examples/automodel/model-loop-define.py">examples/automodel/model-loop-define.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+from modeller.automodel import *
+
+log.verbose()
+env = environ()
+
+env.io.atom_files_directory = ['.', '../atom_files']
+
+# Create a new class based on 'loopmodel' so that we can redefine
+# select_loop_atoms
+class MyLoop(loopmodel):
+    # This routine picks the residues to be refined by loop modeling
+    def select_loop_atoms(self):
+        # Two residue ranges (both will be refined simultaneously)
+        return selection(self.residue_range('19:', '28:'),
+                         self.residue_range('45:', '50:'))
+
+a = MyLoop(env,
+           alnfile  = 'alignment.ali',      # alignment filename
+           knowns   = '5fd1',               # codes of the templates
+           sequence = '1fdx',               # code of the target
+           loop_assess_methods=assess.DOPE) # assess each loop with DOPE
+a.starting_model= 1                 # index of the first model
+a.ending_model  = 1                 # index of the last model
+
+a.loop.starting_model = 1           # First loop model
+a.loop.ending_model   = 2           # Last loop model
+
+a.make()                            # do modeling and loop refinement
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

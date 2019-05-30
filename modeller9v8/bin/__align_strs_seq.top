@@ -1,0 +1,45 @@
+# Purpose : align a single sequence with several structures
+#
+# Input   : SEGFILE, KNOWNS, SEQUENCE
+#
+# Output  : alignment in file ALNFILE
+
+
+SUBROUTINE ROUTINE = 'align_strs_seq'
+
+# SET OUTPUT = 'SHORT'
+
+# Read the sequences of structures from the specs in SEGFILE:
+READ_ALIGNMENT FILE = SEGFILE, ALIGN_CODES = KNOWNS
+
+# Only align structures if there's more than one:
+IF ARGUMENTS = NUMB_OF_SEQUENCES 1, OPERATION = 'GT'
+
+  # do a multiple sequence alignment of structures:
+  # SET MATRIX_FILE = '${LIB}/as1.sim.mat'
+  MALIGN GAP_PENALTIES_1D = -600 -400
+
+  # do a multiple structural alignment of structures:
+  MALIGN3D GAP_PENALTIES_3D = 0.0 2.0, FIT_ATOMS = 'CA'
+
+END_IF
+
+# remember the number of structures
+SET ALIGN_BLOCK = NUMB_OF_SEQUENCES
+
+# add the sequence of the unknown to the sequence/alignment arrays containing
+# the aligned structures:
+READ_ALIGNMENT FILE = SEGFILE, ALIGN_CODES = ALIGN_CODES SEQUENCE, ADD_SEQUENCE = on
+SET ADD_SEQUENCE = off
+
+# align the last sequence with the fixed alignment of structures:
+ALIGN GAP_PENALTIES_1D = -600 -400
+
+# write the alignment to a file ALNFILE
+WRITE_ALIGNMENT FILE = ALNFILE
+
+# do some sequence comparisons:
+ID_TABLE
+
+RETURN
+END_SUBROUTINE

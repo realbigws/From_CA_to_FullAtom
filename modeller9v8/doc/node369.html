@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>profile.write() -- write a profile</TITLE>
+<META NAME="description" CONTENT="profile.write() -- write a profile">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node370.html">
+<LINK REL="previous" HREF="node368.html">
+<LINK REL="up" HREF="node366.html">
+<LINK REL="next" HREF="node370.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7156"
+  HREF="node370.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7150"
+  HREF="node366.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7144"
+  HREF="node368.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7152"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7154"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7157"
+  HREF="node370.html">profile.to_alignment()   profile</A>
+<B> Up:</B> <A NAME="tex2html7151"
+  HREF="node366.html">The profile class: using</A>
+<B> Previous:</B> <A NAME="tex2html7145"
+  HREF="node368.html">profile.read()   read</A>
+ &nbsp; <B>  <A NAME="tex2html7153"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7155"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011233000000000000000">
+profile.write() -- write a profile</A>
+</H2> <A NAME="33279"></A><A NAME="CMD:profile.write"></A><A NAME="33282"></A><TT>write(file, profile_format)</TT>
+<BR><BLOCKQUOTE>
+This command will write a profile to a specified
+file, together with a number of variables that are associated with
+the profile in the memory. Two formats are supported: <TT>TEXT</TT>
+and <TT>BINARY</TT>.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html203"
+  HREF="../examples/commands/aln_to_prof.py">examples/commands/aln_to_prof.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+env = environ()
+
+# Read in the alignment file
+aln = alignment(env)
+aln.append(file='toxin.ali', alignment_format='PIR', align_codes='ALL')
+
+# Convert the alignment to profile format
+prf = aln.to_profile()
+
+# Write out the profile
+
+# in text file
+prf.write(file='alntoprof.prf', profile_format='TEXT')
+
+# in binary format
+prf.write(file='alntoprof.bin', profile_format='BINARY')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

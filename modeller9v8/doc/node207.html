@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Restraints.unpick_redundant() -- unselect redundant restraints</TITLE>
+<META NAME="description" CONTENT="Restraints.unpick_redundant() -- unselect redundant restraints">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node208.html">
+<LINK REL="previous" HREF="node206.html">
+<LINK REL="up" HREF="node195.html">
+<LINK REL="next" HREF="node208.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4761"
+  HREF="node208.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4755"
+  HREF="node195.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4749"
+  HREF="node206.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4757"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4759"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4762"
+  HREF="node208.html">Restraints.remove_unpicked()   remove</A>
+<B> Up:</B> <A NAME="tex2html4756"
+  HREF="node195.html">The Restraints class: static</A>
+<B> Previous:</B> <A NAME="tex2html4750"
+  HREF="node206.html">Restraints.pick()   pick</A>
+ &nbsp; <B>  <A NAME="tex2html4758"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4760"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011712000000000000000">
+Restraints.unpick_redundant() -- unselect redundant restraints</A>
+</H2> <A NAME="17827"></A><A NAME="CMD:Restraints.unpickredundant"></A><A NAME="17830"></A><TT>unpick_redundant()</TT>
+<BR><BLOCKQUOTE>
+This unselects those cosine dihedral angle restraints 
+(<I>restraint_type</I><A NAME="17851"></A> = <TT>'DIHEDRAL'</TT>) that operate on the same atoms as any 
+other restraints on a dihedral angle or a pair of dihedral angles. Such 
+restraints include the M<SMALL>ODELLER</SMALL> <TT>'PHI_DIHEDRAL'</TT>, <TT>'PSI_DIHEDRAL'</TT>, 
+<TT>'OMEGA_DIHEDRAL'</TT>, <TT>'CHI1_DIHEDRAL'</TT>, <TT>'CHI2_DIHEDRAL'</TT>, 
+<TT>'CHI3_DIHEDRAL'</TT>, 
+<TT>'CHI4_DIHEDRAL'</TT>, <TT>'PHI_PSI_CLASS'</TT>, <TT>'MRFP_DIHEDRAL'</TT>, and 
+<TT>'PHI_PSI_BINORMAL'</TT> dihedral angle restraints, as well as the 2nd, 3rd, 
+<EM>etc</EM>. cosine dihedral angle restraints on the same atoms; the improper dihedral 
+angle restraints are not considered here. For this command to work properly, 
+the cosine dihedral angle restraints must be constructed before any other 
+dihedral angle restraints. This functionality is needed because some of the 
+C<SMALL>HARMM</SMALL> cosine terms are sometimes duplicated by other C<SMALL>HARMM</SMALL> cosine terms 
+as well as by M<SMALL>ODELLER</SMALL> homology-derived mainchain and sidechain dihedral 
+and bi-dihedral angle restraints. When using the standard <TT>automodel</TT>
+class, the redundant C<SMALL>HARMM</SMALL> terms are always removed.
+See also <B><A HREF="node209.html#CMD:Restraints.condense">Restraints.condense()</A></B><A NAME="17875"></A>.
+
+</BLOCKQUOTE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

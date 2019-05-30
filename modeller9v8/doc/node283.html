@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>alignment.edit() -- edit overhangs in alignment</TITLE>
+<META NAME="description" CONTENT="alignment.edit() -- edit overhangs in alignment">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node284.html">
+<LINK REL="previous" HREF="node282.html">
+<LINK REL="up" HREF="node269.html">
+<LINK REL="next" HREF="node284.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5891"
+  HREF="node284.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5885"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5879"
+  HREF="node282.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5887"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5889"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5892"
+  HREF="node284.html">alignment.describe()   describe</A>
+<B> Up:</B> <A NAME="tex2html5886"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5880"
+  HREF="node282.html">alignment.write()   write</A>
+ &nbsp; <B>  <A NAME="tex2html5888"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5890"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00111514000000000000000">
+alignment.edit() -- edit overhangs in alignment</A>
+</H2> <A NAME="26060"></A><A NAME="CMD:alignment.edit"></A><A NAME="26063"></A><TT>edit(overhang, edit_align_codes, base_align_codes, min_base_entries, io=None)</TT>
+<BR><BLOCKQUOTE>
+This command edits the overhangs in the alignment.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>edit_align_codes</I><A NAME="26080"></A> specifies the alignment codes for the alignment entries 
+whose overhangs are to be cut; in addition, <TT>all</TT> or <TT>last</TT> can be used.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>base_align_codes</I><A NAME="26085"></A> specifies the alignment codes for the alignment entries 
+that are used to determine the extent of the overhangs to be cut from the 
+edited entries; in addition, <TT>all</TT> or <TT>rest</TT> (relative to
+<I>edit_align_codes</I><A NAME="26090"></A>) can be used.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The same entries can be cut and used for determining the base.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The base of the alignment is determined by the first and last alignment
+positions that have at least <I>min_base_entries</I><A NAME="26093"></A> entries that started
+by that position, beginning from the first and last alignment positions,
+respectively.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The cuts are shortened by <I>overhang</I><A NAME="26096"></A> residues respectively, so that
+reasonably short termini can be easily modeled ab initio if desired.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The <I>io</I><A NAME="26099"></A> argument is used because the beginning
+and ending residue numbers for the <TT>`structure'</TT> entries in the alignment
+are renumbered automatically by reading the appropriate atom files.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html166"
+  HREF="../examples/commands/edit_alignment.py">examples/commands/edit_alignment.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: alignment.edit()
+
+# Read an alignment, write it out in the 'PAP' format, with overhangs cut.
+
+from modeller import *
+
+log.level(1, 1, 1, 1, 0)
+env = environ()
+env.io.atom_files_directory = ['.', '../atom_files']
+
+aln = alignment(env, file='overhang.ali', align_codes='all',
+                alignment_format='PIR')
+
+# Cut overhangs in the 1is4 sequence that are longer than 3 residues
+# relative to the longest remaining entry in the alignment:
+aln.edit(edit_align_codes='1is4', base_align_codes='rest',
+         min_base_entries=1, overhang=3)
+aln.write(file='overhang-1.pir', alignment_format='PIR')
+aln.write(file='overhang-1.pap', alignment_format='PAP')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5891"
+  HREF="node284.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5885"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5879"
+  HREF="node282.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5887"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5889"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5892"
+  HREF="node284.html">alignment.describe()   describe</A>
+<B> Up:</B> <A NAME="tex2html5886"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5880"
+  HREF="node282.html">alignment.write()   write</A>
+ &nbsp; <B>  <A NAME="tex2html5888"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5890"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

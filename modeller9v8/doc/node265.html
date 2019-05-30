@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>group_restraints() -- create a new set of group restraints</TITLE>
+<META NAME="description" CONTENT="group_restraints() -- create a new set of group restraints">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node266.html">
+<LINK REL="previous" HREF="node264.html">
+<LINK REL="up" HREF="node264.html">
+<LINK REL="next" HREF="node266.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5606"
+  HREF="node266.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5600"
+  HREF="node264.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5594"
+  HREF="node264.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5602"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5604"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5607"
+  HREF="node266.html">group_restraints.append()   read</A>
+<B> Up:</B> <A NAME="tex2html5601"
+  HREF="node264.html">The group_restraints class: restraints</A>
+<B> Previous:</B> <A NAME="tex2html5595"
+  HREF="node264.html">The group_restraints class: restraints</A>
+ &nbsp; <B>  <A NAME="tex2html5603"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5605"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011131000000000000000">
+group_restraints() -- create a new set of group restraints</A>
+</H2> <A NAME="24293"></A><A NAME="CMD:grouprestraints"></A><A NAME="24296"></A><TT>group_restraints(env, classes, parameters=None)</TT>
+<BR><BLOCKQUOTE>
+This creates a new set of group restraints. The set is initialized by
+reading in <I>classes</I><A NAME="24306"></A>, a file containing a classification of residue:atom
+pairs into groups. If the <I>parameters</I><A NAME="24309"></A> argument is also given, this is
+used to read in a file of restraint parameters, using
+<B><A HREF="node266.html#CMD:grouprestraints.append">group_restraints.append()</A></B><A NAME="24312"></A>.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html157"
+  HREF="../examples/commands/group_restraints.py">examples/commands/group_restraints.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: group_restraints()
+from modeller import *
+from modeller.scripts import complete_pdb
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+# Allow calculation of statistical (dynamic_modeller) potential
+env.edat.dynamic_modeller = True
+
+mdl = complete_pdb(env, "1fas")
+
+# Read Fiser/Melo loop modeling potential
+gprsr = group_restraints(env, classes='$(LIB)/atmcls-melo.lib',
+                         parameters='$(LIB)/melo1-dist.lib')
+# Read DOPE loop modeling potential
+#gprsr = group_restraints(env, classes='$(LIB)/atmcls-mf.lib',
+#                         parameters='$(LIB)/dist-mf.lib')
+# Read DOPE-HR loop modeling potential
+#gprsr = group_restraints(env, classes='$(LIB)/atmcls-mf.lib',
+#                         parameters='$(LIB)/dist-mfhr.lib')
+
+# Use this potential for the 1fas model
+mdl.group_restraints = gprsr
+
+# Evaluate the loop score of PDB residues 1 through 10
+atmsel = selection(mdl.residue_range('1', '10'))
+atmsel.energy()
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

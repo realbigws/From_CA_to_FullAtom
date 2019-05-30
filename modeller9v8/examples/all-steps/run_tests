@@ -1,0 +1,4 @@
+#!/bin/sh -v
+mod9v8 search.py
+mod9v8 compare.py
+mod9v8 get-model.py

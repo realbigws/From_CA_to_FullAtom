@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>model.build_sequence() -- build model from a sequence of one-letter codes</TITLE>
+<META NAME="description" CONTENT="model.build_sequence() -- build model from a sequence of one-letter codes">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node172.html">
+<LINK REL="previous" HREF="node170.html">
+<LINK REL="up" HREF="node155.html">
+<LINK REL="next" HREF="node172.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4239"
+  HREF="node172.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4233"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4227"
+  HREF="node170.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4235"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4237"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4240"
+  HREF="node172.html">model.write()   write</A>
+<B> Up:</B> <A NAME="tex2html4234"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4228"
+  HREF="node170.html">model.read()   read</A>
+ &nbsp; <B>  <A NAME="tex2html4236"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4238"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011616000000000000000">
+model.build_sequence() -- build model from a sequence of one-letter codes</A>
+</H2> <A NAME="13599"></A><A NAME="CMD:model.buildsequence"></A><A NAME="13602"></A><TT>build_sequence(sequence, special_patches=None, patch_default=True)</TT>
+<BR><BLOCKQUOTE>
+This builds a new model (overwriting any existing one) of the
+given sequence, specified as one-letter codes. The sequence can also contain
+'/' characters to build multi-chain models. The coordinates of the model are
+automatically constructed using <B><A HREF="node179.html#CMD:model.build">model.build()</A></B><A NAME="13616"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>special_patches</I><A NAME="13621"></A> and <I>patch_default</I><A NAME="13624"></A> can be used to adjust the topology; see
+<B><A HREF="node413.html#CMD:completepdb">complete_pdb()</A></B><A NAME="13627"></A> for more details.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>See also <B><A HREF="node280.html#CMD:alignment.appendsequence">alignment.append_sequence()</A></B><A NAME="13632"></A>.
+                             
+</BLOCKQUOTE>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html98"
+  HREF="../examples/commands/build_sequence.py">examples/commands/build_sequence.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># This demonstrates the use of alignment.append_sequence() and
+# model.build_sequence() to build residue sequences from one-letter codes
+
+from modeller import *
+env = environ()
+
+# Read parameters (needed to build models from internal coordinates)
+env.libs.topology.read('${LIB}/top_heav.lib')
+env.libs.parameters.read('${LIB}/par.lib')
+
+# Create a new empty alignment and model:
+aln = alignment(env)
+mdl = model(env)
+
+# Build a model from one-letter codes, and write to a PDB file:
+mdl.build_sequence("AFVVTDNCIK/CKYTDCVEVC")
+mdl.write(file='sequence.pdb')
+
+# Build an alignment from one-letter codes
+aln.append_sequence("AF---VVTDN---CIKCK------")
+aln.append_sequence("-------AFVVTDN--CI--K-CK")
+# Set alignment information, and write to file:
+aln[0].code = 'seq1'
+aln[1].code = 'seq2'
+aln.write(file='sequence.ali')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

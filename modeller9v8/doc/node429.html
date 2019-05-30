@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>sge_pe_slave() -- create a slave running on a Sun GridEngine parallel environment slave node</TITLE>
+<META NAME="description" CONTENT="sge_pe_slave() -- create a slave running on a Sun GridEngine parallel environment slave node">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node430.html">
+<LINK REL="previous" HREF="node428.html">
+<LINK REL="up" HREF="node416.html">
+<LINK REL="next" HREF="node430.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8024"
+  HREF="node430.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8018"
+  HREF="node416.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8012"
+  HREF="node428.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8020"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8022"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8025"
+  HREF="node430.html">sge_qsub_slave()   create</A>
+<B> Up:</B> <A NAME="tex2html8019"
+  HREF="node416.html">Parallel job support</A>
+<B> Previous:</B> <A NAME="tex2html8013"
+  HREF="node428.html">local_slave()   create</A>
+ &nbsp; <B>  <A NAME="tex2html8021"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8023"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00113213000000000000000">
+sge_pe_slave() -- create a slave running on a Sun GridEngine parallel environment slave node</A>
+</H2> <A NAME="37955"></A><A NAME="CMD:sgepeslave"></A><A NAME="37958"></A><TT>sge_pe_slave(nodename)</TT>
+<BR><BLOCKQUOTE>
+This creates a new slave process, which runs on the slave node given by
+<I>nodename</I><A NAME="37967"></A> as part of a Sun GridEngine (SGE) parallel job. The process is
+started using <TT>'qrsh -inherit -V'</TT>, so your SGE setup should be correctly
+configured to allow this. Generally you would use an <TT>sge_pe_job</TT>
+object instead, above, to automatically create slave processes for all
+SGE nodes.
+                             
+</BLOCKQUOTE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

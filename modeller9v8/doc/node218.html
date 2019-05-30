@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>strand() -- make a -strand</TITLE>
+<META NAME="description" CONTENT="strand() -- make a -strand">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node219.html">
+<LINK REL="previous" HREF="node217.html">
+<LINK REL="up" HREF="node216.html">
+<LINK REL="next" HREF="node219.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4916"
+  HREF="node219.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4910"
+  HREF="node216.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4904"
+  HREF="node217.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4912"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4914"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4917"
+  HREF="node219.html">sheet()   make</A>
+<B> Up:</B> <A NAME="tex2html4911"
+  HREF="node216.html">The secondary_structure module: secondary</A>
+<B> Previous:</B> <A NAME="tex2html4905"
+  HREF="node217.html">alpha()   make</A>
+ &nbsp; <B>  <A NAME="tex2html4913"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4915"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001182000000000000000">
+strand() -- make a <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \beta $">
+-strand</A>
+</H2> <A NAME="19330"></A><A NAME="CMD:strand"></A><A NAME="19334"></A><TT>strand(residues)</TT>
+<BR><BLOCKQUOTE>
+This makes restraints enforcing an extended <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \beta $">
+-strand
+conformation for the residue segment specified by <I>residues</I><A NAME="19352"></A>
+(which can be created using the <B><A HREF="node166.html#CMD:model.residuerange">model.residue_range()</A></B><A NAME="19355"></A> function).
+This is achieved by applying <IMG
+ WIDTH="35" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img83.png"
+ ALT="$ \Phi,\Psi$">
+ binormal restraints only. These
+binormal restraints force the mainchain conformation into class ``B'',
+except for the Pro residues which are restrained to class ``P'' [<A
+ HREF="node469.html#SalBlu93">&#352;ali &amp; Blundell, 1993</A>].
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>In many cases (<EM>e.g.</EM>, most comparative modeling runs) you will already have
+binormal restraints active (which will conflict with strand restraints),
+so it is recommended that you first use <B><A HREF="node211.html#CMD:Restraints.unpick">Restraints.unpick()</A></B><A NAME="19361"></A> followed by
+<B><A HREF="node209.html#CMD:Restraints.condense">Restraints.condense()</A></B><A NAME="19366"></A> to remove these.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>To actually add the restraints, pass the new object to <B><A HREF="node210.html#CMD:Restraints.add">Restraints.add()</A></B><A NAME="19371"></A>.
+See Section&nbsp;<A HREF="node27.html#SECTION:model-addrsr">2.2.10</A> for an example.
+
+</BLOCKQUOTE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

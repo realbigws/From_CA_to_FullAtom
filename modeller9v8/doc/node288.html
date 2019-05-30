@@ -1,0 +1,404 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>alignment.align2d() -- align sequences with structures</TITLE>
+<META NAME="description" CONTENT="alignment.align2d() -- align sequences with structures">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node289.html">
+<LINK REL="previous" HREF="node287.html">
+<LINK REL="up" HREF="node269.html">
+<LINK REL="next" HREF="node289.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5961"
+  HREF="node289.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5955"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5949"
+  HREF="node287.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5957"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5959"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5962"
+  HREF="node289.html">alignment.malign()   align</A>
+<B> Up:</B> <A NAME="tex2html5956"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5950"
+  HREF="node287.html">alignment.align()   align</A>
+ &nbsp; <B>  <A NAME="tex2html5958"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5960"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00111519000000000000000">
+alignment.align2d() -- align sequences with structures</A>
+</H2> <A NAME="26392"></A><A NAME="CMD:alignment.align2d"></A><A NAME="26395"></A><TT>align2d(overhang=0, align_block=0, rr_file='$(LIB)/as1.sim.mat', align_what='BLOCK', off_diagonal=100, max_gap_length=999999, local_alignment=False, matrix_offset=0.0, gap_penalties_1d=(-100.0, 0.0), gap_penalties_2d=(3.5, 3.5, 3.5, 0.2, 4.0, 6.5, 2.0, 0.0, 0.0), surftyp=1, fit=True, fix_offsets=(0.0, -1.0, -2.0, -3.0, -4.0), input_weights_file=None, output_weights_file=None, n_subopt=1, subopt_offset=0.0, input_profile_file=None, output_profile_file=None, weigh_sequences=False, smooth_prof_weight=10, weights_type='SIMILAR', io=None)</TT>
+<BR><A NAME="COMMAND:align2d"></A><BLOCKQUOTE>
+<B>IMPORTANT NOTE:</B> This command is
+<B>obsolete</B>, and is no longer maintained. It is strongly recommended that
+you use <B><A HREF="node294.html#CMD:alignment.salign">alignment.salign()</A></B><A NAME="26430"></A> instead.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>This command aligns a block of sequences (second block)
+with a block of structures (first block). It is the same as the 
+<B><A HREF="node287.html#CMD:alignment.align">alignment.align()</A></B><A NAME="26435"></A> command except that a variable gap <B>opening</B> penalty is 
+used. This gap penalty depends on the 3D structure of all sequences in
+block 1. The variable gap penalty can favor gaps in exposed regions,
+avoid gaps within secondary structure elements, favor gaps in
+curved parts of the mainchain, and minimize the distance between the two
+<!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+ positions spanning a gap.  The <B><A HREF="#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="26441"></A> command is
+preferred for aligning a sequence with structure(s) in comparative
+modeling because it tends to place gaps in a better structural
+context. See Section&nbsp;<A HREF="node441.html#SECTION:variablegap">A.1.2</A> for the dynamic
+programming algorithm that implements the variable gap penalty.
+<I>gap_penalties_2d</I><A NAME="26446"></A> specifies parameters
+<IMG
+ WIDTH="26" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img95.png"
+ ALT="$ \omega_H$">
+, <IMG
+ WIDTH="23" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img96.png"
+ ALT="$ \omega_S$">
+, <IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img97.png"
+ ALT="$ \omega_B$">
+, <IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img98.png"
+ ALT="$ \omega_C$">
+, <IMG
+ WIDTH="26" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img99.png"
+ ALT="$ \omega_D$">
+,
+<IMG
+ WIDTH="20" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.png"
+ ALT="$ d_o$">
+, <IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img101.png"
+ ALT="$ \gamma$">
+, <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img102.png"
+ ALT="$ t$">
+ and <IMG
+ WIDTH="36" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img103.png"
+ ALT="$ \omega_SC$">
+. (Section&nbsp;<A HREF="node441.html#SECTION:variablegap">A.1.2</A>).
+The default gap penalties <I>gap_penalties_1d</I><A NAME="26449"></A> and <I>gap_penalties_2d</I><A NAME="26452"></A>
+as well as the <I>rr_file</I><A NAME="26455"></A> substitution matrix were found to be optimal in
+pairwise alignments of structures and sequences sharing from 30% to 45%
+sequence identity [<A
+ HREF="node469.html#MadSal05">Madhusudhan <EM>et&nbsp;al.</EM>, 2006</A>].
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The linear gap penalty function for inserting a gap in block 1 of
+structures is: 
+<!-- MATH
+ $g = f_1(H, S, B, C, SC) u + l v$
+ -->
+<IMG
+ WIDTH="202" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img104.png"
+ ALT="$ g = f_1(H, S, B, C, SC) u + l v$">
+ where <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img105.png"
+ ALT="$ u$">
+ and <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img106.png"
+ ALT="$ v$">
+ are the
+usual gap opening and extension penalties, <IMG
+ WIDTH="9" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img107.png"
+ ALT="$ l$">
+ is gap length, and
+<IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.png"
+ ALT="$ f_1$">
+ is a function that is at least 1, but can be larger to make gap
+opening more difficult in the following circumstances: between two consecutive 
+(<EM>i.e.</EM>, <IMG
+ WIDTH="50" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img108.png"
+ ALT="$ i, i+1$">
+) helical positions, two consecutive <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \beta $">
+-strand positions, two
+consecutive buried positions, or two consecutive positions where 
+the mainchain is locally straight. This function is <!-- MATH
+ $f_1 = 1 + [\omega_H
+H_i H_{i+1} + \omega_S S_i S_{i+1} + \omega_B B_i B_{i+1} +
+\omega_C C_i C_{i+1} + \omega_SC SC_i SC_{i+1}]$
+ -->
+<IMG
+ WIDTH="539" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img109.png"
+ ALT="$ f_1 = 1 + [\omega_H
+H_i H_{i+1} + \omega_S S_i S_{i+1} + \omega_B B_i B_{i+1} +
+\omega_C C_i C_{i+1} + \omega_SC SC_i SC_{i+1}]$">
+, <IMG
+ WIDTH="23" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img110.png"
+ ALT="$ H_i$">
+ is the fraction of
+helical residues at position <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ in block 1, <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img111.png"
+ ALT="$ S_i$">
+ is the fraction of
+<IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \beta $">
+-strand residues at position <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ in block 1, <IMG
+ WIDTH="22" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img112.png"
+ ALT="$ B_i$">
+ is the average relative
+sidechain buriedness of residues at position <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ in block 1, <IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img113.png"
+ ALT="$ C_i$">
+ is the
+average straightness of residues at position <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ in block 1, and <IMG
+ WIDTH="31" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img114.png"
+ ALT="$ SC_i$">
+ is the
+structural conservedness at position <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ in block 1. See 
+Section&nbsp;<A HREF="node186.html#COMMAND:writedata">6.6.31</A> for the definition of these features.
+The original straightness is modified here by assigning maximal straightness 
+of 1 to all residues in a helix or a <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \beta $">
+-strand. The structural conservedness
+of the residues in block 1 are imported from an external source
+<I>input_profile_file</I><A NAME="26462"></A>. The structural conservedness at a particular position
+gives the likelihood of the occurrence of a gap when structurally similar
+regions from all know protein structures are aligned structurally.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The linear gap penalty function for opening a gap in block 2 of sequences
+is: <!-- MATH
+ $g = f_2(H, S, B, C, D, SC) u + l v$
+ -->
+<IMG
+ WIDTH="223" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img115.png"
+ ALT="$ g = f_2(H, S, B, C, D, SC) u + l v$">
+ where <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$ f_2$">
+ is a
+function that is at least 1, but can be larger to make the gap
+opening in block 2 more difficult in the following circumstances:
+when the first gap position is aligned with a helical residue, a <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \beta $">
+-strand
+residue, a buried residue, extended mainchain, or when the whole gap in
+block 2 is spanned by two residues in block 1 that are far apart in space.
+This function is <!-- MATH
+ $f_2 = 1 + [\omega_H H_i + \omega_S S_i + \omega_B B_i +
+\omega_C C_i + \omega_D \sqrt{d-d_o} + \omega_SC SC_i]$
+ -->
+<IMG
+ WIDTH="461" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img116.png"
+ ALT="$ f_2 = 1 + [\omega_H H_i + \omega_S S_i + \omega_B B_i +
+\omega_C C_i + \omega_D \sqrt{d-d_o} + \omega_SC SC_i]$">
+. <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img14.png"
+ ALT="$ d$">
+ is the distance
+between the two <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+ atoms spanning the gap, averaged over all structures
+in block 1 and <IMG
+ WIDTH="20" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img100.png"
+ ALT="$ d_o$">
+ is the distance that is small enough to correspond to no
+increase in the opening gap penalty (<EM>e.g.</EM>, 8.6&#197;).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>To find the best alignment, this method backtracks through the dynamic
+programming matrix, effectively adding gaps up to <I>max_gap_length</I><A NAME="26468"></A>. Thus,
+for optimum performance you may want to reduce this parameter from its default
+value.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>When <I>fit</I><A NAME="26471"></A> is <TT>False</TT>, no alignment is done and the routine returns
+only the average structural information, which can be written out by the
+<B><A HREF="node282.html#CMD:alignment.write">alignment.write()</A></B><A NAME="26475"></A> command.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html170"
+  HREF="../examples/commands/align2d.py">examples/commands/align2d.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Demonstrating ALIGN2D, aligning with variable gap penalty
+
+from modeller import *
+log.verbose()
+env = environ()
+
+env.libs.topology.read('$(LIB)/top_heav.lib')
+env.io.atom_files_directory = ['../atom_files']
+
+# Read aligned structure(s):
+aln = alignment(env)
+aln.append(file='toxin.ali', align_codes='2ctx')
+aln_block = len(aln)
+
+# Read aligned sequence(s):
+aln.append(file='toxin.ali', align_codes='2nbt')
+
+# Structure sensitive variable gap penalty sequence-sequence alignment:
+aln.align2d(overhang=0, gap_penalties_1d=(-100, 0),
+            gap_penalties_2d=(3.5, 3.5, 3.5, 0.2, 4.0, 6.5, 2.0, 0., 0.),
+            align_block=aln_block)
+
+aln.write(file='align2d.ali', alignment_format='PIR')
+aln.write(file='align2d.pap', alignment_format='PAP',
+          alignment_features='INDICES HELIX BETA STRAIGHTNESS ' + \
+                             'ACCESSIBILITY CONSERVATION')
+aln.check()
+
+# Color the first template structure according to gaps in alignment:
+aln = alignment(env)
+aln.append(file='align2d.ali', align_codes=('2ctx', '2nbt'),
+           alignment_format='PIR', remove_gaps=True)
+mdl = model(env)
+mdl.read(file=aln['2ctx'].atom_file,
+         model_segment=aln['2ctx'].range)
+mdl.color(aln=aln)
+mdl.write(file='2ctx.aln.pdb')
+
+# Color the first template structure according to secondary structure:
+mdl.write_data(file='2ctx', output='SSM')
+mdl.write(file='2ctx.ssm.pdb')
+
+# Superpose the target structure onto the first template:
+mdl2 = model(env)
+mdl2.read(file=aln['2nbt'].atom_file,
+          model_segment=aln['2nbt'].range)
+sel = selection(mdl).only_atom_types('CA')
+sel.superpose(mdl2, aln)
+mdl2.write(file='2nbt.fit.pdb')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5961"
+  HREF="node289.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5955"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5949"
+  HREF="node287.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5957"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5959"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5962"
+  HREF="node289.html">alignment.malign()   align</A>
+<B> Up:</B> <A NAME="tex2html5956"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5950"
+  HREF="node287.html">alignment.align()   align</A>
+ &nbsp; <B>  <A NAME="tex2html5958"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5960"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

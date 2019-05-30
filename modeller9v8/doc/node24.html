@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Including disulfide bridges</TITLE>
+<META NAME="description" CONTENT="Including disulfide bridges">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node25.html">
+<LINK REL="previous" HREF="node23.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node25.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1646"
+  HREF="node25.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1640"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1634"
+  HREF="node23.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1642"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1644"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1647"
+  HREF="node25.html">Providing your own restraints</A>
+<B> Up:</B> <A NAME="tex2html1641"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1635"
+  HREF="node23.html">Refining only part of</A>
+ &nbsp; <B>  <A NAME="tex2html1643"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1645"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00727000000000000000"></A>
+<A NAME="SECTION:model-disulfide"></A>
+<BR>
+Including disulfide bridges
+</H2>
+
+<P>
+If there is an equivalent disulfide bridge in any of the templates aligned
+with the target, <TT>automodel</TT> will automatically generate appropriate
+disulfide bond restraints<A NAME="2614"></A><A NAME="tex2html42"
+  HREF="footnode.html#foot2765"><SUP>2.2</SUP></A> for you (by using the
+<B><A HREF="node177.html#CMD:model.patchsstemplates">model.patch_ss_templates()</A></B><A NAME="3029"></A> command).
+
+<P>
+Explicit manual restraints can be added by the <B><A HREF="node176.html#CMD:model.patch">model.patch()</A></B><A NAME="3034"></A>
+command using the C<SMALL>HARMM</SMALL> topology file DISU patching residue. You must
+redefine the <B><A HREF="node70.html#CMD:automodel.specialpatches">automodel.special_patches()</A></B><A NAME="3040"></A> routine to add these or other
+patches.
+
+<P>
+It is better to use <B><A HREF="node177.html#CMD:model.patchsstemplates">model.patch_ss_templates()</A></B><A NAME="3045"></A> rather than
+<B><A HREF="node176.html#CMD:model.patch">model.patch()</A></B><A NAME="3050"></A> where possible because the dihedral angles are restrained
+more precisely by using the templates than by using the general rules of
+stereochemistry.
+
+<P>
+Some C<SMALL>HARMM</SMALL> parameter files have a multiple dihedral entry for
+the disulfide dihedral angle <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ \chi _3$">
+ that consists of three individual
+entries with periodicities of 1, 2 and 3. This is why you see three
+feature restraints for a single disulfide in the output of the
+<B><A HREF="node246.html#CMD:selection.energy">selection.energy()</A></B><A NAME="3056"></A> command.
+
+<P>
+Note that the residue numbers that you patch refer to the model, <EM>not</EM>
+the templates. See Section&nbsp;<A HREF="node23.html#SECTION:residue-numbering">2.2.6</A> for more discussion.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html43"
+  HREF="../examples/automodel/model-disulfide.py">examples/automodel/model-disulfide.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Homology modeling by the automodel class
+from modeller import *              # Load standard Modeller classes
+from modeller.automodel import *    # Load the automodel class
+
+# Redefine the special_patches routine to include the additional disulfides
+# (this routine is empty by default):
+class MyModel(automodel):
+    def special_patches(self, aln):
+        # A disulfide between residues 8 and 45:
+        self.patch(residue_type='DISU', residues=(self.residues['8'],
+                                                  self.residues['45']))
+
+log.verbose()    # request verbose output
+env = environ()  # create a new MODELLER environment to build this model in
+
+# directories for input atom files
+env.io.atom_files_directory = ['.', '../atom_files']
+
+a = MyModel(env,
+            alnfile  = 'alignment.ali',     # alignment filename
+            knowns   = '5fd1',              # codes of the templates
+            sequence = '1fdx')              # code of the target
+a.starting_model= 1                 # index of the first model
+a.ending_model  = 1                 # index of the last model
+                                    # (determines how many models to calculate)
+a.make()                            # do the actual homology modeling
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1646"
+  HREF="node25.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1640"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1634"
+  HREF="node23.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1642"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1644"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1647"
+  HREF="node25.html">Providing your own restraints</A>
+<B> Up:</B> <A NAME="tex2html1641"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1635"
+  HREF="node23.html">Refining only part of</A>
+ &nbsp; <B>  <A NAME="tex2html1643"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1645"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

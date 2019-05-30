@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>selection.mutate() -- mutate selected residues</TITLE>
+<META NAME="description" CONTENT="selection.mutate() -- mutate selected residues">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node241.html">
+<LINK REL="previous" HREF="node239.html">
+<LINK REL="up" HREF="node220.html">
+<LINK REL="next" HREF="node241.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5251"
+  HREF="node241.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5245"
+  HREF="node220.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5239"
+  HREF="node239.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5247"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5249"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5252"
+  HREF="node241.html">selection.randomize_xyz()   randomize</A>
+<B> Up:</B> <A NAME="tex2html5246"
+  HREF="node220.html">The selection class: handling</A>
+<B> Previous:</B> <A NAME="tex2html5240"
+  HREF="node239.html">selection.transform()   transform</A>
+ &nbsp; <B>  <A NAME="tex2html5248"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5250"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011920000000000000000">
+selection.mutate() -- mutate selected residues</A>
+</H2> <A NAME="20566"></A><A NAME="CMD:selection.mutate"></A><A NAME="20569"></A><TT>mutate(residue_type)</TT>
+<BR><BLOCKQUOTE>
+This command mutates the selected residues to the type
+specified by <I>residue_type</I><A NAME="20581"></A>. C<SMALL>HARMM</SMALL> 4-character
+residue type names are used (see library file <TT>$RESTYP_LIB</TT>).
+All of the residues with at least one selected atom are mutated. To produce
+mutants, employ this command with <B><A HREF="node279.html#CMD:alignment.appendmodel">alignment.append_model()</A></B><A NAME="20586"></A> and
+<B><A HREF="node282.html#CMD:alignment.write">alignment.write()</A></B><A NAME="20591"></A>.  It is usually necessary to write the mutated 
+sequence out and read it in before proceeding, because not all
+sequence related information about the model is changed by this command
+(<EM>e.g.</EM>, internal coordinates, charges, and atom types and radii 
+are not updated).  
+                             
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html130"
+  HREF="../examples/commands/mutate_selection.py">examples/commands/mutate_selection.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: selection.mutate()
+
+# This will read a PDB file, change its sequence a little, build new
+# coordinates for any of the additional atoms using only the internal
+# geometry, and write the mutant PDB file.  It can be seen as primitive
+# but rapid comparative modeling for substitution mutants. For more
+# sophisticated modeling, see http://salilab.org/modeller/wiki/Mutate%20model
+#
+# For insertion and deletion mutants, follow the standard comparative
+# modeling procedure.
+
+from modeller import *
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+
+# Read the topology library with non-hydrogen atoms only:
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+# To produce a mutant with all hydrogens, uncomment this line:
+#env.libs.topology.read(file='$(LIB)/top_allh.lib')
+
+# Read the CHARMM parameter library:
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+# Read the original PDB file and copy its sequence to the alignment array:
+code = '1fas'
+aln = alignment(env)
+mdl = model(env, file=code)
+aln.append_model(mdl, atom_files=code, align_codes=code)
+
+# Select the residues to be mutated: in this case all ASP residues:
+sel = selection(mdl).only_residue_types('ASP')
+
+# The second example is commented out; it selects residues '1' and '10'.
+#sel = selection(mdl.residues['1'], mdl.residues['10'])
+
+# Mutate the selected residues into HIS residues (neutral HIS):
+sel.mutate(residue_type='HIS')
+
+# Add the mutated sequence to the alignment arrays (it is now the second
+# sequence in the alignment):
+aln.append_model(mdl, align_codes='1fas-1')
+
+# Generate molecular topology for the mutant:
+mdl.clear_topology()
+mdl.generate_topology(aln['1fas-1'])
+
+# Transfer all the coordinates you can from the template native structure
+# to the mutant (this works even if the order of atoms in the native PDB
+# file is not standard):
+mdl.transfer_xyz(aln)
+
+# Build the remaining unknown coordinates for the mutant:
+mdl.build(initialize_xyz=False, build_method='INTERNAL_COORDINATES')
+
+# Write the mutant to a file:
+mdl.write(file='1fas-1.atm')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

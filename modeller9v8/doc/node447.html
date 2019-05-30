@@ -1,0 +1,1071 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Optimizers</TITLE>
+<META NAME="description" CONTENT="Optimizers">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node446.html">
+<LINK REL="up" HREF="node445.html">
+<LINK REL="next" HREF="node448.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8323"
+  HREF="node448.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8317"
+  HREF="node445.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8313"
+  HREF="node446.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8319"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8321"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8324"
+  HREF="node448.html">Equations used in the</A>
+<B> Up:</B> <A NAME="tex2html8318"
+  HREF="node445.html">Optimization of the objective</A>
+<B> Previous:</B> <A NAME="tex2html8314"
+  HREF="node446.html">Function</A>
+ &nbsp; <B>  <A NAME="tex2html8320"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8322"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html8325"
+  HREF="node447.html#SECTION001322100000000000000">Molecular dynamics</A>
+<LI><A NAME="tex2html8326"
+  HREF="node447.html#SECTION001322200000000000000">Langevin dynamics</A>
+<LI><A NAME="tex2html8327"
+  HREF="node447.html#SECTION001322300000000000000">Self-guided MD and LD</A>
+<LI><A NAME="tex2html8328"
+  HREF="node447.html#SECTION001322400000000000000">Rigid bodies</A>
+<LI><A NAME="tex2html8329"
+  HREF="node447.html#SECTION001322500000000000000">Rigid molecular dynamics</A>
+<LI><A NAME="tex2html8330"
+  HREF="node447.html#SECTION001322600000000000000">Rigid minimization</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H2><A NAME="SECTION001322000000000000000">
+Optimizers</A>
+</H2>
+
+<P>
+M<SMALL>ODELLER</SMALL> currently implements a Beale restart conjugate gradients 
+algorithm [<A
+ HREF="node469.html#ShaPhu80">Shanno &amp; Phua, 1980</A>,<A
+ HREF="node469.html#ACM500">Shanno &amp; Phua, 1982</A>] and a molecular dynamics procedure with the
+leap-frog Verlet integrator [<A
+ HREF="node469.html#Ver67">Verlet, 1967</A>].
+The conjugate gradients optimizer is usually
+used in combination with the variable target function method 
+[<A
+ HREF="node469.html#BraGo85">Braun &amp; G&#245;, 1985</A>] which is
+implemented with the <TT>automodel</TT> class (Section&nbsp;<A HREF="node451.html#SECTION:flowchart">A.4</A>). 
+The molecular
+dynamics procedure can be used in a simulated annealing protocol that
+is also implemented with the <TT>automodel</TT> class.
+
+<P>
+
+<H3><A NAME="SECTION001322100000000000000">
+Molecular dynamics</A>
+</H3>
+
+<P>
+Force in M<SMALL>ODELLER</SMALL> is obtained by equating the objective function <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img184.png"
+ ALT="$ F$">
+
+with internal energy in kcal/mole. The atomic masses are all set to
+that of C<IMG
+ WIDTH="18" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img196.png"
+ ALT="$ ^{12}$">
+ (M<SMALL>ODELLER</SMALL> unit is kg/mole). The initial velocities
+at a given temperature are obtained from a Gaussian random number
+generator with a mean and standard deviation of:
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+\bar{v}_x & = & 0 \\
+\sigma_x  & = & \sqrt{\frac{k_B T}{m_i}}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="20" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img197.png"
+ ALT="$\displaystyle \bar{v}_x$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP>0</TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.7)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img199.png"
+ ALT="$\displaystyle \sigma_x$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="55" HEIGHT="58" ALIGN="MIDDLE" BORDER="0"
+ SRC="img200.png"
+ ALT="$\displaystyle \sqrt{\frac{k_B T}{m_i}}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.8)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+where <IMG
+ WIDTH="23" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img201.png"
+ ALT="$ k_B$">
+ is the Boltzmann constant, <IMG
+ WIDTH="23" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img202.png"
+ ALT="$ m_i$">
+ is the mass of one C<IMG
+ WIDTH="18" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img196.png"
+ ALT="$ ^{12}$">
+ atom,
+and the velocity is expressed in angstroms/femtosecond.
+
+<P>
+The Newtonian equations of motion are integrated by the leap-frog Verlet
+algorithm [<A
+ HREF="node469.html#Ver67">Verlet, 1967</A>]:
+<BR>
+<DIV ALIGN="CENTER"><A NAME="eq:verlet"></A><!-- MATH
+ \begin{eqnarray}
+\dot{\vec{r}}_i\left(t+\frac{\delta t}{2}\right) & = & \dot{\vec{r}}_i\left(t-\frac{\delta t}{2}\right) - \frac{\partial F}{\partial \vec{r}_i(t)}\frac{\delta t}{m_i} \\
+\vec{r}_i\left(t+\delta t\right) & = & \vec{r}_i(t) + \dot{\vec{r}}_i\left(t+\frac{\delta t}{2}\right)\delta t
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="87" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img203.png"
+ ALT="$\displaystyle \dot{\vec{r}}_i\left(t+\frac{\delta t}{2}\right)$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="175" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img204.png"
+ ALT="$\displaystyle \dot{\vec{r}}_i\left(t-\frac{\delta t}{2}\right) - \frac{\partial F}{\partial \vec{r}_i(t)}\frac{\delta t}{m_i}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.9)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="72" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img205.png"
+ ALT="$\displaystyle \vec{r}_i\left(t+\delta t\right)$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="155" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img206.png"
+ ALT="$\displaystyle \vec{r}_i(t) + \dot{\vec{r}}_i\left(t+\frac{\delta t}{2}\right)\delta t$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.10)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+where <IMG
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img207.png"
+ ALT="$ \vec{r}_i$">
+ is the position of atom <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+. In addition, velocity is
+capped at a maximum value, before calculating the shift, such that the
+maximal shift along one axis can only be <I>cap_atom_shift</I><A NAME="39577"></A>. The
+velocities can be equilibrated every <I>equilibrate</I><A NAME="39580"></A> steps to
+stabilize temperature.  This is achieved by scaling the velocities
+with a factor <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+:
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+f       & = & \sqrt{T/E_{kin}} \\
+E_{kin} & = & \frac{1}{2} \sum_i^{N_{atoms}} m_i\dot{\vec{r}}_i^2
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img208.png"
+ ALT="$\displaystyle f$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="71" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img209.png"
+ ALT="$\displaystyle \sqrt{T/E_{kin}}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.11)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="36" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img210.png"
+ ALT="$\displaystyle E_{kin}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="99" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img211.png"
+ ALT="$\displaystyle \frac{1}{2} \sum_i^{N_{atoms}} m_i\dot{\vec{r}}_i^2$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.12)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+where <IMG
+ WIDTH="36" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img212.png"
+ ALT="$ E_{kin}$">
+ is the current kinetic energy of the system.
+
+<P>
+
+<H3><A NAME="SECTION001322200000000000000">
+Langevin dynamics</A>
+</H3>
+
+<P>
+Langevin dynamics (LD) are implemented as in [<A
+ HREF="node469.html#LonBroPas92">Loncharich <EM>et&nbsp;al.</EM>, 1992</A>]. The equations
+of motion (Equation&nbsp;<A HREF="#eq:verlet">A.9</A>) are modified as follows:
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:langevin"></A><!-- MATH
+ \begin{equation}
+\dot{\vec{r}}_i\left(t+\frac{\delta t}{2}\right) = \dot{\vec{r}}_i\left(t-\frac{\delta t}{2}\right) \frac{1-\frac{1}{2}\gamma\delta t}{1+\frac{1}{2}\gamma\delta t} + \left(\vec{R}_i - \frac{\partial F}{\partial \vec{r}_i(t)}\right) \frac{\delta t}{m_i} \frac{1}{1+\frac{1}{2}\gamma\delta t}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="474" HEIGHT="58" ALIGN="MIDDLE" BORDER="0"
+ SRC="img213.png"
+ ALT="$\displaystyle \dot{\vec{r}}_i\left(t+\frac{\delta t}{2}\right) = \dot{\vec{r}}_...
+...\vec{r}_i(t)}\right) \frac{\delta t}{m_i} \frac{1}{1+\frac{1}{2}\gamma\delta t}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.13)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img101.png"
+ ALT="$ \gamma$">
+ is a friction factor (in <IMG
+ WIDTH="38" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img214.png"
+ ALT="$ fs^{-1}$">
+) and <IMG
+ WIDTH="23" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img215.png"
+ ALT="$ \vec{R}_i$">
+ a random
+force, chosen to have zero mean and standard deviation
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\sigma(\vec{R}_i) = \sqrt{\frac{2\gamma m_i k_{B} T}{\delta t}}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="154" HEIGHT="61" ALIGN="MIDDLE" BORDER="0"
+ SRC="img216.png"
+ ALT="$\displaystyle \sigma(\vec{R}_i) = \sqrt{\frac{2\gamma m_i k_{B} T}{\delta t}}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.14)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+
+<H3><A NAME="SECTION001322300000000000000">
+Self-guided MD and LD</A>
+</H3>
+
+<P>
+M<SMALL>ODELLER</SMALL> also implements the self-guided MD [<A
+ HREF="node469.html#Wu99">Wu &amp; Wang, 1999</A>] and LD [<A
+ HREF="node469.html#Wu03">Wu &amp; Brooks, 2003</A>]
+methods. For self-guided MD, the equations of motion (Equation&nbsp;<A HREF="#eq:verlet">A.9</A>)
+are modified as follows:
+<BR>
+<DIV ALIGN="CENTER"><A NAME="eq:sgmd"></A><!-- MATH
+ \begin{eqnarray}
+\vec{g}_i(t) & = & \left(1 - \frac{\delta t}{t_l}\right) \vec{g}_i(t - \delta t) + \frac{\delta t}{t_l}\left(\lambda \vec{g}_i(t-\delta t) - \frac{\partial F}{\partial \vec{r}_i(t)}\right) \\
+\dot{\vec{r}}_i\left(t+\frac{\delta t}{2}\right) & = & \dot{\vec{r}}_i\left(t-\frac{\delta t}{2}\right) + \left(\lambda \vec{g}_i(t) - \frac{\partial F}{\partial \vec{r}_i(t)}\right)\frac{\delta t}{m_i}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="37" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img217.png"
+ ALT="$\displaystyle \vec{g}_i(t)$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="343" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img218.png"
+ ALT="$\displaystyle \left(1 - \frac{\delta t}{t_l}\right) \vec{g}_i(t - \delta t) + \...
+...\lambda \vec{g}_i(t-\delta t) - \frac{\partial F}{\partial \vec{r}_i(t)}\right)$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.15)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="87" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img203.png"
+ ALT="$\displaystyle \dot{\vec{r}}_i\left(t+\frac{\delta t}{2}\right)$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="262" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img219.png"
+ ALT="$\displaystyle \dot{\vec{r}}_i\left(t-\frac{\delta t}{2}\right) + \left(\lambda \vec{g}_i(t) - \frac{\partial F}{\partial \vec{r}_i(t)}\right)\frac{\delta t}{m_i}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.16)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+where <IMG
+ WIDTH="13" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img220.png"
+ ALT="$ \lambda$">
+ is the guiding factor (the same for all atoms), <IMG
+ WIDTH="15" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img221.png"
+ ALT="$ t_l$">
+ the guide
+time in femtoseconds, and <IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img222.png"
+ ALT="$ \vec{g}_i$">
+ a guiding force, set to zero at the
+start of the simulation. (Position <IMG
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img207.png"
+ ALT="$ \vec{r}_i$">
+ is updated in the usual way.)
+
+<P>
+For self-guided Langevin dynamics, the guiding forces are determined as follows
+(terms are as defined in Equation&nbsp;<A HREF="#eq:langevin">A.13</A>):
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\vec{g}_i(t) = \left(1 - \frac{\delta t}{t_l}\right) \vec{g}_i(t - \delta t) + \frac{\delta t}{t_l}\gamma m_i \dot{\vec{r}}_i\left(t-\frac{\delta t}{2}\right)
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="342" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img223.png"
+ ALT="$\displaystyle \vec{g}_i(t) = \left(1 - \frac{\delta t}{t_l}\right) \vec{g}_i(t ...
+...\frac{\delta t}{t_l}\gamma m_i \dot{\vec{r}}_i\left(t-\frac{\delta t}{2}\right)$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.17)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+A scaling parameter <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \chi$">
+ is then determined by first making an unconstrained
+half step:
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+\dot{\vec{r}}_i'(t) & = & \dot{\vec{r}}_i\left(t - \frac{\delta t}{2}\right) + \frac{1}{2}\left(\lambda \vec{g}_i(t) + \vec{R}_i - \frac{\delta F}{\delta \vec{r}_i(t)}\right) \frac{\delta t}{m_i} \\
+\zeta & = & \left(1+\frac{\gamma\delta t}{2}\right)\frac{\sum_i^N \lambda \vec{g}_i(t)\dot{\vec{r}}_i'(t)}{\sum_i^N m_i \dot{\vec{r}}_i'^2(t)} \\
+\chi & = & \left(1 + \frac{(\gamma + \zeta)\delta t}{2}\right)^{-1}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="36" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img225.png"
+ ALT="$\displaystyle \dot{\vec{r}}_i'(t)$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="314" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img226.png"
+ ALT="$\displaystyle \dot{\vec{r}}_i\left(t - \frac{\delta t}{2}\right) + \frac{1}{2}\...
+... + \vec{R}_i - \frac{\delta F}{\delta \vec{r}_i(t)}\right) \frac{\delta t}{m_i}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.18)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img227.png"
+ ALT="$\displaystyle \zeta$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="194" HEIGHT="61" ALIGN="MIDDLE" BORDER="0"
+ SRC="img228.png"
+ ALT="$\displaystyle \left(1+\frac{\gamma\delta t}{2}\right)\frac{\sum_i^N \lambda \vec{g}_i(t)\dot{\vec{r}}_i'(t)}{\sum_i^N m_i \dot{\vec{r}}_i'^2(t)}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.19)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img229.png"
+ ALT="$\displaystyle \chi$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="138" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img230.png"
+ ALT="$\displaystyle \left(1 + \frac{(\gamma + \zeta)\delta t}{2}\right)^{-1}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.20)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+Finally, the velocities are advanced using the scaling factor:
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:sgld"></A><!-- MATH
+ \begin{equation}
+\dot{\vec{r}}_i\left(t+\frac{\delta t}{2}\right) = (2\chi - 1)\dot{\vec{r}}_i\left(t-\frac{\delta t}{2}\right) + \left(\lambda \vec{g}_i(t) + \vec{R}_i - \frac{\partial F}{\partial \vec{r}_i(t)}\right) \frac{\delta t}{m_i}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="463" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img231.png"
+ ALT="$\displaystyle \dot{\vec{r}}_i\left(t+\frac{\delta t}{2}\right) = (2\chi - 1)\do...
+...vec{R}_i - \frac{\partial F}{\partial \vec{r}_i(t)}\right) \frac{\delta t}{m_i}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.21)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+
+<H3><A NAME="SECTION001322400000000000000">
+Rigid bodies</A>
+</H3>
+
+<P>
+Where rigid bodies are used, these are optimized separately from the other
+atoms in the system. This has the additional advantage of reducing the number
+of degrees of freedom.
+
+<P>
+
+<H3><A NAME="SECTION001322500000000000000">
+Rigid molecular dynamics</A>
+</H3>
+The state of each rigid body is specified by the position of the center of
+mass, <!-- MATH
+ $\vec{r}_{COM}$
+ -->
+<IMG
+ WIDTH="47" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img232.png"
+ ALT="$ \vec{r}_{COM}$">
+, and an orientation quaternion, <IMG
+ WIDTH="12" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img233.png"
+ ALT="$ \tilde{q}$">
+ [<A
+ HREF="node469.html#Gol80">Goldstein, 1980</A>].
+(The quaternion
+has 4 components, <IMG
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img234.png"
+ ALT="$ q_1$">
+ through <IMG
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img235.png"
+ ALT="$ q_4$">
+, of which the first three refer to the
+vector part, and the last to the scalar.) The translational and rotational
+motions of each body are separated. Each body is translated about its center
+of mass using the standard Verlet equations (Equation&nbsp;<A HREF="#eq:verlet">A.9</A>) using
+the force:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:forcecom"></A><!-- MATH
+ \begin{equation}
+\frac{\partial{F}}{\partial{\vec{r}_{COM}}} = \sum_i \frac{\partial{F}}{\partial{\vec{r_i}}}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="135" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img236.png"
+ ALT="$\displaystyle \frac{\partial{F}}{\partial{\vec{r}_{COM}}} = \sum_i \frac{\partial{F}}{\partial{\vec{r_i}}}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.22)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where the sum <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ operates over all atoms in the rigid body, and <IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img237.png"
+ ALT="$ \vec{r_i}$">
+
+is the position of atom <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ in real space.
+
+<P>
+For the rotational motion, the orientation quaternions are again integrated
+using the same Verlet equations. For this, the quaternion accelerations are
+calculated using the following relation [<A
+ HREF="node469.html#Rapaport:97">Rapaport, 1997</A>]:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\ddot{\tilde{q}} = \frac{1}{2} \mathsfsl{W}^T\left(
+\begin{array}{c}
+\dot{\omega}'_x \\
+\dot{\omega}'_y \\
+\dot{\omega}'_z \\
+-2\sum_m \dot{q}_m^2 \\
+\end{array} \right)
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="192" HEIGHT="92" ALIGN="MIDDLE" BORDER="0"
+ SRC="img238.png"
+ ALT="$\displaystyle \ddot{\tilde{q}} = \frac{1}{2} \mathsfsl{W}^T\left( \begin{array}...
+...ot{\omega}'_y \\ \dot{\omega}'_z \\ -2\sum_m \dot{q}_m^2 \\ \end{array} \right)$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.23)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ $\mathsfsl{W}$
+ -->
+<IMG
+ WIDTH="22" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img239.png"
+ ALT="$ \mathsfsl{W}$">
+ is the orthogonal matrix
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\mathsfsl{W} = \left(\begin{array}{rrrr}
+ q_4  &  q_3  &  -q_2  &  -q_1 \\
+-q_3  &  q_4  &   q_1  &  -q_2 \\
+ q_2  & -q_1  &   q_4  &  -q_3 \\
+ q_1  &  q_2  &   q_3  &   q_4 \\
+\end{array}\right)
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="241" HEIGHT="92" ALIGN="MIDDLE" BORDER="0"
+ SRC="img240.png"
+ ALT="$\displaystyle \mathsfsl{W} = \left(\begin{array}{rrrr} q_4 &amp; q_3 &amp; -q_2 &amp; -q_1 ...
+... -q_2 \\ q_2 &amp; -q_1 &amp; q_4 &amp; -q_3 \\ q_1 &amp; q_2 &amp; q_3 &amp; q_4 \\ \end{array}\right)$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.24)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and <!-- MATH
+ $\dot{\omega}'_k$
+ -->
+<IMG
+ WIDTH="22" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img241.png"
+ ALT="$ \dot{\omega}'_k$">
+ is the first derivative of the angular velocity (in the
+body-fixed frame) about axis <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img162.png"
+ ALT="$ k$">
+ - <EM>i.e.</EM>, the angular acceleration. These
+angular accelerations are in turn calculated from the Euler equations for
+rigid body rotation, such as:
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\dot{\omega}'_x = \frac{T_x + (I_y - I_z)\omega'_y\omega'_z}{I_x}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="179" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img242.png"
+ ALT="$\displaystyle \dot{\omega}'_x = \frac{T_x + (I_y - I_z)\omega'_y\omega'_z}{I_x}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.25)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+(Similar equations exist for the <IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.png"
+ ALT="$ y$">
+ and <IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img51.png"
+ ALT="$ z$">
+ components.) The angular velocities
+<!-- MATH
+ $\vec{\omega}'$
+ -->
+<IMG
+ WIDTH="21" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img243.png"
+ ALT="$ \vec{\omega}'$">
+ are obtained from the quaternion velocities:
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\left(\begin{array}{c}
+\omega'_x \\
+\omega'_y \\
+\omega'_z \\
+0 \\
+\end{array}\right) = 2\mathsfsl{W}\dot{\tilde{q}}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="120" HEIGHT="92" ALIGN="MIDDLE" BORDER="0"
+ SRC="img244.png"
+ ALT="$\displaystyle \left(\begin{array}{c} \omega'_x \\ \omega'_y \\ \omega'_z \\ 0 \\ \end{array}\right) = 2\mathsfsl{W}\dot{\tilde{q}}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.26)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The torque, <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img245.png"
+ ALT="$ \vec{T}$">
+, in the body-fixed frame, is calculated as
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\vec{T} = \mathsfsl{A} \sum_i (\vec{r_i} - \vec{r}_{COM}) \times -\frac{\partial{F}}{\partial{\vec{r_i}}}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="223" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img246.png"
+ ALT="$\displaystyle \vec{T} = \mathsfsl{A} \sum_i (\vec{r_i} - \vec{r}_{COM}) \times -\frac{\partial{F}}{\partial{\vec{r_i}}}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.27)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and <!-- MATH
+ $\mathsfsl{A}$
+ -->
+<IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img247.png"
+ ALT="$ \mathsfsl{A}$">
+ is the rotation matrix to convert from world space to body space
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\mathsfsl{A} = 2 \left( \begin{array}{ccc}
+q_1^2 + q_4^2 - \frac{1}{2}  & q_1q_2 + q_3q_4  &  q_1q_3 - q_2q_4 \\
+q_1q_2 - q_3q_4  & q_2^2 + q_4^2 - \frac{1}{2}  &  q_2q_3 + q_1q_4 \\
+q_1q_3 + q_2q_4  & q_2q_3 - q_1q_4              & q_3^2 + q_4^2 - \frac{1}{2} \\
+\end{array}\right)
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="358" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img248.png"
+ ALT="$\displaystyle \mathsfsl{A} = 2 \left( \begin{array}{ccc} q_1^2 + q_4^2 - \frac{...
+... + q_2q_4 &amp; q_2q_3 - q_1q_4 &amp; q_3^2 + q_4^2 - \frac{1}{2} \\ \end{array}\right)$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.28)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and finally the <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img49.png"
+ ALT="$ x$">
+ component of the inertia tensor, <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img249.png"
+ ALT="$ I_x$">
+, is given by
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+I_x = \sum_i m_i ({r'}_{i,y}^2 + {r'}_{i,z}^2)
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="173" HEIGHT="48" ALIGN="MIDDLE" BORDER="0"
+ SRC="img250.png"
+ ALT="$\displaystyle I_x = \sum_i m_i ({r'}_{i,y}^2 + {r'}_{i,z}^2)$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.29)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ $\vec{r'_i}$
+ -->
+<IMG
+ WIDTH="19" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img251.png"
+ ALT="$ \vec{r'_i}$">
+ is the position of each atom in body space (<EM>i.e.</EM> relative to
+the center of mass, and unrotated), and <IMG
+ WIDTH="23" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img202.png"
+ ALT="$ m_i$">
+ is the mass of atom <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ (taken
+to be the mass of one <IMG
+ WIDTH="30" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img252.png"
+ ALT="$ C^{12}$">
+ atom, as above). Similar relations exist for
+the <IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.png"
+ ALT="$ y$">
+ and <IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img51.png"
+ ALT="$ z$">
+ components.
+
+<P>
+The kinetic energy of each rigid body (used for temperature control) is given
+as a combination of translation and rotational components:
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+E_{kin}^{body} = \frac{1}{2}(\sum_i m) \dot{\vec{r}}_{COM}^{2} +
+                 \frac{1}{2}(I_x {\omega'}_x^2 + I_y {\omega'}_y^2 +
+                             I_z {\omega'}_z^2)
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="365" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img253.png"
+ ALT="$\displaystyle E_{kin}^{body} = \frac{1}{2}(\sum_i m) \dot{\vec{r}}_{COM}^{2} + \frac{1}{2}(I_x {\omega'}_x^2 + I_y {\omega'}_y^2 + I_z {\omega'}_z^2)$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.30)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+Initial translational and rotational velocities of each rigid body are set
+in the same way as for atomistic dynamics.
+
+<P>
+
+<H3><A NAME="SECTION001322600000000000000">
+Rigid minimization</A>
+</H3>
+The state of each rigid body is specified by 6 parameters: the position
+of the center of mass, <!-- MATH
+ $\vec{r}_{COM}$
+ -->
+<IMG
+ WIDTH="47" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img232.png"
+ ALT="$ \vec{r}_{COM}$">
+, and the rotations in radians about
+the body-fixed axes: <IMG
+ WIDTH="20" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img254.png"
+ ALT="$ \theta_x$">
+, <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img255.png"
+ ALT="$ \theta_y$">
+, and <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img256.png"
+ ALT="$ \theta_z$">
+. The first
+derivative of the objective function <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img184.png"
+ ALT="$ F$">
+ with respect to the center of mass
+is obtained from Equation&nbsp;<A HREF="#eq:forcecom">A.22</A>, and those with respect to the
+angles from:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\frac{\partial{F}}{\partial{\theta_k}} = \mathsfsl{M_k}\vec{r'_i} \cdot \frac{\partial{F}}{\partial{\vec{r_i}}}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="129" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img257.png"
+ ALT="$\displaystyle \frac{\partial{F}}{\partial{\theta_k}} = \mathsfsl{M_k}\vec{r'_i} \cdot \frac{\partial{F}}{\partial{\vec{r_i}}}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.31)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+The transformation matrices <!-- MATH
+ $\mathsfsl{M_k}$
+ -->
+<IMG
+ WIDTH="26" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img258.png"
+ ALT="$ \mathsfsl{M_k}$">
+ are given as:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\mathsfsl{M_x} = \left[ \begin{array}{ccc}
+             0 & -\sin{\theta_z}\sin{\theta_x} - \cos{\theta_z}\sin{\theta_y}\cos{\theta_x} & \sin{\theta_z}\cos{\theta_x} - \cos{\theta_z}\sin{\theta_y}\sin{\theta_x} \\
+             0 & -\cos{\theta_z}\sin{\theta_x} + \sin{\theta_z}\sin{\theta_y}\cos{\theta_x} & \cos{\theta_z}\cos{\theta_x} + \sin{\theta_z}\sin{\theta_y}\sin{\theta_x} \\
+             0 & -\cos{\theta_y}\cos{\theta_x} & -\cos{\theta_y}\sin{\theta_x} \\
+             \end{array}\right]
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="574" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img259.png"
+ ALT="$\displaystyle \mathsfsl{M_x} = \left[ \begin{array}{ccc} 0 &amp; -\sin{\theta_z}\si...
+...s{\theta_y}\cos{\theta_x} &amp; -\cos{\theta_y}\sin{\theta_x} \\ \end{array}\right]$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.32)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\mathsfsl{M_y} = \left[ \begin{array}{ccc}
+             -\cos{\theta_z}\sin{\theta_y} & -\cos{\theta_z}\cos{\theta_y}\sin{\theta_x} & \cos{\theta_z}\cos{\theta_y}\cos{\theta_x} \\
+             \sin{\theta_z}\sin{\theta_y} & \sin{\theta_z}\cos{\theta_y}\sin{\theta_x} & -\sin{\theta_z}\cos{\theta_y}\cos{\theta_x} \\
+             -\cos{\theta_y} & \sin{\theta_y}\sin{\theta_x} & -\sin{\theta_y}\cos{\theta_x} \\
+             \end{array}\right]
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="481" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img260.png"
+ ALT="$\displaystyle \mathsfsl{M_y} = \left[ \begin{array}{ccc} -\cos{\theta_z}\sin{\t...
+...n{\theta_y}\sin{\theta_x} &amp; -\sin{\theta_y}\cos{\theta_x} \\ \end{array}\right]$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.33)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\mathsfsl{M_z} = \left[ \begin{array}{ccc}
+             -\sin{\theta_z}\cos{\theta_y} & \cos{\theta_z}\cos{\theta_x} + \sin{\theta_z}\sin{\theta_y}\sin{\theta_x} & \cos{\theta_z}\sin{\theta_x} - \sin{\theta_z}\sin{\theta_y}\cos{\theta_x} \\
+             -\cos{\theta_z}\cos{\theta_y} & -\sin{\theta_z}\cos{\theta_x} + \cos{\theta_z}\sin{\theta_y}\sin{\theta_x} & -\sin{\theta_z}\sin{\theta_x} - \cos{\theta_z}\sin{\theta_y}\cos{\theta_x} \\
+             0 & 0 & 0 \\
+             \end{array}\right]
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="676" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img261.png"
+ ALT="$\displaystyle \mathsfsl{M_z} = \left[ \begin{array}{ccc} -\sin{\theta_z}\cos{\t...
+...- \cos{\theta_z}\sin{\theta_y}\cos{\theta_x} \\ 0 &amp; 0 &amp; 0 \\ \end{array}\right]$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.34)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The atomic positions <IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img237.png"
+ ALT="$ \vec{r_i}$">
+ are reconstructed when necessary from the
+body's orientation by means of the following relation:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\vec{r_i} = \mathsfsl{M}\vec{r'_i} + \vec{r}_{COM}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="132" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img262.png"
+ ALT="$\displaystyle \vec{r_i} = \mathsfsl{M}\vec{r'_i} + \vec{r}_{COM}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.35)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <!-- MATH
+ $\mathsfsl{M}$
+ -->
+<IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img263.png"
+ ALT="$ \mathsfsl{M}$">
+ is the rotation matrix
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\mathsfsl{M} = \left[ \begin{array}{ccc}
+           \cos{\theta_z}\cos{\theta_y} & \sin{\theta_z}\cos{\theta_x} - \cos{\theta_z}\sin{\theta_y}\sin{\theta_x} & \sin{\theta_z}\sin{\theta_x} + \cos{\theta_z}\sin{\theta_y}\cos{\theta_x} \\
+           -\sin{\theta_z}\cos{\theta_y} & \cos{\theta_z}\cos{\theta_x} + \sin{\theta_z}\sin{\theta_y}\sin{\theta_x} & \cos{\theta_z}\sin{\theta_x} - \sin{\theta_z}\sin{\theta_y}\cos{\theta_x} \\
+           -\sin{\theta_y} & -\cos{\theta_y}\sin{\theta_x} & \cos{\theta_y}\cos{\theta_x} \\
+             \end{array}\right]
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="639" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img264.png"
+ ALT="$\displaystyle \mathsfsl{M} = \left[ \begin{array}{ccc} \cos{\theta_z}\cos{\thet...
+...os{\theta_y}\sin{\theta_x} &amp; \cos{\theta_y}\cos{\theta_x} \\ \end{array}\right]$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.36)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8323"
+  HREF="node448.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8317"
+  HREF="node445.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8313"
+  HREF="node446.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8319"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8321"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8324"
+  HREF="node448.html">Equations used in the</A>
+<B> Up:</B> <A NAME="tex2html8318"
+  HREF="node445.html">Optimization of the objective</A>
+<B> Previous:</B> <A NAME="tex2html8314"
+  HREF="node446.html">Function</A>
+ &nbsp; <B>  <A NAME="tex2html8320"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8322"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

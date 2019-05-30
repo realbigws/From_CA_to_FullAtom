@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>job.run_all_tasks() -- run all queued tasks, and return results</TITLE>
+<META NAME="description" CONTENT="job.run_all_tasks() -- run all queued tasks, and return results">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node423.html">
+<LINK REL="previous" HREF="node421.html">
+<LINK REL="up" HREF="node416.html">
+<LINK REL="next" HREF="node423.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7926"
+  HREF="node423.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7920"
+  HREF="node416.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7914"
+  HREF="node421.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7922"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7924"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7927"
+  HREF="node423.html">job.yield_tasks_unordered()   run</A>
+<B> Up:</B> <A NAME="tex2html7921"
+  HREF="node416.html">Parallel job support</A>
+<B> Previous:</B> <A NAME="tex2html7915"
+  HREF="node421.html">job.queue_task()   submit</A>
+ &nbsp; <B>  <A NAME="tex2html7923"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7925"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011326000000000000000">
+job.run_all_tasks() -- run all queued tasks, and return results</A>
+</H2> <A NAME="37781"></A><A NAME="CMD:job.runalltasks"></A><A NAME="37784"></A><TT>run_all_tasks()</TT>
+<BR><BLOCKQUOTE>
+This runs all of the tasks in the job's queue on any available slave.
+When all of the tasks have finished, this functions returns a list
+of all the return values from the tasks, in the same order that they were
+submitted.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Tasks are run in a simple round-robin fashion on the available slaves. If a
+slave fails while running a task, that task is automatically resubmitted to
+another slave. If you submit more tasks than available slaves, new slaves
+are automatically added to the job if the job supports this functionality
+(<EM>e.g.</EM>, <B><A HREF="node419.html#CMD:sgeqsubjob">sge_qsub_job()</A></B><A NAME="37795"></A>).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>See also <B><A HREF="node423.html#CMD:job.yieldtasksunordered">job.yield_tasks_unordered()</A></B><A NAME="37800"></A>.
+
+</BLOCKQUOTE>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html226"
+  HREF="../examples/python/mytask.py">examples/python/mytask.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+from modeller.parallel import task
+
+class MyTask(task):
+    """A task to read in a PDB file on the slave, and return the resolution"""
+    def run(self, code):
+        env = environ()
+        env.io.atom_files_directory = ["../atom_files"]
+        mdl = model(env, file=code)
+        return mdl.resolution
+</PRE>
+</DD>
+</DL>  <BR>
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html227"
+  HREF="../examples/python/parallel-task.py">examples/python/parallel-task.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+from modeller.parallel import *
+
+# Load in my task from mytask.py (note: needs to be in a separate Python
+# module like this, in order for Python's pickle module to work correctly)
+from mytask import MyTask
+
+log.minimal()
+# Create an empty parallel job, and then add 2 slave processes running
+# on the local machine
+j = job()
+j.append(local_slave())
+j.append(local_slave())
+
+# Run 'mytask' tasks
+j.queue_task(MyTask('1fdn'))
+j.queue_task(MyTask('1b3q'))
+j.queue_task(MyTask('1blu'))
+
+results = j.run_all_tasks()
+
+print "Got model resolution: ", results
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

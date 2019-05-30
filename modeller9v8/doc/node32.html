@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Automatic loop refinement after model building</TITLE>
+<META NAME="description" CONTENT="Automatic loop refinement after model building">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node33.html">
+<LINK REL="previous" HREF="node31.html">
+<LINK REL="up" HREF="node31.html">
+<LINK REL="next" HREF="node33.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1757"
+  HREF="node33.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1751"
+  HREF="node31.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1745"
+  HREF="node31.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1753"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1755"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1758"
+  HREF="node33.html">Defining loop regions for</A>
+<B> Up:</B> <A NAME="tex2html1752"
+  HREF="node31.html">Loop optimization</A>
+<B> Previous:</B> <A NAME="tex2html1746"
+  HREF="node31.html">Loop optimization</A>
+ &nbsp; <B>  <A NAME="tex2html1754"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1756"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00731000000000000000">
+Automatic loop refinement after model building</A>
+</H2>
+
+<P>
+To automatically refine loop regions after building standard <TT>automodel</TT>
+models, simply use the <TT>loopmodel</TT> class rather than <TT>automodel</TT>;
+see the example below.
+
+<P>
+In many cases, you can obtain better quality loops (at
+the expense of more computer time) by using the newer DOPE-based loop modeling
+protocol. In this case, just use the <TT>dope_loopmodel</TT> or
+<TT>dopehr_loopmodel</TT> classes in place of <TT>loopmodel</TT> in each of the
+examples below. See Section <A HREF="node90.html#CLASS:dopeloopmodel">4.4</A> or
+Section <A HREF="node92.html#CLASS:dopehrloopmodel">4.5</A> for more details.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html55"
+  HREF="../examples/automodel/model-loop.py">examples/automodel/model-loop.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Homology modeling by the automodel class
+from modeller import *
+from modeller.automodel import *    # Load the automodel class
+
+log.verbose()
+env = environ()
+
+# directories for input atom files
+env.io.atom_files_directory = ['.', '../atom_files']
+
+a = loopmodel(env,
+              alnfile  = 'alignment.ali',     # alignment filename
+              knowns   = '5fd1',              # codes of the templates
+              sequence = '1fdx')              # code of the target
+a.starting_model= 1                 # index of the first model
+a.ending_model  = 1                 # index of the last model
+                                    # (determines how many models to calculate)
+a.md_level = None                   # No refinement of model
+
+a.loop.starting_model = 1           # First loop model
+a.loop.ending_model   = 4           # Last loop model
+a.loop.md_level       = refine.fast # Loop model refinement level
+
+a.make()                            # do homology modeling
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+After generating the standard model(s), a number of loop models are generated
+for each model, from <I><A HREF="node81.html#MEMB:loopmodel.loop.startingmodel">loopmodel.loop.starting_model</A></I><A NAME="3236"></A> to
+<I><A HREF="node82.html#MEMB:loopmodel.loop.endingmodel">loopmodel.loop.ending_model</A></I><A NAME="3241"></A>. Each loop model is written out with the
+<TT>.BL</TT> extension. See section&nbsp;<A HREF="node452.html#SECTION:loopmethod">A.5</A> for more information.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

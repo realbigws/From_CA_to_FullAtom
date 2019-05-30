@@ -1,0 +1,71 @@
+#!/bin/sh
+
+# program name:
+PROGRAM=mod
+VERSION=9v8
+
+# Install location
+#MODINSTALL9v8="/home/RaptorX/bin/modeller9v8"
+#MODINSTALL9v8="/mnt/data/RaptorXCommon/RaptorX-Threading/BuildModel_Package/modeller9v8"
+if [ -z "${MODINSTALL9v8}" ]; then
+	echo "Please set the environmental variable MODINSTALL9v8 to the installation folder of the modeller9v8 module"
+	exit 1
+fi
+
+
+# These variables can be overridden in your .cshrc/.bashrc if desired
+# You can also set ${LIBS_LIB9v8} to override the default, which is
+# ${MODINSTALL9v8}/modlib/libs.lib
+if test -z "${EXECUTABLE_TYPE9v8}"; then EXECUTABLE_TYPE9v8=x86_64-intel8; fi
+
+export MODINSTALL9v8
+
+# select the nice level:
+NICE=
+# NICE=nice -20
+
+# executable:
+EXECUTABLE=${PROGRAM}${VERSION}_${EXECUTABLE_TYPE9v8}
+
+# dynamic libraries:
+LD_LIBRARY_PATH=${MODINSTALL9v8}/lib/${EXECUTABLE_TYPE9v8}
+DYLD_LIBRARY_PATH=${LD_LIBRARY_PATH}
+LIBPATH=${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH DYLD_LIBRARY_PATH LIBPATH
+
+# Provide do-nothing Python libraries if standard copies aren't on this system
+if test -z "${PYTHONHOME}"; then
+  if test ! -d /usr/lib/python2.3 \
+       -a ! -d /usr/lib64/python2.3 \
+       -a ! -d /System/Library/Frameworks/Python.framework/Versions/2.3/lib \
+       -a ! -d /usr/local/lib/python2.3 \
+       -a ! -d /usr/local/lib64/python2.3; then
+    PYTHONHOME=${MODINSTALL9v8}/bin/
+    export PYTHONHOME
+  fi
+fi
+
+# On Mac OS X, fall back to bundled Python library if system one isn't found
+DYLD_FALLBACK_LIBRARY_PATH=${MODINSTALL9v8}/bin/
+export DYLD_FALLBACK_LIBRARY_PATH
+
+# for IBM RS6000, to make the ERR keyword in I/O work:
+cnverr=yes ; export cnverr
+
+# to avoid running out of stack space, use the current hard limit
+# (ask your sysadmin to increase the hard limit if this is not enough)
+ulimit -S -s `ulimit -H -s`
+
+# This is one way to get Modeller (which is linked against glibc-2.3) to work
+# on Linux glibc-2.2 systems:
+# 1. Copy at least ld-linux.so.2 libc.so.6 libdl.so.2 libm.so.6 libutil.so.1
+#    from /lib/ on a RedHat 9 box (_not_ a later system with execshield) to
+#    a directory on your glibc-2.2 box.
+# 2. Set the GLIBC23 variable (below) to point to this directory.
+# 3. Uncomment the two lines below to run Modeller with glibc-2.3 rather than
+#    your system's native glibc-2.2.
+# GLIBC23=~/glibc23/
+# exec $NICE ${GLIBC23}/ld-linux.so.2 --library-path ${GLIBC23} ${MODINSTALL9v8}/bin/${EXECUTABLE} $* 
+
+# run the program:
+exec $NICE ${MODINSTALL9v8}/bin/${EXECUTABLE} "$@"

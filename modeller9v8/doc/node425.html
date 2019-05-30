@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Communicator.send_data() -- send data</TITLE>
+<META NAME="description" CONTENT="Communicator.send_data() -- send data">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node426.html">
+<LINK REL="previous" HREF="node424.html">
+<LINK REL="up" HREF="node416.html">
+<LINK REL="next" HREF="node426.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7968"
+  HREF="node426.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7962"
+  HREF="node416.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7956"
+  HREF="node424.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7964"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7966"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7969"
+  HREF="node426.html">Communicator.get_data()   get</A>
+<B> Up:</B> <A NAME="tex2html7963"
+  HREF="node416.html">Parallel job support</A>
+<B> Previous:</B> <A NAME="tex2html7957"
+  HREF="node424.html">job.start()   start</A>
+ &nbsp; <B>  <A NAME="tex2html7965"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7967"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011329000000000000000">
+Communicator.send_data() -- send data</A>
+</H2> <A NAME="37852"></A><A NAME="CMD:Communicator.senddata"></A><A NAME="37855"></A><TT>send_data(data)</TT>
+<BR><BLOCKQUOTE>
+This sends the given data to the communicator. For sending from
+the master to slaves, this communicator is simply the 'slave' object itself.
+For sending from the slaves back to the master, a communicator called 'master'
+is provided for you.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Any data that can be processed by the <A NAME="tex2html229"
+  HREF="http://www.python.org/">Python</A> 'pickle' module can be sent
+to and from slaves. This includes most <A NAME="tex2html230"
+  HREF="http://www.python.org/">Python</A> objects, simple data such as
+integer and floating point numbers, strings, and many M<SMALL>ODELLER</SMALL> objects.
+Note, however, that internal M<SMALL>ODELLER</SMALL> data is <I>n</I>ot passed in these
+objects, so if, for example, you were to pass a <TT>model</TT> object, it would
+contain no atoms when it reached the slave. For complex data such as this,
+write it to a file at one end and read it back at the other.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>It is an error for the master to send data to a slave using this function,
+unless the slave is already waiting for data (<EM>i.e.</EM>, by itself calling
+<B><A HREF="node426.html#CMD:Communicator.getdata">Communicator.get_data()</A></B><A NAME="37884"></A>). Generally this means you should call
+<B><A HREF="node427.html#CMD:slave.runcmd">slave.run_cmd()</A></B><A NAME="37889"></A> before <B><A HREF="#CMD:Communicator.senddata">Communicator.send_data()</A></B><A NAME="37894"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If there is a problem with the network, this function will raise a
+<TT>NetworkError</TT> exception. You can trap this to rerun the calculation
+on a different slave, for example. Any other errors (<EM>e.g.</EM>, a syntax error in
+your script) will raise a <TT>RemoteError</TT> exception.
+
+</BLOCKQUOTE>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7968"
+  HREF="node426.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7962"
+  HREF="node416.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7956"
+  HREF="node424.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7964"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7966"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7969"
+  HREF="node426.html">Communicator.get_data()   get</A>
+<B> Up:</B> <A NAME="tex2html7963"
+  HREF="node416.html">Parallel job support</A>
+<B> Previous:</B> <A NAME="tex2html7957"
+  HREF="node424.html">job.start()   start</A>
+ &nbsp; <B>  <A NAME="tex2html7965"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7967"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,2 @@
+#!/bin/sh
+rm -f *.log 1fas.D* 1fas.B* *.rsr 1fas.ini 1fas.expair.pdb

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>model.write_psf() -- write molecular topology to PSF file</TITLE>
+<META NAME="description" CONTENT="model.write_psf() -- write molecular topology to PSF file">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node176.html">
+<LINK REL="previous" HREF="node174.html">
+<LINK REL="up" HREF="node155.html">
+<LINK REL="next" HREF="node176.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4295"
+  HREF="node176.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4289"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4283"
+  HREF="node174.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4291"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4293"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4296"
+  HREF="node176.html">model.patch()   patch</A>
+<B> Up:</B> <A NAME="tex2html4290"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4284"
+  HREF="node174.html">model.generate_topology()   generate</A>
+ &nbsp; <B>  <A NAME="tex2html4292"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4294"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011620000000000000000">
+model.write_psf() -- write molecular topology to PSF file</A>
+</H2> <A NAME="13928"></A><A NAME="CMD:model.writepsf"></A><A NAME="13931"></A><TT>write_psf(file, xplor=True)</TT>
+<BR><A NAME="12681"></A>
+
+<P>
+<BLOCKQUOTE>
+This command writes the current model topology (which must
+have already been created via <B><A HREF="node174.html#CMD:model.generatetopology">model.generate_topology()</A></B><A NAME="13943"></A> or
+<B><A HREF="node413.html#CMD:completepdb">complete_pdb</A></B><A NAME="13948"></A>) to a C<SMALL>HARMM</SMALL> or X-PLOR format PSF file.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>PSF files contain information on all atoms in the model and their types, plus
+all the connectivity (bonds, angles, <EM>etc</EM>). By default X-PLOR format PSF
+files are written, in which each atom has a defined type name. These are more
+flexible than C<SMALL>HARMM</SMALL> format PSF files, in which each atom type is specified
+numerically.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>PSF files are generally required in combination with binary format
+trajectory files, as written by <B><A HREF="node258.html#CMD:actions.charmmtrajectory">actions.charmm_trajectory()</A></B><A NAME="13958"></A>.
+
+</BLOCKQUOTE>
+<B>Example:</B> See <B><A HREF="node258.html#CMD:actions.charmmtrajectory">actions.charmm_trajectory()</A></B><A NAME="13966"></A> command.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

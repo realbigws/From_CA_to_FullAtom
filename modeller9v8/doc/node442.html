@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Local versus global alignment</TITLE>
+<META NAME="description" CONTENT="Local versus global alignment">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node443.html">
+<LINK REL="previous" HREF="node441.html">
+<LINK REL="up" HREF="node439.html">
+<LINK REL="next" HREF="node443.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8249"
+  HREF="node443.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8243"
+  HREF="node439.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8237"
+  HREF="node441.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8245"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8247"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8250"
+  HREF="node443.html">Similarity versus distance scores</A>
+<B> Up:</B> <A NAME="tex2html8244"
+  HREF="node439.html">Dynamic programming for sequence</A>
+<B> Previous:</B> <A NAME="tex2html8238"
+  HREF="node441.html">Variable gap penalty</A>
+ &nbsp; <B>  <A NAME="tex2html8246"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8248"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001313000000000000000">
+Local <EM>versus</EM> global alignment</A>
+</H2>
+
+<P>
+The Kruskal and Sankoff version of the local alignment is implemented
+[<A
+ HREF="node469.html#SanKru83">Sankoff &amp; Kruskal, 1983</A>]; this is very similar to the [<A
+ HREF="node469.html#SmiWat81">Smith &amp; Waterman, 1981</A>] method.
+All the routines for the local alignment are exactly the same as the
+routines for the global alignment except that during the construction
+of matrix <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img180.png"
+ ALT="$ D$">
+ the alignment is restarted each time the score becomes
+higher than a cutoff. The second difference is that the backtracking
+starts from the lowest element in the matrix, wherever it is.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

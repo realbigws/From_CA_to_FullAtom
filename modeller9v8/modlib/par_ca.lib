@@ -1,0 +1,12 @@
+* CA only topology; one of the peaks is picked for ANGLES and DIHEDRALS
+*
+BONDS
+CT1  CT1    70.000     3.8200 
+
+ANGLES
+CT1  CT1  CT1   10.000    61.00
+
+DIHEDRALS
+CT1  CT1  CT1  CT1      0.2000  1  -165.00
+
+END

@@ -1,0 +1,1624 @@
+# Format: 201 Warning "Message"
+# 1st field: integer message number
+# 2nd field: message type: Output Note Warning or an error type (most
+#            Python exception types, plus ModellerError, FileFormatError,
+#            StatisticsError, SequenceMismatchError)
+# 3rd field: The message text
+#
+# Arguments to the messages, as defined in CALL WRTMSG():
+#
+#   @I1   ... integer scalar 1, etc.
+#   @i1   ... integer array 1, etc.
+#
+#   @R1   ... real scalar 1, etc.
+#   @r1   ... real array 1, etc.
+#
+#   @S1   ... string scalar 1, etc.
+#   @s1   ... string array 1, etc.
+#
+#   @L1   ... logical scalar 1, etc.
+#   @l1   ... logical array 1, etc.
+#
+
+201 ModellerError
+"'optimization_method' is out of range."
+ 
+202 NotImplementedError
+"Not implemented."
+ 
+203 ModellerError
+"CHARMM atom type is out of range;
+Probably because model.generate_topology() was not called.
+Atom index, atom type: @I1 @I2"
+ 
+204 Warning
+"Atomic radius very small; 'dynamic_sphere' term will be ignored for this atom.
+Atom index, atom type, atom radius: @I1 @S1 @R1"
+ 
+205 Warning
+"'lennard_jones_switch[1]' reset to 'lennard_jones_switch[0]'+0.5.
+'lennard_jones_switch[1]': @R1"
+ 
+206 Warning
+"'coulomb_switch[1]' reset to 'coulomb_switch[0]'+0.5.
+'coulomb_switch[1]': @R1"
+ 
+207 Warning
+"A or B too big, or MAXIT too small."
+ 
+208 ModellerError
+"X < 0."
+ 
+209 Warning
+"A too large or ITMAX too small."
+ 
+210 ModellerError
+"A or X less than 0."
+ 
+211 ModellerError
+"Bad argument, X < 0 or X > 1."
+ 
+212 ModellerError
+"Too many iterations: @I1"
+ 
+213 ZeroDivisionError
+"Division by zero; divisor = @R1"
+
+214 IndexError
+"Index @I1 out of range @I2 to @I3"
+ 
+215 MemoryError
+"Dynamic memory allocation failed.
+Routine, variable, status: @S1 @S2 @I1"
+
+216 ValueError
+"Self-guided molecular dynamics requested
+(guide_factor is non-zero) but guide_time
+is zero! Please specify a non-zero guide
+time, in fs, or set guide_factor to zero
+to request regular MD."
+
+217 ModellerError
+"Single-character residue type @S1
+is not a standard residue type (one
+of the first @I1 residues in restyp.lib)."
+ 
+218 ModellerError
+"Internal error. 'n_subopt' out of range: @I1"
+
+219 ModellerError
+"No DEFATM line found in the first @I1
+residues in restyp.lib."
+ 
+220 ModellerError
+"One-letter residue type @S1 is not a
+'standard' residue type (one of the
+first @I1 residues in restyp.lib)."
+
+221 ModellerError
+"Beginning of schedule not found."
+ 
+222 Warning
+"Missing columns in schedule file at step: @I1
+automatically added scaling factors of 1.0."
+ 
+223 ModellerError
+"Internal error: array too small: @S1
+current maximum, current need: @I2 @I1"
+ 
+224 Note
+"Open @I1 @S1 @S2 @S3"
+ 
+225 IOError
+"File does not exist: @S1"
+ 
+226 IOError
+"File already exists: @S1"
+
+227 ModellerError
+"Default residue type@S1 must be one of the
+first @I1 residue types."
+ 
+228 IOError
+"Error opening file: @S1"
+ 
+229 IndexError
+"Solvent model index @I1 out of range:
+must be between 1 and @I2."
+
+230 Warning
+"Alignment code@S1 is present multiple times in the
+alignment file! Only the first entry will be read.
+Suggest you remove the duplicate(s) to avoid confusion."
+
+231 ModellerError
+"CHARMM atom type is not recognized (not in RADII_LIB): @S1"
+ 
+232 Note
+"parameters    BONDS   ANGLS  DIHEDS IMPROPS    MODE
+@S1"
+ 
+233 ModellerError
+"No keyword before contents."
+
+234 ModellerError
+"Atom @I1 (type @I2) has GB/SA radius @R1.
+Radii must all be greater than zero. Please edit
+the library file (e.g. modlib/solv.lib) to set
+a correct radius for this atom type."
+ 
+235 ModellerError
+"SELECT identifier out of range: @I1"
+ 
+236 ModellerError
+"Atom class is out of range: @S1"
+ 
+237 ModellerError
+"Residue type undefined: @I1"
+ 
+238 Note
+"Reading CHARMM residue topology file version: @S1"
+ 
+239 ModellerError
+"Opt,dih,res mean out of range: @I1 @I2 @S1 @R1 @R2 @R3"
+ 
+240 ModellerError
+"Include residue type in RESTYP_LIB: @S1"
+ 
+241 ModellerError
+"Residue type defined multiple times: @S1"
+ 
+242 ModellerError
+"Numbers of dihedral angle entries and types not the same: @I1 @I2"
+ 
+243 Warning
+"This DELE keyword is not supported: @S1"
+ 
+244 Warning
+"Incorrect number of tokens: @I1"
+ 
+245 Warning
+"Number of atoms in MODEL2 <> MODEL: @I1 @I2"
+ 
+246 Warning
+"MODEL atom <> MODEL2 atom, atom index: @S1 @S2 @I1"
+ 
+247 ModellerError
+"Internal error: @I1 @I2"
+ 
+248 Warning
+"OFF_DIAGONAL <= OVERHANG: @I1 @I2"
+
+249 FileFormatError
+"@S1 record without a preceding @S2 record."
+ 
+250 Warning
+"Use OVERHANG=0 with local alignment."
+ 
+251 ModellerError
+"MATRIX_OFFSET probably has an invalid value: @R1"
+
+252 FileFormatError
+"Incorrectly formatted residue line: @S1
+RESI or PRES lines must contain exactly three tokens:
+RESI or PRES, the name of the residue, and the total charge."
+ 
+253 ModellerError
+"Singular matrix."
+ 
+254 ModellerError
+"Incorrect dimensions for matrix multiplication."
+ 
+255 ModellerError
+"PDB residue type unrecognized: @S1"
+ 
+256 ModellerError
+"Dihedral angle correlation coeff. out of bounds (+-1): $I1 $I2 $R1"
+ 
+257 Note
+"Number of classes: @I1"
+
+258 Warning
+"Group restraint on atom groups @S1, @S2 duplicated
+(original restraint was @I1, this one is @I2)
+Original restraint will be ignored!"
+ 
+259 FileFormatError
+"Incorrect number of items in a line: @S1"
+ 
+260 ModellerError
+"CHARMM residue type unrecognized: @S1"
+ 
+261 EOFError
+"Premature end of file: @S1"
+
+262 ModellerError
+"Central bond in dihedral too short: @R1
+Perhaps atoms @I1 and @I2 have very similar coordinates?"
+ 
+263 Note
+"Number of dihedral angle types         : @I1
+Maximal number of dihedral angle optima: @I2
+Dihedral angle names                   : @s1"
+ 
+264 ModellerError
+"Weights sum to (almost) zero: @R1 @I1 @I2"
+ 
+265 ModellerError
+"Weights do not sum to 1: @R1 @I1 @I2
+Old weights: @r1"
+ 
+266 Note
+"Number of residue groups: @I1"
+ 
+267 FileFormatError
+"First line not #DISTANCE or #SIMILARITY.
+Line: @S1"
+ 
+268 Note
+"Number of residue types: @I1"
+ 
+269 ModellerError
+"Single character residue type unrecognized: @S1"
+ 
+270 ModellerError
+"Error reading/processing file: @S1"
+ 
+271 ModellerError
+"Mainchain class code not recognized: @S1"
+ 
+272 FileFormatError
+"Missing mainchain conformation class data for some
+residues in MNCHDEF_LIB, @S1"
+ 
+273 FileFormatError
+"Incorrect format or empty line in RESTYP_LIB: @S1"
+ 
+274 Note
+"Mainchain residue conformation classes: @S1"
+ 
+275 ModellerError
+"E_o > 0: @R1"
+ 
+276 Note
+"'align_block' changed to 1."
+ 
+277 ModellerError
+"Residue identifier not found: @S1"
+ 
+278 ModellerError
+"No \":\" in ATOM:RESID[:CHAINID] atom identifier: @S1"
+ 
+279 Warning
+"IUPAC atom not found in topology library; residue type index: @S1 @I1
+Possible reasons are a non-standard PDB file, or a new residue/atom types.
+Compare the offending residue in the PDB file with its definition in the topology library."
+ 
+280 Warning
+"No topology library in memory or assigning a BLK residue.
+Default CHARMM atom type assigned: @S1 --> @S2
+This message is written only for the first such atom."
+ 
+281 ModellerError
+"Probably RADII_LIB and MODELS_LIB are inconsistent with topology library.
+Residue_type, Atom_type_IUPAC, Atom_type_CHARMM: @I1 @S1 @S2"
+
+282 ModellerError
+"Unable to read structural information for alignment
+sequence: @I1 @S1
+This command requires structures."
+ 
+283 ModellerError
+"Too few patched residues for this patching residue type: @I1 @I2"
+ 
+284 ModellerError
+"Beginning atom index for a residue out of bounds: @I1 @I2"
+ 
+285 Warning
+"Only @I1 residues out of @I2 contain atoms of type @S1
+(This is usually caused by non-standard residues, such
+as ligands, or by PDB files with missing atoms.)"
+ 
+286 Warning
+"MODEL atom not classified: @S1 @S2"
+ 
+287 ModellerError
+"No \":\" in RESID:CHAINID residue identifier: @S1"
+ 
+288 Warning
+"Protein not accepted: @I1 @S1"
+ 
+289 Note
+"Proteins (all/accepted): @I1 @I2"
+ 
+290 ModellerError
+"Number of residues in the alignment and @S1 files are different: @I1 @I2
+For alignment entry: @I3 @S2"
+ 
+291 SequenceMismatchError
+"Sequence difference between alignment and @S1 :"
+ 
+292 Warning
+"Too many neighbors; overflow ignored: @I1 @I2"
+ 
+293 Warning
+"Reported @I1 warnings for this file;
+further warnings will be suppressed."
+ 
+294 ModellerError
+"Probably cannot use SDCH=.T. here because of the atom order."
+ 
+295 ModellerError
+"Strange eigenvalues of matrix p: @r1"
+ 
+296 ModellerError
+"Number of equivalent positions < 3: @I1"
+ 
+297 Note
+"Segments, residues, atoms: @I1 @I2 @I3"
+ 
+298 Note
+"Segment: @I1 @S1 @S2 @I2"
+ 
+299 ModellerError
+"Atom index is out of bounds: @I1 @I2"
+ 
+300 Note
+"Number of pseudo atoms: @I1"
+ 
+301 ModellerError
+"Undefined input atom coordinates: @S1"
+ 
+302 Note
+"This file probably contains only Calpha atoms: @S1"
+ 
+303 ModellerError
+"No atoms were read from the specified input PDB file, since the
+starting residue number and/or chain id in MODEL_SEGMENT (or
+the alignment file header) was not found;
+requested starting position: residue number \"@S1\", chain \"@S2\";
+atom file name: @S3"
+ 
+304 Note
+"Restraints in memory, selected restraints: @I1 @I2
+Explicitly excluded atom pairs in memory : @I3
+Pseudo atoms in memory                   : @I4"
+ 
+305 FileFormatError
+"Incorrect record identifier in restraint file; card: @S1"
+ 
+306 ModellerError
+"Atom identifier not found: @S1"
+ 
+307 Note
+"Number of restraints read    : @I1
+Number of excluded pairs read: @I2
+Number of pseudo atoms read  : @I3"
+ 
+308 ModellerError
+"Error interpreting restraints line: @S1"
+ 
+309 ModellerError
+"Mathematical form out of bounds; iform, icsr: @I1 @I2"
+ 
+310 ModellerError
+"Feature type out of bounds; iftyp, icsr: @I1 @I2"
+ 
+311 ModellerError
+"Restraint group out of bounds; group, icsr: @I1 @I2"
+ 
+312 ModellerError
+"Wrong number of parameters (@I1) for
+@I2-dimensional cubic spline; should be 6 parameters per
+dimension, plus the product of the modalities (i.e. @I3).
+Restraint ID: @I4. Modalities are: @i1"
+ 
+313 Note
+"The overhangs in the alignment have been cut. You have to
+re-read the alignment from a file to use it after this."
+ 
+314 Warning
+"Only integer residue numbers are allowed: @S1"
+ 
+315 Warning
+"There should be two sequences in the alignment: @I1"
+ 
+316 ModellerError
+"OFF_DIAGONAL <= OVERHANG: @I1 @I2"
+ 
+317 Warning
+"M. Levitt suggests 'gap_penalties_3d' should be 0 10: @R1 @R2"
+ 
+318 Note
+"I,NEQVCUT,NEQV,RMSCUT,RMS,RMSROT: @I1 @I2 @I3 @R1 @R2 @R3"
+ 
+319 ModellerError
+"Not two structures in alignment; nothing done."
+ 
+320 Warning
+"Alignment not refined."
+
+321 ModellerError
+"You cannot call libraries.read_restyp() while topologies are in memory; either
+delete them first, or call libraries.read_restyp() before topology.read()"
+ 
+322 Note
+"Sequences start-points aligned initially: @I1"
+ 
+323 Note
+"Sequences end-points aligned initially: @I1"
+ 
+324 Note
+"Sequences mid-points aligned initially: @I1"
+ 
+325 Warning
+"A very bad case with no defined positions: @I1"
+ 
+326 Warning
+"No selected atoms for frw position: @I1"
+ 
+327 Warning
+"Only one structure; nothing done."
+ 
+328 Note
+"Initial framework positions: @I1"
+ 
+329 Warning
+"Insufficient overlap; nothing done."
+ 
+330 Note
+"Framework, Cycles, RMS_frw(i-1,i): @I1 @I2 @R1"
+ 
+331 ModellerError
+"Framework did not converge."
+ 
+332 Note
+"Framework: @I1"
+ 
+333 ModellerError
+"Atom index @I1 is out of range, for restraint @I2.
+(Atom indices should be between 1 and NATOM.)"
+ 
+334 ModellerError
+"Alignment did not converge."
+ 
+335 ModellerError
+"No alignment."
+ 
+336 ModellerError
+"No template structures."
+
+337 ModellerError
+"For transfer_xyz with cluster_cut > 0, all template structures
+must have the same topology as the model
+(i.e. @I1 atoms, @I4 residues)"
+ 
+338 Note
+"Both ATOM_FILES and ALIGN_CODES are empty for entry: @I1"
+ 
+339 Warning
+"Model residue @I1 (type @I2, code @S1) does not match
+that in alignment (type @I3, code @S2)."
+ 
+340 ModellerError
+"Number of residues in model (@I1) does not match
+that in alignment (@I2)."
+ 
+341 Warning
+"Check the N-terminus numbering."
+ 
+342 Warning
+"Same residue numbers: @I1 @I2 @S1"
+ 
+343 Note
+">> BEGINNING OF COMMAND @S1"
+ 
+344 Note
+"<< END OF COMMAND @S1"
+ 
+345 ModellerError
+"Alignment with two proteins is needed."
+ 
+346 ModellerError
+"Reference structure and MODEL have different lengths: @I1 @I2"
+ 
+347 ModellerError
+"Reference structure and MODEL are different: @I1 @I2 @I3"
+ 
+348 ModellerError
+"RMS_CUTOFFS does not have the right number of elements: @I1 @I2
+Probably because the number of dihedral angle types changed."
+ 
+349 Warning
+"Some residues are without DISTANCE_ATOMS[1] atom. NALN, position: @I1 @I2"
+ 
+350 ModellerError
+"Sequences different; seq;pos;types: @I1 @I2 @I3"
+ 
+351 ModellerError
+"Lengths of sequences different; seq;lens: @I1 @I2 @I3"
+ 
+352 ModellerError
+"Number of sequences in the two alignments is different: @I1 @I2"
+ 
+353 Warning
+"All distances are equal. Number of objects clustered: @I1"
+ 
+354 ModellerError
+"Incorrect ID1, ID2 range: @i1"
+ 
+355 ModellerError
+"Too many models for alignment.expand(): @I1 @I2"
+ 
+356 Note
+"Coordinates swapped in residue: @I1 @S1 @R1 @R2"
+ 
+357 Warning
+"atm1nam <> atm2nam, ia, ires (no swap): @S1 @S2 @I1 @I2"
+ 
+358 Warning
+"iatmr1 <> katmr2, ires (no swap): @I1 @I2 @I3"
+ 
+359 Note
+"Swapping atoms to minimize RMS in residues: @S1"
+ 
+360 Warning
+"nres1<>nres2 or natm1<>natm2 (no swap): @I1 @I2 @I3 @I4"
+ 
+361 ModellerError
+"nbound <> 2*nblk: @I1 @I2"
+ 
+362 ModellerError
+"Not a similarity matrix."
+ 
+363 ModellerError
+"Not correct segm/loops."
+ 
+364 ModellerError
+"Not correct segm/nnnshft."
+ 
+365 ModellerError
+"Not correct segm/nncshft."
+ 
+366 ModellerError
+"Target sequence length is 0."
+ 
+367 ModellerError
+"Sequence not found; code: @S1"
+ 
+368 ModellerError
+"Search sequence length = 0; code: @S1"
+ 
+369 ModellerError
+"Internal error. LOWLIM or UPLIM are out of range: @I1 @I2"
+ 
+370 Note
+"Group added to ALIGNMENT: @S1"
+ 
+371 Warning
+"Not adding group to alignment (not found in groups file): @S1"
+ 
+372 FileFormatError
+"No PDB code in field 2 for structure: @S1
+Card: @S2"
+ 
+373 ModellerError
+"Protein specified in ALIGN_CODES(i) was not found
+in the alignment file; ALIGN_CODES(@I1) = @S1"
+ 
+374 Note
+"Non-standard residue type,position,sequence: @S1 @I1 @I2"
+ 
+375 ModellerError
+"Unknown residue type,position,sequence: @S1 @I1 @I2"
+
+376 FileFormatError
+"Garbage after expected end of @I1 tokens;
+file @S1, line @I2, column @I3"
+ 
+377 FileFormatError
+"Incorrectly formatted MASS line: @S1
+MASS lines must contain exactly five tokens:
+MASS, an integer atom type (ignored by MODELLER),
+the CHARMM atom name, the atomic mass, and the
+element name."
+
+378 ModellerError
+"Error reading sequence from PDB file: @I1"
+ 
+379 ModellerError
+"Alignment sequence not found in PDB file: @I1 @S1"
+ 
+380 FileFormatError
+"Incorrect format in the PAP alignment file (no code): @S1"
+ 
+381 FileFormatError
+"Error reading the PAP alignment file (no non-empty line): @S1"
+ 
+382 FileFormatError
+"No : in Insight alignment file: @S1"
+ 
+383 FileFormatError
+"Couldn't read the alignment code from an Insight file: @S1"
+ 
+384 ModellerError
+"First sequence longer than MODEL: @I1 @I2 @I3 @S1"
+
+385 ModellerError
+"No primary sequence was read from PDB file \"@S1\",
+since the starting residue number \"@S2\"
+and/or chain id \"@S3\" given in the alignment file header
+were not found in the PDB."
+ 
+386 Warning
+"A potential that relies on two proteins is used, yet you only have
+an unknown in the alignment. Library, not MDT, potential is used."
+ 
+387 Warning
+"Model has multiple chains, and they do not all have a unique
+chain ID. Suggest you relabel them as A, B, C, etc."
+
+388 ModellerError
+"indhash() out of range: @I1 @I2"
+ 
+389 ModellerError
+"MDT table range is too small.
+MDT should be derived with the full range of possible values for
+the independent variables."
+
+390 Warning
+"File:@S1, Line@I1
+This line contains at least one tab character, and is thus
+invalid PDB format. Each tab character has been replaced with
+a space. It is recommended that remove tabs from your PDB
+files to avoid running into other problems."
+
+391 ModellerError
+"SALIGN features 2, 3, 4, and 5 are distance features,
+so cannot be used with similarity_flag=True.
+Set similarity_flag to False, or set weights for
+all features except feature 1 to zero."
+ 
+392 ModellerError
+"Your library requires all bins zero; nbinx: @I1"
+ 
+393 Warning
+"Sum of p(x/a,b,...,c) < tenm4: @R1
+This is due to a bug or a very sparse pseudo-potential.
+Pdf arbitrarily set to even distribution."
+ 
+394 ModellerError
+"NRESFEAT is incorrect: @I1"
+ 
+395 Warning
+"w(i) < 0; check a_i: @R1"
+ 
+396 ModellerError
+"SIMTOT < 1E-5: @R1"
+ 
+397 Warning
+"Atoms were not swapped because of the uncertainty of how to handle the H atom."
+ 
+398 ModellerError
+"SUM = 0: @R1"
+ 
+399 ModellerError
+"Incorrect number of parameters."
+
+400 ModellerError
+"PROFILE alignments currently work only with feature 1.
+Set weights for all features except feature 1 to zero,
+or set align_what to BLOCK to request a block rather
+than profile alignment."
+ 
+401 Note
+"USER SYMMETRY, SYMMETRY: @I1 @L1
+SYMMETRIC = .T. ==> NALN*NALN/2
+SYMMETRIC = .F. ==> NALN*NALN
+All protein pairs always generated."
+ 
+402 Warning
+"ires, irestp: @I1 @I2"
+
+403 Warning
+"Treating residue type @S1 as a BLK (rigid body)
+even though topology information appears to be at least
+partially available. To treat this residue flexibly
+instead, remove the corresponding 'MODELLER BLK RESIDUE'
+REMARK from the input PDB file."
+
+404 Warning
+"At least one template is aligned with model residue @S1
+but no coordinates could be transferred. This usually
+occurs when your input files do not use the official
+PDBv3 atom names. Please check your templates."
+
+405 ModellerError
+"HBONDS data can only be written to files, not to Biso, but
+you did not specify a file name."
+
+406 Warning
+"Could not align @S1 with @S2, so will place these
+sequences in separate clusters; MATRIX_OFFSET (@R1)
+may have an invalid value. This message will be printed a maximum
+of 20 times per call of sequence_db.filter()."
+
+413 IndexError
+"Feature index out of range: @I1"
+ 
+414 ModellerError
+"Error in the format/contents of mdt1.ini."
+
+415 Warning
+"Sum of p(ijk) (@R1) is not equal to 1.0"
+ 
+417 Note
+"Restraint type to be calculated: @S1"
+ 
+418 ModellerError
+"NPHYCNS from $FEATS_LIB <> size(RESTRAINTS_FILTER): @I1 @I2"
+ 
+419 ModellerError
+"No topology library is in memory. Use topology.read() to read one."
+ 
+420 ModellerError
+"No parameter library is in memory. Use parameters.read() to read one."
+ 
+421 ModellerError
+"No model topology; run model.generate_topology() first."
+ 
+422 Note
+"Number of previous, current restraints         : @I1 @I2"
+ 
+423 Note
+"Number of previous, current selected restraints: @I1 @I2"
+ 
+424 Warning
+"CIS peptide: @I1 - @I2 @S1 - @S2 @S3 - @S4 @i1"
+ 
+425 Note
+"Unselected all O C +N +CA dihedrals: @I1
+(This is to avoid clashes between STEREO
+and OMEGA_DIHEDRAL restraints)"
+ 
+426 ModellerError
+"Need 2 atoms in ATOM_IDS for RESTRAINT_TYPE = 'SHEET': @I1"
+
+427 Note
+"@I1 redundant cosine dihedral restraints were unselected."
+ 
+428 ModellerError
+"Alpha class undefined: @S1"
+ 
+429 Note
+"Restraining segment to strand: @I1 @I2"
+ 
+430 ModellerError
+"Strand class undefined: @S1"
+ 
+431 ModellerError
+"Proline beta class undefined: @S1"
+ 
+432 ModellerError
+"Atoms for the first H-bond not found: @S1 @S2 @I1 @I2 @I3 @I4"
+ 
+433 ModellerError
+"First H-bond cannot be a MC H-bond: : @S1 @S2"
+ 
+434 Output
+"Restraining segments to parallel sheet, H-bonds: @S1 @S2 @I1"
+ 
+435 Output
+"Restraining segments to anti-parallel sheet, H-bonds: @S1 @S2 @I1"
+ 
+436 Output
+"Number of user distances added: @I1
+Total number of restraints before, now: @I2 @I3"
+ 
+437 Warning
+"Standard deviation is very small: @R1"
+ 
+438 Warning
+"Force constant is very small: @R1"
+ 
+439 ModellerError
+"No MODEL in memory."
+ 
+440 Warning
+"Adding params (mean,force,period): @R1 @R2 @I1
+For atoms: @s1"
+ 
+441 Output
+"Number of restraints unselected: @I1"
+ 
+442 ModellerError
+"One or more atoms absent from MODEL: @s1"
+ 
+443 Output
+"Restraints marked for deletion were removed.
+Total number of restraints before, now: @I1 @I2"
+ 
+444 ModellerError
+"Incorrect number of parameters; expected, specified: @I1 @I2"
+ 
+445 ModellerError
+"Excluded atom @S1 absent from MODEL."
+ 
+446 Warning
+"A potential that relies on one protein is used, yet you have at
+least one known structure available. MDT, not library, potential is used."
+ 
+447 ModellerError
+"MNCH bins from MDT <> LIB: @I1 @I2"
+ 
+448 ModellerError
+"indatm, wght < 0: @I1 @R1"
+ 
+449 Warning
+"No atoms selected; no restraints will be selected."
+ 
+450 ModellerError
+"Probably because no MODEL is in memory; use model.read()."
+ 
+451 Warning
+"Requested schedule step not available: @I1
+schedule.step set to len(schedule)."
+ 
+452 ModellerError
+"Probably because no schedule was read/made; use schedule.read()/schedule.make()."
+ 
+453 Warning
+"No fixed restraints selected; there may be some dynamic ones."
+ 
+454 Warning
+"Restraints file was probably not read; use restraints.append()."
+ 
+455 Warning
+"None of the non-bonded terms selected."
+ 
+456 Warning
+"Both soft sphere and Lennard-Jones terms selected."
+ 
+457 Warning
+"Both soft sphere and statistical potential terms selected."
+ 
+458 Warning
+"Both Lennard-Jones and statistical potential terms selected."
+
+459 Warning
+"Residue type @S1 not recognized. 'automodel' model building
+will treat this residue as a rigid body.
+To use real parameters, add the residue type to ${LIB}/restyp.lib,
+its topology to ${LIB}/top_*.lib, and suitable forcefield
+parameters to ${LIB}/par.lib."
+ 
+460 ModellerError
+"Center residue not found: @S1"
+ 
+461 ModellerError
+"Center atom not found: @S1"
+ 
+462 Note
+"Number of selected atoms            : @I1"
+ 
+463 Note
+"Number of splined restraints: @I1"
+ 
+464 Warning
+"Inventing the MODEL coordinates."
+ 
+465 Warning
+"No seed atoms can be found in MODEL."
+ 
+466 Warning
+"Some coordinates in MODEL not assigned."
+ 
+467 Warning
+"All coordinates in MODEL have been assigned."
+ 
+468 Warning
+"Some coordinates in MODEL are still undefined."
+
+469 Warning
+"At least one residue number in the model is duplicated.
+(First duplication is residue \"@S1\", chain \"@S2\".)
+Suggest you renumber the residues and/or chains to
+avoid selecting the wrong residues (e.g. with model_segment)."
+ 
+470 Warning
+"Atoms I-J-K are co-linear; L not built: @I1 @I2 @I3 @I4"
+ 
+471 ModellerError
+"Number of bonds/atom incorrect; possibly increase MAXBAT.
+Atom indices in bond: ', @I1 @I2
+Their bonds         : ', @I3 @I4"
+ 
+472 ModellerError
+"No template residues; number of templates: @I1"
+ 
+473 ModellerError
+"Atom indices for seed atoms are duplicated: @I1 @I2 @I3"
+ 
+474 Warning
+"Some IC values are zero for seed atoms.
+I,J,K,RIJ,RJK,THETA: @I1 @I2 @I3 @R1 @R2 @R3"
+ 
+475 Warning
+"Could not find parameters in the parameters library: @S1 @S2 @S3 @S4"
+ 
+477 ModellerError
+"No templates in the alignment.
+Number of sequences in the alignment: @I1"
+ 
+479 ModellerError
+"Must not use patching residues here.
+Residue type index, residue type: @I1 @S1"
+ 
+480 Warning
+"Residue type ignored (aln position, sequence, type): @I1 @I2 @S1"
+ 
+481 Warning
+"This disulfide was already patched."
+ 
+482 ModellerError
+"Patching residue identifier not found: @S1"
+ 
+483 Note
+"CD1/2 CE1/2 swapped: @R1 @I1 @S1"
+ 
+484 Warning
+"Dihedral still outside +-90: @R1"
+ 
+485 Note
+"OD1/2 will be swapped: @R1 @I1 @S1"
+ 
+486 Note
+"OE1/2 will be swapped: @R1 @I1 @S1"
+ 
+487 Note
+"NH1/2 swapped: @R1 @I1 @S1"
+ 
+488 Warning
+"CHARMM LIB atom not found in MODEL: @I1 @S1 @S2"
+ 
+489 ModellerError
+"CHARMM LIB atom not found in MODEL: @I1 @S1 @S2"
+ 
+490 ModellerError
+"MODEL residue does not have the same number of atoms as
+CHARMM topology library residue: @I1 @S1 @I2 @I3"
+ 
+491 Note
+"MODEL residue changed: @I1 @S1 @S2 @S3"
+ 
+492 Warning
+"Are you sure you want to calculate a normalized energy profile!"
+ 
+493 ModellerError
+"MODEL atom not found in MODEL2: @I1 @S1 @S2"
+ 
+494 ModellerError
+"MODEL residue does not have the same number of atoms as
+MODEL2 residue: @I1 @S1 @I2 @I3"
+ 
+495 Warning
+"MODEL residue type not in MODEL2: @I1 @S1"
+ 
+496 Note
+"Amplitude is > 0; randomization is done."
+ 
+497 Note
+"Amplitude is < 0; random coordinates are assigned."
+ 
+498 Note
+"Atoms,selected atoms,random_seed,amplitude: @I1 @I2 @I3 @R1"
+ 
+499 Note
+"Amplitude is 0; no randomization will be done."
+ 
+500 ModellerError
+"Numbers of MODEL and MODEL2 residues not equal: @I1 @I2"
+ 
+501 Note
+"Gravity center of MODEL: @R1 @R2 @R3"
+ 
+502 ModellerError
+"Order of RESI/ATOM/PRES is incorrect."
+ 
+503 ModellerError
+"Number of atoms in topology library > MODEL; residue: @I1 @I2 @S1"
+
+504 Warning
+"Sequence database contains no sequences. No profile will be built."
+ 
+505 Note
+"MODEL is an average of the largest cluster: @R1"
+ 
+506 Note
+"MODEL is an average of all templates."
+ 
+507 ModellerError
+"Number of residues in alignment different from that in MODEL: @I1 @I2
+(Did you call clear_topology() before generate_topology() ?)"
+ 
+508 Warning
+"Residue type in ALIGNMENT different from that in MODEL.
+MODEL position, ALIGNMENT type, MODEL type: @I1 @I2 @I3"
+ 
+511 Note
+"Number of templates for coordinate transfer: @I1
+After transferring coordinates of the equivalent template atoms,
+there are defined, undefined atoms in MODEL: @I2 @I3"
+ 
+512 ModellerError
+"Dihedral undefined: @i1"
+ 
+513 Warning
+"Local optimization without restraints selected.
+Thus, no change to structure at all."
+ 
+514 ModellerError
+"Bad restraints; undefined mean."
+ 
+515 Note
+"Residues,dihedral type,all-selected,optimized: @I1 @I2 @I3 @I4"
+ 
+516 Note
+"Residues, dihedral type, randomized: @I1 @I2 @I3"
+ 
+517 Note
+"Local optimization around @S1"
+ 
+518 Note
+"Local randomization around @S1 for @R1"
+ 
+519 Warning
+"Amplitude is 0; no randomization."
+ 
+520 Warning
+"Normalization of charges failed: @I1 @R1 @R2"
+ 
+521 Note
+"Reducing the topology to @I1"
+ 
+522 Output
+"Number of disulfides patched in MODEL: @I1"
+ 
+523 ModellerError
+"The same SG atom occurs in more than one disulfide.
+Thus, the model is incorrect."
+ 
+524 ModellerError
+"An SG atom is bonded to itself. Thus, the model is incorrect."
+ 
+529 Note
+"MODELLER, EXIT(0)."
+ 
+540 TypeError
+"Numbers of expected, actual arguments are different: @I1 @I2
+Command line: @S1"
+ 
+541 Note
+"Number of reals,integers,strings,logicals: @i1"
+ 
+553 IOError
+"I/O stream not opened: @I1"
+ 
+554 ModellerError
+"I/O stream out of range: @I1"
+ 
+565 ModellerError
+"Restraint index out of bounds (NCSR,NICSR,IC,I): @I1 @I2 @I3 @I4"
+ 
+566 Note
+"Residues, atoms, charge: @I1 @I2 @R1"
+ 
+567 Note
+"Residues, atoms: @I1 @I2"
+ 
+568 Note
+"Residues, atoms, selected atoms: @I1 @I2 @I3"
+ 
+569 ModellerError
+"Incorrect type of the non-bonded pair routine: @I1"
+ 
+570 Warning
+"Unknown atom type for atom: @I1"
+ 
+571 Warning
+"Unspecified restraint for atoms, types: @I1 @I2 @I3 @I4"
+ 
+572 Warning
+"Unknown atom types for atoms: @I1 @I2 @I3 @I4"
+ 
+573 Warning
+"OBJFUNC() <> Sum FEATPDF: @R1 @R2"
+ 
+576 ModellerError
+"Environment variable for application directory undefined.
+Program probably not installed correctly."
+ 
+578 Note
+"Initializing application @S1"
+ 
+580 Warning
+"Weird SELECTION_STATUS: both initialization and removing selected."
+ 
+581 ModellerError
+"Defining a pseudo atom with an undefined real atom: @I1 @I2"
+ 
+582 ModellerError
+"Run model.transfer_xyz(), model.read() or model.build() first."
+ 
+583 ModellerError
+"Run topology.read() and model.generate_topology() first."
+ 
+584 ModellerError
+"Number of sequences in the alignment is 0."
+ 
+585 ModellerError
+"Wrong number of topology models (@I1) in MODELS_LIB:
+was expecting @I2 (to match RADII_LIB)"
+ 
+587 ModellerError
+"This command needs a non-empty alignment.
+Run alignment.append() or make alignment first."
+ 
+588 ModellerError
+"Run model.generate_topology() and parameters.read() first."
+ 
+589 ModellerError
+"Run topology.read() first."
+ 
+590 ModellerError
+"No topology generated for sequence: @S1
+Possibly because incorrect topology library is used."
+ 
+592 ModellerError
+"There is no such CODE in the alignment: @S1"
+ 
+594 ModellerError
+"No atoms in memory. Run model.read() or model.build()"
+ 
+595 ModellerError
+"Number of selected atoms in sets 2 & 3 is not the same: @I1 @I2"
+ 
+596 ModellerError
+"Atom index is out of range (iatm,natm): @I1 @I2"
+ 
+597 ModellerError
+"Atom type(s) out of range: @I1 @I2"
+ 
+598 Output
+"Number of user atom restraints added  : @I1
+Total number of restraints before, now: @I2 @I3"
+ 
+599 Warning
+"Atom type not found; restraint ignored: @S1 @S2"
+ 
+600 ModellerError
+"Restraint for atom type not found."
+ 
+601 ModellerError
+"Not one atom in restraint."
+ 
+602 ModellerError
+"Incorrect physical restraint type: @I1"
+ 
+603 ModellerError
+"Impropers must have periodicity 0: @I1"
+ 
+604 ModellerError
+"Torsions must have periodicity 1,2,3,4,5,6: @I1"
+ 
+605 ModellerError
+"Force constant cannot be less than 0."
+ 
+606 Note
+"Stereochemical restraints were constructed from RTF & PRMF.
+Added bond,angle,dihedral,improper restraints  : @i1
+Total number of restraints before, now         : @I1 @I2"
+ 
+607 Warning
+"Cannot find params in params file:
+CHARMM atoms : @s1
+IUPAC atoms  : @s2
+Atom indices : @i1
+Residues     : @s3"
+ 
+609 ModellerError
+"Delta time too small: @R1"
+ 
+610 Warning
+"Precision problem; starting from scratch."
+ 
+611 Warning
+"Precision problem; starting from scratch.
+Last such message in this model.optimize()."
+ 
+612 Note
+"Number of MODEL atoms, selected restraints; @I1 @I2"
+ 
+613 Warning
+"No selected restraints remain!"
+ 
+615 Warning
+"SEGMENT_IDS length < number of segments: @I1 @I2
+Segment ids set to blank for missing SEGMENT_IDS."
+ 
+616 Warning
+"SEGMENT_IDS length > number of segments: @I1 @I2
+Additional SEGMENT_IDS are ignored."
+ 
+617 Note
+"End of the function/derivatives test; no discrepancies
+were found to be above given cutoffs."
+ 
+618 Warning
+"Derivatives of@S1 disagree:
+analytic, numeric, absolute&fractional error:
+@R1 @R2 @R3 @R4"
+ 
+621 Note
+"Testing the objective function and derivatives code by comparison
+of numerical and analytical derivatives. Any discrepancies with
+absolute and relative errors larger than the two cutoffs are
+written out.
+Derivatives for individual restraints evaluated : @L1
+Absolute error cutoff for whole function        : @R1
+Fractional cutoff for whole function            : @R2
+Absolute error cutoff for restraints            : @R3
+Fractional cutoff for restraints                : @R4
+This test does not work for splines of periodic features!"
+ 
+622 ModellerError
+"H must be nonzero."
+ 
+624 Warning
+"Restraint @I1 derivatives disagree for
+@S1: analytic, numeric, abs&frac error:
+@R1 @R2 @R3 @R4"
+ 
+627 ModellerError
+"No undefined atom type in RADII_LIB"
+ 
+628 ModellerError
+"Wrong number of atom types (@I1) in @S1:
+was expecting @I2 (to match RADII_LIB)"
+ 
+629 ModellerError
+"Wrong number of topology models (@I1) in @S1:
+was expecting @I2 (to match RADII_LIB)"
+ 
+630 ModellerError
+"Atom types differ in RADII_LIB and @S3
+(@S1 versus @S2)
+Atom types (and their order) must be the same
+in both files."
+ 
+631 ModellerError
+"No aligned template residues for BLK residue;
+number of templates: @I1
+Make sure that each BLK residue in your target
+sequence is aligned with your templates.
+(This can also be caused by a lack of structural
+information. Make sure you are using a PIR, not
+FASTA, alignment file, and that the template
+headers use 'structureX' not 'sequence'.)"
+
+632 ModellerError
+"Number of mnch. conf. classes not the same in
+Ramachandran LIB and MNCH LIB: @I1 @I2"
+ 
+633 ModellerError
+"Number of mnch. conf. classes not the same in
+Ramachandran LIB and MNCH1 LIB: @I1 @I2"
+ 
+634 ModellerError
+"Number of mnch. conf. classes not the same in
+Ramachandran LIB and MNCH2 LIB: @I1 @I2"
+ 
+635 ModellerError
+"Number of mnch. conf. classes not the same in
+Ramachandran LIB and MNCH3 LIB: @I1 @I2"
+ 
+636 ModellerError
+"Must be a distance residue-residue weight matrix: @R1"
+ 
+637 Warning
+"No residue topology library is in memory.
+Better radii would be used if topology.read() is called first."
+
+638 Note
+"Missing atoms in a dihedral, residue index, residue type: @I1 @I2 @S1"
+
+639 Note
+"Atoms are labeled incorrectly; swapped: @I1 @I2 @S1"
+
+640 Note
+"Bond is too long (bond, dih.type, ires, resnam): @I1 @I2 I3 @S1"
+
+641 Note
+"At least one atom has undefined XYZ (dih. type, residue index, residue type): @I1 @I2 @S1"
+
+642 Note
+"SIZE1*SIZE2 = 0: (dih. type, residue index, residue type): @I1 @I2 @S1"
+
+643 Note
+"Protein accepted: @S1"
+
+644 Warning
+"Two basis restraints have means too far apart:
+ICSR  MEAN1   MEAN2   STDEV1  STDEV2  R.VIOL1 R.VIOL2 NEW_SD1 NEW_SD2
+@S1"
+
+645 Warning
+"New number of symmetry segments, atom pairs: @I1 @I2"
+
+646 Output
+"REGION_SIZE, seed atom index, total_area: @I1 @I2 @R1"
+
+647 ModellerError
+"Not enough exposed atoms given the requested size of the patch: @I1 @I2"
+
+648 SequenceMismatchError
+"Alignment sequence not found in PDB file: @I1 @S1
+(You didn't specify the starting and ending residue numbers and
+chain IDs in the alignment, so Modeller tried to guess these from
+the PDB file.)
+Suggestion: put in the residue numbers and chain IDs (see the
+manual) and run again for more detailed diagnostics.
+You could also try running with allow_alternates=True to accept
+alternate one-letter code matches (e.g. B to N, Z to Q)."
+
+649 Warning
+"Chain names are identical; chn ids, names: @I1 @I2 @S1 @S2
+  2nd chain automatically renamed."
+
+650 ModellerError
+"Inconsistency in the sequence database contents. 
+Numbers of residues do not match: @I1 @I2"
+
+652 Warning
+"At least one residue type in the profile is non-standard.
+Non-standard residues will be mapped to standard residues
+as defined in modlib/restyp.lib."
+
+655 Note
+"If Weights Type ('SIMILAR' or 'DISTANCE') is not specified it is assumed to be 'SIMILAR'."
+
+656 Warning
+"Number of bins for histogram too small - results maybe unreliable, nbins: @I1"
+
+657 StatisticsError
+"Not enough bins in histogram - cannot calculate statistics, nbins: @I1"
+
+658 Output
+"Percentage of alignments from previous iterations still significant, [iter, perc]: @I1, @R1"
+
+659 Warning
+"Profile appears to be diverging. The observed/expected distributions do not fit.
+Kolmogov-Smirnov statistic for the fit: @R1"
+
+660 Output
+"Quality of the fit between observed/expected score distributions.
+[Iteration, Chi2, nbins, KS-Stat, nscores ] = @I1, @R1, @I2, @R2, @I3"
+
+661 ModellerError
+"Internal error - no possible choices given for variable@S1"
+
+662 ValueError
+"Invalid choice@S1 for variable@S2: can choose
+@S3 from the following:@S4"
+
+663 ValueError
+"Variable@S1 cannot be blank: you can choose
+@S2 from the following:@S3"
+
+664 ModellerError
+"Internal error - cannot call num_optvar on the single-choice optvar@S1"
+
+665 ModellerError
+"Internal error - option@S1 is not a valid choice from
+@S2"
+
+666 ModellerError
+"Cannot calculate multiple iterations when 'score_statistics' = True"
+
+667 ModellerError
+"Cannot continue - no alignment in memory!"
+
+668 ModellerError
+"There is no second model in memory!"
+
+669 Note
+"Uncompressing compressed file with system command:
+@S1"
+
+670 ModellerError
+"Feature value @R1 is outside defined range for closed cubic spline: @R2 @R3"
+
+672 FileFormatError
+"Reached end of alignment file: @S1
+Please check the file to make sure your sequences end with
+the '*' character."
+
+673 ModellerError
+"Request for invalid restraint global array: @I1
+Valid range is 1 through @I2."
+
+674 ModellerError
+"Inconsistency detected; the number of profiles in
+the PSSMDB (@I1) does not match that in your profile
+list file (@I2)."
+
+676 Warning
+"No topology library in memory, so using default submodel:@I1"
+
+677 ModellerError
+"Exactly one sequence must be present in the alignment."
+
+678 Warning
+"No file units available for output - no output written"
+
+679 ModellerError
+"No group restraints loaded for this model - cannot make ONE_ATOM restraints"
+
+680 ModellerError
+"Cannot read topology.submodel from topology file, line: @S1"
+
+681 Output
+"topology.submodel read from topology file: @I1"
+
+683 TypeError
+"Variable@S1 should be a sequence of length@I1 (the number of
+physical restraint types). Got@I2."
+
+684 Note
+"Compressing file with system command:
+@S1"
+
+685 ModellerError
+"System command failed."
+
+686 Warning
+"Residue @S1 contains multiple C alpha atoms; only the first
+will be used. Check the structure file @S2
+for residues with unmarked alternate location atoms."
+
+687 ModellerError
+"PSSMs should be read in from a database to calculate
+significance scores."
+
+688 ModellerError
+"Incorrect range for open cubic spline @I1,
+dimension @I2: xlow (@R1) should be less than
+xhigh (@R2), and the range should be equal to the
+delta (@R3) times the modality (@I3) minus 1."
+
+689 ModellerError
+"Incorrect range for closed cubic spline @I1,
+dimension @I2: xlow (@R1) should be less than
+xhigh (@R2), and the range should be equal to the
+delta (@R3) times the modality (@I3)."
+
+690 ModellerError
+"Atom index@I1 is in multiple rigid bodies!"
+
+691 ModellerError
+"Inconsistent parameters: the number of features,
+modalities, atom groups must all be the same."
+
+692 ModellerError
+"Was expecting@S1 at position@I1 in
+the string: @S2"
+
+693 ModellerError
+"Rigid body atom index @I1 is out of range.
+(Atom indices should be between 1 and NATOM = @I2.)"
+
+694 ModellerError
+"Rigid body contains no atoms!"
+
+695 ModellerError
+"Cannot perform alignment - zero length sequence:@S1
+(Check to make sure you read in the alignment correctly.)"
+
+696 ModellerError
+"Residue @I1 in model @I2 is lacking at least
+one of the needed 4 backbone (C, CA, N, O) atoms."
+
+697 ModellerError
+"The two models must have the same number of residues!"
+
+698 Note
+"Only some atoms in the rigid bodies are selected
+(the first NONselected atom is index@I1)
+Each whole body will move, but only restraints
+involving the selected atoms will be enforced.
+Selecting all atoms in the body is recommended."
+
+699 TypeError
+"Optimizer state should be a sequence of length@I1 (the number of
+degrees of freedom). Got@I2."
+
+700 ModellerError
+"Cannot perform profile-profile alignment, since no sequence
+profile information is available and smooth_prof_weight = 0.
+(This occurs when there is no variability in your input
+sequences, for example if you have only one sequence in each of
+your alignment blocks. Increase smooth_prof_weight to use the
+background information.)"
+
+701 Warning
+"Insufficient system memory to allocate storage for cell-based
+(NlogN) nonbond list algorithm; falling back to N*N method."
+
+702 FileFormatError
+"File:@S1, Line@I1
+Could not parse data from file; file is probably corrupt."
+
+703 ModellerError
+"USER restraints format is no longer supported."
+
+704 Warning
+"At least one non-standard residue was found in the profile and 
+was converted to a standard residue to calculate sensible values
+for sequence weights. The non-standard residues in the alignment
+will be unchanged. The following corrections are made: ASX -> ASN,
+GLX -> GLN, UNK -> ALA, BRK -> GAP, MSE -> MET and all other
+non-standard residues to GLY."
+
+705 ModellerError
+"saxs_computepr in saxs_routines stopped - increase number of points
+for P(r) (now nr=@I1 ). Alter in ini_saxs."
+
+706 Warning
+"BLK ('.') residue type in alignment will force 'automodel'
+model building to treat residue type @S1 as a rigid body,
+even though topology information appears to be at least
+partially available. To treat this residue flexibly
+instead, use 1-letter code '@S2' in the alignment."
+
+707 ModellerError
+"Inconsistency in chi-square calculation: @R1 @R2"
+
+708 Warning
+"There are zero degrees of freedom;
+chi-square calculation is meaningless."
+
+709 ValueError
+"'dimensions' is @I1; it must be either 1 or 2,
+and not more than the dimensionality of this MDT, @I2"
+
+710 ModellerError
+"For feature @I1 new start @I2 and size @I3
+are out of range."
+
+711 ModellerError
+"Structures must be available for every sequence
+in the alignment for output='QUALITY'."
+
+712 FileFormatError
+"Invalid line in class file; expected it to start
+with either @S1 or @S2:
+@S3"
+
+713 FileFormatError
+"Do not start lead atom name with + or -; line
+@S1"
+
+714 ModellerError
+"Number of bins in MDT table (@I1) does not
+match that in bin file (@I2) for feature
+number @I3, feature type @I4."
+
+716 NotImplementedError
+"MDT feature @I1 not implemented."
+
+717 ModellerError
+"Unable to get template coordinates for BLK residue
+number @I1, as the alignment contains only @I2
+positions. This is likely caused because your
+alignment does not match your model, or you forgot
+to call clear_topology() before generate_topology()."

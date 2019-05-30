@@ -1,0 +1,460 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Specification of restraints</TITLE>
+<META NAME="description" CONTENT="Specification of restraints">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node103.html">
+<LINK REL="previous" HREF="node101.html">
+<LINK REL="up" HREF="node101.html">
+<LINK REL="next" HREF="node103.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html2866"
+  HREF="node103.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2860"
+  HREF="node101.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2854"
+  HREF="node101.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html2862"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html2864"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html2867"
+  HREF="node103.html">Specification of pseudo atoms</A>
+<B> Up:</B> <A NAME="tex2html2861"
+  HREF="node101.html">Spatial restraints</A>
+<B> Previous:</B> <A NAME="tex2html2855"
+  HREF="node101.html">Spatial restraints</A>
+ &nbsp; <B>  <A NAME="tex2html2863"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html2865"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html2868"
+  HREF="node102.html#SECTION001031100000000000000">Static and dynamic restraints</A>
+<LI><A NAME="tex2html2869"
+  HREF="node102.html#SECTION001031200000000000000">Feature types</A>
+<LI><A NAME="tex2html2870"
+  HREF="node102.html#SECTION001031300000000000000">Mathematical forms of restraints</A>
+<LI><A NAME="tex2html2871"
+  HREF="node102.html#SECTION001031400000000000000">Restraint violations</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H2><A NAME="SECTION001031000000000000000">
+Specification of restraints</A>
+</H2>
+
+<P>
+
+<H3><A NAME="SECTION001031100000000000000"></A>
+<A NAME="SECTION:dynamicrsr"></A><A NAME="8167"></A>
+<BR>
+Static and dynamic restraints
+</H3>
+
+<P>
+<I>Dynamic</I> restraints are created on the fly, and currently include:
+
+<UL>
+<LI>Soft-sphere<A NAME="8442"></A> overlap restraints (see <I><A HREF="node124.html#MEMB:energydata.dynamicsphere">energy_data.dynamic_sphere</A></I><A NAME="8444"></A>).
+</LI>
+<LI>Lennard-Jones<A NAME="8448"></A> restraints (see <I><A HREF="node125.html#MEMB:energydata.dynamiclennard">energy_data.dynamic_lennard</A></I><A NAME="8450"></A>).
+</LI>
+<LI>Coulomb<A NAME="8454"></A> restraints (see <I><A HREF="node126.html#MEMB:energydata.dynamiccoulomb">energy_data.dynamic_coulomb</A></I><A NAME="8456"></A>).
+</LI>
+<LI>Non-bond spline restraints (see <I><A HREF="node127.html#MEMB:energydata.dynamicmodeller">energy_data.dynamic_modeller</A></I><A NAME="8461"></A>).
+</LI>
+<LI>GBSA solvent restraints (see Section&nbsp;<A HREF="node267.html#SECTION:gbsa">6.14</A>).
+</LI>
+<LI>EM density restraints (see <I><A HREF="#MEMB:energydata.density">energy_data.density</A></I><A NAME="8466"></A>).
+</LI>
+<LI>SAXS restraints (see <I><A HREF="#MEMB:energydata.saxsdata">energy_data.saxsdata</A></I><A NAME="8471"></A>).
+</LI>
+<LI>User-defined energy terms (see Section&nbsp;<A HREF="node436.html#SECTION:userterm">7.1.3</A>).
+</LI>
+</UL>
+Dynamic restraints are <EM>not</EM> written into the restraints file by
+<B><A HREF="node215.html#CMD:Restraints.write">Restraints.write()</A></B><A NAME="8476"></A> (only static restraints are).
+
+<P>
+<I>Static</I> restraints can be added with the <B><A HREF="node210.html#CMD:Restraints.add">Restraints.add()</A></B><A NAME="8481"></A>
+command, or can be read from a restraints file (see
+Section&nbsp;<A HREF="node455.html#restraintsformat">B.2</A>). Collections of static restraints useful
+for various purposes (<EM>e.g.</EM> for restraining all bond lengths or angles, or
+for using template information) can also be automatically generated with the
+<B><A HREF="node202.html#CMD:Restraints.make">Restraints.make()</A></B><A NAME="8487"></A> command.
+
+<P>
+Each static restraint is formulated as a mathematical form (<EM>e.g.</EM> a Gaussian
+function) which acts on one or more `features' of the model (<EM>e.g.</EM> a bond
+length). Any feature can be used with any mathematical form, with the
+exception of <TT>forms.multi_binormal</TT>, which generally only works properly
+with <TT>features.dihedral</TT>. Both feature types and mathematical forms are
+described below.
+
+<P>
+
+<H3><A NAME="SECTION001031200000000000000"></A>
+<A NAME="SECTION:featuretypes"></A><A NAME="SECTION:atomid"></A><A NAME="8199"></A>
+<BR>
+Feature types
+</H3>
+
+<P>
+Each feature is a <A NAME="tex2html77"
+  HREF="http://www.python.org/">Python</A> class, which takes a defined number of atom ids as
+input. Each of these atom ids can be:
+
+<UL>
+<LI>An <TT>Atom</TT> object, from the current model (<EM>e.g.</EM>, <TT>m.atoms['CA:1']</TT>;
+see <I><A HREF="node163.html#MEMB:model.atoms">model.atoms</A></I><A NAME="8503"></A>).
+
+<P>
+</LI>
+<LI>A <TT>Residue</TT> object, from the current model (<EM>e.g.</EM>,
+<TT>m.residues['3']</TT>; see <I><A HREF="node307.html#MEMB:Sequence.residues">Sequence.residues</A></I><A NAME="8512"></A>), in which case all atoms
+from the residue are used.
+
+<P>
+</LI>
+<LI>A list of atoms or residues returned by <B><A HREF="node165.html#CMD:model.atomrange">model.atom_range()</A></B><A NAME="8517"></A> or
+<B><A HREF="node166.html#CMD:model.residuerange">model.residue_range()</A></B><A NAME="8522"></A>, in which case all atoms from the list are used.
+
+<P>
+</LI>
+<LI>A <TT>model</TT> object, in which case all atoms in the model are used.
+
+<P>
+</LI>
+<LI>A <TT>selection</TT> object, in which case all atoms in the selection
+are used.
+</LI>
+</UL>
+
+<P>
+Features can be any of the classes in the <TT>features</TT> module (see below)
+or you can create your own classes; see Section&nbsp;<A HREF="node433.html#SECTION:userdef">7.1</A>.
+
+<P>
+<A NAME="8532"></A><TT>features.distance(*atom_ids)</TT>
+<BR>
+Distance in angstroms between the given two atoms.
+
+<P>
+<A NAME="8535"></A><TT>features.angle(*atom_ids)</TT>
+<BR>
+Angle in radians between the given three atoms.
+
+<P>
+<A NAME="8538"></A><TT>features.dihedral(*atom_ids)</TT>
+<BR>
+Dihedral angle in radians between the given four atoms.
+
+<P>
+<A NAME="8541"></A><TT>features.minimal_distance(*atom_ids)</TT>
+<BR>
+Given an even number of atoms, this calculates the distance between the
+first two atoms, the third and fourth, and so on, and returns the shortest
+such pair distance, in angstroms.
+
+<P>
+<A NAME="8544"></A><TT>features.solvent_access(*atom_ids)</TT>
+<BR>
+Area (in <IMG
+ WIDTH="23" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img30.png"
+ ALT="$ \AA^2$">
+) exposed to solvent of the given atom. Note that this
+feature cannot be used in optimization, as first derivatives are always
+returned as zero.
+
+<P>
+<A NAME="8547"></A><TT>features.density(*atom_ids)</TT>
+<BR>
+Atomic density (number of atoms within <I>contact_shell</I><A NAME="8551"></A> of the given atom).
+Note that this feature cannot be used in optimization, as first derivatives
+are always returned as zero.
+
+<P>
+<A NAME="8553"></A><TT>features.x_coordinate(*atom_ids)</TT>
+<BR>
+Value of the x coordinate (in angstroms) of the given atom.
+
+<P>
+<A NAME="8556"></A><TT>features.y_coordinate(*atom_ids)</TT>
+<BR>
+Value of the y coordinate (in angstroms) of the given atom.
+
+<P>
+<A NAME="8559"></A><TT>features.z_coordinate(*atom_ids)</TT>
+<BR>
+Value of the z coordinate (in angstroms) of the given atom.
+
+<P>
+<A NAME="8562"></A><TT>features.dihedral_diff(*atom_ids)</TT>
+<BR>
+Difference in radians between two dihedral angles (defined by the first four
+and last four atoms).
+
+<P>
+
+<H3><A NAME="SECTION001031300000000000000"></A>
+<A NAME="SECTION:formtypes"></A><A NAME="8241"></A>
+<BR>
+Mathematical forms of restraints
+</H3>
+Each mathematical form is a <A NAME="tex2html78"
+  HREF="http://www.python.org/">Python</A> class, which takes one or features (above)
+as arguments to act on. <TT>group</TT> is used to group restraints into
+``physical feature types'' for reporting purposes in <B><A HREF="node246.html#CMD:selection.energy">selection.energy()</A></B><A NAME="8569"></A>, <EM>etc</EM>,
+and should be a Python object from the <TT>physical</TT> module
+(see Table&nbsp;<A HREF="node251.html#tab:physrsrtypes">6.1</A> and Section&nbsp;<A HREF="node251.html#CLASS:physvalues">6.10.1</A>). You can
+also create your own mathematical forms by creating new <A NAME="tex2html79"
+  HREF="http://www.python.org/">Python</A> classes;
+see Section&nbsp;<A HREF="node433.html#SECTION:userdef">7.1</A>.
+
+<P>
+Each of the mathematical forms is depicted in Figure&nbsp;<A HREF="#fig:forms">5.1</A>.
+
+<P>
+<A NAME="8578"></A><TT>forms.lower_bound(group, feature, mean, stdev)</TT>
+<BR>
+Harmonic lower bound (left Gaussian). The given <I>feature</I><A NAME="8582"></A> is harmonically
+restrained to be greater than <I>mean</I><A NAME="8585"></A> with standard deviation <I>stdev</I><A NAME="8588"></A>. See
+Eq.&nbsp;<A HREF="node450.html#eq:lgaussian">A.81</A>.
+
+<P>
+<A NAME="8590"></A><TT>forms.upper_bound(group, feature, mean, stdev)</TT>
+<BR>
+Harmonic upper bound (right Gaussian). The given <I>feature</I><A NAME="8594"></A> is harmonically
+restrained to be less than <I>mean</I><A NAME="8597"></A> with standard deviation <I>stdev</I><A NAME="8600"></A>. See
+Eq.&nbsp;<A HREF="node450.html#eq:rgaussian">A.82</A>.
+
+<P>
+<A NAME="8602"></A><TT>forms.gaussian(group, feature, mean, stdev)</TT>
+<BR>
+Single Gaussian (harmonic potential). The given <I>feature</I><A NAME="8606"></A> is harmonically
+restrained to be around <I>mean</I><A NAME="8609"></A> with standard deviation <I>stdev</I><A NAME="8612"></A>. See
+Eq.&nbsp;<A HREF="node450.html#eq:gaussian">A.62</A>.
+
+<P>
+<A NAME="8614"></A><TT>forms.multi_gaussian(group, feature, weights, means, stdevs)</TT>
+<BR>
+Multiple Gaussian. The given <I>feature</I><A NAME="8618"></A> is restrained by a linear combination
+of Gaussians. <I>weights</I><A NAME="8621"></A>, <I>means</I><A NAME="8624"></A> and <I>stdevs</I><A NAME="8627"></A> should all be lists (of
+the same size) specifying the weights of each Gaussian in the linear
+combination, their means, and their standard deviations, respectively. See
+Eq.&nbsp;<A HREF="node450.html#eq:polygauss">A.65</A>.
+
+<P>
+<A NAME="8629"></A><TT>forms.factor(group, feature, factor)</TT>
+<BR>
+Simple scaling. The given <I>feature</I><A NAME="8633"></A> value is simply multiplied by
+<I>factor</I><A NAME="8636"></A> to yield the objective function contribution.
+
+<P>
+<A NAME="8638"></A><TT>forms.lennard_jones(group, feature, A, B)</TT>
+<BR>
+Lennard-Jones<A NAME="8641"></A> potential. The given <I>feature</I><A NAME="8643"></A> is restrained by means
+of a Lennard-Jones<A NAME="8645"></A> potential, with control parameters <I>A</I><A NAME="8647"></A> and <I>B</I><A NAME="8650"></A>. See
+Eq.&nbsp;<A HREF="node450.html#eq:lennard">A.89</A>.
+
+<P>
+<A NAME="8652"></A><TT>forms.coulomb(group, feature, q1, q2)</TT>
+<BR>
+Coulomb<A NAME="8655"></A> point-to-point potential. The given <I>feature</I><A NAME="8657"></A> is restrained by means
+of an inverse square Coulomb<A NAME="8659"></A> potential created by charges <I>q1</I><A NAME="8661"></A> and <I>q2</I><A NAME="8664"></A>.
+See Eq.&nbsp;<A HREF="node450.html#eq:coulomb">A.86</A>.
+
+<P>
+<A NAME="8666"></A><TT>forms.cosine(group, feature, phase, force, period)</TT>
+<BR>
+Cosine potential. The given <I>feature</I><A NAME="8670"></A> is restrained by a C<SMALL>HARMM</SMALL>-style
+cosine function, with the given phase shift, force constant and periodicity.
+See Eq.&nbsp;<A HREF="node450.html#eq:cosine">A.83</A>.
+
+<P>
+<A NAME="8673"></A><TT>forms.multi_binormal(group, features, weights, means, stdevs, correls)</TT>
+<BR>
+The given two features (generally both <TT>features.dihedral</TT>) are simultaneously
+restrained by a multiple binormal restraint. <I>weights</I><A NAME="8678"></A>, <I>means</I><A NAME="8681"></A>, <I>stdevs</I><A NAME="8684"></A>
+and <I>correls</I><A NAME="8687"></A> should all be lists (of the same size). <I>weights</I><A NAME="8690"></A> specifies
+the weights of each term in the function. <I>means</I><A NAME="8693"></A> and <I>stdevs</I><A NAME="8696"></A> give the mean
+and standard deviation of each feature for each term, and each element should
+thus be a 2-element list. <I>correls</I><A NAME="8699"></A> gives the correlation between the two
+features for each term. See Eq.&nbsp;<A HREF="node450.html#eq:polybinormorig">A.75</A>.
+
+<P>
+<A NAME="8701"></A><TT>forms.spline(group, feature, open, low, high, delta, lowderiv, highderiv, values)</TT>
+<BR>
+Cubic spline potential. The given <I>feature</I><A NAME="8705"></A> is restrained by an interpolating
+cubic spline, fitted to <I>values</I><A NAME="8708"></A>, which should be a list of objective function
+values. The first element in this list corresponds to feature value <I>low</I><A NAME="8711"></A>,
+the last to feature value <I>high</I><A NAME="8714"></A>, and points in the list are taken to be
+equally spaced by <I>delta</I><A NAME="8717"></A> in feature space. The spline can either be open
+(<I>open</I><A NAME="8720"></A> = <TT>True</TT>) in which case the first derivatives of the function
+at the first and last point in <I>values</I><A NAME="8724"></A> are given by <I>lowderiv</I><A NAME="8727"></A> and
+<I>highderiv</I><A NAME="8730"></A> respectively, or closed (<I>open</I><A NAME="8733"></A> = <TT>False</TT>) in which case
+<I>lowderiv</I><A NAME="8737"></A> and <I>highderiv</I><A NAME="8740"></A> are ignored. A closed spline 'wraps around'
+in such a way that feature values <I>low</I><A NAME="8743"></A> and <I>high</I><A NAME="8746"></A> are taken to refer
+to the same point, and is useful for periodic features such as angles.
+See Eq.&nbsp;<A HREF="node450.html#eq:spline">A.96</A>.
+
+<P>
+<A NAME="8748"></A><TT>forms.nd_spline(group, values)</TT>
+<BR>
+Multi-dimensional cubic spline potential. The given <I>feature</I><A NAME="8752"></A> is restrained
+by an interpolating multi-dimensional cubic spline, fitted to <I>values</I><A NAME="8755"></A>,
+which should be an N-dimensional list of objective function values. (For
+example, for a 2D spline, it should be a list of lists. The outer list goes
+over the second feature, and contains one or more rows, each of which is a list
+which goes over the first feature.) After
+creating the object, you should then call the <TT>'add_dimension'</TT> function
+N times:
+
+<P>
+<A NAME="8758"></A><TT>nd_spline.add_dimension(feature, open, low, high, delta, lowderiv, highderiv)</TT>
+<BR>
+This initializes the next dimension of the multi-dimensional cubic spline.
+Parameters are as for <TT>'forms.spline()'</TT>, above. Note that <I>lowderiv</I><A NAME="8763"></A> and
+<I>highderiv</I><A NAME="8766"></A> are used for every spline, for efficiency. (For example, in an
+x-by-y 2D spline, there will be 'x' splines in the second dimension, each
+of which could have its own <I>lowderiv</I><A NAME="8769"></A> and <I>highderiv</I><A NAME="8772"></A>, but one pair of
+values is actually used for all 'x' of these splines.)
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:forms"></A><A NAME="8439"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 5.1:</STRONG>
+ <FONT SIZE="-1">Each mathematical form generates a
+contribution to the objective function as a function of one or more features.
+Note that this contribution is the negative log of the probability density.</FONT></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><IMG
+  WIDTH="609" HEIGHT="821" ALIGN="BOTTOM" BORDER="0"
+ SRC="./forms.png"
+ ALT="Image forms">
+
+<BR> 
+                 
+<DIV ALIGN="CENTER">
+ 
+</DIV></DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<H3><A NAME="SECTION001031400000000000000"></A>
+<A NAME="SECTION:restraintviol"></A><A NAME="8348"></A>
+<BR>
+Restraint violations
+</H3>
+
+<P>
+When M<SMALL>ODELLER</SMALL> optimizes the objective function, the aim is to fulfill all of
+the restraints as well as possible. In complex cases, this will be difficult
+or impossible to do, and some of the restraints will not be optimal. In this
+case, M<SMALL>ODELLER</SMALL> reports the deviation of each restraint from the optimum
+as a `violation'. There are four kinds of restraint violation used by
+M<SMALL>ODELLER</SMALL>:
+
+<P>
+
+<UL>
+<LI>The <EM>heavy violation</EM> is defined as the difference between the
+current value of the feature, and the global minimum of the same feature
+according to the restraint's mathematical form.
+
+<P>
+</LI>
+<LI>The <EM>relative heavy violation</EM> is the heavy violation normalized
+by dividing by the standard deviation of the global minimum.
+
+<P>
+</LI>
+<LI>The <EM>minimal violation</EM> is defined as the difference between the
+current value of the feature, and the nearest minimum of the same feature
+according to the mathematical form. Where this minimum corresponds to the
+global minimum (or for forms which have no well-defined local minimum, such
+as cubic splines), the minimal violation is the same as the heavy violation.
+
+<P>
+</LI>
+<LI>The <EM>relative minimal violation</EM> is the minimal violation normalized
+by dividing by the standard deviation of the local minimum.
+</LI>
+</UL>
+
+<P>
+Equations for relative heavy violations for most mathematical forms are given
+in Section&nbsp;<A HREF="node450.html#SECTION:restrainteq">A.3.2</A>.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2866"
+  HREF="node103.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2860"
+  HREF="node101.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2854"
+  HREF="node101.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html2862"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html2864"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html2867"
+  HREF="node103.html">Specification of pseudo atoms</A>
+<B> Up:</B> <A NAME="tex2html2861"
+  HREF="node101.html">Spatial restraints</A>
+<B> Previous:</B> <A NAME="tex2html2855"
+  HREF="node101.html">Spatial restraints</A>
+ &nbsp; <B>  <A NAME="tex2html2863"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html2865"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

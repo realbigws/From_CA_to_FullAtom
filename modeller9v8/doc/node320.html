@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Chain.write() -- write out chain sequence to an alignment file</TITLE>
+<META NAME="description" CONTENT="Chain.write() -- write out chain sequence to an alignment file">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node321.html">
+<LINK REL="previous" HREF="node319.html">
+<LINK REL="up" HREF="node315.html">
+<LINK REL="next" HREF="node321.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html6433"
+  HREF="node321.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html6427"
+  HREF="node315.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html6421"
+  HREF="node319.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html6429"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html6431"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6434"
+  HREF="node321.html">Chain.atom_file_and_code()   get</A>
+<B> Up:</B> <A NAME="tex2html6428"
+  HREF="node315.html">The Chain class: a</A>
+<B> Previous:</B> <A NAME="tex2html6422"
+  HREF="node319.html">Chain.filter()   check</A>
+ &nbsp; <B>  <A NAME="tex2html6430"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html6432"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011185000000000000000">
+Chain.write() -- write out chain sequence to an alignment file</A>
+</H2> <A NAME="31273"></A><A NAME="CMD:Chain.write"></A><A NAME="31276"></A><TT>write(file, atom_file, align_code, comment='', format='PIR', chop_nonstd_termini=True)</TT>
+<BR><BLOCKQUOTE>
+This writes out the residue sequence of the chain to an alignment file.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>file</I><A NAME="31298"></A> can be either a file name or a <B><A HREF="node410.html#CMD:modfile.File">modfile.File()</A></B><A NAME="31301"></A> object open in
+write mode (in which case the structure is appended to the file).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>atom_file</I><A NAME="31306"></A> and <I>align_code</I><A NAME="31309"></A> specify the name of the chain's associated
+atom file, and its alignment code, respectively; suitable values can be
+obtained from <B><A HREF="node321.html#CMD:Chain.atomfileandcode">Chain.atom_file_and_code()</A></B><A NAME="31312"></A>. <I>comment</I><A NAME="31317"></A>, if given,
+specifies a comment to prepend to the alignment file.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>format</I><A NAME="31320"></A> specifies the format of the output file; see
+<B><A HREF="node282.html#CMD:alignment.write">alignment.write()</A></B><A NAME="31323"></A>. <TT>PIR</TT> or <TT>FASTA</TT> formats are supported.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>chop_nonstd_termini</I><A NAME="31330"></A> trims non-standard terminal residues in exactly
+the same way as for <B><A HREF="node319.html#CMD:Chain.filter">Chain.filter()</A></B><A NAME="31333"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>This command is not available for alignment sequences, because the PDB residue
+numbers (only available in template structures or models) are needed to write
+the PIR header.
+
+</BLOCKQUOTE>
+<B>Example:</B> See <B><A HREF="node319.html#CMD:Chain.filter">Chain.filter()</A></B><A NAME="31341"></A> command.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html6433"
+  HREF="node321.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html6427"
+  HREF="node315.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html6421"
+  HREF="node319.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html6429"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html6431"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6434"
+  HREF="node321.html">Chain.atom_file_and_code()   get</A>
+<B> Up:</B> <A NAME="tex2html6428"
+  HREF="node315.html">The Chain class: a</A>
+<B> Previous:</B> <A NAME="tex2html6422"
+  HREF="node319.html">Chain.filter()   check</A>
+ &nbsp; <B>  <A NAME="tex2html6430"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html6432"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

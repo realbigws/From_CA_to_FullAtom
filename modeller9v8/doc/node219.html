@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>sheet() -- make a -sheet</TITLE>
+<META NAME="description" CONTENT="sheet() -- make a -sheet">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node218.html">
+<LINK REL="up" HREF="node216.html">
+<LINK REL="next" HREF="node220.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4928"
+  HREF="node220.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4922"
+  HREF="node216.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4918"
+  HREF="node218.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4924"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4926"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4929"
+  HREF="node220.html">The selection class: handling</A>
+<B> Up:</B> <A NAME="tex2html4923"
+  HREF="node216.html">The secondary_structure module: secondary</A>
+<B> Previous:</B> <A NAME="tex2html4919"
+  HREF="node218.html">strand()   make</A>
+ &nbsp; <B>  <A NAME="tex2html4925"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4927"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001183000000000000000">
+sheet() -- make a <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \beta $">
+-sheet</A>
+</H2> <A NAME="19376"></A><A NAME="CMD:sheet"></A><A NAME="19380"></A><TT>sheet(atom1, atom2, sheet_h_bonds)</TT>
+<BR><BLOCKQUOTE>
+This calculates H-bonding restraints for a pair of
+<IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \beta $">
+-strands. <I>atom1</I><A NAME="19401"></A> and <I>atom2</I><A NAME="19404"></A> specify the first H-bond in the <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img3.png"
+ ALT="$ \beta $">
+-sheet
+ladder. <I>sheet_h_bonds</I><A NAME="19408"></A> specifies the number of H-bonds to be added --
+positive for a parallel sheet, and negative for an anti-parallel sheet.
+In a parallel sheet, hydrogen
+bonds start at the first or the second term of the following series
+(depending on <I>atom1</I><A NAME="19411"></A> and <I>atom2</I><A NAME="19414"></A>): 1N:1O, 1O:3N, 3N:3O, 3O:5N, <EM>etc</EM>.
+For an anti-parallel sheet, the corresponding series is 1N:3O, 1O:3N, 3N:1O,
+3O:1N, <EM>etc</EM>. (note that the residue indices run in decreasing order for the
+second strand in this case). The extended structure of the individual strands
+themselves is not enforced; use separate <B><A HREF="node218.html#CMD:strand">strand()</A></B><A NAME="19419"></A> restraints if so desired.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>All of the restraints have the <TT>physical.h_bond</TT> physical restraint type,
+so can be strengthened or weakened by creating a <B><A HREF="node251.html#CMD:physical.values">physical.values()</A></B><A NAME="19425"></A> object
+(see also Section&nbsp;<A HREF="node19.html#SECTION:model-changeopt">2.2.2</A>).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>To actually add the restraints, pass the new object to <B><A HREF="node210.html#CMD:Restraints.add">Restraints.add()</A></B><A NAME="19430"></A>.
+See Section&nbsp;<A HREF="node27.html#SECTION:model-addrsr">2.2.10</A> for an example.
+
+</BLOCKQUOTE>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4928"
+  HREF="node220.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4922"
+  HREF="node216.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4918"
+  HREF="node218.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4924"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4926"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4929"
+  HREF="node220.html">The selection class: handling</A>
+<B> Up:</B> <A NAME="tex2html4923"
+  HREF="node216.html">The secondary_structure module: secondary</A>
+<B> Previous:</B> <A NAME="tex2html4919"
+  HREF="node218.html">strand()   make</A>
+ &nbsp; <B>  <A NAME="tex2html4925"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4927"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,551 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>TOP to Python correspondence</TITLE>
+<META NAME="description" CONTENT="TOP to Python correspondence">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node467.html">
+<LINK REL="up" HREF="node465.html">
+<LINK REL="next" HREF="node469.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8667"
+  HREF="node469.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8661"
+  HREF="node465.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8657"
+  HREF="node467.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8663"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8665"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8668"
+  HREF="node469.html">Bibliography</A>
+<B> Up:</B> <A NAME="tex2html8662"
+  HREF="node465.html">Converting TOP scripts to</A>
+<B> Previous:</B> <A NAME="tex2html8658"
+  HREF="node467.html">TOP models and alignments</A>
+ &nbsp; <B>  <A NAME="tex2html8664"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8666"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001523000000000000000">
+T</A><SMALL>OP</SMALL> to <A NAME="tex2html264"
+  HREF="http://www.python.org/">Python</A> correspondence
+</H2>
+Please use the tables below to see which <A NAME="tex2html265"
+  HREF="http://www.python.org/">Python</A> commands and variables
+correspond to old T<SMALL>OP</SMALL> commands and variables. Variables which are
+not listed in these tables have the same names as the old T<SMALL>OP</SMALL> equivalents
+(albeit in lower case).
+
+<P>
+<A NAME="42776"></A>
+<TABLE CELLPADDING=3 BORDER="1">
+<CAPTION><STRONG>Table:</STRONG>
+<EM>Correspondence between T<SMALL>OP</SMALL> and Python commands.</EM></CAPTION>
+<TR><TD ALIGN="LEFT">T<SMALL>OP</SMALL> command</TD>
+<TD ALIGN="LEFT"><A NAME="tex2html267"
+  HREF="http://www.python.org/">Python</A> equivalent</TD>
+</TR>
+<TR><TD ALIGN="LEFT">ADD_RESTRAINT</TD>
+<TD ALIGN="LEFT"><B><A HREF="node210.html#CMD:Restraints.add">Restraints.add()</A></B><A NAME="42964"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">ALIGN</TD>
+<TD ALIGN="LEFT"><B><A HREF="node287.html#CMD:alignment.align">alignment.align()</A></B><A NAME="42969"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">ALIGN2D</TD>
+<TD ALIGN="LEFT"><B><A HREF="node288.html#CMD:alignment.align2d">alignment.align2d()</A></B><A NAME="42974"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">ALIGN3D</TD>
+<TD ALIGN="LEFT"><B><A HREF="node292.html#CMD:alignment.align3d">alignment.align3d()</A></B><A NAME="42979"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">ALIGN_CONSENSUS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node290.html#CMD:alignment.consensus">alignment.consensus()</A></B><A NAME="42984"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">ALN_TO_PROF</TD>
+<TD ALIGN="LEFT"><B><A HREF="node296.html#CMD:alignment.toprofile">alignment.to_profile()</A></B><A NAME="42989"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">BUILD_MODEL</TD>
+<TD ALIGN="LEFT"><B><A HREF="node179.html#CMD:model.build">model.build()</A></B><A NAME="42994"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">BUILD_PROFILE</TD>
+<TD ALIGN="LEFT"><B><A HREF="node372.html#CMD:profile.build">profile.build()</A></B><A NAME="42999"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">CALL</TD>
+<TD ALIGN="LEFT">use Python subroutines</TD>
+</TR>
+<TR><TD ALIGN="LEFT">CHECK_ALIGNMENT</TD>
+<TD ALIGN="LEFT"><B><A HREF="node277.html#CMD:alignment.check">alignment.check()</A></B><A NAME="43004"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">CLOSE</TD>
+<TD ALIGN="LEFT">use Python file object</TD>
+</TR>
+<TR><TD ALIGN="LEFT">COLOR_ALN_MODEL</TD>
+<TD ALIGN="LEFT"><B><A HREF="node188.html#CMD:model.color">model.color()</A></B><A NAME="43009"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">COMPARE</TD>
+<TD ALIGN="LEFT"><B><A HREF="node291.html#CMD:alignment.comparestructures">alignment.compare_structures()</A></B><A NAME="43014"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">COMPARE_ALIGNMENTS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node278.html#CMD:alignment.comparewith">alignment.compare_with()</A></B><A NAME="43019"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">CONDENSE_RESTRAINTS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node209.html#CMD:Restraints.condense">Restraints.condense()</A></B><A NAME="43024"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">DEBUG_FUNCTION</TD>
+<TD ALIGN="LEFT"><B><A HREF="node247.html#CMD:selection.debugfunction">selection.debug_function()</A></B><A NAME="43029"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">DEFINE_INTEGER</TD>
+<TD ALIGN="LEFT">use Python 'int' variables</TD>
+</TR>
+<TR><TD ALIGN="LEFT">DEFINE_LOGICAL</TD>
+<TD ALIGN="LEFT">use Python 'bool' variables</TD>
+</TR>
+<TR><TD ALIGN="LEFT">DEFINE_REAL</TD>
+<TD ALIGN="LEFT">use Python 'float' variables</TD>
+</TR>
+<TR><TD ALIGN="LEFT">DEFINE_STRING</TD>
+<TD ALIGN="LEFT">use Python 'str' variables</TD>
+</TR>
+<TR><TD ALIGN="LEFT">DEFINE_SYMMETRY</TD>
+<TD ALIGN="LEFT"><B><A HREF="node210.html#CMD:Restraints.add">Restraints.add()</A></B><A NAME="43034"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">DELETE_ALIGNMENT</TD>
+<TD ALIGN="LEFT">del(alignment)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">DELETE_FILE</TD>
+<TD ALIGN="LEFT"><B><A HREF="node408.html#CMD:modfile.delete">modfile.delete()</A></B><A NAME="43039"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">DELETE_RESTRAINT</TD>
+<TD ALIGN="LEFT"><B><A HREF="node211.html#CMD:Restraints.unpick">Restraints.unpick()</A></B><A NAME="43044"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">DENDROGRAM</TD>
+<TD ALIGN="LEFT"><B><A HREF="node115.html#CMD:environ.dendrogram">environ.dendrogram()</A></B><A NAME="43049"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">DESCRIBE</TD>
+<TD ALIGN="LEFT"><B><A HREF="node284.html#CMD:alignment.describe">alignment.describe()</A></B><A NAME="43054"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">DO</TD>
+<TD ALIGN="LEFT">use Python while or for loops</TD>
+</TR>
+<TR><TD ALIGN="LEFT">EDIT_ALIGNMENT</TD>
+<TD ALIGN="LEFT"><B><A HREF="node283.html#CMD:alignment.edit">alignment.edit()</A></B><A NAME="43059"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">EM_GRID_SEARCH</TD>
+<TD ALIGN="LEFT"><B><A HREF="node385.html#CMD:density.gridsearch">density.grid_search()</A></B><A NAME="43064"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">END_SUBROUTINE</TD>
+<TD ALIGN="LEFT">use Python subroutines</TD>
+</TR>
+<TR><TD ALIGN="LEFT">ENERGY</TD>
+<TD ALIGN="LEFT"><B><A HREF="node246.html#CMD:selection.energy">selection.energy()</A></B><A NAME="43069"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">EXIT</TD>
+<TD ALIGN="LEFT">use Python while or for loops</TD>
+</TR>
+<TR><TD ALIGN="LEFT">EXPAND_ALIGNMENT</TD>
+<TD ALIGN="LEFT">use <B><A HREF="node279.html#CMD:alignment.appendmodel">alignment.append_model()</A></B><A NAME="43074"></A> in a loop</TD>
+</TR>
+<TR><TD ALIGN="LEFT">GENERATE_TOPOLOGY</TD>
+<TD ALIGN="LEFT"><B><A HREF="node174.html#CMD:model.generatetopology">model.generate_topology()</A></B><A NAME="43079"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">ID_TABLE</TD>
+<TD ALIGN="LEFT"><B><A HREF="node285.html#CMD:alignment.idtable">alignment.id_table()</A></B><A NAME="43084"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">IF</TD>
+<TD ALIGN="LEFT">use Python if statement</TD>
+</TR>
+<TR><TD ALIGN="LEFT">INCLUDE</TD>
+<TD ALIGN="LEFT">use Python import statement</TD>
+</TR>
+<TR><TD ALIGN="LEFT">INQUIRE</TD>
+<TD ALIGN="LEFT"><B><A HREF="node409.html#CMD:modfile.inquire">modfile.inquire()</A></B><A NAME="43089"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">IUPAC_MODEL</TD>
+<TD ALIGN="LEFT"><B><A HREF="node183.html#CMD:model.toiupac">model.to_iupac()</A></B><A NAME="43094"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">MAKE_CHAINS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node189.html#CMD:model.makechains">model.make_chains()</A></B><A NAME="43099"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">MAKE_REGION</TD>
+<TD ALIGN="LEFT"><B><A HREF="node187.html#CMD:model.makeregion">model.make_region()</A></B><A NAME="43104"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">MAKE_RESTRAINTS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node202.html#CMD:Restraints.make">Restraints.make()</A></B><A NAME="43109"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">MAKE_SCHEDULE</TD>
+<TD ALIGN="LEFT"><B><A HREF="node262.html#CMD:schedule.makeformodel">schedule.make_for_model()</A></B><A NAME="43114"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">MAKE_TOPOLOGY_MODEL</TD>
+<TD ALIGN="LEFT"><B><A HREF="node152.html#CMD:Topology.make">Topology.make()</A></B><A NAME="43119"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">MALIGN</TD>
+<TD ALIGN="LEFT"><B><A HREF="node289.html#CMD:alignment.malign">alignment.malign()</A></B><A NAME="43124"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">MALIGN3D</TD>
+<TD ALIGN="LEFT"><B><A HREF="node293.html#CMD:alignment.malign3d">alignment.malign3d()</A></B><A NAME="43129"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">MUTATE_MODEL</TD>
+<TD ALIGN="LEFT"><B><A HREF="node240.html#CMD:selection.mutate">selection.mutate()</A></B><A NAME="43134"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">OPEN</TD>
+<TD ALIGN="LEFT">use Python file object</TD>
+</TR>
+<TR><TD ALIGN="LEFT">OPERATE</TD>
+<TD ALIGN="LEFT">use Python arithmetic</TD>
+</TR>
+<TR><TD ALIGN="LEFT">OPTIMIZE</TD>
+<TD ALIGN="LEFT"><B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="43139"></A> or <B><A HREF="node255.html#CMD:moleculardynamics">molecular_dynamics()</A></B><A NAME="43144"></A>, or <TT><A HREF="node260.html#CLASS:schedule">&lt;schedule&gt;</A></TT> objects</TD>
+</TR>
+<TR><TD ALIGN="LEFT">ORIENT_MODEL</TD>
+<TD ALIGN="LEFT"><B><A HREF="node185.html#CMD:model.orient">model.orient()</A></B><A NAME="43152"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">PATCH</TD>
+<TD ALIGN="LEFT"><B><A HREF="node176.html#CMD:model.patch">model.patch()</A></B><A NAME="43157"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">PATCH_SS_MODEL</TD>
+<TD ALIGN="LEFT"><B><A HREF="node178.html#CMD:model.patchss">model.patch_ss()</A></B><A NAME="43162"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">PATCH_SS_TEMPLATES</TD>
+<TD ALIGN="LEFT"><B><A HREF="node177.html#CMD:model.patchsstemplates">model.patch_ss_templates()</A></B><A NAME="43167"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">PICK_ATOMS</TD>
+<TD ALIGN="LEFT">Use <TT><A HREF="node220.html#CLASS:selection">&lt;selection&gt;</A></TT> objects</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PICK_HOT_ATOMS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node245.html#CMD:selection.hotatoms">selection.hot_atoms()</A></B><A NAME="43175"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">PICK_RESTRAINTS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node206.html#CMD:Restraints.pick">Restraints.pick()</A></B><A NAME="43180"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">PRINCIPAL_COMPONENTS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node116.html#CMD:environ.principalcomponents">environ.principal_components()</A></B><A NAME="43185"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">PROFILE_PROFILE_SCAN</TD>
+<TD ALIGN="LEFT"><B><A HREF="node371.html#CMD:profile.scan">profile.scan()</A></B><A NAME="43190"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">PROF_TO_ALN</TD>
+<TD ALIGN="LEFT"><B><A HREF="node281.html#CMD:alignment.appendprofile">alignment.append_profile()</A></B><A NAME="43195"></A> or <B><A HREF="node370.html#CMD:profile.toalignment">profile.to_alignment()</A></B><A NAME="43200"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">RANDOMIZE_XYZ</TD>
+<TD ALIGN="LEFT"><B><A HREF="node241.html#CMD:selection.randomizexyz">selection.randomize_xyz()</A></B><A NAME="43205"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">READ</TD>
+<TD ALIGN="LEFT">use Python file object</TD>
+</TR>
+<TR><TD ALIGN="LEFT">READ_ALIGNMENT</TD>
+<TD ALIGN="LEFT"><B><A HREF="node272.html#CMD:alignment.append">alignment.append()</A></B><A NAME="43210"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">READ_ALIGNMENT2</TD>
+<TD ALIGN="LEFT"><B><A HREF="node272.html#CMD:alignment.append">alignment.append()</A></B><A NAME="43215"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">READ_ATOM_CLASSES</TD>
+<TD ALIGN="LEFT"><B><A HREF="node265.html#CMD:grouprestraints">group_restraints()</A></B><A NAME="43220"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">READ_MODEL</TD>
+<TD ALIGN="LEFT"><B><A HREF="node170.html#CMD:model.read">model.read()</A></B><A NAME="43225"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">READ_MODEL2</TD>
+<TD ALIGN="LEFT"><B><A HREF="node170.html#CMD:model.read">model.read()</A></B><A NAME="43230"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">READ_PARAMETERS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node151.html#CMD:Parameters.read">Parameters.read()</A></B><A NAME="43235"></A> or <B><A HREF="node266.html#CMD:grouprestraints.append">group_restraints.append()</A></B><A NAME="43240"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">READ_PROFILE</TD>
+<TD ALIGN="LEFT"><B><A HREF="node368.html#CMD:profile.read">profile.read()</A></B><A NAME="43245"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">READ_RESTRAINTS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node214.html#CMD:Restraints.append">Restraints.append()</A></B><A NAME="43250"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">READ_RESTYP_LIB</TD>
+<TD ALIGN="LEFT"><B><A HREF="node110.html#CMD:environ">environ()</A></B><A NAME="43255"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">READ_SCHEDULE</TD>
+<TD ALIGN="LEFT">Use <TT><A HREF="node260.html#CLASS:schedule">&lt;schedule&gt;</A></TT> objects</TD>
+</TR>
+<TR><TD ALIGN="LEFT">READ_SEQUENCE_DB</TD>
+<TD ALIGN="LEFT"><B><A HREF="node377.html#CMD:sequencedb.read">sequence_db.read()</A></B><A NAME="43263"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">READ_TOPOLOGY</TD>
+<TD ALIGN="LEFT"><B><A HREF="node148.html#CMD:Topology.read">Topology.read()</A></B><A NAME="43268"></A> or <B><A HREF="node146.html#CMD:Topology.append">Topology.append()</A></B><A NAME="43273"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">REINDEX_RESTRAINTS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node212.html#CMD:Restraints.reindex">Restraints.reindex()</A></B><A NAME="43278"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">RENAME_SEGMENTS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node182.html#CMD:model.renamesegments">model.rename_segments()</A></B><A NAME="43283"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">REORDER_ATOMS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node184.html#CMD:model.reorderatoms">model.reorder_atoms()</A></B><A NAME="43288"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">RESET</TD>
+<TD ALIGN="LEFT">do not use</TD>
+</TR>
+<TR><TD ALIGN="LEFT">RETURN</TD>
+<TD ALIGN="LEFT">use Python subroutines</TD>
+</TR>
+<TR><TD ALIGN="LEFT">ROTATE_DIHEDRALS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node243.html#CMD:selection.rotatedihedrals">selection.rotate_dihedrals()</A></B><A NAME="43293"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">ROTATE_MODEL</TD>
+<TD ALIGN="LEFT"><B><A HREF="node236.html#CMD:selection.translate">selection.translate()</A></B><A NAME="43298"></A>, <B><A HREF="node239.html#CMD:selection.transform">selection.transform()</A></B><A NAME="43303"></A>, or <B><A HREF="node237.html#CMD:selection.rotateorigin">selection.rotate_origin()</A></B><A NAME="43308"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">SALIGN</TD>
+<TD ALIGN="LEFT"><B><A HREF="node294.html#CMD:alignment.salign">alignment.salign()</A></B><A NAME="43313"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">SEGMENT_MATCHING</TD>
+<TD ALIGN="LEFT"><B><A HREF="node297.html#CMD:alignment.segmentmatching">alignment.segment_matching()</A></B><A NAME="43318"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">SEQFILTER</TD>
+<TD ALIGN="LEFT"><B><A HREF="node381.html#CMD:sequencedb.filter">sequence_db.filter()</A></B><A NAME="43323"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">SEQUENCE_COMPARISON</TD>
+<TD ALIGN="LEFT"><B><A HREF="node286.html#CMD:alignment.comparesequences">alignment.compare_sequences()</A></B><A NAME="43328"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">SEQUENCE_SEARCH</TD>
+<TD ALIGN="LEFT"><B><A HREF="node380.html#CMD:sequencedb.search">sequence_db.search()</A></B><A NAME="43333"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">SEQUENCE_TO_ALI</TD>
+<TD ALIGN="LEFT"><B><A HREF="node279.html#CMD:alignment.appendmodel">alignment.append_model()</A></B><A NAME="43338"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">SET</TD>
+<TD ALIGN="LEFT">use Python variables</TD>
+</TR>
+<TR><TD ALIGN="LEFT">SPLINE_RESTRAINTS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node213.html#CMD:Restraints.spline">Restraints.spline()</A></B><A NAME="43343"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">STOP</TD>
+<TD ALIGN="LEFT">do not use</TD>
+</TR>
+<TR><TD ALIGN="LEFT">STRING_IF</TD>
+<TD ALIGN="LEFT">use Python if statement</TD>
+</TR>
+<TR><TD ALIGN="LEFT">STRING_OPERATE</TD>
+<TD ALIGN="LEFT">use Python arithmetic</TD>
+</TR>
+<TR><TD ALIGN="LEFT">SUBROUTINE</TD>
+<TD ALIGN="LEFT">use Python subroutines</TD>
+</TR>
+<TR><TD ALIGN="LEFT">SUPERPOSE</TD>
+<TD ALIGN="LEFT"><B><A HREF="node242.html#CMD:selection.superpose">selection.superpose()</A></B><A NAME="43348"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">SWITCH_TRACE</TD>
+<TD ALIGN="LEFT"><B><A HREF="node257.html#CMD:actions.trace">actions.trace()</A></B><A NAME="43353"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">SYSTEM</TD>
+<TD ALIGN="LEFT"><B><A HREF="node117.html#CMD:environ.system">environ.system()</A></B><A NAME="43358"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">TIME_MARK</TD>
+<TD ALIGN="LEFT"><B><A HREF="node398.html#CMD:info.timemark">info.time_mark()</A></B><A NAME="43363"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">TRANSFER_RES_NUMB</TD>
+<TD ALIGN="LEFT"><B><A HREF="node181.html#CMD:model.resnumfrom">model.res_num_from()</A></B><A NAME="43368"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">TRANSFER_XYZ</TD>
+<TD ALIGN="LEFT"><B><A HREF="node180.html#CMD:model.transferxyz">model.transfer_xyz()</A></B><A NAME="43373"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">UNBUILD_MODEL</TD>
+<TD ALIGN="LEFT"><B><A HREF="node244.html#CMD:selection.unbuild">selection.unbuild()</A></B><A NAME="43378"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">WRITE</TD>
+<TD ALIGN="LEFT">use Python file object</TD>
+</TR>
+<TR><TD ALIGN="LEFT">WRITE_ALIGNMENT</TD>
+<TD ALIGN="LEFT"><B><A HREF="node282.html#CMD:alignment.write">alignment.write()</A></B><A NAME="43383"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">WRITE_DATA</TD>
+<TD ALIGN="LEFT"><B><A HREF="node186.html#CMD:model.writedata">model.write_data()</A></B><A NAME="43388"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">WRITE_MODEL</TD>
+<TD ALIGN="LEFT"><B><A HREF="node172.html#CMD:model.write">model.write()</A></B><A NAME="43393"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">WRITE_MODEL2</TD>
+<TD ALIGN="LEFT"><B><A HREF="node172.html#CMD:model.write">model.write()</A></B><A NAME="43398"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">WRITE_PDB_XREF</TD>
+<TD ALIGN="LEFT">use <TT><A HREF="node323.html#CLASS:Residue">&lt;residue&gt;</A></TT> objects</TD>
+</TR>
+<TR><TD ALIGN="LEFT">WRITE_PROFILE</TD>
+<TD ALIGN="LEFT"><B><A HREF="node369.html#CMD:profile.write">profile.write()</A></B><A NAME="43406"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">WRITE_RESTRAINTS</TD>
+<TD ALIGN="LEFT"><B><A HREF="node215.html#CMD:Restraints.write">Restraints.write()</A></B><A NAME="43411"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">WRITE_SCHEDULE</TD>
+<TD ALIGN="LEFT"><B><A HREF="node263.html#CMD:schedule.write">schedule.write()</A></B><A NAME="43416"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">WRITE_SEQUENCE_DB</TD>
+<TD ALIGN="LEFT"><B><A HREF="node378.html#CMD:sequencedb.write">sequence_db.write()</A></B><A NAME="43421"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">WRITE_TOP</TD>
+<TD ALIGN="LEFT">do not use</TD>
+</TR>
+<TR><TD ALIGN="LEFT">WRITE_TOPOLOGY_MODEL</TD>
+<TD ALIGN="LEFT"><B><A HREF="node154.html#CMD:Topology.write">Topology.write()</A></B><A NAME="43426"></A></TD>
+</TR>
+</TABLE>
+
+<P>
+<A NAME="42828"></A>
+<TABLE CELLPADDING=3 BORDER="1">
+<CAPTION><STRONG>Table:</STRONG>
+<EM>Correspondence between T<SMALL>OP</SMALL> and Python variables.</EM></CAPTION>
+<TR><TD ALIGN="LEFT">T<SMALL>OP</SMALL> variable</TD>
+<TD ALIGN="LEFT"><A NAME="tex2html269"
+  HREF="http://www.python.org/">Python</A> equivalent</TD>
+</TR>
+<TR><TD ALIGN="LEFT">ALIGN_CODES</TD>
+<TD ALIGN="LEFT"><I><A HREF="node300.html#MEMB:Sequence.code">Sequence.code</A></I><A NAME="43438"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">ATOM_FILES</TD>
+<TD ALIGN="LEFT"><I><A HREF="node301.html#MEMB:Sequence.atomfile">Sequence.atom_file</A></I><A NAME="43443"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">ATOM_FILES_DIRECTORY</TD>
+<TD ALIGN="LEFT"><I><A HREF="node142.html#MEMB:iodata.atomfilesdirectory">io_data.atom_files_directory</A></I><A NAME="43448"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">CONTACT_SHELL</TD>
+<TD ALIGN="LEFT"><I><A HREF="node121.html#MEMB:energydata.contactshell">energy_data.contact_shell</A></I><A NAME="43453"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">COULOMB_SWITCH</TD>
+<TD ALIGN="LEFT"><I><A HREF="node131.html#MEMB:energydata.coulombswitch">energy_data.coulomb_switch</A></I><A NAME="43458"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">COVALENT_CYS</TD>
+<TD ALIGN="LEFT"><I><A HREF="node133.html#MEMB:energydata.covalentcys">energy_data.covalent_cys</A></I><A NAME="43463"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">DYNAMIC_ACCESS</TD>
+<TD ALIGN="LEFT">do not use</TD>
+</TR>
+<TR><TD ALIGN="LEFT">DYNAMIC_COULOMB</TD>
+<TD ALIGN="LEFT"><I><A HREF="node126.html#MEMB:energydata.dynamiccoulomb">energy_data.dynamic_coulomb</A></I><A NAME="43468"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">DYNAMIC_LENNARD</TD>
+<TD ALIGN="LEFT"><I><A HREF="node125.html#MEMB:energydata.dynamiclennard">energy_data.dynamic_lennard</A></I><A NAME="43473"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">DYNAMIC_MODELLER</TD>
+<TD ALIGN="LEFT"><I><A HREF="node127.html#MEMB:energydata.dynamicmodeller">energy_data.dynamic_modeller</A></I><A NAME="43478"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">DYNAMIC_PAIRS</TD>
+<TD ALIGN="LEFT">set automatically; do not use</TD>
+</TR>
+<TR><TD ALIGN="LEFT">DYNAMIC_SPHERE</TD>
+<TD ALIGN="LEFT"><I><A HREF="node124.html#MEMB:energydata.dynamicsphere">energy_data.dynamic_sphere</A></I><A NAME="43483"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">EXCL_LOCAL</TD>
+<TD ALIGN="LEFT"><I><A HREF="node128.html#MEMB:energydata.excllocal">energy_data.excl_local</A></I><A NAME="43488"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">HETATM_IO</TD>
+<TD ALIGN="LEFT"><I><A HREF="node139.html#MEMB:iodata.hetatm">io_data.hetatm</A></I><A NAME="43493"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">HYDROGEN_IO</TD>
+<TD ALIGN="LEFT"><I><A HREF="node140.html#MEMB:iodata.hydrogen">io_data.hydrogen</A></I><A NAME="43498"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">LENNARD_JONES_SWITCH</TD>
+<TD ALIGN="LEFT"><I><A HREF="node130.html#MEMB:energydata.lennardjonesswitch">energy_data.lennard_jones_switch</A></I><A NAME="43503"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">MOLPDF</TD>
+<TD ALIGN="LEFT">return value from <B><A HREF="node246.html#CMD:selection.energy">selection.energy()</A></B><A NAME="43508"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">NLOGN_USE</TD>
+<TD ALIGN="LEFT"><I><A HREF="node135.html#MEMB:energydata.nlognuse">energy_data.nlogn_use</A></I><A NAME="43513"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">NONBONDED_SEL_ATOMS</TD>
+<TD ALIGN="LEFT"><I><A HREF="node134.html#MEMB:energydata.nonbondedselatoms">energy_data.nonbonded_sel_atoms</A></I><A NAME="43518"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">NUMB_OF_SEQUENCES</TD>
+<TD ALIGN="LEFT">len(alignment)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">N_SCHEDULE</TD>
+<TD ALIGN="LEFT">len(schedule)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">OUTPUT_CONTROL</TD>
+<TD ALIGN="LEFT">use <B><A HREF="node401.html#CMD:log.level">log.level()</A></B><A NAME="43523"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">RADII_FACTOR</TD>
+<TD ALIGN="LEFT"><I><A HREF="node129.html#MEMB:energydata.radiifactor">energy_data.radii_factor</A></I><A NAME="43528"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">RELATIVE_DIELECTRIC</TD>
+<TD ALIGN="LEFT"><I><A HREF="node132.html#MEMB:energydata.relativedielectric">energy_data.relative_dielectric</A></I><A NAME="43533"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">SCHEDULE_STEP</TD>
+<TD ALIGN="LEFT">do not use</TD>
+</TR>
+<TR><TD ALIGN="LEFT">SPHERE_STDV</TD>
+<TD ALIGN="LEFT"><I><A HREF="node123.html#MEMB:energydata.spherestdv">energy_data.sphere_stdv</A></I><A NAME="43538"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">TOPOLOGY_MODEL</TD>
+<TD ALIGN="LEFT"><I><A HREF="node153.html#MEMB:Topology.submodel">Topology.submodel</A></I><A NAME="43543"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">UPDATE_DYNAMIC</TD>
+<TD ALIGN="LEFT"><I><A HREF="node122.html#MEMB:energydata.updatedynamic">energy_data.update_dynamic</A></I><A NAME="43548"></A></TD>
+</TR>
+<TR><TD ALIGN="LEFT">WATER_IO</TD>
+<TD ALIGN="LEFT"><I><A HREF="node141.html#MEMB:iodata.water">io_data.water</A></I><A NAME="43553"></A></TD>
+</TR>
+</TABLE>
+
+<P>
+
+<P>
+
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8667"
+  HREF="node469.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8661"
+  HREF="node465.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8657"
+  HREF="node467.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8663"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8665"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8668"
+  HREF="node469.html">Bibliography</A>
+<B> Up:</B> <A NAME="tex2html8662"
+  HREF="node465.html">Converting TOP scripts to</A>
+<B> Previous:</B> <A NAME="tex2html8658"
+  HREF="node467.html">TOP models and alignments</A>
+ &nbsp; <B>  <A NAME="tex2html8664"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8666"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

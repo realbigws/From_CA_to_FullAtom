@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Changes since release 9v7</TITLE>
+<META NAME="description" CONTENT="Changes since release 9v7">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node39.html">
+<LINK REL="previous" HREF="node37.html">
+<LINK REL="up" HREF="node37.html">
+<LINK REL="next" HREF="node39.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1843"
+  HREF="node39.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1837"
+  HREF="node37.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1831"
+  HREF="node37.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1839"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1841"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1844"
+  HREF="node39.html">Changes since release 9v6</A>
+<B> Up:</B> <A NAME="tex2html1838"
+  HREF="node37.html">MODELLER updates</A>
+<B> Previous:</B> <A NAME="tex2html1832"
+  HREF="node37.html">MODELLER updates</A>
+ &nbsp; <B>  <A NAME="tex2html1840"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1842"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00821000000000000000">
+Changes since release 9v7</A>
+</H2>
+
+<UL>
+<LI>Residues treated as BLK no longer have to be HETATM residues; they will
+be marked as ATOM if so defined in <TT>restyp.lib</TT> or in the template PDB
+(for example, DNA or RNA residues). <B><A HREF="node69.html#CMD:automodel.nonstdrestraints">automodel.nonstd_restraints()</A></B><A NAME="4708"></A> now
+builds restraints on both HETATM and BLK residues.
+
+<P>
+</LI>
+<LI>Python methods that previously expected lists or tuples can now work with
+other iterables too (such as generators). For example, in Python 2.4 you
+can now say <TT>'s = selection(x for x in mdl.atoms where x.biso &gt; 0.5)'</TT> to
+select all atoms with <I>B<IMG
+ WIDTH="22" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.png"
+ ALT="$ {}_{iso}$">
+</I><A NAME="4714"></A> over 0.5.
+
+<P>
+</LI>
+<LI>The file argument to <B><A HREF="node186.html#CMD:model.writedata">model.write_data()</A></B><A NAME="4719"></A> is now optional, since we
+may only want the calculated property in <I>B<IMG
+ WIDTH="22" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.png"
+ ALT="$ {}_{iso}$">
+</I><A NAME="4724"></A>, and some properties (e.g. CRV)
+cannot be written to files anyway.
+
+<P>
+</LI>
+<LI>Bonds between BLK residues are now detected by a simple distance criterion
+and are restrained more strongly than other distances by
+<B><A HREF="node69.html#CMD:automodel.nonstdrestraints">automodel.nonstd_restraints()</A></B><A NAME="4729"></A>.
+
+<P>
+</LI>
+<LI>A new method <B><A HREF="node322.html#CMD:Chain.join">Chain.join()</A></B><A NAME="4734"></A> allows chain breaks between chains to
+be removed.
+
+<P>
+</LI>
+<LI>Files compressed with <TT>'xz'</TT> can now be read, provided that the
+<TT>'xz'</TT> binary is available on your system.
+
+<P>
+</LI>
+<LI>Bundled version of HDF5 updated to 1.8.3.
+
+<P>
+</LI>
+<LI>The <I>allow_alternates</I><A NAME="4741"></A> option to <B><A HREF="node272.html#CMD:alignment.append">alignment.append()</A></B><A NAME="4744"></A> will now
+allow G in the alignment sequence to match any non-standard residue type
+in the PDB file which maps to G. This is useful if the alignment sequence
+is 'cleaned' as by <B><A HREF="node377.html#CMD:sequencedb.read">sequence_db.read()</A></B><A NAME="4749"></A>.
+
+<P>
+</LI>
+<LI>When using GB/SA with BLK residues, each BLK atom will now be treated as
+an uncharged particle with a small radius, rather than causing an error.
+
+<P>
+</LI>
+<LI>In <B><A HREF="node381.html#CMD:sequencedb.filter">sequence_db.filter()</A></B><A NAME="4754"></A>, if two sequences fail to align, don't
+terminate the entire run; rather, place them in separate clusters.
+
+<P>
+</LI>
+<LI><B><A HREF="node384.html#CMD:density.read">density.read()</A></B><A NAME="4759"></A> now supports CCP4 files, and reads the map and
+voxel sizes from the density map file header if not specified by the user.
+
+<P>
+</LI>
+<LI>Bugfix: invalid PAP files no longer crash Modeller with an assertion
+failure.
+
+<P>
+</LI>
+<LI>Bugfix: projected coordinates from <B><A HREF="node116.html#CMD:environ.principalcomponents">environ.principal_components()</A></B><A NAME="4764"></A>
+are now written correctly to the output file.
+
+<P>
+</LI>
+<LI>Bugfix: models can now be built containing HSE or HSP residues without
+the program terminating with a cryptic MDT error; homology-derived
+restraints for these residues will look very similar to those for HIS.
+
+<P>
+</LI>
+<LI>Bugfix: assigning to <I><A HREF="node329.html#MEMB:Residue.num">Residue.num</A></I><A NAME="4769"></A> now gives a correctly-formatted
+(right-aligned) PDB residue number by default.
+
+<P>
+</LI>
+<LI>Bugfix: assigning to <I><A HREF="node326.html#MEMB:Residue.code">Residue.code</A></I><A NAME="4774"></A>, <I><A HREF="node324.html#MEMB:Residue.name">Residue.name</A></I><A NAME="4779"></A> or
+<I><A HREF="node325.html#MEMB:Residue.pdbname">Residue.pdb_name</A></I><A NAME="4784"></A>, where the residue is in an alignment, now works correctly
+(previously, the new one-letter code was not used when the alignment was
+written to disk).
+
+<P>
+</LI>
+<LI>Bugfix: mainchain curvature values for terminal residues were incorrect
+in some cases.
+
+<P>
+</LI>
+<LI>Bugfix: mainchain curvature calculation no longer spans chain breaks.
+
+<P>
+</LI>
+<LI>Bugfix: in <B><A HREF="node371.html#CMD:profile.scan">profile.scan()</A></B><A NAME="4789"></A>, if the target profile has no name, do not
+trigger a GLib CRITICAL error.
+
+<P>
+</LI>
+<LI>Bugfix: automodel with <I>write_intermediates</I><A NAME="4794"></A>=<TT>True</TT> now works
+correctly.
+</LI>
+</UL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1843"
+  HREF="node39.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1837"
+  HREF="node37.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1831"
+  HREF="node37.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1839"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1841"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1844"
+  HREF="node39.html">Changes since release 9v6</A>
+<B> Up:</B> <A NAME="tex2html1838"
+  HREF="node37.html">MODELLER updates</A>
+<B> Previous:</B> <A NAME="tex2html1832"
+  HREF="node37.html">MODELLER updates</A>
+ &nbsp; <B>  <A NAME="tex2html1840"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1842"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

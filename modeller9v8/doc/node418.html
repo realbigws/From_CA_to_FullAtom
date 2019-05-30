@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>sge_pe_job() -- create a job using all Sun GridEngine (SGE) slave processes</TITLE>
+<META NAME="description" CONTENT="sge_pe_job() -- create a job using all Sun GridEngine (SGE) slave processes">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node419.html">
+<LINK REL="previous" HREF="node417.html">
+<LINK REL="up" HREF="node416.html">
+<LINK REL="next" HREF="node419.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7870"
+  HREF="node419.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7864"
+  HREF="node416.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7858"
+  HREF="node417.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7866"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7868"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7871"
+  HREF="node419.html">sge_qsub_job()   create</A>
+<B> Up:</B> <A NAME="tex2html7865"
+  HREF="node416.html">Parallel job support</A>
+<B> Previous:</B> <A NAME="tex2html7859"
+  HREF="node417.html">job()   create</A>
+ &nbsp; <B>  <A NAME="tex2html7867"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7869"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011322000000000000000">
+sge_pe_job() -- create a job using all Sun GridEngine (SGE) slave processes</A>
+</H2> <A NAME="37655"></A><A NAME="CMD:sgepejob"></A><A NAME="37658"></A><TT>sge_pe_job(seq=(), modeller_path=None, host=None)</TT>
+<BR><BLOCKQUOTE>
+This functions identically to <B><A HREF="node417.html#CMD:job">job()</A></B><A NAME="37668"></A>, above, but automatically adds
+slaves for every node in a Sun GridEngine (SGE) job using an SGE parallel
+environment. This is done by parsing the PE hostfile, which SGE should pass
+in the <TT>'PE_HOSTFILE'</TT> environment variable, and creating an
+<TT>sge_pe_slave</TT> object (see below) for each processor. Other slaves can
+still be added to the job if desired.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>This class should be used to create a job from a M<SMALL>ODELLER</SMALL> script running on
+the master (first) node in an SGE parallel environment job.
+
+</BLOCKQUOTE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

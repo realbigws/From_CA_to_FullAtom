@@ -1,0 +1,570 @@
+ALA  CYS     6
+  N    CA   C    O    CB   -   
+  N    CA   C    O    CB   SG  
+ALA  ASP     8
+  N    CA   C    O    CB   -    -    -   
+  N    CA   C    O    CB   CG   OD1  OD2 
+ALA  GLU     9
+  N    CA   C    O    CB   -    -    -    -   
+  N    CA   C    O    CB   CG   CD   OE1  OE2 
+ALA  PHE    11
+  N    CA   C    O    CB   -    -    -    -    -    -   
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ  
+ALA  GLY     5
+  N    CA   C    O    CB  
+  N    CA   C    O    -   
+ALA  HSD    10
+  N    CA   C    O    CB   -    -    -    -    -   
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2
+ALA  ILE     8
+  N    CA   C    O    CB   -    -    -   
+  N    CA   C    O    CB   CG2  CG1  CD  
+ALA  LYS     9
+  N    CA   C    O    CB   -    -    -    -   
+  N    CA   C    O    CB   CG   CD   CE   NZ  
+ALA  LEU     8
+  N    CA   C    O    CB   -    -    -   
+  N    CA   C    O    CB   CG   CD1  CD2 
+ALA  MET     8
+  N    CA   C    O    CB   -    -    -   
+  N    CA   C    O    CB   CG   SD   CE  
+ALA  ASN     8
+  N    CA   C    O    CB   -    -    -   
+  N    CA   C    O    CB   CG   OD1  ND2 
+ALA  PRO     7
+  N    CA   C    O    CB   -    -   
+  N    CA   C    O    CB   CG   CD  
+ALA  GLN     9
+  N    CA   C    O    CB   -    -    -    -   
+  N    CA   C    O    CB   CG   CD   OE1  NE2 
+ALA  ARG    11
+  N    CA   C    O    CB   -    -    -    -    -    -   
+  N    CA   C    O    CB   CG   CD   NE   CZ   NH1  NH2 
+ALA  SER     6
+  N    CA   C    O    CB   -   
+  N    CA   C    O    CB   OG  
+ALA  THR     7
+  N    CA   C    O    CB   -    -   
+  N    CA   C    O    CB   OG1  CG2 
+ALA  VAL     7
+  N    CA   C    O    CB   -    -   
+  N    CA   C    O    CB   CG1  CG2 
+ALA  TRP    14
+  N    CA   C    O    CB   -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+ALA  TYR    12
+  N    CA   C    O    CB   -    -    -    -    -    -    -   
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   OH  
+CYS  ASP     9
+  N    CA   C    O    CB   SG   -    -  
+  N    CA   C    O    CB   CG   OD1  OD2 
+CYS  GLU    10
+  N    CA   C    O    CB   SG   -    -    -   
+  N    CA   C    O    CB   CG   CD   OE1  OE2 
+CYS  PHE    12
+  N    CA   C    O    CB   SG   -    -    -    -    - 
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ  
+CYS  GLY     6
+  N    CA   C    O    CB   SG  
+  N    CA   C    O    -    -   
+CYS  HSD    11
+  N    CA   C    O    CB   SG   -    -    -    - 
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2
+CYS  ILE     9
+  N    CA   C    O    CB   SG   -    - 
+  N    CA   C    O    CB   CG1  CG2  CD  
+CYS  LYS    10
+  N    CA   C    O    CB   SG   -    -    - 
+  N    CA   C    O    CB   CG   CD   CE   NZ  
+CYS  LEU     9
+  N    CA   C    O    CB   SG   -    - 
+  N    CA   C    O    CB   CG   CD1  CD2 
+CYS  MET     9
+  N    CA   C    O    CB   SG   -    - 
+  N    CA   C    O    CB   CG   SD   CE  
+CYS  ASN     9
+  N    CA   C    O    CB   SG   -    -
+  N    CA   C    O    CB   CG   OD1  ND2 
+CYS  PRO     8
+  N    CA   C    O    CB   SG   -    -   
+  N    CA   C    O    CB   -    CG   CD  
+CYS  GLN    10
+  N    CA   C    O    CB   SG   -    -    - 
+  N    CA   C    O    CB   CG   CD   OE1  NE2 
+CYS  ARG    12
+  N    CA   C    O    CB   SG   -    -    -    -    - 
+  N    CA   C    O    CB   CG   CD   NE   CZ   NH1  NH2 
+CYS  SER     7
+  N    CA   C    O    CB   SG   -   
+  N    CA   C    O    CB   -    OG  
+CYS  THR     8
+  N    CA   C    O    CB   SG   - 
+  N    CA   C    O    CB   OG1  CG2 
+CYS  VAL     8
+  N    CA   C    O    CB   SG   -    -   
+  N    CA   C    O    CB   -    CG1  CG2 
+CYS  TRP    15
+  N    CA   C    O    CB   SG   -    -    -    -    -    -    -    - 
+  N    CA   C    O    CB   CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+CYS  TYR    13
+  N    CA   C    O    CB   SG   -    -    -    -    -    - 
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   OH  
+ASP  GLU    12
+  N    CA   C    O    CB   CG   OD1  OD2  -    -    - 
+  N    CA   C    O    CB   CG   -    -    CD   OE1  OE2 
+ASP  PHE    14
+  N    CA   C    O    CB   CG   OD1  OD2  -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD1  CD2  CE1  CE2  CZ  
+ASP  GLY     8
+  N    CA   C    O    CB   CG   OD1  OD2 
+  N    CA   C    O    -    -    -    -   
+ASP  HSD    13
+  N    CA   C    O    CB   CG   OD1  OD2  -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   ND1  CD2  CE1  NE2
+ASP  ILE    11
+  N    CA   C    O    CB   CG   OD1  OD2  -    -    -   
+  N    CA   C    O    CB   -    -    -    CG2  CG1  CD  
+ASP  LYS    12
+  N    CA   C    O    CB   CG   OD1  OD2  -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD   CE   NZ  
+ASP  LEU    11
+  N    CA   C    O    CB   CG   OD1  OD2  -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD1  CD2 
+ASP  MET    11
+  N    CA   C    O    CB   CG   OD1  OD2  -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   SD   CE  
+ASP  ASN    11
+  N    CA   C    O    CB   CG   OD1  OD2
+  N    CA   C    O    CB   CG   OD1  ND2 
+ASP  PRO    10
+  N    CA   C    O    CB   CG   OD1  OD2  -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD  
+ASP  GLN    12
+  N    CA   C    O    CB   CG   OD1  OD2  -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD   OE1  NE2 
+ASP  ARG    14
+  N    CA   C    O    CB   CG   OD1  OD2  -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD   NE   CZ   NH1  NH2 
+ASP  SER     9
+  N    CA   C    O    CB   CG   OD1  OD2  -   
+  N    CA   C    O    CB   -    -    -    OG  
+ASP  THR    10
+  N    CA   C    O    CB   CG   OD1  OD2  -    -   
+  N    CA   C    O    CB   -    -    -    OG1  CG2 
+ASP  VAL    10
+  N    CA   C    O    CB   CG   OD1  OD2  -    -   
+  N    CA   C    O    CB   -    -    -    CG1  CG2 
+ASP  TRP    17
+  N    CA   C    O    CB   CG   OD1  OD2  -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+ASP  TYR    15
+  N    CA   C    O    CB   CG   OD1  OD2  -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+GLU  PHE    15
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD1  CD2  CE1  CE2  CZ  
+GLU  GLY     9
+  N    CA   C    O    CB   CG   CD   OE1  OE2 
+  N    CA   C    O    -    -    -    -    -   
+GLU  HSD    14
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   ND1  CD2  CE1  NE2
+GLU  ILE    12
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG2  CG1  CD  
+GLU  LYS    13
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD   CE   NZ  
+GLU  LEU    12
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD1  CD2 
+GLU  MET    12
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   SD   CE  
+GLU  ASN    12
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   OD1  ND2 
+GLU  PRO    11
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD  
+GLU  GLN    13
+  N    CA   C    O    CB   CG   CD   OE1  OE2
+  N    CA   C    O    CB   CG   CD   OE1  NE2 
+GLU  ARG    15
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD   NE   CZ   NH1  NH2 
+GLU  SER    10
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -   
+  N    CA   C    O    CB   -    -    -    -    OG  
+GLU  THR    11
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -    -   
+  N    CA   C    O    CB   -    -    -    -    OG1  CG2 
+GLU  VAL    11
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -    -   
+  N    CA   C    O    CB   -    -    -    -    CG1  CG2 
+GLU  TRP    18
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+GLU  TYR    16
+  N    CA   C    O    CB   CG   CD   OE1  OE2  -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+PHE  GLY    11
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ  
+  N    CA   C    O    -    -    -    -    -    -    -   
+PHE  HSD    16
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG   ND1  CD2  CE1  NE2
+PHE  ILE    14
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   -    -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG2  CG1  CD  
+PHE  LYS    15
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG   CD   CE   NZ  
+PHE  LEU    14
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   -    -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG   CD1  CD2 
+PHE  MET    14
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   -    -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG   SD   CE  
+PHE  ASN    14
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   -    -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG   OD1  ND2 
+PHE  PRO    13
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG   CD  
+PHE  GLN    15
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG   CD   OE1  NE2 
+PHE  ARG    17
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG   CD   NE   CZ   NH1  NH2 
+PHE  SER    12
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   -   
+  N    CA   C    O    CB   -    -    -    -    -    -    OG  
+PHE  THR    13
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    OG1  CG2 
+PHE  VAL    13
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG1  CG2 
+PHE  TRP    20
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+PHE  TYR    18
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   - 
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   OH  
+GLY  HSD    10
+  N    CA   C    O    -    -    -    -    -    -
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2
+GLY  ILE     8
+  N    CA   C    O    -    -    -    -
+  N    CA   C    O    CB   CG2  CG1  CD  
+GLY  LYS     9
+  N    CA   C    O    -    -    -    -    -
+  N    CA   C    O    CB   CG   CD   CE   NZ  
+GLY  LEU     8
+  N    CA   C    O    -    -    -    -
+  N    CA   C    O    CB   CG   CD1  CD2 
+GLY  MET     8
+  N    CA   C    O    -    -    -    -
+  N    CA   C    O    CB   CG   SD   CE  
+GLY  ASN     8
+  N    CA   C    O    -    -    -    -
+  N    CA   C    O    CB   CG   OD1  ND2 
+GLY  PRO     7
+  N    CA   C    O    -    -    -
+  N    CA   C    O    CB   CG   CD  
+GLY  GLN     9
+  N    CA   C    O    -    -    -    -    -
+  N    CA   C    O    CB   CG   CD   OE1  NE2 
+GLY  ARG    11
+  N    CA   C    O    -    -    -    -    -    -    -
+  N    CA   C    O    CB   CG   CD   NE   CZ   NH1  NH2 
+GLY  SER     6
+  N    CA   C    O    -    -
+  N    CA   C    O    CB   OG  
+GLY  THR     7
+  N    CA   C    O    -    -    -
+  N    CA   C    O    CB   OG1  CG2 
+GLY  VAL     7
+  N    CA   C    O    -    -    -
+  N    CA   C    O    CB   CG1  CG2 
+GLY  TRP    14
+  N    CA   C    O    -    -    -    -    -    -    -    -    -    -
+  N    CA   C    O    CB   CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+GLY  TYR    12
+  N    CA   C    O    -    -    -    -    -    -    -    -
+  N    CA   C    O    CB   CG   CD1  CD2  CE1  CE2  CZ   OH  
+HSD  ILE    13
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2  -    -    -
+  N    CA   C    O    CB   -    -    -    -    -    CG2  CG1  CD  
+HSD  LYS    14
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2  -    -    -    -
+  N    CA   C    O    CB   -    -    -    -    -    CG   CD   CE   NZ  
+HSD  LEU    13
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2  -    -    -
+  N    CA   C    O    CB   -    -    -    -    -    CG   CD1  CD2 
+HSD  MET    13
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2  -    -    -
+  N    CA   C    O    CB   -    -    -    -    -    CG   SD   CE  
+HSD  ASN    13
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2  -    -    -
+  N    CA   C    O    CB   -    -    -    -    -    CG   OD1  ND2 
+HSD  PRO    12
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2  -    -
+  N    CA   C    O    CB   -    -    -    -    -    CG   CD  
+HSD  GLN    14
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2  -    -    -    -
+  N    CA   C    O    CB   -    -    -    -    -    CG   CD   OE1  NE2 
+HSD  ARG    16
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2  -    -    -    -    -    -
+  N    CA   C    O    CB   -    -    -    -    -    CG   CD   NE   CZ   NH1  NH2 
+HSD  SER    11
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2  - 
+  N    CA   C    O    CB   -    -    -    -    -    OG  
+HSD  THR    12
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2  -    - 
+  N    CA   C    O    CB   -    -    -    -    -    OG1  CG2 
+HSD  VAL    12
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2  -    - 
+  N    CA   C    O    CB   -    -    -    -    -    CG1  CG2 
+HSD  TRP    19
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2  -    -    -    -    -    -    -    -    -
+  N    CA   C    O    CB   -    -    -    -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+HSD  TYR    17
+  N    CA   C    O    CB   CG   ND1  CD2  CE1  NE2  -    -    -    -    -    -    -
+  N    CA   C    O    CB   -    -    -    -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+ILE  LYS    12
+  N    CA   C    O    CB   CG2  CG1  CD   -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD   CE   NZ  
+ILE  LEU    11
+  N    CA   C    O    CB   CG2  CG1  CD   -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD1  CD2 
+ILE  MET    11
+  N    CA   C    O    CB   CG2  CG1  CD   -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   SD   CE  
+ILE  ASN    11
+  N    CA   C    O    CB   CG2  CG1  CD   -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   OD1  ND2 
+ILE  PRO    10
+  N    CA   C    O    CB   CG2  CG1  CD   -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD  
+ILE  GLN    12
+  N    CA   C    O    CB   CG2  CG1  CD   -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD   OE1  NE2 
+ILE  ARG    14
+  N    CA   C    O    CB   CG2  CG1  CD   -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD   NE   CZ   NH1  NH2 
+ILE  SER     9
+  N    CA   C    O    CB   CG2  CG1  CD   -   
+  N    CA   C    O    CB   -    -    -    OG  
+ILE  THR    10
+  N    CA   C    O    CB   CG2  CG1  CD   -    -   
+  N    CA   C    O    CB   -    -    -    OG1  CG2 
+ILE  VAL    10
+  N    CA   C    O    CB   CG2  CG1  CD   -    -   
+  N    CA   C    O    CB   -    -    -    CG1  CG2 
+ILE  TRP    17
+  N    CA   C    O    CB   CG2  CG1  CD   -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+ILE  TYR    15
+  N    CA   C    O    CB   CG2  CG1  CD   -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+LYS  LEU    12
+  N    CA   C    O    CB   CG   CD   CE   NZ   -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD1  CD2 
+LYS  MET    12
+  N    CA   C    O    CB   CG   CD   CE   NZ
+  N    CA   C    O    CB   CG   SD   CE   -
+LYS  ASN    12
+  N    CA   C    O    CB   CG   CD   CE   NZ   -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   OD1  ND2 
+LYS  PRO    11
+  N    CA   C    O    CB   CG   CD   CE   NZ   -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD  
+LYS  GLN    13
+  N    CA   C    O    CB   CG   CD   CE   NZ   -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD   OE1  NE2 
+LYS  ARG    15
+  N    CA   C    O    CB   CG   CD   CE   NZ   -    - 
+  N    CA   C    O    CB   CG   CD   NE   CZ   NH1  NH2 
+LYS  SER    10
+  N    CA   C    O    CB   CG   CD   CE   NZ   -   
+  N    CA   C    O    CB   -    -    -    -    OG  
+LYS  THR    11
+  N    CA   C    O    CB   CG   CD   CE   NZ   -    -   
+  N    CA   C    O    CB   -    -    -    -    OG1  CG2 
+LYS  VAL    11
+  N    CA   C    O    CB   CG   CD   CE   NZ   -    -   
+  N    CA   C    O    CB   -    -    -    -    CG1  CG2 
+LYS  TRP    18
+  N    CA   C    O    CB   CG   CD   CE   NZ   -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+LYS  TYR    16
+  N    CA   C    O    CB   CG   CD   CE   NZ   -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+LEU  MET    11
+  N    CA   C    O    CB   CG   CD1  CD2  -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   SD   CE  
+LEU  ASN    11
+  N    CA   C    O    CB   CG   CD1  CD2  -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   OD1  ND2 
+LEU  PRO    10
+  N    CA   C    O    CB   CG   CD1  CD2  -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD  
+LEU  GLN    12
+  N    CA   C    O    CB   CG   CD1  CD2  -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD   OE1  NE2 
+LEU  ARG    14
+  N    CA   C    O    CB   CG   CD1  CD2  -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD   NE   CZ   NH1  NH2 
+LEU  SER     9
+  N    CA   C    O    CB   CG   CD1  CD2  -   
+  N    CA   C    O    CB   -    -    -    OG  
+LEU  THR    10
+  N    CA   C    O    CB   CG   CD1  CD2  -    -   
+  N    CA   C    O    CB   -    -    -    OG1  CG2 
+LEU  VAL    10
+  N    CA   C    O    CB   CG   CD1  CD2  -    -   
+  N    CA   C    O    CB   -    -    -    CG1  CG2 
+LEU  TRP    17
+  N    CA   C    O    CB   CG   CD1  CD2  -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+LEU  TYR    15
+  N    CA   C    O    CB   CG   CD1  CD2  -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+MET  ASN    11
+  N    CA   C    O    CB   CG   SD   CE   -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   OD1  ND2 
+MET  PRO    10
+  N    CA   C    O    CB   CG   SD   CE   -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD
+MET  GLN    12
+  N    CA   C    O    CB   CG   SD   CE   -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD   OE1  NE2 
+MET  ARG    14
+  N    CA   C    O    CB   CG   SD   CE   -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD   NE   CZ   NH1  NH2 
+MET  SER     9
+  N    CA   C    O    CB   CG   SD   CE   -   
+  N    CA   C    O    CB   -    -    -    OG  
+MET  THR    10
+  N    CA   C    O    CB   CG   SD   CE   -    -   
+  N    CA   C    O    CB   -    -    -    OG1  CG2 
+MET  VAL    10
+  N    CA   C    O    CB   CG   SD   CE   -    -   
+  N    CA   C    O    CB   -    -    -    CG1  CG2 
+MET  TRP    17
+  N    CA   C    O    CB   CG   SD   CE   -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+MET  TYR    15
+  N    CA   C    O    CB   CG   SD   CE   -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+ASN  PRO    10
+  N    CA   C    O    CB   CG   OD1  ND2  -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD  
+ASN  GLN    12
+  N    CA   C    O    CB   CG   OD1  ND2  -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD   OE1  NE2 
+ASN  ARG    14
+  N    CA   C    O    CB   CG   OD1  ND2  -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD   NE   CZ   NH1  NH2 
+ASN  SER     9
+  N    CA   C    O    CB   CG   OD1  ND2  -   
+  N    CA   C    O    CB   -    -    -    OG  
+ASN  THR    10
+  N    CA   C    O    CB   CG   OD1  ND2  -    -   
+  N    CA   C    O    CB   -    -    -    OG1  CG2 
+ASN  VAL    10
+  N    CA   C    O    CB   CG   OD1  ND2  -    -   
+  N    CA   C    O    CB   -    -    -    CG1  CG2 
+ASN  TRP    17
+  N    CA   C    O    CB   CG   OD1  ND2  -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+ASN  TYR    15
+  N    CA   C    O    CB   CG   OD1  ND2  -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+PRO  GLN    11
+  N    CA   C    O    CB   CG   CD   -    -    -    -
+  N    CA   C    O    CB   -    -    CG   CD   OE1  NE2 
+PRO  ARG    13
+  N    CA   C    O    CB   CG   CD   -    -    -    -    -    -
+  N    CA   C    O    CB   -    -    CG   CD   NE   CZ   NH1  NH2 
+PRO  SER     8
+  N    CA   C    O    CB   CG   CD   - 
+  N    CA   C    O    CB   -    -    OG  
+PRO  THR     9
+  N    CA   C    O    CB   CG   CD   -    -
+  N    CA   C    O    CB   -    -    OG1  CG2 
+PRO  VAL     9
+  N    CA   C    O    CB   CG   CD   -    -
+  N    CA   C    O    CB   -    -    CG1  CG2 
+PRO  TRP    16
+  N    CA   C    O    CB   CG   CD   -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+PRO  TYR    14
+  N    CA   C    O    CB   CG   CD   -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+GLN  ARG    15
+  N    CA   C    O    CB   CG   CD   OE1  NE2  -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD   NE   CZ   NH1  NH2 
+GLN  SER    10
+  N    CA   C    O    CB   CG   CD   OE1  NE2  -   
+  N    CA   C    O    CB   -    -    -    -    OG  
+GLN  THR    11
+  N    CA   C    O    CB   CG   CD   OE1  NE2  -    -   
+  N    CA   C    O    CB   -    -    -    -    OG1  CG2 
+GLN  VAL    11
+  N    CA   C    O    CB   CG   CD   OE1  NE2  -    -   
+  N    CA   C    O    CB   -    -    -    -    CG1  CG2 
+GLN  TRP    18
+  N    CA   C    O    CB   CG   CD   OE1  NE2  -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+GLN  TYR    16
+  N    CA   C    O    CB   CG   CD   OE1  NE2  -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+ARG  SER    12
+  N    CA   C    O    CB   CG   CD   NE   CZ   NH1  NH2  -   
+  N    CA   C    O    CB   -    -    -    -    -    -    OG  
+ARG  THR    13
+  N    CA   C    O    CB   CG   CD   NE   CZ   NH1  NH2  -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    OG1  CG2 
+ARG  VAL    13
+  N    CA   C    O    CB   CG   CD   NE   CZ   NH1  NH2  -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG1  CG2 
+ARG  TRP    20
+  N    CA   C    O    CB   CG   CD   NE   CZ   NH1  NH2  -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+ARG  TYR    18
+  N    CA   C    O    CB   CG   CD   NE   CZ   NH1  NH2  -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+SER  THR     8
+  N    CA   C    O    CB   OG   - 
+  N    CA   C    O    CB   OG1  CG2 
+SER  VAL     8
+  N    CA   C    O    CB   OG   -    -   
+  N    CA   C    O    CB   -    CG1  CG2 
+SER  TRP    15
+  N    CA   C    O    CB   OG   -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+SER  TYR    13
+  N    CA   C    O    CB   OG   -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+THR  VAL     9
+  N    CA   C    O    CB   OG1  CG2  -    -   
+  N    CA   C    O    CB   -    -    CG1  CG2 
+THR  TRP    16
+  N    CA   C    O    CB   OG1  CG2  -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+THR  TYR    14
+  N    CA   C    O    CB   OG1  CG2  -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+VAL  TRP    16
+  N    CA   C    O    CB   CG1  CG2  -    -    -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2 
+VAL  TYR    14
+  N    CA   C    O    CB   CG1  CG2  -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  
+TRP  TYR    21
+  N    CA   C    O    CB   CG   CD2  CD1  NE1  CE2  CE3  CZ2  CZ3  CH2  -    -    -    -    -    -    -   
+  N    CA   C    O    CB   -    -    -    -    -    -    -    -    -    CG   CD1  CD2  CE1  CE2  CZ   OH  

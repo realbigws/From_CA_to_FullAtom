@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>physical.values() -- create a new set of physical values</TITLE>
+<META NAME="description" CONTENT="physical.values() -- create a new set of physical values">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node250.html">
+<LINK REL="up" HREF="node250.html">
+<LINK REL="next" HREF="node252.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5402"
+  HREF="node252.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5396"
+  HREF="node250.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5392"
+  HREF="node250.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5398"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5400"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5403"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Up:</B> <A NAME="tex2html5397"
+  HREF="node250.html">The physical module: contributions</A>
+<B> Previous:</B> <A NAME="tex2html5393"
+  HREF="node250.html">The physical module: contributions</A>
+ &nbsp; <B>  <A NAME="tex2html5399"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5401"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011101000000000000000">
+physical.values() -- create a new set of physical values</A>
+</H2> <A NAME="22513"></A><A NAME="CMD:physical.values"></A><A NAME="22516"></A><TT>values(default=1.0, **keys)</TT>
+<BR><A NAME="CLASS:physvalues"></A><A NAME="22438"></A>
+
+<P>
+<BLOCKQUOTE>
+This creates a new empty <TT>values</TT> object. This is very
+similar to a <A NAME="tex2html142"
+  HREF="http://www.python.org/">Python</A> dictionary; valid keys are <TT>'default'</TT> or any of the
+objects from Table&nbsp;<A HREF="#tab:physrsrtypes">6.1</A>. For example, if <TT>'v'</TT> is a new
+object, you can set the value for the bond angle contribution to <TT>'0.5'</TT>
+with <TT>'v[physical.angle] = 0.5'</TT>. If you try to read a physical type from
+<TT>'v'</TT> which is not set, you'll get <TT>v['default']</TT>. As a convenience, you
+can set initial values for the default and/or physical types by passing them
+as parameters to the <TT>'physical.values()'</TT> constructor, without the
+<TT>'physical.'</TT> prefix. For example <TT>'physical.values(default=1.0, h_bond=0.1,
+coulomb=0.1)'</TT> would scale all types by 1.0 except for the H bond and Coulomb
+terms.
+                             
+</BLOCKQUOTE>
+
+<P>
+<B>Example:</B> See <B><A HREF="node247.html#CMD:selection.debugfunction">selection.debug_function()</A></B><A NAME="22550"></A> command.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="22498"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.1:</STRONG>
+<EM>List of ``physical'' restraint types.</EM></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1" ALIGN="CENTER">
+<TR><TD ALIGN="LEFT">Python object</TD>
+<TD ALIGN="RIGHT">Index</TD>
+<TD ALIGN="LEFT"><TT>Group</TT></TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.bond</TT></TD>
+<TD ALIGN="RIGHT">1</TD>
+<TD ALIGN="LEFT">Bond length potential</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.angle</TT></TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="LEFT">Bond angle potential</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.dihedral</TT></TD>
+<TD ALIGN="RIGHT">3</TD>
+<TD ALIGN="LEFT">Stereochemical cosine dihedral potential</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.improper</TT></TD>
+<TD ALIGN="RIGHT">4</TD>
+<TD ALIGN="LEFT">Stereochemical improper dihedral potential</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.soft_sphere</TT></TD>
+<TD ALIGN="RIGHT">5</TD>
+<TD ALIGN="LEFT">soft-sphere<A NAME="22559"></A> overlap restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.lennard_jones</TT></TD>
+<TD ALIGN="RIGHT">6</TD>
+<TD ALIGN="LEFT">Lennard-Jones<A NAME="22561"></A> 6-12 potential</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.coulomb</TT></TD>
+<TD ALIGN="RIGHT">7</TD>
+<TD ALIGN="LEFT">Coulomb<A NAME="22563"></A> point-point electrostatic potential</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.h_bond</TT></TD>
+<TD ALIGN="RIGHT">8</TD>
+<TD ALIGN="LEFT">H-bonding potential</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.ca_distance</TT></TD>
+<TD ALIGN="RIGHT">9</TD>
+<TD ALIGN="LEFT">Distance restraints 1 (<!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+-<!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.n_o_distance</TT></TD>
+<TD ALIGN="RIGHT">10</TD>
+<TD ALIGN="LEFT">Distance restraints 2 (N-O)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.phi_dihedral</TT></TD>
+<TD ALIGN="RIGHT">11</TD>
+<TD ALIGN="LEFT">Mainchain <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img88.png"
+ ALT="$ \Phi$">
+ dihedral restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.psi_dihedral</TT></TD>
+<TD ALIGN="RIGHT">12</TD>
+<TD ALIGN="LEFT">Mainchain <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img89.png"
+ ALT="$ \Psi$">
+ dihedral restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.omega_dihedral</TT></TD>
+<TD ALIGN="RIGHT">13</TD>
+<TD ALIGN="LEFT">Mainchain <IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \omega $">
+ dihedral restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.chi1_dihedral</TT></TD>
+<TD ALIGN="RIGHT">14</TD>
+<TD ALIGN="LEFT">Sidechain <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img7.png"
+ ALT="$ \chi _1$">
+ dihedral restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.chi2_dihedral</TT></TD>
+<TD ALIGN="RIGHT">15</TD>
+<TD ALIGN="LEFT">Sidechain <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img8.png"
+ ALT="$ \chi _2$">
+ dihedral restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.chi3_dihedral</TT></TD>
+<TD ALIGN="RIGHT">16</TD>
+<TD ALIGN="LEFT">Sidechain <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img9.png"
+ ALT="$ \chi _3$">
+ dihedral restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.chi4_dihedral</TT></TD>
+<TD ALIGN="RIGHT">17</TD>
+<TD ALIGN="LEFT">Sidechain <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img10.png"
+ ALT="$ \chi _4$">
+ dihedral restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.disulfide_distance</TT></TD>
+<TD ALIGN="RIGHT">18</TD>
+<TD ALIGN="LEFT">Disulfide distance restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.disulfide_angle</TT></TD>
+<TD ALIGN="RIGHT">19</TD>
+<TD ALIGN="LEFT">Disulfide angle restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.disulfide_dihedral</TT></TD>
+<TD ALIGN="RIGHT">20</TD>
+<TD ALIGN="LEFT">Disulfide dihedral angle restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.lower_distance</TT></TD>
+<TD ALIGN="RIGHT">21</TD>
+<TD ALIGN="LEFT">X lower bound distance restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.upper_distance</TT></TD>
+<TD ALIGN="RIGHT">22</TD>
+<TD ALIGN="LEFT">X upper bound distance restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.sd_mn_distance</TT></TD>
+<TD ALIGN="RIGHT">23</TD>
+<TD ALIGN="LEFT">Distance restraints 3 (SDCH-MNCH)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.chi5_dihedral</TT></TD>
+<TD ALIGN="RIGHT">24</TD>
+<TD ALIGN="LEFT">Sidechain <IMG
+ WIDTH="21" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img11.png"
+ ALT="$ \chi _5$">
+ dihedral restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.phi_psi_dihedral</TT></TD>
+<TD ALIGN="RIGHT">25</TD>
+<TD ALIGN="LEFT"><!-- MATH
+ $(\Phi, \Psi)$
+ -->
+<IMG
+ WIDTH="47" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img91.png"
+ ALT="$ (\Phi, \Psi)$">
+ binomial dihedral restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.sd_sd_distance</TT></TD>
+<TD ALIGN="RIGHT">26</TD>
+<TD ALIGN="LEFT">Distance restraints 4 (SDCH-SDCH)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.xy_distance</TT></TD>
+<TD ALIGN="RIGHT">27</TD>
+<TD ALIGN="LEFT">Distance restraints 5 (X-Y)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.nmr_distance</TT></TD>
+<TD ALIGN="RIGHT">28</TD>
+<TD ALIGN="LEFT">NMR distance restraints 6 (X-Y)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.nmr_distance2</TT></TD>
+<TD ALIGN="RIGHT">29</TD>
+<TD ALIGN="LEFT">NMR distance restraints 7 (X-Y)</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.min_distance</TT></TD>
+<TD ALIGN="RIGHT">30</TD>
+<TD ALIGN="LEFT">Minimal distance restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.nonbond_spline</TT></TD>
+<TD ALIGN="RIGHT">31</TD>
+<TD ALIGN="LEFT">Non-bonded spline restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.accessibility</TT></TD>
+<TD ALIGN="RIGHT">32</TD>
+<TD ALIGN="LEFT">Atomic accessibility restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.density</TT></TD>
+<TD ALIGN="RIGHT">33</TD>
+<TD ALIGN="LEFT">Atom density restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.absposition</TT></TD>
+<TD ALIGN="RIGHT">34</TD>
+<TD ALIGN="LEFT">Absolute position restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.dihedral_diff</TT></TD>
+<TD ALIGN="RIGHT">35</TD>
+<TD ALIGN="LEFT">Dihedral angle difference restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.gbsa</TT></TD>
+<TD ALIGN="RIGHT">36</TD>
+<TD ALIGN="LEFT">GBSA implicit solvent potential</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.em_density</TT></TD>
+<TD ALIGN="RIGHT">37</TD>
+<TD ALIGN="LEFT">EM density fitting potential</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.saxs</TT></TD>
+<TD ALIGN="RIGHT">38</TD>
+<TD ALIGN="LEFT">SAXS restraints</TD>
+</TR>
+<TR><TD ALIGN="LEFT"><TT>physical.symmetry</TT></TD>
+<TD ALIGN="RIGHT">39</TD>
+<TD ALIGN="LEFT">Symmetry restraints</TD>
+</TR>
+</TABLE>
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+
+<A NAME="tab:physrsrtypes"></A>
+<BR> 
+                 <DIV ALIGN="CENTER">
+ 
+</DIV></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5402"
+  HREF="node252.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5396"
+  HREF="node250.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5392"
+  HREF="node250.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5398"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5400"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5403"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Up:</B> <A NAME="tex2html5397"
+  HREF="node250.html">The physical module: contributions</A>
+<B> Previous:</B> <A NAME="tex2html5393"
+  HREF="node250.html">The physical module: contributions</A>
+ &nbsp; <B>  <A NAME="tex2html5399"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5401"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

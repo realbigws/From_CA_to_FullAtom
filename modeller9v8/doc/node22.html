@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Building an all hydrogen model</TITLE>
+<META NAME="description" CONTENT="Building an all hydrogen model">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node23.html">
+<LINK REL="previous" HREF="node21.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node23.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1618"
+  HREF="node23.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1612"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1606"
+  HREF="node21.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1614"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1616"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1619"
+  HREF="node23.html">Refining only part of</A>
+<B> Up:</B> <A NAME="tex2html1613"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1607"
+  HREF="node21.html">Building a model from</A>
+ &nbsp; <B>  <A NAME="tex2html1615"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1617"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00725000000000000000"></A>
+<A NAME="SECTION:model-default-allh"></A>
+<BR>
+Building an all hydrogen model
+</H2>
+
+<P>
+This is done by using the <TT>allhmodel</TT> class rather than <TT>automodel</TT>.
+Otherwise, operation is identical. Note that the <TT>allhmodel</TT> class
+automatically turns on <I><A HREF="node140.html#MEMB:iodata.hydrogen">env.io.hydrogen</A></I><A NAME="2977"></A> for you and selects the all-atom
+topology and radii files.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html40"
+  HREF="../examples/automodel/model-default-allh.py">examples/automodel/model-default-allh.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+from modeller.automodel import *
+
+log.verbose()
+env = environ()
+
+env.io.atom_files_directory = ['.', '../atom_files']
+
+a = allhmodel(env, alnfile='alignment.ali', knowns='5fd1', sequence='1fdx')
+a.starting_model = a.ending_model = 4
+
+a.make()
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

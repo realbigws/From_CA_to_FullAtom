@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>energy_data.update_dynamic -- nonbond recalculation threshold</TITLE>
+<META NAME="description" CONTENT="energy_data.update_dynamic -- nonbond recalculation threshold">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node123.html">
+<LINK REL="previous" HREF="node121.html">
+<LINK REL="up" HREF="node119.html">
+<LINK REL="next" HREF="node123.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html3504"
+  HREF="node123.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html3498"
+  HREF="node119.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html3492"
+  HREF="node121.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html3500"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html3502"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3505"
+  HREF="node123.html">energy_data.sphere_stdv   soft-sphere</A>
+<B> Up:</B> <A NAME="tex2html3499"
+  HREF="node119.html">The energy_data class: objective</A>
+<B> Previous:</B> <A NAME="tex2html3493"
+  HREF="node121.html">energy_data.contact_shell   nonbond</A>
+ &nbsp; <B>  <A NAME="tex2html3501"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html3503"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001133000000000000000">
+energy_data.update_dynamic -- nonbond recalculation threshold</A>
+</H2> <A NAME="10746"></A><A NAME="MEMB:energydata.updatedynamic"></A>
+<P>
+<BLOCKQUOTE>
+This sets the cumulative maximal atomic shift during optimization
+that triggers recalculation of the list of atom-atom non-bonded
+pairs. It should be set in combination with <I><A HREF="node121.html#MEMB:energydata.contactshell">energy_data.contact_shell</A></I><A NAME="10762"></A>.
+The default value is 0.39 &#197;.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>For soft-sphere<A NAME="10766"></A> overlap, to be absolutely sure that no unaccounted
+contacts occur, <I><A HREF="#MEMB:energydata.updatedynamic">energy_data.update_dynamic</A></I><A NAME="10768"></A> has to be equal to
+(<I><A HREF="node121.html#MEMB:energydata.contactshell">energy_data.contact_shell</A></I><A NAME="10773"></A> - <TT>maximal_overlap_distance</TT>) / 2. <TT>maximal_overlap_distance</TT> is equal to the diameter of the largest
+atom in the model; it is 3.2 &#197; in the case of the all non-hydrogen atoms
+model. This distance is the <I><A HREF="node121.html#MEMB:energydata.contactshell">energy_data.contact_shell</A></I><A NAME="10778"></A> value if a default
+is requested. Factor 2 comes from the fact that the moves
+of both atoms can reduce the distance between them.
+                             
+</BLOCKQUOTE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>gbsa.Scorer() -- create a new scorer to evaluate GB/SA energies</TITLE>
+<META NAME="description" CONTENT="gbsa.Scorer() -- create a new scorer to evaluate GB/SA energies">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node267.html">
+<LINK REL="up" HREF="node267.html">
+<LINK REL="next" HREF="node269.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5645"
+  HREF="node269.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5639"
+  HREF="node267.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5635"
+  HREF="node267.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5641"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5643"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5646"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Up:</B> <A NAME="tex2html5640"
+  HREF="node267.html">The gbsa module: implicit</A>
+<B> Previous:</B> <A NAME="tex2html5636"
+  HREF="node267.html">The gbsa module: implicit</A>
+ &nbsp; <B>  <A NAME="tex2html5642"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5644"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011141000000000000000">
+gbsa.Scorer() -- create a new scorer to evaluate GB/SA energies</A>
+</H2> <A NAME="24430"></A><A NAME="CMD:gbsa.Scorer"></A><A NAME="24433"></A><TT>Scorer(library='$LIB/solv.lib', solvation_model=1, cutoff=8.0)</TT>
+<BR><A NAME="24402"></A>
+
+<P>
+<BLOCKQUOTE>
+This creates a new class to be used for scoring models with
+the GB/SA implicit solvation model. To activate scoring, you must add an
+instance of this class to the relevant <I><A HREF="node136.html#MEMB:energydata.energyterms">energy_data.energy_terms</A></I><A NAME="24451"></A> list,
+in the same way as for user-defined energy terms
+(see Section&nbsp;<A HREF="node436.html#SECTION:userterm">7.1.3</A>).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>library</I><A NAME="24456"></A> is the name of a library file containing radii and solvation
+parameters for all atom types. <I>solvation_model</I><A NAME="24459"></A> selects which column
+of solvation parameters to use from this file. <I>cutoff</I><A NAME="24462"></A> sets the distance
+in angstroms used to calculate the Born radii; the calculation can be made
+faster at the expense of accuracy by using a smaller cutoff. Note that GB/SA
+uses the same nonbonded list as the other dynamic terms, so <I>cutoff</I><A NAME="24465"></A> should
+be chosen to be no greater than <I><A HREF="node121.html#MEMB:energydata.contactshell">energy_data.contact_shell</A></I><A NAME="24468"></A>. The
+electrostatic component of GB/SA is also switched using the value of
+<I><A HREF="node131.html#MEMB:energydata.coulombswitch">energy_data.coulomb_switch</A></I><A NAME="24473"></A>.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html158"
+  HREF="../examples/scoring/gbsa.py">examples/scoring/gbsa.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: gbsa.scorer()
+# This will calculate the GB/SA implicit solvation energy for a model.
+
+from modeller import *
+from modeller import gbsa
+from modeller.scripts import complete_pdb
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+# Calculate just the GB/SA score; turn off soft-sphere
+env.edat.dynamic_sphere = False
+env.edat.energy_terms.append(gbsa.Scorer())
+# GB/SA falls off slowly with distance, so a larger cutoff than the
+# default (4.0) is recommended
+env.edat.contact_shell = 8.0
+
+mdl = complete_pdb(env, "1fas")
+
+# Select all atoms
+atmsel = selection(mdl)
+
+# Calculate the energy
+atmsel.energy()
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5645"
+  HREF="node269.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5639"
+  HREF="node267.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5635"
+  HREF="node267.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5641"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5643"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5646"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Up:</B> <A NAME="tex2html5640"
+  HREF="node267.html">The gbsa module: implicit</A>
+<B> Previous:</B> <A NAME="tex2html5636"
+  HREF="node267.html">The gbsa module: implicit</A>
+ &nbsp; <B>  <A NAME="tex2html5642"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5644"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

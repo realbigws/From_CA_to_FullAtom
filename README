@@ -1,0 +1,37 @@
+=========
+Abstract:
+=========
+
+Given CA trace in PDB format, restore full atoms.
+
+
+
+
+======
+Usage:
+======
+
+USAGE:  ./CA_to_FullAtom.sh <-i CA_trance> [-o out_file] [-K remove_tmp] [-H home]
+Options:
+
+***** required arguments *****
+-i CA_trance    : Input CA trace in PDB format.
+
+***** optional arguments *****
+-o out_file     : Default output file would be '${input_name}_FullAtom.pdb'.]
+
+-K remove_tmp   : Remove temporary folder or not. [default = 1 to remove]
+
+***** home directory *****
+-H home         : home directory of From_CA_to_FullAtom.
+                  [default = .]
+
+
+
+================
+Running example:
+================
+
+./CA_to_FullAtom.sh -i example/1pazA_Ca.pdb
+
+

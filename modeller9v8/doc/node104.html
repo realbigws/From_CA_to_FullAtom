@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Excluded pairs</TITLE>
+<META NAME="description" CONTENT="Excluded pairs">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node105.html">
+<LINK REL="previous" HREF="node103.html">
+<LINK REL="up" HREF="node101.html">
+<LINK REL="next" HREF="node105.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html2898"
+  HREF="node105.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2892"
+  HREF="node101.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2886"
+  HREF="node103.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html2894"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html2896"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html2899"
+  HREF="node105.html">Rigid bodies</A>
+<B> Up:</B> <A NAME="tex2html2893"
+  HREF="node101.html">Spatial restraints</A>
+<B> Previous:</B> <A NAME="tex2html2887"
+  HREF="node103.html">Specification of pseudo atoms</A>
+ &nbsp; <B>  <A NAME="tex2html2895"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html2897"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001033000000000000000"></A>
+<A NAME="SECTION:expairs"></A><A NAME="8387"></A>
+<BR>
+Excluded pairs
+</H2>
+
+<P>
+You can also exclude certain pairs of atoms from the nonbonded list. These
+<A NAME="tex2html82"
+  HREF="http://www.python.org/">Python</A> objects are added to the <I><A HREF="node198.html#MEMB:Restraints.excludedpairs">Restraints.excluded_pairs</A></I><A NAME="8842"></A> list.
+
+<P>
+<A NAME="8846"></A><TT>excluded_pair(atom_id1, atom_id2)</TT>
+<BR>
+Excludes the given two atoms from the nonbonded list.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html83"
+  HREF="../examples/scoring/excluded_pair.py">examples/scoring/excluded_pair.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Demonstrate the use of excluded pairs.
+
+# In this example we approximate a disulfide linkage by creating a distance
+# restraint between two SG atoms in CYS residues. Since these atoms are in
+# different residues, ordinarily Modeller will calculate a van der Waals
+# (soft sphere) interaction between them. We use an excluded pair to prevent
+# this interaction from being calculated, as otherwise it will conflict
+# with the new distance restraint.
+
+# Note that this is an example only; ordinarily a DISU patch would be used
+# to create a disulfide linkage. The DISU patch has the advantage that it
+# restrains the angles and dihedrals involved with the SG-SG bond, and also
+# excludes these atom pairs from van der Waals interaction.
+
+from modeller import *
+from modeller.scripts import complete_pdb
+from modeller.optimizers import conjugate_gradients
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.edat.dynamic_sphere = True
+
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+code = '1fas'
+mdl = complete_pdb(env, code)
+
+atom1 = mdl.atoms['SG:3']
+atom2 = mdl.atoms['SG:22']
+mdl.restraints.add(forms.gaussian(group=physical.xy_distance,
+                                  mean=2.0, stdev=0.1,
+                                  feature=features.distance(atom1, atom2)))
+mdl.restraints.excluded_pairs.append(excluded_pair(atom1, atom2))
+
+# Retain stereochemistry
+atmsel = selection(mdl)
+mdl.restraints.make(atmsel, restraint_type='stereo', spline_on_site=False)
+
+# Optimize the model with CG
+cg = conjugate_gradients(output='REPORT')
+cg.optimize(atmsel, max_iterations=100)
+
+mdl.write(file=code+'.expair.pdb')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

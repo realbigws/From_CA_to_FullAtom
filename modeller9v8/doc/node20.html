@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Getting a very fast and approximate model</TITLE>
+<META NAME="description" CONTENT="Getting a very fast and approximate model">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node21.html">
+<LINK REL="previous" HREF="node19.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node21.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1590"
+  HREF="node21.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1584"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1578"
+  HREF="node19.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1586"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1588"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1591"
+  HREF="node21.html">Building a model from</A>
+<B> Up:</B> <A NAME="tex2html1585"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1579"
+  HREF="node19.html">Changing the default optimization</A>
+ &nbsp; <B>  <A NAME="tex2html1587"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1589"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00723000000000000000"></A>
+<A NAME="SECTION:model-fast"></A>
+<BR>
+Getting a very fast and approximate model
+</H2>
+
+<P>
+To get an approximate model very quickly (to get a rough idea of what it looks
+like, or to confirm that the alignment is reasonable) call the
+<B><A HREF="node65.html#CMD:automodel.veryfast">automodel.very_fast()</A></B><A NAME="2933"></A> method before <B><A HREF="node66.html#CMD:automodel.make">automodel.make()</A></B><A NAME="2938"></A>. This uses only
+a very limited amount of variable target function optimization with conjugate
+gradients, and thus is roughly 3 times faster than the default procedure.
+
+<P>
+Note that no randomization of the starting structure is done in this case, so
+only a single model can be produced.
+
+<P>
+This example also demonstrates the use of the <I>assess_methods</I><A NAME="2943"></A> keyword,
+to request model assessment. In this case the GA341 method is requested. See
+section&nbsp;<A HREF="node42.html#SECTION:automodelcon">4.1.1</A>.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html37"
+  HREF="../examples/automodel/model-fast.py">examples/automodel/model-fast.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Very fast homology modeling by the automodel class
+from modeller import *
+from modeller.automodel import *    # Load the automodel class
+
+log.verbose()
+env = environ()
+# directories for input atom files
+env.io.atom_files_directory = ['.', '../atom_files']
+
+a = automodel(env,
+              alnfile='alignment.ali',      # alignment filename
+              knowns='5fd1',                # codes of the templates
+              sequence='1fdx',              # code of the target
+              assess_methods=assess.GA341)  # request GA341 model assessment
+
+a.very_fast()                       # prepare for extremely fast optimization
+
+a.starting_model = 2
+a.ending_model = 2
+a.final_malign3d = True
+
+a.make()                            # make the homology model
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

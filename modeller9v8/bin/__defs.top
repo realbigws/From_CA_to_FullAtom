@@ -1,0 +1,201 @@
+# Define additional TOP variables needed for MODELLER:
+
+DEFINE_INTEGER VARIABLES = STARTING_MODEL ENDING_MODEL RSTRS_REFINED
+DEFINE_INTEGER VARIABLES = LOOP_STARTING_MODEL LOOP_ENDING_MODEL
+DEFINE_INTEGER VARIABLES = MAX_ITERATIONS_STORE WRITE_INTERMEDIATES
+DEFINE_INTEGER VARIABLES = IREPEAT REPEAT_OPTIMIZATION EXIT_STAGE
+DEFINE_INTEGER VARIABLES = CREATE_RESTRAINTS REFINE_HOT_ONLY
+DEFINE_INTEGER VARIABLES = MAX_VAR_ITERATIONS FINAL_MALIGN3D INITIAL_MALIGN3D
+DEFINE_INTEGER VARIABLES = DO_LOOPS ID1B ABORT_OPT
+DEFINE_REAL    VARIABLES = VIOL_REP_STORE MAX_MOLPDF
+DEFINE_REAL    VARIABLES = MAX_CA-CA_DISTANCE MAX_N-O_DISTANCE
+DEFINE_REAL    VARIABLES = MAX_SC-SC_DISTANCE MAX_SC-MC_DISTANCE
+DEFINE_STRING  VARIABLES = MODEL MODEL2 CODE CODE2 ALNFILE MODEL2_FIT
+DEFINE_STRING  VARIABLES = CSRFILE KNOWNS SCHFILE FINAL_MODEL
+DEFINE_STRING  VARIABLES = GENERATE_METHOD RAND_METHOD MD_LEVEL
+DEFINE_STRING  VARIABLES = SEGFILE PDB_EXT TOPLIB PARLIB FAMILY FIT_IN_REFINE
+DEFINE_STRING  VARIABLES = ATOM_IDS1 ATOM_IDS2 OUTPUT2
+DEFINE_STRING  VARIABLES = LOOP_CSRFILE LOOP_INI_MODEL
+DEFINE_STRING  VARIABLES = LOOP_MD_LEVEL LOOP_INI_MODEL
+DEFINE_STRING  VARIABLES = LOOP_MODEL
+DEFINE_STRING  VARIABLES = TOP_VERSION
+
+# For the academic version:
+SET TOP_VERSION = 'academic'
+# For the Accelrys version:
+# SET TOP_VERSION = 'accelrys'
+
+# read the residue types again, if the Accelrys lib required:
+STRING_IF STRING_ARGUMENTS = TOP_VERSION 'accelrys', OPERATION = 'EQ'
+  SET RESTYP_LIB_FILE = '$(LIB)/restyp_accelrys.lib'
+  READ_RESTYP_LIB 
+END_IF
+
+# default values for options in comparative modeling by MODELLER:
+
+SET STARTING_MODEL= 1    # the index of the first model; 
+                         # determines how many models are calculated;
+
+SET ENDING_MODEL  = 1    # the index of the last model; 
+                         # determines how many models are calculated;
+
+SET DEVIATION     = 4.0  # the amount of randomization of the initial model
+                         # must be > 0 if different final models are wanted;
+
+SET DO_LOOPS = '0'       # whether or not to do automatic loop refinement
+                         # for each model *.B???????? (0 for no, 1 for yes)
+                         # can rely on automatic loop definition or 
+                         # re-define select_loop_atoms routine.
+SET LOOP_STARTING_MODEL = 1 # how many loop models to generate for
+SET LOOP_ENDING_MODEL = 25  # each *.B????????
+SET LOOP_MD_LEVEL = 'refine_3' # the same as for MD_LEVEL, but for loops
+
+#
+# Do not forget to set WATER_IO, HETATM_IO, HYDROGEN_IO to ON if your model 
+# includes WATER, HYDROGEN, and/or HETATM atoms.
+#
+# Additional flexibility is provided by re-defining the TOP routines
+# 'select_atoms', 'special_restraints', 'special_patches', and 
+# 'rd_restraints'.
+#
+
+# Options that are not changed frequently:
+
+SET LIBRARY_SCHEDULE = 4      # 1 ... thorough var target func schedule
+                              # 4 ... faster var target func schedule
+SET MAX_VAR_ITERATIONS = 200  # maximal numb of iterations for the cycles
+                              # of the variable target function method
+
+SET MD_LEVEL = 'refine_1'     # what kind of optimization is done after
+                              # the variable target function method:
+                              # 'nothing'            ... nothing;
+                              # 'refine_1'            ... very fast MD annealing;
+                              # 'refine_2'            ... fast MD annealing;
+                              # 'refine_3'            ... slow MD annealing;
+                              # 'refine_4'            ... very slow MD annealing;
+                              # 'refine_5'            ... very slow/large dt MD annealing;
+
+SET REFINE_HOT_ONLY = 0       # 1 ... select and optimize only HOT atoms in refine;
+                              # 0 ... select and optimize all atoms in refine;
+                              # usually about half of the atoms are hot; in such cases,
+                              # 0 is faster for sequences longer than about 100 aa
+                              # because a faster non-bonded pairs algorithm can be used.
+
+SET RSTRS_REFINED = 1         # the types of restraints used to define
+                              # hot spots when MD_LEVEL <> 'nothing':
+                              # 0 ... stereochemistry only;
+                              # 1 ... stereochemistry and dihedral;
+                              # 2 ... all restraints;
+
+SET EXIT_STAGE    = 0         # 0 ... no effect;
+                              # 1 ... exit without any optimization after
+                              #       restraints and an initial model are 
+                              #       calculated (more efficient than
+                              #       REPEAT_OPTIMIZATION=0);
+                              # 2 ... exit after the initial model is calculated
+                              #       (restraints are not calculated)
+
+SET REPEAT_OPTIMIZATION = 1   # how many times the whole optimization
+                              # schedule (variable target function
+                              # method and refinement) is repeated
+                              # for each initial model;
+
+SET TRACE_OUTPUT =  10        # every which CG or MD cycle is reported;
+
+SET MAX_MOLPDF   = 100E3      # abort optimization of the current model if 
+                              # the molecular pdf is larger than this and
+                              # continue with the next model;
+
+SET TOPLIB = '${LIB}/top_heav.lib'  # topology library (all non-hydrogen atoms);
+
+SET TOPOLOGY_MODEL = 3              # corresponding topology model;
+
+SET PARLIB = '${LIB}/par.lib'       # parameters library;
+
+SET WRITE_INTERMEDIATES = 0         # 0 ... do not write out intermediate 
+                                    #       atom files during optimization;
+                                    # 1 ... write out intermediate atom files;
+
+SET INITIAL_MALIGN3D = 0            # 0 ... do not do MALIGN3D before
+                                    #       TRANSFER_XYZ
+                                    # 1 ... do that.
+SET FINAL_MALIGN3D = 0              # 0 ... do not do MALIGN3D and write 
+                                    #       superposed templates & models
+                                    #       at the end of 'model'
+                                    # 1 ... do that.
+
+SET GENERATE_METHOD= 'transfer_xyz' # how to build the initial model: 
+                                    # 'generate_xyz' from internal coordinates 
+                                    #                and write them to a file;
+                                    # 'transfer_xyz' from template coordinates
+                                    #                and write them to a file;
+                                    # 'read_xyz'     read coordinates from 
+                                    #                a file;
+
+SET RAND_METHOD   = 'randomize_xyz' # a method to perturb the initial model:
+                                    # 'randomize_dihedrals' ... uses DEVIATION
+                                    #                           in degrees;
+                                    # 'randomize_xyz'       ... uses DEVIATION
+                                    #                           in angstroms;
+                                    # 'nothing'
+
+SET CREATE_RESTRAINTS =  1          # 0 ... read the restraints from a file;
+                                    # 1 ... make the restraints and write them
+                                    #       to a file before reading them 
+                                    #       for the optimization; in addition
+                                    #       to the default restraints, the TOP 
+                                    #       routine 'special_restraints', 
+                                    #       which may be re-defined in the 
+                                    #       user TOP file, is called for any 
+                                    #       user defined restraints that are
+                                    #       then also written to the same file.
+
+SET SPLINE_ON_SITE = on             # on  ... convert some restraints into splines
+                                    # off ... no conversion
+
+# SET OUTPUT_CONTROL = 1 1 1 1 0      # write real_output, notes, warnings, errors, dynmem
+SET OUTPUT_CONTROL = 1 0 0 1 0      # write real_output, notes, warnings, errors, dynmem
+
+# Set maximal values for various distance restraints:
+SET MAX_CA-CA_DISTANCE = 14.0
+SET MAX_N-O_DISTANCE   = 11.0
+SET MAX_SC-MC_DISTANCE =  5.5
+SET MAX_SC-SC_DISTANCE =  5.0
+
+# Routine 'user_after_single_model' can be redefined to do whatever at the end
+# of each model calculation (e.g. comparison with X-ray structure).
+
+# To write out reports on individual optimizations:
+SET OUTPUT = 'NO_REPORT'
+
+# The alignment file format (I/O):
+SET ALIGNMENT_FORMAT = 'PIR'
+
+# The extension added to all *.Bxxxxnn filenames:
+SET PDB_EXT = '.pdb'
+
+# to prevent SUPERPOSE in refine() if molecules are too small:
+SET FIT_IN_REFINE = 'NO_FIT'
+
+# To enable default filename generation if not explicitly defined:
+SET MODEL   = 'undefined'
+SET CSRFILE = 'undefined'
+
+
+# Call this routine before calling 'model' if you want real fast optimization
+SUBROUTINE ROUTINE = 'very_fast'
+
+  # SET STARTING_MODEL = 1
+  # SET ENDING_MODEL = 1
+  SET MAX_CA-CA_DISTANCE = 10.0
+  SET MAX_N-O_DISTANCE   =  6.0
+  SET MAX_SC-MC_DISTANCE =  5.0
+  SET MAX_SC-SC_DISTANCE =  4.5
+  # Note that all models will be the same if you do not change RAND_METHOD
+  SET RAND_METHOD = 'nothing'
+  SET MAX_VAR_ITERATIONS = 50
+  SET LIBRARY_SCHEDULE = 7
+  SET MD_LEVEL = 'nothing'
+
+  RETURN
+END_SUBROUTINE

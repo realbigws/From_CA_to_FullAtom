@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>TOP commands and variables</TITLE>
+<META NAME="description" CONTENT="TOP commands and variables">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node467.html">
+<LINK REL="previous" HREF="node465.html">
+<LINK REL="up" HREF="node465.html">
+<LINK REL="next" HREF="node467.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8641"
+  HREF="node467.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8635"
+  HREF="node465.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8629"
+  HREF="node465.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8637"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8639"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8642"
+  HREF="node467.html">TOP models and alignments</A>
+<B> Up:</B> <A NAME="tex2html8636"
+  HREF="node465.html">Converting TOP scripts to</A>
+<B> Previous:</B> <A NAME="tex2html8630"
+  HREF="node465.html">Converting TOP scripts to</A>
+ &nbsp; <B>  <A NAME="tex2html8638"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8640"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001521000000000000000">
+T<SMALL>OP</SMALL> commands and variables</A>
+</H2>
+
+<P>
+T<SMALL>OP</SMALL> variables come in four varieties -- strings, reals, integers, logicals
+-- as either single values or lists. The equivalents in <A NAME="tex2html255"
+  HREF="http://www.python.org/">Python</A> are the
+standard <TT>'str'</TT>, <TT>'float'</TT>, <TT>'int'</TT> and <TT>'bool'</TT> types, respectively, while
+lists can be represented as <TT>'list'</TT> or <TT>'tuple'</TT> objects. In essence, this
+means that strings must be quoted, logical <TT>on</TT> and <TT>off</TT> become bool
+<TT>True</TT> and <TT>False</TT> respectively, and lists must be comma-separated and
+enclosed in parentheses. Also, the '=' operator is not mandatory in T<SMALL>OP</SMALL>, but
+it is in <A NAME="tex2html256"
+  HREF="http://www.python.org/">Python</A>. See the <A NAME="tex2html257"
+  HREF="http://www.python.org/">Python</A> documentation for more information.
+For example, consider the following assignments in T<SMALL>OP</SMALL>:
+<PRE>
+SET STRVAR = foo                   # Set a string variable (quotes not required)
+SET REALVAR 3.4                    # Set a real variable (= not required either)
+SET INTVAR = 4                     # Set an integer variable
+SET LOGVAR = on                    # Set a logical variable
+SET INTLIST = 1 1 3 5              # Set a list of integers
+SET STRLIST = 'one' 'two' 'three'  # Set a list of strings
+</PRE>
+The equivalent <A NAME="tex2html258"
+  HREF="http://www.python.org/">Python</A> code would be:
+<PRE>
+STRVAR = 'foo'                     # Set a string variable
+REALVAR = 3.4                      # Set a real variable
+INTVAR = 4                         # Set an integer variable
+LOGVAR = True                      # Set a logical variable
+INTLIST = (1, 1, 3, 5)             # Set a list of integers
+STRLIST = ('one', 'two', 'three')  # Set a list of strings
+</PRE>
+
+<P>
+Variables in T<SMALL>OP</SMALL> are case-insensitive; that is, the names
+<I>GAP_PENALTIES_1D</I> and <I>gap_penalties_1d</I> refer to the same
+variable. (Upper case is usually used, but this is just by convention.)
+<A NAME="tex2html259"
+  HREF="http://www.python.org/">Python</A> variables are case-sensitive, so these two names refer to different
+variables. For consistency with other codes, all <A NAME="tex2html260"
+  HREF="http://www.python.org/">Python</A> commands and
+variables used by M<SMALL>ODELLER</SMALL> are <B>lower-case</B>.
+
+<P>
+All variables in T<SMALL>OP</SMALL> are global; that is, once they are set, their value is
+kept for the rest of the program (or until changed again). This is irrespective
+of whether the variable is set while calling a T<SMALL>OP</SMALL> command, or whether an
+explicit <B>SET</B> command is used. For example, this T<SMALL>OP</SMALL> script:
+<PRE>
+ALIGN GAP_PENALTIES_1D = 900 50
+</PRE>
+will behave identically to this code:
+<PRE>
+SET GAP_PENALTIES_1D = 900 50
+ALIGN
+</PRE>
+
+<P>
+In <A NAME="tex2html261"
+  HREF="http://www.python.org/">Python</A>, on the other hand, each command takes a number of arguments.
+For example, the <B>align()</B> command takes a <I>gap_penalties_1d</I>
+argument. The value of this argument affects only this call to <B>align()</B>,
+<EM>i.e.</EM> it is a local variable.
+Thus, the exact equivalent to both of the T<SMALL>OP</SMALL> scripts above would be:
+<PRE>
+aln.align(gap_penalties_1d=(900, 50))
+</PRE>
+where <TT>'aln'</TT> is an <TT>alignment</TT> object (see
+section&nbsp;<A HREF="node467.html#SUBSECTION:topmdlaln">C.2.2</A>).
+This only sets the 1D gap penalties for this invocation of <B>align()</B>, and
+so is less likely to cause problems later in your script. If you want to call
+a routine several times with the same set of arguments, it is recommended that
+you save the arguments in local <A NAME="tex2html262"
+  HREF="http://www.python.org/">Python</A> variables, use subroutines or classes,
+or use <TT>'for'</TT> loops.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8641"
+  HREF="node467.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8635"
+  HREF="node465.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8629"
+  HREF="node465.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8637"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8639"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8642"
+  HREF="node467.html">TOP models and alignments</A>
+<B> Up:</B> <A NAME="tex2html8636"
+  HREF="node465.html">Converting TOP scripts to</A>
+<B> Previous:</B> <A NAME="tex2html8630"
+  HREF="node465.html">Converting TOP scripts to</A>
+ &nbsp; <B>  <A NAME="tex2html8638"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8640"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

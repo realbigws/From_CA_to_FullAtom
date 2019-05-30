@@ -1,0 +1,266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>conjugate_gradients() -- optimize atoms given restraints, with CG</TITLE>
+<META NAME="description" CONTENT="conjugate_gradients() -- optimize atoms given restraints, with CG">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node254.html">
+<LINK REL="previous" HREF="node252.html">
+<LINK REL="up" HREF="node252.html">
+<LINK REL="next" HREF="node254.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5437"
+  HREF="node254.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5431"
+  HREF="node252.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5425"
+  HREF="node252.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5433"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5435"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5438"
+  HREF="node254.html">quasi_newton()   optimize</A>
+<B> Up:</B> <A NAME="tex2html5432"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Previous:</B> <A NAME="tex2html5426"
+  HREF="node252.html">The optimizers module: optimization</A>
+ &nbsp; <B>  <A NAME="tex2html5434"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5436"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011111000000000000000">
+conjugate_gradients() -- optimize atoms given restraints, with CG</A>
+</H2> <A NAME="22969"></A><A NAME="CMD:conjugategradients"></A><A NAME="22972"></A><TT>conjugate_gradients(output='NO_REPORT', min_atom_shift=0.01, residue_span_range=(0, 99999), **vars)</TT>
+<BR><A NAME="22772"></A>
+<DL>
+<DT><STRONG>Output:</STRONG></DT>
+<DD><I>molpdf</I><A NAME="22979"></A>
+                             
+</DD>
+</DL>
+
+<P>
+<DL>
+<DT><STRONG>Requirements:</STRONG></DT>
+<DD>restraints
+                             
+</DD>
+</DL>
+
+<P>
+<BLOCKQUOTE>
+This command creates a new <A NAME="tex2html144"
+  HREF="http://www.python.org/">Python</A> optimizer object. Calling the
+object's <TT>optimize</TT> method with an atom selection then performs a number of
+optimizing iterations using a modified version of the Beale restart conjugate
+gradients method [<A
+ HREF="node469.html#ShaPhu80">Shanno &amp; Phua, 1980</A>,<A
+ HREF="node469.html#ACM500">Shanno &amp; Phua, 1982</A>].
+A brief description of the algorithm is given in
+Section&nbsp;<A HREF="node445.html#SECTION:energydesc">A.2</A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The optimization can be controlled with a number of keyword arguments, which
+can be specified either when the object is created, or when the <TT>optimize</TT>
+method is called (if the same keyword is specified in both, that for the
+<TT>optimize</TT> method takes precedence). Valid keywords are:
+</BLOCKQUOTE>
+<P>
+<UL>
+<LI><I>min_atom_shift</I><A NAME="23025"></A> is a convergence criterion for the optimization.
+When the maximal atomic shift is less than the
+specified value, the optimization is finished regardless of the number
+of optimization cycles or function value and its change.
+
+<P>
+</LI>
+<LI><I>max_iterations</I><A NAME="23028"></A> is used to prevent a waste of CPU time in the 
+optimization. When that many calls of the objective function are done,
+the optimization is finished regardless of the maximal atomic shift. (Note that
+each optimization step usually requires more than one call of the objective
+function.)
+
+<P>
+</LI>
+<LI><I>output</I><A NAME="23031"></A>, if <TT>'REPORT'</TT>, writes a summary of the optimization results
+to the <TT>log</TT> file after optimization. If it is <TT>'NO_REPORT'</TT>, no such report
+is written.
+
+<P>
+</LI>
+<LI><I>edat</I><A NAME="23037"></A> is an <TT>energy_data</TT> object containing objective function
+parameters, if you do not want to use the defaults.
+See Section&nbsp;<A HREF="node119.html#CLASS:energydata">6.3</A> for more information.
+
+<P>
+</LI>
+<LI><I>schedule_scale</I><A NAME="23042"></A> specifies scaling factors for the physical restraint
+types, if you do not want to use the defaults.
+
+<P>
+</LI>
+<LI><I>residue_span_range</I><A NAME="23045"></A> determines what atom pairs can possibly 
+occur in the non-bonded atom pairs list used for dynamic restraints (see
+Section&nbsp;<A HREF="node101.html#SECTION:restraints">5.3</A>).
+
+<P>
+</LI>
+<LI><I>actions</I><A NAME="23048"></A>, if set, should be a list of periodic actions. Each is a
+<A NAME="tex2html145"
+  HREF="http://www.python.org/">Python</A> object containing an action which is carried out periodically during
+the optimization, after every step. For example, <B><A HREF="node256.html#CMD:actions.writestructure">actions.write_structure()</A></B><A NAME="23054"></A>
+can be used to write out a PDB file with structure snapshots during the run,
+while <B><A HREF="node257.html#CMD:actions.trace">actions.trace()</A></B><A NAME="23059"></A> writes basic information about the optimization to a
+trace file. If multiple actions are given, they are run in the order they
+are given.
+</LI>
+</UL>
+<P>
+<BLOCKQUOTE>It is useful in some simulations to be able to set
+<I><A HREF="node121.html#MEMB:energydata.contactshell">energy_data.contact_shell</A></I><A NAME="23064"></A> to something large (<EM>e.g.</EM>, 8&#197;)
+and <I><A HREF="node122.html#MEMB:energydata.updatedynamic">energy_data.update_dynamic</A></I><A NAME="23070"></A> to <TT>999999.9</TT>, so that the pairs list
+is prepared only at the beginning of the optimization. However, you have to
+make sure that the potential energy is not invisibly pumped into the system
+by making contacts that are not on the list of non-bonded pairs (see below).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The <TT>optimize</TT> method, when called, returns <I>molpdf</I><A NAME="23077"></A>, the value of the
+objective function at the end of optimization.
+An exception is raised if optimization is aborted
+because dynamic restraints could not be calculated as a result of a
+system being too large. It is up to the calling script to ensure that sensible
+action is taken; <EM>e.g.</EM>, skipping the rest of modeling for the model that resulted
+in an impossible function evaluation. This option is useful when
+calculating several independent models and you do not want one bad
+model to abort the whole calculation. A probable reason for an interrupted
+optimization is that it was far from convergence by the time the
+calculation of dynamic restraints was first requested. Two possible
+solutions are: (1) optimize more thoroughly (<EM>i.e.</EM> slowly) and (2) use
+a different contact pairs routine (set <I><A HREF="node135.html#MEMB:energydata.nlognuse">energy_data.nlogn_use</A></I><A NAME="23082"></A> = <TT>9999</TT>).
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html146"
+  HREF="../examples/scoring/optimize.py">examples/scoring/optimize.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: conjugate_gradients(), molecular_dynamics(), model.switch_trace()
+
+# This will optimize stereochemistry of a given model, including
+# non-bonded contacts.
+
+from modeller import *
+from modeller.scripts import complete_pdb
+from modeller.optimizers import conjugate_gradients, molecular_dynamics, actions
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.edat.dynamic_sphere = True
+
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+code = '1fas'
+mdl = complete_pdb(env, code)
+mdl.write(file=code+'.ini')
+
+# Select all atoms:
+atmsel = selection(mdl)
+
+# Generate the restraints:
+mdl.restraints.make(atmsel, restraint_type='stereo', spline_on_site=False)
+mdl.restraints.write(file=code+'.rsr')
+
+mpdf = atmsel.energy()
+
+# Create optimizer objects and set defaults for all further optimizations
+cg = conjugate_gradients(output='REPORT')
+md = molecular_dynamics(output='REPORT')
+
+# Open a file to get basic stats on each optimization
+trcfil = file(code+'.D00000001', 'w')
+
+# Run CG on the all-atom selection; write stats every 5 steps
+cg.optimize(atmsel, max_iterations=20, actions=actions.trace(5, trcfil))
+# Run MD; write out a PDB structure (called '1fas.D9999xxxx.pdb') every
+# 10 steps during the run, and write stats every 10 steps
+md.optimize(atmsel, temperature=300, max_iterations=50,
+            actions=[actions.write_structure(10, code+'.D9999%04d.pdb'),
+                     actions.trace(10, trcfil)])
+# Finish off with some more CG, and write stats every 5 steps
+cg.optimize(atmsel, max_iterations=20,
+            actions=[actions.trace(5, trcfil)])
+
+mpdf = atmsel.energy()
+
+mdl.write(file=code+'.B')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5437"
+  HREF="node254.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5431"
+  HREF="node252.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5425"
+  HREF="node252.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5433"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5435"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5438"
+  HREF="node254.html">quasi_newton()   optimize</A>
+<B> Up:</B> <A NAME="tex2html5432"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Previous:</B> <A NAME="tex2html5426"
+  HREF="node252.html">The optimizers module: optimization</A>
+ &nbsp; <B>  <A NAME="tex2html5434"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5436"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

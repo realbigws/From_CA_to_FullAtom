@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>quasi_newton() -- optimize atoms with quasi-Newton minimization</TITLE>
+<META NAME="description" CONTENT="quasi_newton() -- optimize atoms with quasi-Newton minimization">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node255.html">
+<LINK REL="previous" HREF="node253.html">
+<LINK REL="up" HREF="node252.html">
+<LINK REL="next" HREF="node255.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5451"
+  HREF="node255.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5445"
+  HREF="node252.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5439"
+  HREF="node253.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5447"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5449"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5452"
+  HREF="node255.html">molecular_dynamics()   optimize</A>
+<B> Up:</B> <A NAME="tex2html5446"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Previous:</B> <A NAME="tex2html5440"
+  HREF="node253.html">conjugate_gradients()   optimize</A>
+ &nbsp; <B>  <A NAME="tex2html5448"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5450"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011112000000000000000">
+quasi_newton() -- optimize atoms with quasi-Newton minimization</A>
+</H2> <A NAME="23093"></A><A NAME="CMD:quasinewton"></A><A NAME="23096"></A><TT>quasi_newton(output='NO_REPORT', min_atom_shift=0.01, max_atom_shift=100.0, residue_span_range=(0, 99999), **vars)</TT>
+<BR><A NAME="22816"></A>
+<DL>
+<DT><STRONG>Output:</STRONG></DT>
+<DD><I>molpdf</I><A NAME="23103"></A>
+                             
+</DD>
+</DL>
+
+<P>
+<DL>
+<DT><STRONG>Requirements:</STRONG></DT>
+<DD>restraints
+                             
+</DD>
+</DL>
+
+<P>
+<BLOCKQUOTE>
+This functions in a very similar way to <B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="23116"></A>,
+but uses a variable metric (quasi-Newton) method instead to find the minimum.
+The algorithm implemented in M<SMALL>ODELLER</SMALL> is the BFGS or
+Broyden-Fletcher-Goldfarb-Shanno method [<A
+ HREF="node469.html#PreTeuVet92">Press <EM>et&nbsp;al.</EM>, 1992</A>]. It takes the
+same keyword arguments as <B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="23123"></A>, plus one additional
+<I>max_atom_shift</I><A NAME="23128"></A> argument. This is used to limit the maximum size of an
+optimization move.
+
+</BLOCKQUOTE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

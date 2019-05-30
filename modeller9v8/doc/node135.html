@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>energy_data.nlogn_use -- select non-bond list generation algorithm</TITLE>
+<META NAME="description" CONTENT="energy_data.nlogn_use -- select non-bond list generation algorithm">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node136.html">
+<LINK REL="previous" HREF="node134.html">
+<LINK REL="up" HREF="node119.html">
+<LINK REL="next" HREF="node136.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html3686"
+  HREF="node136.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html3680"
+  HREF="node119.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html3674"
+  HREF="node134.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html3682"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html3684"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3687"
+  HREF="node136.html">energy_data.energy_terms   user-defined</A>
+<B> Up:</B> <A NAME="tex2html3681"
+  HREF="node119.html">The energy_data class: objective</A>
+<B> Previous:</B> <A NAME="tex2html3675"
+  HREF="node134.html">energy_data.nonbonded_sel_atoms   control</A>
+ &nbsp; <B>  <A NAME="tex2html3683"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html3685"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011316000000000000000">
+energy_data.nlogn_use -- select non-bond list generation algorithm</A>
+</H2> <A NAME="10984"></A><A NAME="MEMB:energydata.nlognuse"></A>
+<P>
+<BLOCKQUOTE>
+Before calculating dynamic non-bonded restraints, M<SMALL>ODELLER</SMALL> determines which of the several routines is most appropriate and efficient for
+calculating the non-bonded atom pairs list. The user can use this variable to
+influence the selection, of either a straightforward <!-- MATH
+ ${\cal O}(n^2)$
+ -->
+<IMG
+ WIDTH="46" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.png"
+ ALT="$ {\cal O}(n^2)$">
+ search
+or a cell-based algorithm which has <IMG
+ WIDTH="49" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.png"
+ ALT="$ n \log n $">
+ dependency of CPU time
+<EM>versus</EM> size <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img45.png"
+ ALT="$ n$">
+. The latter algorithm is used when the maximal difference
+in residue indices of the atoms in the current dynamic restraints is larger
+than <I><A HREF="#MEMB:energydata.nlognuse">energy_data.nlogn_use</A></I><A NAME="10998"></A>, <I><A HREF="node121.html#MEMB:energydata.contactshell">energy_data.contact_shell</A></I><A NAME="11003"></A> is
+less than 8&#197;, the necessary number of cells fits in an integer without
+overflow, and there is sufficient system memory to store the cells. The
+default value is 15.
+                             
+</BLOCKQUOTE>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,16 @@
+#!/bin/sh -v
+mod9v8 user_feat.py
+mod9v8 user_form.py
+mod9v8 user_term.py
+mod9v8 center_of_mass.py
+mod9v8 selection.py
+mod9v8 parallel-msg.py
+mod9v8 parallel-task.py
+mod9v8 steepest_descent_test.py
+mod9v8 residues.py
+mod9v8 alnsequence.py
+mod9v8 atoms.py
+mod9v8 chains.py
+mod9v8 trajectory.py
+mod9v8 pseudo_atoms.py
+mod9v8 rigid_body.py

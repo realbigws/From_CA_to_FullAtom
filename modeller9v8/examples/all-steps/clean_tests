@@ -1,0 +1,2 @@
+#!/bin/sh
+rm -f *.ini *.rsr *.sch *.D* *.V* 1fdx_* search.prf *.log *.pdb alignment.ali family.mat

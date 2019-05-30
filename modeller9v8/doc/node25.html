@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Providing your own restraints file</TITLE>
+<META NAME="description" CONTENT="Providing your own restraints file">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node26.html">
+<LINK REL="previous" HREF="node24.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node26.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1660"
+  HREF="node26.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1654"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1648"
+  HREF="node24.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1656"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1658"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1661"
+  HREF="node26.html">Using your own initial</A>
+<B> Up:</B> <A NAME="tex2html1655"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1649"
+  HREF="node24.html">Including disulfide bridges</A>
+ &nbsp; <B>  <A NAME="tex2html1657"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1659"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00728000000000000000"></A>
+<A NAME="SECTION:model-myrsr"></A>
+<BR>
+Providing your own restraints file
+</H2>
+
+<P>
+To force <TT>automodel</TT> not to construct restraints at all, but to instead
+use your own restraints file, simply use the <TT>csrfile</TT> keyword when creating
+the <TT>automodel</TT> class, as in the example below. Note that M<SMALL>ODELLER</SMALL> does only rudimentary checking on your restraints file, so you must be careful
+that it applies correctly to the generated model.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html44"
+  HREF="../examples/automodel/model-myrsr.py">examples/automodel/model-myrsr.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Modeling using a provided restraints file (csrfile)
+from modeller import *
+from modeller.automodel import *    # Load the automodel class
+
+log.verbose()
+env = environ()
+
+# directories for input atom files
+env.io.atom_files_directory = ['.', '../atom_files']
+
+a = automodel(env,
+              alnfile  = 'alignment.ali',     # alignment filename
+              knowns   = '5fd1',              # codes of the templates
+              sequence = '1fdx',              # code of the target
+              csrfile  = 'my.rsr')            # use 'my' restraints file
+a.starting_model= 1                 # index of the first model
+a.ending_model  = 1                 # index of the last model
+                                    # (determines how many models to calculate)
+a.make()                            # do homology modeling
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

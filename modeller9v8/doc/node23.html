@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Refining only part of the model</TITLE>
+<META NAME="description" CONTENT="Refining only part of the model">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node24.html">
+<LINK REL="previous" HREF="node22.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node24.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1632"
+  HREF="node24.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1626"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1620"
+  HREF="node22.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1628"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1630"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1633"
+  HREF="node24.html">Including disulfide bridges</A>
+<B> Up:</B> <A NAME="tex2html1627"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1621"
+  HREF="node22.html">Building an all hydrogen</A>
+ &nbsp; <B>  <A NAME="tex2html1629"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1631"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00726000000000000000"></A>
+<A NAME="SECTION:model-segment"></A>
+<BR>
+Refining only part of the model
+</H2>
+
+<P>
+The <TT>automodel</TT> class contains a <B><A HREF="node63.html#CMD:automodel.selectatoms">automodel.select_atoms()</A></B><A NAME="2989"></A> function
+which selects the atoms to be moved during optimization. By default, the
+routine selects all atoms, but you can redefine it to select any subset of
+atoms, and then only
+those atoms will be refined. (To redefine the routine, it is necessary to
+create a `subclass' of <TT>automodel</TT>, here called <TT>MyModel</TT>, which
+has the modified routine within it. We then use <TT>MyModel</TT> in place of
+<TT>automodel</TT>. The <TT>select_atoms</TT> routine should return a
+<TT>selection</TT> object; see Section&nbsp;<A HREF="node220.html#CLASS:selection">6.9</A> for further
+information.)
+
+<P>
+<A NAME="SECTION:residue-numbering"></A>In this particular case, we use the <B><A HREF="node166.html#CMD:model.residuerange">model.residue_range()</A></B><A NAME="3004"></A> function to
+select residues 1 and 2 from a chain with no ID. See Section
+<A HREF="node307.html#SECTION:residueid">6.16.9</A> for ways to specify residues, and <B><A HREF="node221.html#CMD:selection">selection()</A></B><A NAME="3009"></A> for
+other examples of selecting atoms or residues. Please note that the residue
+numbers and chain IDs refer to the built model, <EM>not</EM> to the template(s).
+This is because template PDB residue numbering can be inconsistent, and in the
+case where you have two or more templates, residues from different parts of
+the sequence coming from different templates could have the same number.
+M<SMALL>ODELLER</SMALL> always names the model residues consistently, counting up from 1.
+No chain ID is assigned when building a single chain model, but if you build
+a multi-chain model, chain IDs A, B, C, <EM>etc</EM> are assigned. If in doubt about
+residue numbering, first build a model using the simple script in section
+<A HREF="node16.html#SECTION:model-default">2.1</A>, and then look at the final model (or the initial
+unoptimized <TT>.ini</TT> model) for the residue numbering.
+
+<P>
+By default, the selected atoms will ``feel'' the presence of other atoms via
+all the static and possibly dynamic restraints that include both selected and
+un-selected atoms. However, you can turn off dynamic interactions between the
+selected and unselected regions by setting
+<I><A HREF="node134.html#MEMB:energydata.nonbondedselatoms">energy_data.nonbonded_sel_atoms</A></I><A NAME="3017"></A> to 2 (by default it is 1).
+
+<P>
+The difference between this script and the one for
+loop modeling is that here the selected regions are optimized with the default
+optimization protocol and the default restraints, which generally include
+template-derived restraints. In contrast, the loop modeling routine does not
+use template-dependent restraints, but does a much more thorough optimization.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html41"
+  HREF="../examples/automodel/model-segment.py">examples/automodel/model-segment.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Homology modeling by the automodel class
+#
+# Demonstrates how to refine only a part of the model.
+#
+# You may want to use the more exhaustive "loop" modeling routines instead.
+#
+from modeller import *
+from modeller.automodel import *    # Load the automodel class
+
+log.verbose()
+
+# Override the 'select_atoms' routine in the 'automodel' class:
+# (To build an all-hydrogen model, derive from allhmodel rather than automodel
+# here.)
+class MyModel(automodel):
+    def select_atoms(self):
+        # Select residues 1 and 2 (PDB numbering)
+        return selection(self.residue_range('1:', '2:'))
+
+        # The same thing from chain A (required for multi-chain models):
+        # return selection(self.residue_range('1:A', '2:A'))
+
+        # Residues 4, 6, 10:
+        # return selection(self.residues['4'], self.residues['6'],
+        #                  self.residues['10'])
+
+        # All residues except 1-5:
+        # return selection(self) - selection(self.residue_range('1', '5'))
+
+env = environ()
+# directories for input atom files
+env.io.atom_files_directory = ['.', '../atom_files']
+# selected atoms do not feel the neighborhood
+env.edat.nonbonded_sel_atoms = 2
+
+# Be sure to use 'MyModel' rather than 'automodel' here!
+a = MyModel(env,
+            alnfile  = 'alignment.ali',     # alignment filename
+            knowns   = '5fd1',              # codes of the templates
+            sequence = '1fdx')              # code of the target
+
+a.starting_model= 3                # index of the first model
+a.ending_model  = 3                # index of the last model
+                                   # (determines how many models to calculate)
+a.make()                           # do homology modeling
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1632"
+  HREF="node24.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1626"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1620"
+  HREF="node22.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1628"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1630"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1633"
+  HREF="node24.html">Including disulfide bridges</A>
+<B> Up:</B> <A NAME="tex2html1627"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1621"
+  HREF="node22.html">Building an all hydrogen</A>
+ &nbsp; <B>  <A NAME="tex2html1629"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1631"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

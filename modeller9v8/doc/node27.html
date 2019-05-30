@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Adding additional restraints to the defaults</TITLE>
+<META NAME="description" CONTENT="Adding additional restraints to the defaults">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node28.html">
+<LINK REL="previous" HREF="node26.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node28.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1688"
+  HREF="node28.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1682"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1676"
+  HREF="node26.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1684"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1686"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1689"
+  HREF="node28.html">Building multi-chain models with</A>
+<B> Up:</B> <A NAME="tex2html1683"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1677"
+  HREF="node26.html">Using your own initial</A>
+ &nbsp; <B>  <A NAME="tex2html1685"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1687"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION007210000000000000000"></A>
+<A NAME="SECTION:model-addrsr"></A>
+<BR>
+Adding additional restraints to the defaults
+</H2>
+
+<P>
+You can add your own restraints to the restraints file, with the
+homology-derived restraints, by redefining the
+<B><A HREF="node68.html#CMD:automodel.specialrestraints">automodel.special_restraints()</A></B><A NAME="3094"></A>
+routine (by default it does nothing). This can be used, for example, to
+add information from NMR experiments or to add regions of known secondary
+structure. Symmetry restraints, excluded pairs,
+or rigid body definitions can also be added in this routine (see Section
+<A HREF="node28.html#SECTION:model-multichain">2.2.11</A> for a symmetry example). The example
+below enforces an additional restraint on a single CA-CA distance, adds some
+known secondary structure, and shows how to add restraints from a file.
+(See Section&nbsp;<A HREF="node101.html#SECTION:restraints">5.3</A> for further information on how to specify
+restraints, and Section&nbsp;<A HREF="node216.html#SECTION:secstr">6.8</A> for details on secondary structure
+restraints.)
+
+<P>
+Note that the residue numbers for any restraints refer to the model, <EM>not</EM>
+the templates. See Section&nbsp;<A HREF="node23.html#SECTION:residue-numbering">2.2.6</A> for more discussion.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html46"
+  HREF="../examples/automodel/model-addrsr.py">examples/automodel/model-addrsr.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Addition of restraints to the default ones
+from modeller import *
+from modeller.automodel import *    # Load the automodel class
+
+log.verbose()
+env = environ()
+
+# directories for input atom files
+env.io.atom_files_directory = ['.', '../atom_files']
+
+class MyModel(automodel):
+    def special_restraints(self, aln):
+        rsr = self.restraints
+        at = self.atoms
+#       Add some restraints from a file:
+#       rsr.append(file='my_rsrs1.rsr')
+
+#       Residues 20 through 30 should be an alpha helix:
+        rsr.add(secondary_structure.alpha(self.residue_range('20:', '30:')))
+#       Two beta-strands:
+        rsr.add(secondary_structure.strand(self.residue_range('1:', '6:')))
+        rsr.add(secondary_structure.strand(self.residue_range('9:', '14:')))
+#       An anti-parallel sheet composed of the two strands:
+        rsr.add(secondary_structure.sheet(at['N:1'], at['O:14'],
+                                          sheet_h_bonds=-5))
+#       Use the following instead for a *parallel* sheet:
+#       rsr.add(secondary_structure.sheet(at['N:1'], at['O:9'],
+#                                         sheet_h_bonds=5))
+
+#       Restrain the specified CA-CA distance to 10 angstroms (st. dev.=0.1)
+#       Use a harmonic potential and X-Y distance group.
+        rsr.add(forms.gaussian(group=physical.xy_distance,
+                               feature=features.distance(at['CA:35'],
+                                                         at['CA:40']),
+                               mean=10.0, stdev=0.1))
+
+a = MyModel(env,
+            alnfile  = 'alignment.ali',     # alignment filename
+            knowns   = '5fd1',              # codes of the templates
+            sequence = '1fdx')              # code of the target
+a.starting_model= 1                 # index of the first model
+a.ending_model  = 1                 # index of the last model
+                                    # (determines how many models to calculate)
+a.make()                            # do homology modeling
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

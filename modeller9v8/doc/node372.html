@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>profile.build() -- Build a profile for a given sequence or alignment</TITLE>
+<META NAME="description" CONTENT="profile.build() -- Build a profile for a given sequence or alignment">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node373.html">
+<LINK REL="previous" HREF="node371.html">
+<LINK REL="up" HREF="node366.html">
+<LINK REL="next" HREF="node373.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7198"
+  HREF="node373.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7192"
+  HREF="node366.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7186"
+  HREF="node371.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7194"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7196"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7199"
+  HREF="node373.html">pssmdb()   create</A>
+<B> Up:</B> <A NAME="tex2html7193"
+  HREF="node366.html">The profile class: using</A>
+<B> Previous:</B> <A NAME="tex2html7187"
+  HREF="node371.html">profile.scan()   Compare</A>
+ &nbsp; <B>  <A NAME="tex2html7195"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7197"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011236000000000000000">
+profile.build() -- Build a profile for a given sequence or alignment</A>
+</H2> <A NAME="33473"></A><A NAME="CMD:profile.build"></A><A NAME="33476"></A><TT>build(sdb, gap_penalties_1d=(-900.0, -50.0), matrix_offset=0.0, rr_file='$(LIB)/as1.sim.mat', n_prof_iterations=3, max_aln_evalue=0.1, matrix_scaling_factor=0.0069, check_profile=True, output_score_file=None, gaps_in_target=False, score_statistics=True, pssm_weights_type='HH1', pssm_file=None)</TT>
+<BR><BLOCKQUOTE>
+This command iteratively scans a database of sequences to build a
+profile for the input sequence or alignment. The command calculates the score
+for a Smith-Waterman local alignment between the input sequence and each of the
+sequences in the database. The significance of the alignment scores (e-values)
+are calculated using a procedure similar to that described by [<A
+ HREF="node469.html#Pea98">Pearson, 1998</A>].
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Alignments with e-values below <I>max_aln_evalue</I><A NAME="33509"></A> are then added to the
+current alignment. A position-specific scoring matrix is then calculated for the
+current alignment and is used to search the sequence database. This procedure is
+repeated for <I>n_prof_iterations</I><A NAME="33512"></A> or until there are are no significant
+alignments below the threshold, whichever occurs first.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The initial sequence or alignment can be read in either in the profile format,
+with <B><A HREF="node368.html#CMD:profile.read">profile.read()</A></B><A NAME="33515"></A>, or as an alignment using <B><A HREF="node272.html#CMD:alignment.append">alignment.append()</A></B><A NAME="33520"></A>. In the
+latter case, the alignment has to be converted to the profile format using
+<B><A HREF="node296.html#CMD:alignment.toprofile">alignment.to_profile()</A></B><A NAME="33525"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The output contains a multiple sequence alignment (assembled) of all the
+homologues of the input sequence found in the database. The output can be
+formatted as a profile with <B><A HREF="node369.html#CMD:profile.write">profile.write()</A></B><A NAME="33530"></A> or converted into any of the
+standard alignment formats using <B><A HREF="node370.html#CMD:profile.toalignment">profile.to_alignment()</A></B><A NAME="33535"></A>. It can then be written out
+to a file with <B><A HREF="node282.html#CMD:alignment.write">alignment.write()</A></B><A NAME="33540"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The fit between the observed and theoretical distributions of the z-scores is
+calculated after each iteration and is reported in the log file. The fit is
+calculated using the Kolmogorov-Smirnov D-statistic. If the <I>check_profile</I><A NAME="33545"></A> 
+flag is set to <TT>True</TT>, then the command will not proceed if the fit deviates
+by more than 0.04 (D-statistic).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>By default, regions of the alignment that introduce gaps in the target sequence
+are ignored (deleted) in the final multiple alignment. But if
+<I>gaps_in_target</I><A NAME="33549"></A> is set to <TT>True</TT>, then the gaps are retained.
+(See below for comments).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The scores of each alignment between the input sequence and each database
+sequence, from all iterations, will be written out to the file specified in
+<I>output_score_file</I><A NAME="33553"></A> (or if this is <TT>None</TT>, no such output will be
+written).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Comments:
+</BLOCKQUOTE>
+<OL>
+<LI>The procedure has been optimized only for the BLOSUM62 similarity matrix.
+
+<P>
+</LI>
+<LI>The dynamic programming algorithm has been optimized for performance on
+Intel Itanium2 architecture. Nevertheless, the calculation is sufficiently CPU
+intensive. It takes about 20 min for an iteration, using an input sequence of
+250aa against a database containing 500,000 sequences on an Itanium2 machine. It
+could take much longer on any other machine.
+
+<P>
+</LI>
+<LI>It is advisable to have <I>gaps_in_target</I><A NAME="33557"></A> set to <TT>False</TT> when
+scanning against large databases, to avoid the local alignments inserting
+a huge number of gaps in the final alignments.
+
+<P>
+</LI>
+<LI>The statistics will not be accurate if the database does 
+not have sequences that represent the entire range of lengths possible.
+In extreme cases, where statistics cannot be calculated at all, a
+<TT>StatisticsError</TT><A NAME="33561"></A> will be raised.
+
+<P>
+</LI>
+<LI>The method can be used for fold-assignment by first building a profile for
+the target sequence by scanning against a large non-redundant sequence database
+(like swissprot) and then using the resulting profile to scan once against a database
+of sequences extracted from PDB structures. <I>gaps_in_target</I><A NAME="33563"></A> can be set to
+<TT>True</TT> in the second step to get the complete alignments that can then be
+used for modeling.
+
+<P>
+</LI>
+</OL>
+<P>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html206"
+  HREF="../examples/commands/build_profile.py">examples/commands/build_profile.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+log.verbose()
+env = environ()
+
+#-- Prepare the input files
+
+#-- Read in the sequence database
+sdb = sequence_db(env)
+sdb.read(seq_database_file='pdb95.fsa', seq_database_format='FASTA',
+         chains_list='ALL', minmax_db_seq_len=(1, 40000), clean_sequences=True)
+
+#-- Write the sequence database in binary form
+sdb.write(seq_database_file='pdb95.bin', seq_database_format='BINARY',
+          chains_list='ALL')
+
+#-- Now, read in the binary database
+sdb.read(seq_database_file='pdb95.bin', seq_database_format='BINARY',
+         chains_list='ALL')
+
+#-- Read in the target sequence/alignment
+aln = alignment(env)
+aln.append(file='toxin.ali', alignment_format='PIR', align_codes='ALL')
+
+#-- Convert the input sequence/alignment into
+#   profile format
+prf = aln.to_profile()
+
+#-- Scan sequence database to pick up homologous sequences
+prf.build(sdb, matrix_offset=-450, rr_file='${LIB}/blosum62.sim.mat',
+          gap_penalties_1d=(-500, -50), n_prof_iterations=5,
+          check_profile=False, max_aln_evalue=0.01, gaps_in_target=False)
+
+#-- Write out the profile
+prf.write(file='buildprofile.prf', profile_format='TEXT')
+
+#-- Convert the profile back to alignment format
+aln = prf.to_alignment()
+
+#-- Write out the alignment file
+aln.write(file='buildprofile.ali', alignment_format='PIR')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7198"
+  HREF="node373.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7192"
+  HREF="node366.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7186"
+  HREF="node371.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7194"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7196"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7199"
+  HREF="node373.html">pssmdb()   create</A>
+<B> Up:</B> <A NAME="tex2html7193"
+  HREF="node366.html">The profile class: using</A>
+<B> Previous:</B> <A NAME="tex2html7187"
+  HREF="node371.html">profile.scan()   Compare</A>
+ &nbsp; <B>  <A NAME="tex2html7195"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7197"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Rigid bodies</TITLE>
+<META NAME="description" CONTENT="Rigid bodies">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node459.html">
+<LINK REL="up" HREF="node455.html">
+<LINK REL="next" HREF="node461.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8553"
+  HREF="node461.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8547"
+  HREF="node455.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8543"
+  HREF="node459.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8549"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8551"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8554"
+  HREF="node461.html">Profile file</A>
+<B> Up:</B> <A NAME="tex2html8548"
+  HREF="node455.html">Restraints file</A>
+<B> Previous:</B> <A NAME="tex2html8544"
+  HREF="node459.html">Symmetry restraints</A>
+ &nbsp; <B>  <A NAME="tex2html8550"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8552"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001425000000000000000">
+Rigid bodies</A>
+</H2>
+A 'B' line should look like:
+
+<P>
+<PRE>
+B Scale_factor Atom_indices
+</PRE>
+
+<P>
+These parameters encode the rigid body information as given in
+Section&nbsp;<A HREF="node105.html#SECTION:rigidbody">5.3.4</A>. <TT>Atom_indices</TT> are the numeric indices
+of all atoms in the rigid body, and <TT>Scale_factor</TT> the scaling factor from
+system state to body orientation.
+
+<P>
+For example,
+<PRE>
+B   5   10  25   30
+</PRE>
+creates a rigid body containing atoms 5, 10, 25 and 30.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

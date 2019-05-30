@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>model.atoms -- all atoms in the model</TITLE>
+<META NAME="description" CONTENT="model.atoms -- all atoms in the model">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node164.html">
+<LINK REL="previous" HREF="node162.html">
+<LINK REL="up" HREF="node155.html">
+<LINK REL="next" HREF="node164.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4127"
+  HREF="node164.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4121"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4115"
+  HREF="node162.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4123"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4125"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4128"
+  HREF="node164.html">model.point()   return</A>
+<B> Up:</B> <A NAME="tex2html4122"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4116"
+  HREF="node162.html">model.group_restraints   all</A>
+ &nbsp; <B>  <A NAME="tex2html4124"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4126"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001168000000000000000">
+model.atoms -- all atoms in the model</A>
+</H2> <A NAME="13225"></A><A NAME="MEMB:model.atoms"></A>
+<P>
+<BLOCKQUOTE>
+This is a standard <A NAME="tex2html95"
+  HREF="http://www.python.org/">Python</A> list of all the atoms in the model.
+This can be used to query individual atom properties (<EM>e.g.</EM> coordinates) or
+to specify atoms for use in restraints, <EM>etc</EM>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Atoms can be individually accessed in two ways:
+</BLOCKQUOTE>
+<UL>
+<LI>A string of the form 'ATOM_NAME:RESIDUE_#[:CHAIN_ID]', where
+ATOM_NAME is the four character IUPAC atom name as found in a PDB file,
+RESIDUE_# is a five character residue number as it occurs in the PDB file
+of a model, and the optional CHAIN_ID is the single character chain id as
+it occurs in the PDB file. For example, if <TT>'m'</TT> is a <TT>model</TT> object,
+the carbonyl oxygen (O) in residue '10A' in chain 'A' is given by
+<TT>'m.atoms['O:10A:A']'</TT>; if the chain has no chain id, <TT>'m.atoms['O:10A']'</TT>
+would be sufficient.
+
+<P>
+</LI>
+<LI>By numeric index, starting from zero, in standard <A NAME="tex2html96"
+  HREF="http://www.python.org/">Python</A> fashion. For
+example, if <TT>'m'</TT> is a <TT>model</TT> object, <TT>'m.atoms[0]'</TT> is the first atom,
+<TT>'m.atoms[-1]'</TT> is the last atom, and <TT>'m.atoms[0:10]'</TT> is a list of the
+first 10 atoms (0 through 9). (Note that the atom numbers in PDB files and
+M<SMALL>ODELLER</SMALL> restraint files start from 1, so will always be 1 larger than any
+index you use here.)
+</LI>
+</UL>
+<P>
+<BLOCKQUOTE>See Section&nbsp;<A HREF="node356.html#CLASS:Atom">6.22</A> for more information about <TT>Atom</TT>
+objects.
+See also <I><A HREF="node307.html#MEMB:Sequence.residues">Sequence.residues</A></I><A NAME="13273"></A> and <I><A HREF="node308.html#MEMB:Sequence.chains">Sequence.chains</A></I><A NAME="13278"></A> for equivalent lists of
+residues and chains.
+See also <B><A HREF="node165.html#CMD:model.atomrange">model.atom_range()</A></B><A NAME="13283"></A>, for getting a contiguous range of atoms.
+                             
+</BLOCKQUOTE>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4127"
+  HREF="node164.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4121"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4115"
+  HREF="node162.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4123"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4125"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4128"
+  HREF="node164.html">model.point()   return</A>
+<B> Up:</B> <A NAME="tex2html4122"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4116"
+  HREF="node162.html">model.group_restraints   all</A>
+ &nbsp; <B>  <A NAME="tex2html4124"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4126"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

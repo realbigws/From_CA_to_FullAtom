@@ -1,0 +1,23 @@
+# Purpose: To create cis-peptide bond stereochemical restraints 
+#
+# Input  : RESIDUE_IDS (1 entry) (integer of the preceeding residue)
+#
+# Output : cis-Pro restraints are added to the list.
+#    
+# Note   : you must have done the STEREOCHEMICAL restraints already.
+#
+# Example (cis-peptide between residues 4 and 5):
+#
+# CALL ROUTINE = 'cispeptide', ATOM_IDS1 =  'O:4' 'C:4' 'N:5' 'CA:5', ;
+#                              ATOM_IDS2 = 'CA:4' 'C:4' 'N:5' 'CA:5'
+#
+SUBROUTINE ROUTINE = 'cispeptide'
+
+  DELETE_RESTRAINT ATOM_IDS = ATOM_IDS1
+  ADD_RESTRAINT RESTRAINT_PARAMETERS = 3 1 3 3 4 2 0 3.141593 0.087
+
+  DELETE_RESTRAINT ATOM_IDS = ATOM_IDS2
+  ADD_RESTRAINT RESTRAINT_PARAMETERS = 3 1 3 3 4 2 0 0.0 0.087
+
+  RETURN
+END_SUBROUTINE

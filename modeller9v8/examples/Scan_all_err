@@ -1,0 +1,77 @@
+#!/bin/sh
+
+currdir=`pwd`
+filespec="-name Makefile -or -name run_tests"
+
+echo  '*******************'
+echo  'Test of last lines:'
+echo  '*******************'
+echo
+
+for script in `find . $filespec  -print`
+do
+  dir=`dirname $script`
+  cd $dir
+
+  for log in `find . -name '*.log' -print`
+  do 
+    tst=`tail -1 $log`
+    if [ `echo $tst | grep 'Total CPU time' | wc -l` -ne 1 -a \
+         `echo $tst | grep 'TranRot> -----' | wc -l` -ne 1 -a \
+         `echo $tst | grep 'Closing time : ' | wc -l` -ne 1 ] ; then
+      echo
+      echo 'FILE: ' $dir/$log 
+      echo '      ' "$tst"
+    fi
+  done
+
+  cd $currdir
+done
+
+echo
+echo
+echo  '****************'
+echo  'Test of E>: '
+echo  '****************'
+
+for script in `find . $filespec  -print`
+do
+  dir=`dirname $script`
+  cd $dir
+
+  for log in `find . -name '*.log' -print`
+  do 
+    if [ `egrep 'E>' $log | wc -l` -gt 0 ] ; then
+      echo 'FILE: ' $dir/$log
+      egrep 'E>' $log
+      echo
+    fi
+  done
+
+  cd $currdir
+done
+echo
+echo
+
+echo 
+echo 
+echo '****************************************************'
+echo 'Making sure that no non-MODELLER PDB files are used: '
+echo '****************************************************'
+
+for script in `find . $filespec  -print`
+do
+  dir=`dirname $script`
+  cd $dir
+
+  for log in `find . -name '*.log' -print`
+  do 
+    if [ `grep 'pdb/' $log | grep -v 'List.ent' | wc -l` -gt 0 ] ; then
+      echo 'FILE: ' $dir/$log
+      grep 'pdb/' | grep -v 'List.ent' $log
+      echo
+    fi
+  done
+
+  cd $currdir
+done

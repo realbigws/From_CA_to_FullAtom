@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>complete_pdb() -- read a PDB file, and fill in any missing atoms</TITLE>
+<META NAME="description" CONTENT="complete_pdb() -- read a PDB file, and fill in any missing atoms">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node412.html">
+<LINK REL="up" HREF="node411.html">
+<LINK REL="next" HREF="node414.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7788"
+  HREF="node414.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7782"
+  HREF="node411.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7778"
+  HREF="node412.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7784"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7786"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7789"
+  HREF="node414.html">The salign module: high-level</A>
+<B> Up:</B> <A NAME="tex2html7783"
+  HREF="node411.html">The scripts module: utility</A>
+<B> Previous:</B> <A NAME="tex2html7779"
+  HREF="node412.html">cispeptide()   creates</A>
+ &nbsp; <B>  <A NAME="tex2html7785"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7787"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011302000000000000000">
+complete_pdb() -- read a PDB file, and fill in any missing atoms</A>
+</H2> <A NAME="37033"></A><A NAME="CMD:completepdb"></A><A NAME="37036"></A><TT>complete_pdb(env, filename, special_patches=None, transfer_res_num=False, model_segment=None, patch_default=True)</TT>
+<BR><DL>
+<DT><STRONG>Output:</STRONG></DT>
+<DD><I>mdl</I><A NAME="37043"></A>
+                             
+</DD>
+</DL>
+<BLOCKQUOTE>
+This reads in a PDB file specified by <I>filename</I><A NAME="37061"></A>, and
+fills in any missing atoms using internal coordinates. If you want to read
+in a PDB file from PDB or generated from an experiment or some other
+program, you should use this routine in preference to <B><A HREF="node170.html#CMD:model.read">model.read()</A></B><A NAME="37064"></A>,
+which does not handle missing atoms.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>special_patches</I><A NAME="37069"></A> is not <TT>None</TT>, it is called prior to filling in
+missing coordinates. This can be used to adjust the topology, <EM>e.g.</EM> by adding
+disulfide bridges. If you wish to patch terminal residues, you should also
+set <I>patch_default</I><A NAME="37074"></A> to <TT>False</TT> to turn off the default patching.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>transfer_res_num</I><A NAME="37078"></A> is <TT>True</TT>, the residue numbering from the
+original PDB is retained (by default, residues are renumbered from 1).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>model_segment</I><A NAME="37082"></A> is set, it is used to read a subset of the residues
+from the PDB file, just as in <B><A HREF="node170.html#CMD:model.read">model.read()</A></B><A NAME="37085"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>In order for this routine to work correctly, you should first have read in
+topology and parameter libraries. The new <TT>model</TT> object is returned
+on success.
+
+</BLOCKQUOTE>
+
+<P>
+<B>Example:</B> See <B><A HREF="node246.html#CMD:selection.energy">selection.energy()</A></B><A NAME="37097"></A>, <B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="37102"></A> command.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7788"
+  HREF="node414.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7782"
+  HREF="node411.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7778"
+  HREF="node412.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7784"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7786"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7789"
+  HREF="node414.html">The salign module: high-level</A>
+<B> Up:</B> <A NAME="tex2html7783"
+  HREF="node411.html">The scripts module: utility</A>
+<B> Previous:</B> <A NAME="tex2html7779"
+  HREF="node412.html">cispeptide()   creates</A>
+ &nbsp; <B>  <A NAME="tex2html7785"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7787"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

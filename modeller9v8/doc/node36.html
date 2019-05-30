@@ -1,0 +1,801 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Frequently asked questions (FAQ) and examples</TITLE>
+<META NAME="description" CONTENT="Frequently asked questions (FAQ) and examples">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node37.html">
+<LINK REL="previous" HREF="node35.html">
+<LINK REL="up" HREF="node35.html">
+<LINK REL="next" HREF="node37.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1815"
+  HREF="node37.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1809"
+  HREF="node35.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1803"
+  HREF="node35.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1811"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1813"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1816"
+  HREF="node37.html">MODELLER updates</A>
+<B> Up:</B> <A NAME="tex2html1810"
+  HREF="node35.html">Frequently asked questions and</A>
+<B> Previous:</B> <A NAME="tex2html1804"
+  HREF="node35.html">Frequently asked questions and</A>
+ &nbsp; <B>  <A NAME="tex2html1812"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1814"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00810000000000000000"></A> <A NAME="SECTION:faq"></A><A NAME="3870"></A>
+<BR>
+Frequently asked questions (FAQ) and examples
+</H1>
+
+<P>
+Please also check the
+<A NAME="tex2html59"
+  HREF="http://salilab.org/archives/modeller_usage/">mailing list archives</A>
+and the <A NAME="tex2html60"
+  HREF="http://salilab.org/modeller/release.html#issues">release notes</A>.
+
+<P>
+
+<OL>
+<LI><B>I want to build a model of a chimeric protein based on two 
+known structures. Alternatively, I want to build a multi-domain protein 
+model using templates corresponding only to the individual domains.</B>
+
+<P>
+This can be accomplished using the standard <TT>automodel</TT> class
+(see Chapter&nbsp;<A HREF="node15.html#CHAPTERAUTOMODEL">2</A>).
+The alignment should be as follows when the chimera is a 
+combination of proteins A and B:
+
+<P>
+<PRE>
+proteinA  aaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------------
+proteinB  ----------------------------bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb 
+chimera   aaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+</PRE>
+
+<P>
+In the <TT>PIR</TT> format the alignment file is:
+
+<P>
+<PRE>
+&gt;P1;proteinA
+structureX:proteinA
+aaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------------*
+&gt;P1;proteinB
+structureX:proteinB
+----------------------------bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb*
+&gt;P1;chimera
+sequence:chimera
+aaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb*
+</PRE>
+
+<P>
+If no additional information is available about the relative orientation 
+of the two domains the resulting model will probably have an incorrect 
+relative orientation of the two domains when the overlap between
+A and B is non-existing or short. To obtain satisfactory
+relative orientation of modeled domains in such cases, orient
+the two template structures appropriately before the modeling.
+
+<P>
+</LI>
+<LI><B>I don't want to use one region of a template for construction
+of my model.</B>
+
+<P>
+The easiest way to achieve this is to not align that region of the template
+with the target sequence. If region <TT>'bbbbbbbb'</TT> of the template should 
+not be used as a template for region <TT>'eeeee'</TT> of the target sequence the 
+alignment should be like this:
+
+<P>
+<PRE>
+template  aaaaaaaaaaaaaaaaaaaaaaaa-----bbbbbbbbcccccccccccccccccccccccccccccc
+target    ddddddddddddddddddddddddeeeee--------ffffffffffffffffffffffffffffff
+</PRE>
+
+<P>
+The effect of this alignment is that no homology-derived restraints will 
+be produced for region <TT>'eeeee'</TT>.
+
+<P>
+</LI>
+<LI><B>I want to explicitly force certain Pro residues to the 
+<I>cis</I> <IMG
+ WIDTH="15" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img6.png"
+ ALT="$ \omega $">
+ conformation.</B>
+
+<P>
+M<SMALL>ODELLER</SMALL> should usually be allowed to handle this automatically 
+<EM>via</EM> the omega dihedral angle restraints, which are calculated
+by default.
+
+<P>
+<PRE>
+from modeller import *
+from modeller.automodel import *
+from modeller.scripts import cispeptide
+
+# Redefine the special_restraints routine to force Pro to cis conformation:
+# (this routine is empty by default):
+class MyModel(automodel):
+    def special_restraints(self, aln):
+        a = self.atoms
+        cispeptide(self.restraints,
+                   atom_ids1=(a['O:4'], a['C:4'], a['N:5'], a['CA:5']),
+                   atom_ids2=(a['CA:4'], a['C:4'], a['N:5'], a['CA:5']))
+
+# This is as usual:
+log.verbose()
+env = environ()
+
+a = MyModel(env, alnfile='align1.ali', knowns='templ1', sequence='targ1')
+a.make()
+</PRE>
+
+<P>
+</LI>
+<LI><B>How can I select/remove/add a set of restraints?</B>
+
+<P>
+Restraints can be read from a file by <B><A HREF="node214.html#CMD:Restraints.append">Restraints.append()</A></B><A NAME="4033"></A>, calculated 
+by <B><A HREF="node202.html#CMD:Restraints.make">Restraints.make()</A></B><A NAME="4038"></A> or <B><A HREF="node203.html#CMD:Restraints.makedistance">Restraints.make_distance()</A></B><A NAME="4043"></A>,
+or added ``manually'' by <B><A HREF="node210.html#CMD:Restraints.add">Restraints.add()</A></B><A NAME="4048"></A>.
+<B><A HREF="node206.html#CMD:Restraints.pick">Restraints.pick()</A></B><A NAME="4053"></A> picks those restraints for objective function
+calculation that restrain the selected atoms only.
+The <TT>'automodel.homcsr()'</TT> routine contains examples 
+of selecting atoms when generating restraints
+by <B><A HREF="node203.html#CMD:Restraints.makedistance">Restraints.make_distance()</A></B><A NAME="4059"></A>. There are also commands
+for adding and unselecting single restraints, <B><A HREF="node210.html#CMD:Restraints.add">Restraints.add()</A></B><A NAME="4064"></A> 
+and <B><A HREF="node211.html#CMD:Restraints.unpick">Restraints.unpick()</A></B><A NAME="4069"></A>, respectively. If you do <B><A HREF="node209.html#CMD:Restraints.condense">Restraints.condense()</A></B><A NAME="4074"></A>, 
+the unselected restraints will be deleted. This
+is useful for getting rid of the unwanted restraints completely.
+
+<P>
+</LI>
+<LI><B>I want to change the default optimization or refinement protocol.</B>
+
+<P>
+See Section&nbsp;<A HREF="node19.html#SECTION:model-changeopt">2.2.2</A>.
+
+<P>
+</LI>
+<LI><B>I want to build an all hydrogen atom model with water molecules and 
+other non-protein atoms (atoms in the HETATM records in the PDB file).</B>
+
+<P>
+See Sections <A HREF="node18.html#SECTION:model-ligand">2.2.1</A> and <A HREF="node22.html#SECTION:model-default-allh">2.2.5</A>
+for some examples.
+
+<P>
+<PRE>
+from modeller import *
+from modeller.automodel import *
+
+log.verbose()
+env = environ()
+env.io.hydrogen = env.io.hetatm = env.io.water = True
+
+a = allhmodel(env, alnfile='align1.ali', knowns='templ1', sequence='targ1')
+a.make()
+</PRE>
+
+<P>
+</LI>
+<LI><B>How do I build a model with water molecules or residues that 
+do not have an entry in the topology and/or parameter files?</B>
+
+<P>
+See Section&nbsp;<A HREF="node18.html#SECTION:model-ligand">2.2.1</A> for an example.
+
+<P>
+</LI>
+<LI><B>How do I define my own residue types, such as D-amino acids,
+special ligands, and unnatural amino-acids? <A NAME="FAQ:restop"></A></B>
+
+<P>
+This is a painful area in all molecular modeling programs. However,
+C<SMALL>HARMM</SMALL> and X-PLOR provide a reasonably straightforward solution
+<EM>via</EM> the residue topology and parameter libraries. M<SMALL>ODELLER</SMALL> uses 
+C<SMALL>HARMM</SMALL> topology and parameter library format and also extends the options
+by allowing for a generic ``BLK'' residue type (Section&nbsp;<A HREF="node100.html#SECTION:block">5.2.1</A>). 
+This BLK residue type circumvents the need for editing any library files,
+but it is not always possible to use it. Due to its conformational
+rigidity, it is also not as accurate as a normal residue 
+type. In order to define a new residue type in the M<SMALL>ODELLER</SMALL> 
+libraries, you have to follow the series of steps described below.
+As an example, we will define the ALA residue without any hydrogen 
+atoms. You can add an entry to the M<SMALL>ODELLER</SMALL> topology or parameter file; 
+you can also use your own topology or parameter files. 
+For more information, please see the C<SMALL>HARMM</SMALL> manual.
+
+<P>
+
+<OL>
+<LI>Define the new residue entry in the residue topology file (RTF), 
+say <TT>'top_heav.lib'</TT>.
+
+<P>
+<PRE>
+RESI ALA      0.00000
+ATOM N    NH1    -0.29792
+ATOM CA   CT1     0.09563
+ATOM CB   CT3    -0.17115
+ATOM C    C       0.69672
+ATOM O    O      -0.32328
+BOND CB CA    N CA    O C    C CA    C +N
+IMPR C CA +N O     CA N C CB
+IC -C    N     CA    C         1.3551  126.4900  180.0000  114.4400    1.5390
+IC N     CA    C     +N        1.4592  114.4400  180.0000  116.8400    1.3558
+IC +N    CA    *C    O         1.3558  116.8400  180.0000  122.5200    1.2297
+IC CA    C     +N    +CA       1.5390  116.8400  180.0000  126.7700    1.4613
+IC N     C     *CA   CB        1.4592  114.4400  123.2300  111.0900    1.5461
+IC N     CA    C     O         1.4300  107.0000    0.0000  122.5200    1.2297
+PATC FIRS NTER LAST CTER
+</PRE>
+
+<P>
+You can obtain an initial approximation to this entry by defining the new
+residue type using the residue type editor in <A NAME="tex2html61"
+  HREF="http://www.accelrys.com/quanta/">Q<SMALL>UANTA</SMALL></A> and then writing it
+to a file.
+
+<P>
+The RESI record specifies the C<SMALL>HARMM</SMALL> residue name, which can be up to four
+characters long and is usually the same as the PDB residue name (exceptions
+are the potentially charged residues where the different charge states
+correspond to different C<SMALL>HARMM</SMALL> residue types). The number gives the 
+total residue charge.
+
+<P>
+The ATOM records specify the IUPAC (<EM>i.e.</EM>, PDB) atom names and the C<SMALL>HARMM</SMALL> atom 
+types for all the atoms in the residue. The number at the end of each ATOM
+record gives the partial atomic charge.
+
+<P>
+The BOND records specify all the covalent bonds between the atoms in the
+residue (<EM>e.g.</EM>, there are bonds CB-CA, N-CA, O-C, etc.). In addition, 
+symbol <TT>'+'</TT> is used to indicate the bonds to the subsequent residue in the 
+chain (<EM>e.g.</EM>, C - +N). The covalent angles and dihedral angles are calculated 
+automatically from the list of chemical bonds.
+
+<P>
+The IMPR records specify the improper dihedral angles, generally used
+to restrain the planarity of various groups (<EM>e.g.</EM>, peptide bonds and 
+sidechain rings). See also below.
+
+<P>
+The IC (internal coordinate) records are used for constructing
+the initial Cartesian coordinates of a residue. An entry 
+
+<P>
+<P><!-- MATH
+ \begin{displaymath}
+IC \quad a \quad b \quad c \quad d \quad d_{ab} \quad \alpha_{abc} \quad 
+\Theta_{abcd} \quad \alpha_{bcd} \quad d_{cd}
+\end{displaymath}
+ -->
+</P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="338" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img20.png"
+ ALT="$\displaystyle IC \quad a \quad b \quad c \quad d \quad d_{ab} \quad \alpha_{abc} \quad
+\Theta_{abcd} \quad \alpha_{bcd} \quad d_{cd}
+$">
+</DIV><P>
+</P>
+
+<P>
+specifies distances <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img14.png"
+ ALT="$ d$">
+, angles <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$ \alpha $">
+, and either dihedral angles
+or improper dihedral angles <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img21.png"
+ ALT="$ \Theta$">
+ between atoms <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.png"
+ ALT="$ a$">
+, <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.png"
+ ALT="$ b$">
+, <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$ c$">
+ and
+<IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img14.png"
+ ALT="$ d$">
+, given by their IUPAC names. The improper dihedral angle 
+is specified when the third atom, <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$ c$">
+, is preceded by a star, 
+<TT>'*'</TT>. As before, the <TT>'-'</TT> and <TT>'+'</TT> prefixes for the atom names select
+the corresponding atom from the preceding and subsequent residues,
+respectively. The distances are in angstroms, angles in degrees.
+The distinction between the dihedral angles and 
+improper dihedral angles is unfortunate since they are the
+same mathematically, except that by convention when using the
+equations, the order of the atoms for a dihedral angle is <IMG
+ WIDTH="35" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img25.png"
+ ALT="$ abcd$">
+ 
+and for an improper dihedral angle it is <IMG
+ WIDTH="35" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img26.png"
+ ALT="$ acbd$">
+.
+
+<P>
+The PATC record specifies the default patching residue type when the
+current residue type is the first or the last residue in a chain.
+
+<P>
+</LI>
+<LI>You have to make sure that all the C<SMALL>HARMM</SMALL> atom types of the 
+new residue type occur in the MASS records at the beginning
+of the topology library: Add your entry at the end of the MASS list if
+necessary. If you added any new C<SMALL>HARMM</SMALL> atom types, you also have to 
+add them to the radii libraries, <TT>'modlib/radii.lib'</TT> and 
+<TT>'modlib/radii14.lib'</TT>. These libraries list the atomic radii for the 
+different topology models, for the long range and 1-4 non-bonded
+soft-sphere<A NAME="4108"></A> terms, respectively. The full names of the files that are 
+used during calculation are given by the environment variables 
+<TT>$RADII_LIB</TT> and <TT>$RADII14_LIB</TT>.
+
+<P>
+</LI>
+<LI>Optionally, you can add the residue entry to the library of
+M<SMALL>ODELLER</SMALL> topology models, <TT>'modlib/models.lib'</TT>. The runtime
+version of this library is specified by the environment variable
+<TT>$MODELS_LIB</TT>. This library specifies which subsets of atoms 
+in the residue are used for each of the possible topologies.
+Currently, there are 10 topologies selected by <I><A HREF="node153.html#MEMB:Topology.submodel">Topology.submodel</A></I><A NAME="4116"></A>
+(3 is default):
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TD ALIGN="LEFT">1</TD>
+<TD ALIGN="LEFT">ALLH</TD>
+<TD ALIGN="LEFT">all atoms</TD>
+</TR>
+<TR><TD ALIGN="LEFT">2</TD>
+<TD ALIGN="LEFT">POL</TD>
+<TD ALIGN="LEFT">polar hydrogens only</TD>
+</TR>
+<TR><TD ALIGN="LEFT">3</TD>
+<TD ALIGN="LEFT">HEAV</TD>
+<TD ALIGN="LEFT">non-hydrogen atoms only</TD>
+</TR>
+<TR><TD ALIGN="LEFT">4</TD>
+<TD ALIGN="LEFT">MCCB</TD>
+<TD ALIGN="LEFT">non-hydrogen mainchain (N, C, CA, O) and CB atoms</TD>
+</TR>
+<TR><TD ALIGN="LEFT">5</TD>
+<TD ALIGN="LEFT">MNCH</TD>
+<TD ALIGN="LEFT">non-hydrogen mainchain atoms only</TD>
+</TR>
+<TR><TD ALIGN="LEFT">6</TD>
+<TD ALIGN="LEFT">MCWO</TD>
+<TD ALIGN="LEFT">non-hydrogen mainchain atoms without carbonyl O</TD>
+</TR>
+<TR><TD ALIGN="LEFT">7</TD>
+<TD ALIGN="LEFT">CA</TD>
+<TD ALIGN="LEFT">CA atoms only</TD>
+</TR>
+<TR><TD ALIGN="LEFT">8</TD>
+<TD ALIGN="LEFT">MNSS</TD>
+<TD ALIGN="LEFT">non-hydrogen mainchain atoms and disulfide bonds</TD>
+</TR>
+<TR><TD ALIGN="LEFT">9</TD>
+<TD ALIGN="LEFT">CA3H</TD>
+<TD ALIGN="LEFT">reduced model with a small number of sidechain interaction
+            centers</TD>
+</TR>
+<TR><TD ALIGN="LEFT">10</TD>
+<TD ALIGN="LEFT">CACB</TD>
+<TD ALIGN="LEFT">CA and CB atoms only</TD>
+</TR>
+</TABLE>
+
+<P>
+The Ala entry is:
+
+<P>
+<PRE>
+#
+         ALLH POLH HEAV MCCB MNCH MCWO CA   MNSS CA3H CACB
+*
+RESI ALA
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    HN   #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CAH  CT1
+ATOM     HB   #### #### #### #### #### #### #### CH3E ####
+ATOM     CT3  CT3  CT3  CT3  #### #### #### #### #### CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+</PRE>
+
+<P>
+The residue entries in this library are separated by stars. The
+<TT>'####'</TT> string indicates a missing atom. The atom names for the 
+present atoms are arbitrary. The order of the atoms must be the same
+as in the C<SMALL>HARMM</SMALL> residue topology library. If a residue type
+does not have an entry in this library, all atoms are used for
+all topologies.
+
+<P>
+</LI>
+<LI>You have to add the new residue type to the residue type library,
+<TT>'modlib/restyp.lib'</TT>. The execution version of this file is
+specified by the environment variable <TT>$RESTYP_LIB</TT>. See the comments
+in the file for further information.
+
+<P>
+Every residue in the C<SMALL>HARMM</SMALL> topology file has to have an entry 
+in the <TT>$RESTYP_LIB</TT> library, but not every residue entry in the
+<TT>$RESTYP_LIB</TT> library needs an entry in the residue topology file. If you
+need to edit the <TT>$RESTYP_LIB</TT> file, it is recommended that you change
+a copy of it, and provide that file to the <B><A HREF="node110.html#CMD:environ">environ()</A></B><A NAME="4129"></A> constructor.
+
+<P>
+</LI>
+<LI>In general, when you add a new residue type, you also add new
+chemical bonds, angles, dihedral angles, improper dihedral angles,
+and non-bonded interactions,
+new in the sense that a unique combination of C<SMALL>HARMM</SMALL> atoms types
+is involved whose interaction parameters are not yet specified in the
+parameter library (see also Section&nbsp;<A HREF="node100.html#SECTION:restopundefined">5.2.1</A>).
+In such a case, you will get a number of
+warning and/or error messages when you generate the stereochemical
+restraints by the <B><A HREF="node202.html#CMD:Restraints.make">Restraints.make()</A></B><A NAME="4135"></A> command. These messages
+can sometimes be ignored because M<SMALL>ODELLER</SMALL> will guess the 
+values for the missing parameters<A NAME="3961"></A> from the
+current Cartesian coordinates of the model. When this is not accurate
+enough or if the necessary coordinates are undefined
+you have to specify the parameters explicitly in the parameter 
+library. Search for BOND, ANGL, DIHE, and IMPR sections in the 
+parameters library file and use the existing entries to guess your
+new entries. Note that you can use dummy atom types <TT>'X'</TT> to create
+general dihedral (<EM>i.e.</EM>, <TT>X A A X</TT>) and improper dihedral angle (<EM>i.e.</EM>, 
+<TT>A X X A</TT>) entries, where <TT>A</TT> stands for any of the real C<SMALL>HARMM</SMALL> 
+atom types. 
+For the dihedral angle cosine terms, the C<SMALL>HARMM</SMALL> convention for the phase
+is different for 180<IMG
+ WIDTH="11" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img27.png"
+ ALT="$ {}^{o}$">
+ from M<SMALL>ODELLER</SMALL>'s (Eq.&nbsp;<A HREF="node450.html#eq:cosine">A.83</A>).
+If you use non-bonded Lennard-Jones<A NAME="4153"></A> terms, you also have
+to add a NONB entry for each new atom type. If you use the default soft-sphere<A NAME="4154"></A> non-bonded restraints, you have already taken care of it by
+adding the new atom types to the <TT>$RADII_LIB</TT> and <TT>$RADII_LIB</TT>
+libraries.
+</LI>
+</OL>
+
+<P>
+</LI>
+<LI><B>How do I define my own patching residue types? <A NAME="FAQ:respatch"></A></B>
+
+<P>
+This is even messier than defining a new residue type. As an example,
+we will define the patching residue for establishing a disulfide
+bond between two CYS residues.
+
+<P>
+<PRE>
+PRES DISU         -0.36 ! Patch for disulfides. Patch must be 1-CYS and 2-CYS.
+ATOM 1:CB  CT2    -0.10 !
+ATOM 1:SG  SM     -0.08 !           2:SG--2:CB--
+ATOM 2:SG  SM     -0.08 !          /
+ATOM 2:CB  CT2    -0.10 ! -1:CB--1:SG
+DELETE ATOM 1:HG
+DELETE ATOM 2:HG
+BOND 1:SG 2:SG
+IC 1:CA  1:CB  1:SG  2:SG      0.0000    0.0000  180.0000    0.0000    0.0000
+IC 1:CB  1:SG  2:SG  2:CB      0.0000    0.0000   90.0000    0.0000    0.0000
+IC 1:SG  2:SG  2:CB  2:CA      0.0000    0.0000  180.0000    0.0000    0.0000
+</PRE>
+
+<P>
+The PRES record specifies the C<SMALL>HARMM</SMALL> patching residue name (up to 
+four characters).
+
+<P>
+The ATOM records have the same meaning as for the RESI residue types
+described above. The extension is that the IUPAC atom names (listed
+first) must be prefixed by the index of the residue that is patched, if the
+patch affects multiple residues.
+In this example, there are two CYS residues that are patched, thus
+the prefixes 1 and 2. When using the <B><A HREF="node176.html#CMD:model.patch">model.patch()</A></B><A NAME="4159"></A>
+command, the order of the patched residues specified by <I>residues</I><A NAME="4164"></A> 
+must correspond to these indices (this is only important when the 
+patch is not symmetric, unlike the <TT>'DISU'</TT> patch in this example).
+
+<P>
+DELETE records specify the atoms to be deleted, the two hydrogens bonded
+to the two sulfurs in this case.
+
+<P>
+The BOND and IC (internal coordinate) records are the same as those for 
+the RESI residues, except that the atom names are prefixed with the
+patched residue indices.
+
+<P>
+</LI>
+<LI><B>Is it possible to restrain secondary structure in the 
+target sequence?</B>
+
+<P>
+Yes -- see Section&nbsp;<A HREF="node27.html#SECTION:model-addrsr">2.2.10</A> for an example.
+
+<P>
+</LI>
+<LI><B>I want to patch the N-terminal or (C-terminal) residue (<EM>e.g.</EM>,
+to model acetylation properly), but the <B><A HREF="node176.html#CMD:model.patch">model.patch()</A></B><A NAME="4169"></A> command does not work.</B>
+
+<P>
+This is probably because the N-terminus is patched by default with
+the NTER patching residue (corresponding to -NH3<IMG
+ WIDTH="15" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img28.png"
+ ALT="$ ^+$">
+) and a patched 
+residue must not be patched again. The solution is to turn the default 
+patching off by <TT>env.patch_default = False</TT> before the 
+<B><A HREF="node174.html#CMD:model.generatetopology">model.generate_topology()</A></B><A NAME="4174"></A> command is called.
+
+<P>
+</LI>
+<LI><B>Is it possible to use templates with the coordinates for 
+<!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+ atoms only?</B>
+
+<P>
+Yes. You do not have to do anything special.
+
+<P>
+</LI>
+<LI><B>How do I analyze the output <TT>log</TT> file? <A NAME="FAQ:log"></A></B>
+
+<P>
+First, check for the error messages by searching for string
+<TT>'_E&gt;''</TT>. These messages can only rarely be ignored. Next, check for the 
+warning messages by searching for string <TT>'_W&gt;''</TT>. These messages
+can almost always be ignored. If everything is OK so far, the most 
+important part of the <TT>log</TT> file is the output of the <B><A HREF="node246.html#CMD:selection.energy">selection.energy()</A></B><A NAME="4184"></A>
+command for each model. This is where the violations of
+restraints are listed. When there are too many too violated restraints,
+more optimization or a different alignment is needed. What is too many
+and too much? It depends on the restraint type and is best learned by
+doing <B><A HREF="node246.html#CMD:selection.energy">selection.energy()</A></B><A NAME="4189"></A> on an X-ray structure or a good model to get a
+feel for it.
+You may also want to look at the output of command <B><A HREF="node277.html#CMD:alignment.check">alignment.check()</A></B><A NAME="4194"></A>,
+which should be self-explanatory. I usually ignore the other parts of the
+<TT>log</TT> file.
+
+<P>
+</LI>
+<LI><B>How do I prevent ``knots'' in the final models?</B>
+
+<P>
+The best way to prevent knots is to start with a starting 
+structure that is as close to the desired final model as 
+possible. Other than that, the only solution at this point is to calculate 
+independently many models and hope that in some runs there won't 
+be knots. Knots usually occur when one or more neighboring long 
+insertions (<EM>i.e.</EM>, longer than 15 residues) are modeled from
+scratch. The reason is that an insertion is build from a randomized
+distorted structure that is located approximately between the two 
+anchoring regions. Under such conditions, it is easy for the 
+optimizer to ``fall'' into a knot and then not be able to recover from it.
+Sometimes knots result from an incorrect alignment, especially when 
+more than one template is used. When the alignment is correct,
+knots are a result of optimization not being good enough.
+However, making optimization more
+thorough by increasing the CPU time would not be worth it on the 
+average as knots occur relatively infrequently. The excluded 
+volume restraints are already included in
+standard comparative modeling with the <TT>automodel</TT> class
+(see Chapter&nbsp;<A HREF="node15.html#CHAPTERAUTOMODEL">2</A>).
+
+<P>
+</LI>
+<LI><B>What is considered to be the minimum length of a sequence motif
+ necessary to derive meaningful constraints from the alignment to use in
+ modeling.. one, two, three, or more?</B>
+
+<P>
+Usually more than that (dozens if you want just to detect reliable
+similarity, and even more if you want a real model). 
+It is good to have at least 35-40% sequence identity to build a model.
+Sometimes even 30% is OK.
+
+<P>
+</LI>
+<LI><B>Does Modeller have a graphical interface (GUI) ?</B>
+
+<P>
+No; Modeller is run from the command line, and uses a <A NAME="tex2html58"
+  HREF="http://www.python.org/">Python</A> script to
+direct it. Graphical interfaces to Modeller are commercially available
+<A NAME="tex2html62"
+  HREF="http://www.accelrys.com/products/modeler/index.html">from Accelrys</A>.
+Also, check the <A NAME="tex2html63"
+  HREF="http://salilab.org/modeller/wiki/Links">links page</A>
+in the Modeller wiki for GUIs contributed by Modeller users.
+
+<P>
+</LI>
+<LI><B>What do the `Alignment sequence not found in PDB file' or
+`Number of residues in the alignment and pdb files are different' errors mean?</B>
+
+<P>
+When you give M<SMALL>ODELLER</SMALL> an alignment, it also needs to read the structure
+of the known proteins (templates) from PDB files. In order to correctly match
+coordinates to the residues specified in the alignment, the sequences in the
+PDB file and the alignment file must be the same (although obviously you
+can add gap or chain break characters to your alignment). If they are not,
+you see this error. (Note that M<SMALL>ODELLER</SMALL> takes the PDB sequence from the
+ATOM and HETATM PDB records, not the SEQRES records.) You should also check
+the header of your alignment file, to make sure that you are reading the
+correct chain and residue numbers from your PDB.
+
+<P>
+To see the sequence that M<SMALL>ODELLER</SMALL> reads from the PDB file <TT>'1BY8.pdb'</TT>,
+use this short script to produce a <TT>'1BY8.seq'</TT> sequence file:
+<PRE>
+from modeller import *
+env = environ()
+code = '1BY8'
+mdl = model(env, file=code)
+aln = alignment(env)
+aln.append_model(mdl, align_codes=code)
+aln.write(file=code+'.seq')
+</PRE>
+
+<P>
+</LI>
+<LI><B>Can I make a web interface or GUI for Modeller?</B>
+
+<P>
+Certainly, although you should bear in mind that the Modeller license is
+non-transferable, and permits free usage only for academic purposes.
+
+<P>
+For web interfaces, users must obtain their own Modeller license key directly
+from us; your web interface should provide a text box into which users should
+put their license key, and then use that input to set the
+<TT>KEY_MODELLER9v8</TT> environment variable, as is done by our own
+<A NAME="tex2html64"
+  HREF="http://salilab.org/modweb/">M<SMALL>OD</SMALL>W<SMALL>EB</SMALL></A> and <A NAME="tex2html65"
+  HREF="http://salilab.org/modloop/">M<SMALL>OD</SMALL>L<SMALL>OOP</SMALL></A> interfaces. (Note that you will first need to edit
+the file <TT>modlib/modeller/config.py</TT> in your Modeller installation to remove
+the line that sets the license, since this takes precedence over the
+environment variable setting.)
+
+<P>
+For GUIs or other interfaces (<EM>e.g.</EM> frameworks), users should obtain and
+license Modeller directly from us, rather than it being bundled with your
+software.
+
+<P>
+In all cases, please update the <A NAME="tex2html66"
+  HREF="http://salilab.org/modeller/wiki/Links">links page</A>
+in the Modeller wiki, to advertise your software to Modeller users.
+
+<P>
+</LI>
+<LI><B>I get warnings such as 'Could not find platform independent
+libraries', 'import site failed' or 'No module named socket'</B>
+
+<P>
+These refer to missing Python modules on your system. In the first two cases,
+these are just warnings that can be safely ignored - most Modeller scripts do
+not need Python modules anyway, and will run successfully. However, some
+Modeller scripts, such as the parallel task support, <I>do</I> need modules
+(such as socket) and will not function without them. Please refer to the
+<A NAME="tex2html67"
+  HREF="http://salilab.org/modeller/release.html#issues">release notes</A>
+for two possible solutions in this case.
+
+<P>
+</LI>
+</OL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1815"
+  HREF="node37.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1809"
+  HREF="node35.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1803"
+  HREF="node35.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1811"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1813"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1816"
+  HREF="node37.html">MODELLER updates</A>
+<B> Up:</B> <A NAME="tex2html1810"
+  HREF="node35.html">Frequently asked questions and</A>
+<B> Previous:</B> <A NAME="tex2html1804"
+  HREF="node35.html">Frequently asked questions and</A>
+ &nbsp; <B>  <A NAME="tex2html1812"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1814"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

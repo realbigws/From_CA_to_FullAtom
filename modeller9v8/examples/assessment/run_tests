@@ -1,0 +1,4 @@
+#!/bin/sh -v
+mod9v8 assess_dope.py
+mod9v8 assess_normalized_dope.py
+mod9v8 assess_ga341.py

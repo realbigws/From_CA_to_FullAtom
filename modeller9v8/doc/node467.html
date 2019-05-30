@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>TOP models and alignments</TITLE>
+<META NAME="description" CONTENT="TOP models and alignments">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node468.html">
+<LINK REL="previous" HREF="node466.html">
+<LINK REL="up" HREF="node465.html">
+<LINK REL="next" HREF="node468.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8655"
+  HREF="node468.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8649"
+  HREF="node465.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8643"
+  HREF="node466.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8651"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8653"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8656"
+  HREF="node468.html">TOP to Python correspondence</A>
+<B> Up:</B> <A NAME="tex2html8650"
+  HREF="node465.html">Converting TOP scripts to</A>
+<B> Previous:</B> <A NAME="tex2html8644"
+  HREF="node466.html">TOP commands and variables</A>
+ &nbsp; <B>  <A NAME="tex2html8652"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8654"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001522000000000000000"></A>
+<A NAME="SUBSECTION:topmdlaln"></A>
+<BR>
+T<SMALL>OP</SMALL> models and alignments
+</H2>
+In T<SMALL>OP</SMALL>, commands may operate implicitly on one or more of the standard models
+or alignments in memory. For example, <B>ALIGN</B> always operates on ALIGNMENT1,
+<B>READ_MODEL</B> always operates on MODEL1, and <B>READ_MODEL2</B> always
+operates on MODEL2. MODEL2 is a `cut-down' model, used only for some operations
+(such as <B>SUPERPOSE</B>) and cannot be used to build full models, for example.
+
+<P>
+In <A NAME="tex2html263"
+  HREF="http://www.python.org/">Python</A>, the models and alignments (and sequence databases, densities, <EM>etc</EM>.)
+are explicit, and are represented by classes. You can have as many models or
+alignments as you like, provided you have enough memory. Commands are simply
+methods of these classes. For example, consider the following:
+<PRE>
+env = environ()
+aln = alignment(env)
+aln.align(gap_penalties_1d=(900, 50))
+</PRE>
+This creates a new instance of the <TT>environ</TT> class (as above, this is
+used to provide default variables and the like), and calls it <TT>'env'</TT> (you can
+call it whatever you like). This is then used to create a new <TT>alignment</TT>
+class object, called <TT>'aln'</TT>. The following <B>align()</B> command
+then operates on the <TT>'aln'</TT> alignment object. (Note, however, that new
+alignments are empty, so this example wouldn't do anything interesting.)
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8655"
+  HREF="node468.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8649"
+  HREF="node465.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8643"
+  HREF="node466.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8651"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8653"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8656"
+  HREF="node468.html">TOP to Python correspondence</A>
+<B> Up:</B> <A NAME="tex2html8650"
+  HREF="node465.html">Converting TOP scripts to</A>
+<B> Previous:</B> <A NAME="tex2html8644"
+  HREF="node466.html">TOP commands and variables</A>
+ &nbsp; <B>  <A NAME="tex2html8652"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8654"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>User-defined optimizers</TITLE>
+<META NAME="description" CONTENT="User-defined optimizers">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node258.html">
+<LINK REL="up" HREF="node252.html">
+<LINK REL="next" HREF="node260.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5519"
+  HREF="node260.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5513"
+  HREF="node252.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5509"
+  HREF="node258.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5515"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5517"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5520"
+  HREF="node260.html">The schedule class: variable</A>
+<B> Up:</B> <A NAME="tex2html5514"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Previous:</B> <A NAME="tex2html5510"
+  HREF="node258.html">actions.charmm_trajectory()   write</A>
+ &nbsp; <B>  <A NAME="tex2html5516"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5518"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011117000000000000000"></A>
+<A NAME="22925"></A>
+<A NAME="CMD:stateoptimizer"></A>
+<BR>
+User-defined optimizers
+</H2>
+
+<P>
+The <TT>optimizers</TT> module also provides a <TT>state_optimizer</TT> class.
+This class cannot be directly used to optimize the system, but instead it
+can be used as a base for you to write your own optimization algorithms in
+<A NAME="tex2html153"
+  HREF="http://www.python.org/">Python</A>. To do this, create a subclass and override the <TT>optimize</TT> method
+to do your optimization. Your optimizer does not act directly on the atom
+coordinates, but instead gets a `state' vector with the same number of elements
+as there are degrees of freedom in the system. (This allows you to also
+optimize rigid bodies, for example, without having to worry about the
+specifics of their representation.)
+
+<P>
+Several utility functions are provided:
+
+<UL>
+<LI><TT>'self.get_state()'</TT>: returns a state vector representing the current
+state of the system (x,y,z coordinates of all non-rigid atoms in the selection,
+and center of mass and rotation angles of all selected rigid bodies).
+
+<P>
+</LI>
+<LI><TT>'self.energy(state)'</TT>: given a state vector, returns the system energy
+and a similar vector of state gradients. Also updates the atom shifts
+<TT>self.shiftavr</TT> and <TT>self.shiftmax</TT> from the previous state.
+
+<P>
+</LI>
+<LI><TT>'self.next_step()'</TT>: updates the step counter <TT>self.step</TT>, and does
+any periodic actions, if defined.
+
+<P>
+</LI>
+<LI><TT>'self.finish()'</TT>: does any cleanup at the end of the optimization.
+</LI>
+</UL>
+
+<P>
+If you want to define parameters for your optimization in the same way as the
+other optimizers, set <TT>'_ok_keys'</TT> appropriately and then call
+<TT>self.get_parameter()</TT> to get their values.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html154"
+  HREF="../examples/python/steepest_descent.py">examples/python/steepest_descent.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller.optimizers import state_optimizer
+
+class SteepestDescent(state_optimizer):
+    """Very simple steepest descent optimizer, in Python"""
+
+    # Add options for our optimizer
+    _ok_keys = state_optimizer._ok_keys + ('min_atom_shift', 'min_e_diff',
+                                           'step_size', 'max_iterations')
+
+    def __init__(self, step_size=0.0001, min_atom_shift=0.01, min_e_diff=1.0,
+                 max_iterations=None, **vars):
+        state_optimizer.__init__(self, step_size=step_size,
+                                 min_atom_shift=min_atom_shift,
+                                 min_e_diff=min_e_diff,
+                                 max_iterations=max_iterations, **vars)
+
+    def optimize(self, atmsel, **vars):
+        # Do normal optimization startup
+        state_optimizer.optimize(self, atmsel, **vars)
+
+        # Get all parameters
+        alpha = self.get_parameter('step_size')
+        minshift = self.get_parameter('min_atom_shift')
+        min_ediff = self.get_parameter('min_e_diff')
+        maxit = self.get_parameter('max_iterations')
+
+        # Main optimization loop
+        state = self.get_state()
+        (olde, dstate) = self.energy(state)
+        while True:
+            for i in range(len(state)):
+                state[i] -= alpha * dstate[i]
+            (newe, dstate) = self.energy(state)
+            if abs(newe - olde) &lt; min_ediff:
+                print "Finished at step %d due to energy criterion" % self.step
+                break
+            elif self.shiftmax &lt; minshift:
+                print "Finished at step %d due to shift criterion" % self.step
+                break
+            elif maxit is not None and self.step &gt;= maxit:
+                print "Finished at step %d due to step criterion" % self.step
+                break
+            if newe &lt; olde:
+                alpha *= 2
+            else:
+                alpha /= 2
+            olde = newe
+            self.next_step()
+        self.finish()
+</PRE>
+</DD>
+</DL>  <BR>
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html155"
+  HREF="../examples/python/steepest_descent_test.py">examples/python/steepest_descent_test.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+from modeller.optimizers import actions
+from modeller.scripts import complete_pdb
+
+# Load our custom steepest descent optimizer
+from steepest_descent import SteepestDescent
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+# Read in the initial structure:
+code = '1fdn'
+mdl = complete_pdb(env, code)
+atmsel = selection(mdl)
+
+# Generate the restraints:
+mdl.restraints.make(atmsel, restraint_type='stereo', spline_on_site=False)
+
+# Optimize with our custom optimizer:
+opt = SteepestDescent(max_iterations=80)
+opt.optimize(atmsel, actions=actions.trace(5))
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5519"
+  HREF="node260.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5513"
+  HREF="node252.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5509"
+  HREF="node258.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5515"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5517"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5520"
+  HREF="node260.html">The schedule class: variable</A>
+<B> Up:</B> <A NAME="tex2html5514"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Previous:</B> <A NAME="tex2html5510"
+  HREF="node258.html">actions.charmm_trajectory()   write</A>
+ &nbsp; <B>  <A NAME="tex2html5516"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5518"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

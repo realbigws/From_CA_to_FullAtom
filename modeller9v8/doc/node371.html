@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>profile.scan() -- Compare a target profile against a database of profiles</TITLE>
+<META NAME="description" CONTENT="profile.scan() -- Compare a target profile against a database of profiles">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node372.html">
+<LINK REL="previous" HREF="node370.html">
+<LINK REL="up" HREF="node366.html">
+<LINK REL="next" HREF="node372.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7184"
+  HREF="node372.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7178"
+  HREF="node366.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7172"
+  HREF="node370.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7180"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7182"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7185"
+  HREF="node372.html">profile.build()   Build</A>
+<B> Up:</B> <A NAME="tex2html7179"
+  HREF="node366.html">The profile class: using</A>
+<B> Previous:</B> <A NAME="tex2html7173"
+  HREF="node370.html">profile.to_alignment()   profile</A>
+ &nbsp; <B>  <A NAME="tex2html7181"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7183"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011235000000000000000">
+profile.scan() -- Compare a target profile against a database of profiles</A>
+</H2> <A NAME="33328"></A><A NAME="CMD:profile.scan"></A><A NAME="33331"></A><TT>scan(profile_list_file, matrix_offset=0.0, profile_format='TEXT', rr_file='$(LIB)/as1.sim.mat', gap_penalties_1d=(-900.0, -50.0), matrix_scaling_factor=0.0069, max_aln_evalue=0.1, aln_base_filename='alignment', score_statistics=True, output_alignments=True, output_score_file=None, pssm_weights_type='HH1', summary_file='ppscan.sum', ccmatrix_offset=-200, score_type='CCMAT', psm=None)</TT>
+<BR><BLOCKQUOTE>
+This command scans the given target profile against a
+database of template profiles and reports significant alignments; the target
+profile should have been read previously with the <B><A HREF="node368.html#CMD:profile.read">profile.read()</A></B><A NAME="33378"></A> command.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>All the profiles listed in <I>profile_list_file</I><A NAME="33383"></A> should be in a 
+format that is understood by <B><A HREF="node368.html#CMD:profile.read">profile.read()</A></B><A NAME="33386"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The <I>profile_list_file</I><A NAME="33391"></A> should contain absolute or relative paths 
+to the individual template profiles, one per line.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The template profiles can also be assembled into a PSSM database, that can
+then be read in for scanning. The PSSM database can be created using the
+<B><A HREF="node118.html#CMD:environ.makepssmdb">environ.make_pssmdb()</A></B><A NAME="33394"></A> command. 
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>For the sake of both efficiency and speed, it is recommended to read
+in the template profiles as a database. (See example). The entire PSSM 
+database, consisting of tens of thousands of PSSMs,  can be read into 
+the memory of an average PC. 
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>See documentation under <B><A HREF="node368.html#CMD:profile.read">profile.read()</A></B><A NAME="33399"></A> for help on
+<I>profile_format</I><A NAME="33404"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>rr_file</I><A NAME="33407"></A> is the residue-residue substitution matrix to use
+when calculating the position-specific scoring matrix (PSSM). The
+current implementation is optimized only for the BLOSUM62 matrix.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>gap_penalties_1d</I><A NAME="33410"></A> are the gap penalties to use for the
+dynamic programming. <I>matrix_offset</I><A NAME="33413"></A> is the value to be used
+to offset the substitution matrix (used in PSSM calculation). 
+<I>ccmatrix_offset</I><A NAME="33416"></A> is used to offset the scoring matrix during
+dynamic programing. The most optimal values for these parameters are: 
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>matrix_offset</I><A NAME="33419"></A> = -450 (for the BLOSUM62 matrix)
+<I>ccmatrix_offset</I><A NAME="33422"></A> = -100
+<I>gap_penalties_1d</I><A NAME="33425"></A> = (-700, -70)
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>max_aln_evalue</I><A NAME="33428"></A> sets the threshold for the E-values. Alignments
+with e-values better than the threshold will be written out.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>aln_base_filename</I><A NAME="33431"></A> sets the base filename for the alignments. The
+output alignment filenames will be of the form ALN_BASE_FILENAME_XXXX.ali.
+The XXXX is a 4-digit integer (prefixed with sufficient zeroes) that is
+incremented for each alignment. For example, alignment_0001.ali
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>score_statistics</I><A NAME="33434"></A> is a flag that triggers the calculation of e-values.
+If set to <TT>False</TT>, the significance estimates for the alignments will not be 
+calculated. The calculation of alignment significance is similar to that 
+used for <B><A HREF="node372.html#CMD:profile.build">profile.build()</A></B><A NAME="33438"></A>. This option can be useful when there are only 
+a very small number of template profiles in <I>profile_list_file</I><A NAME="33443"></A>, 
+insufficient to calculate reliable statistics. Also see <B><A HREF="node372.html#CMD:profile.build">profile.build()</A></B><A NAME="33446"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>output_score_file</I><A NAME="33451"></A> is the name of a file into which to write the raw
+alignment scores, zscores and e-values for all the comparisons. (If it is set
+to <TT>None</TT>, no such output is written.) The various columns in the output
+file correspond to the following:
+</BLOCKQUOTE>
+<P>
+<OL>
+<LI>Index of the database profile
+</LI>
+<LI>File name of the database profile
+</LI>
+<LI>Length of the database profile
+</LI>
+<LI>Logarithm of the length of the database profile
+</LI>
+<LI>Alignment score
+</LI>
+<LI>Length normalized z-score of the alignment
+</LI>
+<LI>E-Value of the alignment
+
+<P>
+</LI>
+</OL>
+<P>
+<BLOCKQUOTE><I>summary_file</I><A NAME="33455"></A> is the name of a file into which to output a summary of all
+the significant alignments. (If it is set to <TT>None</TT>, no such output is
+written.) The format of the summary file is the following:
+</BLOCKQUOTE>
+<P>
+<OL>
+<LI>File name of target profile (empty if the profile was created with
+<B><A HREF="node296.html#CMD:alignment.toprofile">alignment.to_profile()</A></B><A NAME="33459"></A>)
+</LI>
+<LI>Length of target profile
+</LI>
+<LI>Number of the first aligned residue of the target profile
+</LI>
+<LI>Number of the last aligned residue of the target profile
+
+<P>
+</LI>
+<LI>File name of the database profile
+</LI>
+<LI>Length of the database profile
+</LI>
+<LI>Number of the first aligned residue of the database profile
+</LI>
+<LI>Number of the last aligned residue of the database profile
+
+<P>
+</LI>
+<LI>Number of equivalent positions in the alignment
+</LI>
+<LI>Alignment score
+</LI>
+<LI>Sequence identity of the alignment
+</LI>
+<LI>Length normalized z-score of the alignment
+</LI>
+<LI>E-Value of the alignment
+
+<P>
+</LI>
+<LI>Alignment file name
+</LI>
+</OL>
+<P>
+<BLOCKQUOTE>If <I>output_alignments</I><A NAME="33464"></A> is set to <TT>False</TT>, alignments will not be
+written out.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>In addition, the following details about every significant alignment is also
+written out to the log file (look for lines beginning with '&gt;'):
+</BLOCKQUOTE>
+<P>
+<OL>
+<LI>File name of target profile (empty if the profile was created with
+</LI>
+<LI>File name of the database profile
+</LI>
+<LI>Length of the database profile
+</LI>
+<LI>Alignment score
+</LI>
+<LI>Sequence identity of the alignment
+</LI>
+<LI>Length normalized z-score of the alignment
+</LI>
+<LI>E-Value of the alignment
+
+<P>
+</LI>
+</OL>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html205"
+  HREF="../examples/commands/ppscan.py">examples/commands/ppscan.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: profile.scan()
+
+from modeller import *
+
+env = environ()
+
+# First create a database of PSSMs
+env.make_pssmdb(profile_list_file = 'profiles.list',
+                matrix_offset     = -450,
+                rr_file           = '${LIB}/blosum62.sim.mat',
+                pssmdb_name       = 'profiles.pssm',
+                profile_format    = 'TEXT',
+                pssm_weights_type = 'HH1')
+
+# Read in the target profile
+prf = profile(env, file='T3lzt-uniprot90.prf', profile_format='TEXT')
+
+# Read the PSSM database
+psm = pssmdb(env, pssmdb_name = 'profiles.pssm', pssmdb_format = 'text')
+
+# Scan against all profiles in the 'profiles.list' file
+# The score_statistics flag is set to false since there are not
+# enough database profiles to calculate statistics.
+prf.scan(profile_list_file = 'profiles.list',
+         psm               = psm,
+         matrix_offset     = -450,
+         ccmatrix_offset   = -100,
+         rr_file           = '${LIB}/blosum62.sim.mat',
+         gap_penalties_1d  = (-700, -70),
+         score_statistics  = False,
+         output_alignments = True,
+         output_score_file = None,
+         profile_format    = 'TEXT',
+         max_aln_evalue    = 1,
+         aln_base_filename = 'T3lzt-ppscan',
+         pssm_weights_type = 'HH1',
+         summary_file      = 'T3lzt-ppscan.sum')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7184"
+  HREF="node372.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7178"
+  HREF="node366.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7172"
+  HREF="node370.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7180"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7182"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7185"
+  HREF="node372.html">profile.build()   Build</A>
+<B> Up:</B> <A NAME="tex2html7179"
+  HREF="node366.html">The profile class: using</A>
+<B> Previous:</B> <A NAME="tex2html7173"
+  HREF="node370.html">profile.to_alignment()   profile</A>
+ &nbsp; <B>  <A NAME="tex2html7181"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7183"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

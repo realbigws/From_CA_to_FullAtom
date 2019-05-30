@@ -1,0 +1,63 @@
+# Purpose: For a given target sequence, find all template chains in PDB.
+#          align all of them together and write the alignment to a file.
+#          calculate identity matrix and write it to a file.
+#          calculate a dendrogram and write it to the .log file.
+#
+# Input  : SEQUENCE          ... sequence code for the target;
+#          SEGFILE           ... input file with the target sequence;
+#
+# Output : SEQUENCE.ali/pap  ... output alignment files;
+#          SEQUENCE.mat      ... pairwise seq id matrix file;
+
+
+SUBROUTINE ROUTINE = 'sequence_srch'
+
+# get some filenames from SEQUENCE:
+SET OPERATION = 'CONCATENATE'
+STRING_OPERATE STRING_ARGUMENTS = SEQUENCE '.mat',  RESULT = MATRIX_FILE
+STRING_OPERATE STRING_ARGUMENTS = SEQUENCE '.ali',  RESULT = ALNFILE
+
+# SET OUTPUT = 'LONG'
+
+# This should be fine for significance tests with default matrix as1.sim.mat:
+SET GAP_PENALTIES_1D= -600 -400
+
+# SET SEARCH_RANDOMIZATIONS = 10
+# SET SEARCH_RANDOMIZATIONS = 100
+
+# SET SIGNIF_CUTOFF = 5.5 5.0
+
+SET OFF_DIAGONAL = 9999
+READ_SEQUENCE_DB # SEQ_DATABASE_FILE = '$(LIB)/CHAINS_all.seq', ;
+                 # CHAINS_LIST = '$(LIB)/CHAINS_3.0_40_XN.cod', ;
+                 # SEQ_DATABASE_FORMAT = 'PIR'
+
+READ_ALIGNMENT FILE = SEGFILE, ALIGN_CODES = SEQUENCE
+SEQUENCE_SEARCH SEARCH_TOP_LIST = 30
+
+IF ARGUMENTS = NUMB_OF_SEQUENCES 0, OPERATION = 'EQ'
+  RETURN
+END_IF
+
+WRITE_ALIGNMENT FILE = 'alignment.tmp'
+
+SET OVERHANG = 20, OFF_DIAGONAL = 150, MAX_GAP_LENGTH = 50
+
+MALIGN
+MALIGN3D GAP_PENALTIES_3D = 0 3
+SET ALIGN_BLOCK = NUMB_OF_SEQUENCES
+
+READ_ALIGNMENT FILE = SEGFILE, ADD_SEQUENCE = on, ALIGN_CODES = ALIGN_CODES SEQUENCE
+# ALIGN
+READ_TOPOLOGY FILE = TOPLIB # Only needed for ALIGN2D's psa run
+ALIGN2D GAP_PENALTIES_1D=-450 0,GAP_PENALTIES_2D=0.35 1.2 0.9 1.2 0.6 8.6 1.2 0 0
+WRITE_ALIGNMENT FILE = ALNFILE
+SET OPERATION = 'CONCATENATE'
+STRING_OPERATE STRING_ARGUMENTS = SEQUENCE '.pap',  RESULT = ALNFILE
+WRITE_ALIGNMENT FILE = ALNFILE, ALIGNMENT_FORMAT = 'PAP', ;
+  ALIGNMENT_FEATURES = 'HELIX BETA ACCESSIBILITY STRAIGHTNESS CONSERVATION INDICES'
+ID_TABLE
+DENDROGRAM
+
+RETURN
+END_SUBROUTINE

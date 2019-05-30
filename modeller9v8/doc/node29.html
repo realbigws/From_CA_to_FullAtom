@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Accessing output data after modeling is complete</TITLE>
+<META NAME="description" CONTENT="Accessing output data after modeling is complete">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node30.html">
+<LINK REL="previous" HREF="node28.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node30.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1716"
+  HREF="node30.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1710"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1704"
+  HREF="node28.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1712"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1714"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1717"
+  HREF="node30.html">Fully automated alignment and</A>
+<B> Up:</B> <A NAME="tex2html1711"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1705"
+  HREF="node28.html">Building multi-chain models with</A>
+ &nbsp; <B>  <A NAME="tex2html1713"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1715"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION007212000000000000000"></A>
+<A NAME="SECTION:model-outputs"></A>
+<BR>
+Accessing output data after modeling is complete
+</H2>
+
+<P>
+After <B><A HREF="node66.html#CMD:automodel.make">automodel.make()</A></B><A NAME="3139"></A> finishes building your model(s), the output data
+is accessible to your script as <I><A HREF="node45.html#MEMB:automodel.outputs">automodel.outputs</A></I><A NAME="3144"></A>. This variable is an
+ordinary <A NAME="tex2html49"
+  HREF="http://www.python.org/">Python</A> list, one element for each model (so <TT>a.outputs[0]</TT> refers
+to the first model, and so on). Each list element is a <A NAME="tex2html50"
+  HREF="http://www.python.org/">Python</A> dictionary
+of key:value pairs, the most important of which are:
+
+<UL>
+<LI><TT>'failure'</TT>: the <A NAME="tex2html51"
+  HREF="http://www.python.org/">Python</A> value <TT>None</TT> if no failure occurred (<EM>i.e.</EM>,
+the model was built successfully). Otherwise, it is the exception that was
+raised.
+
+<P>
+</LI>
+<LI><TT>'name'</TT>: the name of the output PDB file, if no error occurred.
+
+<P>
+</LI>
+<LI><TT>'molpdf'</TT>: the value of the M<SMALL>ODELLER</SMALL> objective function, if no error
+occurred.
+
+<P>
+</LI>
+<LI><TT>'pdfterms'</TT>: the contributions to the objective function from all
+physical restraint types (see Section&nbsp;<A HREF="node251.html#CLASS:physvalues">6.10.1</A>), if no error
+occurred.
+
+<P>
+</LI>
+<LI><TT>'xxx score'</TT>: the value of the assessment score <TT>'xxx'</TT> (<EM>e.g.</EM>,
+<TT>'GA341 score'</TT>, <TT>'DOPE score'</TT>).
+</LI>
+</UL>
+
+<P>
+If you are also building loop models, information for these is made available
+in <I><A HREF="node84.html#MEMB:loopmodel.loop.outputs">loopmodel.loop.outputs</A></I><A NAME="3172"></A>.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html52"
+  HREF="../examples/automodel/model-outputs.py">examples/automodel/model-outputs.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+from modeller.automodel import *
+
+log.verbose()
+env = environ()
+
+env.io.atom_files_directory = ['.', '../atom_files']
+
+# Build 3 models, and assess with both DOPE and GA341
+a = automodel(env, alnfile = 'alignment.ali', knowns = '5fd1',
+              sequence = '1fdx', assess_methods=(assess.DOPE, assess.GA341))
+a.starting_model= 1
+a.ending_model  = 3
+a.make()
+
+# Get a list of all successfully built models from a.outputs
+ok_models = filter(lambda x: x['failure'] is None, a.outputs)
+
+# Rank the models by DOPE score
+key = 'DOPE score'
+ok_models.sort(lambda a,b: cmp(a[key], b[key]))
+
+# Get top model
+m = ok_models[0]
+print "Top model: %s (DOPE score %.3f)" % (m['name'], m[key])
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1716"
+  HREF="node30.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1710"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1704"
+  HREF="node28.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1712"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1714"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1717"
+  HREF="node30.html">Fully automated alignment and</A>
+<B> Up:</B> <A NAME="tex2html1711"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1705"
+  HREF="node28.html">Building multi-chain models with</A>
+ &nbsp; <B>  <A NAME="tex2html1713"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1715"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

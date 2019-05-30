@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>actions.trace() -- write out optimization energies, etc</TITLE>
+<META NAME="description" CONTENT="actions.trace() -- write out optimization energies, etc">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node258.html">
+<LINK REL="previous" HREF="node256.html">
+<LINK REL="up" HREF="node252.html">
+<LINK REL="next" HREF="node258.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5493"
+  HREF="node258.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5487"
+  HREF="node252.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5481"
+  HREF="node256.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5489"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5491"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5494"
+  HREF="node258.html">actions.charmm_trajectory()   write</A>
+<B> Up:</B> <A NAME="tex2html5488"
+  HREF="node252.html">The optimizers module: optimization</A>
+<B> Previous:</B> <A NAME="tex2html5482"
+  HREF="node256.html">actions.write_structure()   write</A>
+ &nbsp; <B>  <A NAME="tex2html5490"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5492"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011115000000000000000">
+actions.trace() -- write out optimization energies, <EM>etc</EM></A>
+</H2> <A NAME="23318"></A><A NAME="CMD:actions.trace"></A><A NAME="23322"></A><TT>trace(skip, output=None)</TT>
+<BR><BLOCKQUOTE>
+This action writes out information about the optimization to a
+trace file every <I>skip</I><A NAME="23332"></A> steps, starting with the state just before the
+optimization (step 0). The type of information depends on the type of
+optimization being carried out, but generally includes the iteration number,
+energy values, and atomic shifts.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>output</I><A NAME="23335"></A> can be a standard <A NAME="tex2html148"
+  HREF="http://www.python.org/">Python</A> <TT>file</TT> object, to which the trace is
+written, or a file name. In the latter case, a file with that name is created
+(overwriting any existing file). If <I>output</I><A NAME="23342"></A> is not specified, the trace
+is written to the logfile instead.
+
+</BLOCKQUOTE>
+
+<P>
+<B>Example:</B> See <B><A HREF="node253.html#CMD:conjugategradients">conjugate_gradients()</A></B><A NAME="23348"></A> command.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

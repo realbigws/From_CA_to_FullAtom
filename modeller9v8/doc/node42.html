@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>automodel() -- prepare to build one or more comparative models</TITLE>
+<META NAME="description" CONTENT="automodel() -- prepare to build one or more comparative models">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node43.html">
+<LINK REL="previous" HREF="node41.html">
+<LINK REL="up" HREF="node41.html">
+<LINK REL="next" HREF="node43.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1981"
+  HREF="node43.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1975"
+  HREF="node41.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1969"
+  HREF="node41.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1977"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1979"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1982"
+  HREF="node43.html">automodel.library_schedule   select</A>
+<B> Up:</B> <A NAME="tex2html1976"
+  HREF="node41.html">automodel reference</A>
+<B> Previous:</B> <A NAME="tex2html1970"
+  HREF="node41.html">automodel reference</A>
+ &nbsp; <B>  <A NAME="tex2html1978"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1980"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00911000000000000000">
+automodel() -- prepare to build one or more comparative models</A>
+</H2> <A NAME="5595"></A><A NAME="CMD:automodel"></A><A NAME="5598"></A><TT>automodel(env, alnfile, knowns, sequence, deviation=None, library_schedule=None, csrfile=None, inifile=None, assess_methods=None)</TT>
+<BR><A NAME="SECTION:automodelcon"></A><BLOCKQUOTE>
+<I>alnfile</I><A NAME="5648"></A> is required, and specifies the PIR file which contains an alignment
+between <I>knowns</I><A NAME="5651"></A> (the templates) and <I>sequence</I><A NAME="5654"></A> (the target sequence).
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><A NAME="MEMB:automodel.deviation"></A><I>deviation</I><A NAME="5657"></A> controls the amount of randomization done by <TT>randomize.xyz</TT>
+or <TT>randomize.dihedrals</TT>; see also <I><A HREF="node46.html#MEMB:automodel.randmethod">automodel.rand_method</A></I><A NAME="5662"></A>. (This can also
+be set after the object is created, by assigning to <TT>'automodel.deviation'</TT>.
+The default is 4&#197;.)
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><I>library_schedule</I><A NAME="5668"></A>, if given, sets an initial value for
+<I><A HREF="node43.html#MEMB:automodel.libraryschedule">automodel.library_schedule</A></I><A NAME="5671"></A>
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>csrfile</I><A NAME="5676"></A> is set, restraints are not constructed, but are instead read
+from the user-supplied file of the same name. See
+section&nbsp;<A HREF="node25.html#SECTION:model-myrsr">2.2.8</A> for an example.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>inifile</I><A NAME="5679"></A> is set, an initial model is read from the user-supplied file of
+the same name. See section&nbsp;<A HREF="node26.html#SECTION:model-myini">2.2.9</A> for an example.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE><A NAME="MEMB:automodel.assessmethods"></A><I>assess_methods</I><A NAME="5682"></A> allows you to request assessment of the generated models
+(by default, none is done). You can provide a function, or list of functions,
+for this purpose, or use one or more of the standard functions provided in the
+<TT>assess</TT> module:
+</BLOCKQUOTE>
+<UL>
+<LI><TT>assess.GA341</TT>, which uses the GA341 method (see
+<B><A HREF="node193.html#CMD:model.assessga341">model.assess_ga341()</A></B><A NAME="5687"></A>).
+
+<P>
+</LI>
+<LI><TT>assess.DOPE</TT>, which uses the DOPE method (see
+<B><A HREF="node248.html#CMD:selection.assessdope">selection.assess_dope()</A></B><A NAME="5693"></A>).
+
+<P>
+</LI>
+<LI><TT>assess.DOPEHR</TT>, which uses the DOPE-HR method (see
+<B><A HREF="node249.html#CMD:selection.assessdopehr">selection.assess_dopehr()</A></B><A NAME="5699"></A>).
+
+<P>
+</LI>
+<LI><TT>assess.normalized_dope</TT>, which uses the normalized DOPE method
+(see <B><A HREF="node194.html#CMD:model.assessnormalizeddope">model.assess_normalized_dope()</A></B><A NAME="5705"></A>).
+</LI>
+</UL><BLOCKQUOTE>
+(This can also be set after the object is created, by assigning to
+<TT>'automodel.assess_methods'</TT>.) See Section&nbsp;<A HREF="node20.html#SECTION:model-fast">2.2.3</A> for an
+example. Note that only standard models are assessed in this way; if you are
+also building loop models, see <I><A HREF="node77.html#MEMB:loopmodel.loop.assessmethods">loopmodel.loop.assess_methods</A></I><A NAME="5711"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>By default, models are built using heavy atom-only parameters and topology. If
+you want to use different parameters, read them in before creating the
+<TT>automodel</TT> object with <B><A HREF="node148.html#CMD:Topology.read">Topology.read()</A></B><A NAME="5718"></A> and <B><A HREF="node151.html#CMD:Parameters.read">Parameters.read()</A></B><A NAME="5723"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>See section&nbsp;<A HREF="node16.html#SECTION:model-default">2.1</A> for a general example of using this
+class.
+
+</BLOCKQUOTE>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1981"
+  HREF="node43.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1975"
+  HREF="node41.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1969"
+  HREF="node41.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1977"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1979"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1982"
+  HREF="node43.html">automodel.library_schedule   select</A>
+<B> Up:</B> <A NAME="tex2html1976"
+  HREF="node41.html">automodel reference</A>
+<B> Previous:</B> <A NAME="tex2html1970"
+  HREF="node41.html">automodel reference</A>
+ &nbsp; <B>  <A NAME="tex2html1978"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1980"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>alignment.malign() -- align two or more sequences</TITLE>
+<META NAME="description" CONTENT="alignment.malign() -- align two or more sequences">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node290.html">
+<LINK REL="previous" HREF="node288.html">
+<LINK REL="up" HREF="node269.html">
+<LINK REL="next" HREF="node290.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5975"
+  HREF="node290.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5969"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5963"
+  HREF="node288.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5971"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5973"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5976"
+  HREF="node290.html">alignment.consensus()   consensus</A>
+<B> Up:</B> <A NAME="tex2html5970"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5964"
+  HREF="node288.html">alignment.align2d()   align</A>
+ &nbsp; <B>  <A NAME="tex2html5972"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5974"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00111520000000000000000">
+alignment.malign() -- align two or more sequences</A>
+</H2> <A NAME="26485"></A><A NAME="CMD:alignment.malign"></A><A NAME="26488"></A><TT>malign(rr_file='$(LIB)/as1.sim.mat', off_diagonal=100, local_alignment=False, matrix_offset=0.0, overhang=0, align_block=0, gap_penalties_1d=(-900.0, -50.0))</TT>
+<BR><BLOCKQUOTE>
+<B>IMPORTANT NOTE:</B> This command is
+<B>obsolete</B>, and is no longer maintained. It is strongly recommended that
+you use <B><A HREF="node294.html#CMD:alignment.salign">alignment.salign()</A></B><A NAME="26505"></A> instead.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>This command performs a multiple sequence alignment. 
+The sequences to be aligned are the sequences in the current alignment
+arrays.  The command uses the dynamic programming method for the best
+sequence alignment, given the gap initiation and extension penalties
+specified by <I>gap_penalties_1d</I><A NAME="26510"></A>, and residue type weights read from
+file <I>rr_file</I><A NAME="26513"></A>.  See command <B><A HREF="node287.html#CMD:alignment.align">alignment.align()</A></B><A NAME="26516"></A> for more information.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The algorithm for the multiple alignment is as follows. First,
+sequence 2 is aligned with sequence 1 (<EM>i.e.</EM>, block of sequences 
+from 1-<I>align_block</I><A NAME="26522"></A>). Next, sequence 3 is aligned
+with an average of the aligned sequences 1 and 2; <EM>i.e.</EM>, the weight
+matrix is an average of the weights 1-3 and 2-3. For this
+averaging, the gap-residue and gap-gap weights are obtained from the 
+residue-residue weight matrix file, not from gap penalties. If
+the corresponding weights are not in the file, they are set to 
+the worst and best residue-residue score, respectively.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>See instructions for <B><A HREF="node287.html#CMD:alignment.align">alignment.align()</A></B><A NAME="26526"></A> for more details.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html171"
+  HREF="../examples/commands/malign.py">examples/commands/malign.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: alignment.malign()
+
+# This will read all sequences from a file, align them, and write
+# the alignment to a new file:
+
+from modeller import *
+
+env = environ()
+
+aln = alignment(env, file='toxin.ali', align_codes='all')
+aln.malign(gap_penalties_1d=(-600, -400))
+aln.write(file='toxin-seq.pap', alignment_format='PAP')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5975"
+  HREF="node290.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5969"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5963"
+  HREF="node288.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5971"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5973"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5976"
+  HREF="node290.html">alignment.consensus()   consensus</A>
+<B> Up:</B> <A NAME="tex2html5970"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5964"
+  HREF="node288.html">alignment.align2d()   align</A>
+ &nbsp; <B>  <A NAME="tex2html5972"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5974"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,111 @@
+
+                               M O D E L L E R
+
+       PROTEIN STRUCTURE MODELLING BY SATISFACTION OF SPATIAL RESTRAINTS
+
+
+                         MODELLER 9v8, 2010/04/21, r7145
+
+
+                     Copyright(c) 1989-2010 Andrej Sali
+                            All Rights Reserved
+
+
+                           Written by Andrej Sali,
+                               with help from
+       Ben Webb, M.S. Madhusudhan, Min-Yi Shen, Marc A. Marti-Renom,
+    Narayanan Eswar, Frank Alber, Maya Topf, Baldomero Oliva, Andras Fiser,
+           Roberto Sanchez, Bozidar Yerkovich, Azat Badretdinov,
+            Francisco Melo, John P. Overington and Eric Feyfant
+
+                University of California, San Francisco, USA
+                    Rockefeller University, New York, USA
+                     Harvard University, Cambridge, USA
+                  Imperial Cancer Research Fund, London, UK
+              Birkbeck College, University of London, London, UK
+
+
+    Andrej Sali, email modeller-care AT salilab.org, web http://salilab.org/
+
+
+
+** DESCRIPTION:
+
+  MODELLER is used for homology or comparative modeling of protein three-
+  dimensional structures (1). The user provides an alignment of a sequence
+  to be modeled with known related structures and MODELLER automatically 
+  calculates a model containining all non-hydrogen atoms. MODELLER 
+  implements comparative protein structure modeling by satisfaction of
+  spatial restraints (2,3), and can perform many additional tasks, including
+  de novo modeling of loops in protein structures, optimization of various
+  models of protein structure with respect to a flexibly defined objective
+  function, multiple alignment of protein sequences and/or structures,
+  clustering, searching of sequence databases, comparison of protein
+  structures, etc.
+  MODELLER is written in Fortran-90 and is meant to run on UNIX, Windows,
+  Linux and Apple systems.
+
+  1. M.A. Marti-Renom, A. Stuart,  A. Fiser,  R.Sanchez,  F. Melo,  A. Sali.
+     Comparative protein structure modeling of genes and genomes. 
+     Annu. Rev. Biophys. Biomol. Struct. 29, 291-325, 2000.
+
+  2. A. Sali & T.L. Blundell. Comparative protein modelling by 
+     satisfaction of spatial restraints. J. Mol. Biol. 234, 779-815, 1993.
+
+  3. A. Fiser, R.K. Do, A. Sali. Modeling of loops in protein structures,
+     Protein Science 9. 1753-1773, 2000.
+
+
+
+** DISTRIBUTION:
+
+  MODELLER is available free of charge to academic non-profit institutions
+  from the MODELLER website (http://salilab.org/modeller/).
+
+  For commercial or governmental licensing of MODELLER, please contact
+  Accelrys Inc., 10188 Telesis Ct., San Diego, CA 92121, USA,
+  email support@accelrys.com, http://www.accelrys.com/.
+
+
+
+** REGISTRATION and INSTALLATION
+
+  Please access the academic license server from the MODELLER website
+  to apply for the MODELLER key. You will need this license key in order
+  to run the MODELLER installer. See the file INSTALLATION for installation
+  instructions.
+
+
+
+** MODELLER USERS EMAIL LIST:
+
+  In addition to the manual, you can receive help from the MODELLER 
+  users email list. The archive of this list contains many tips about 
+  using MODELLER. You can access it from the MODELLER website at
+  http://salilab.org/modeller/ where you will find detailed instructions 
+  on how to subscribe yourself. 
+
+
+
+** GRAPHICAL INTERFACE:
+
+  MODELLER runs via scripts written in the Python language, and does not provide
+  any graphical interface. A graphical interface to MODELLER is available as
+  part of Accelrys' InsightII, and Discovery Studio interactive molecular
+  modeling programs, which also contain many other tools for protein 
+  modeling and structural analysis. These programs facilitate preparation of 
+  input files for MODELLER (e.g. alignment file) as well as an analysis of 
+  the results (e.g., an evaluation of the models). If you are interested in 
+  these programs, please contact Accelrys Inc. at the address above.
+
+
+** ADDITIONAL INFORMATION:
+
+  Additional information about MODELLER can be obtained on our web site 
+  http://salilab.org/.
+
+
+  Sincerely,
+
+  MODELLER Team
+  2010/04/21, r7145.

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>energy_data.nonbonded_sel_atoms -- control interaction with picked atoms</TITLE>
+<META NAME="description" CONTENT="energy_data.nonbonded_sel_atoms -- control interaction with picked atoms">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node135.html">
+<LINK REL="previous" HREF="node133.html">
+<LINK REL="up" HREF="node119.html">
+<LINK REL="next" HREF="node135.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html3672"
+  HREF="node135.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html3666"
+  HREF="node119.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html3660"
+  HREF="node133.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html3668"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html3670"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3673"
+  HREF="node135.html">energy_data.nlogn_use   select</A>
+<B> Up:</B> <A NAME="tex2html3667"
+  HREF="node119.html">The energy_data class: objective</A>
+<B> Previous:</B> <A NAME="tex2html3661"
+  HREF="node133.html">energy_data.covalent_cys   use</A>
+ &nbsp; <B>  <A NAME="tex2html3669"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html3671"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011315000000000000000">
+energy_data.nonbonded_sel_atoms -- control interaction with picked atoms</A>
+</H2> <A NAME="10966"></A><A NAME="MEMB:energydata.nonbondedselatoms"></A>
+<P>
+<BLOCKQUOTE>
+This specifies the number of atoms that must be selected in each
+nonbonded pair, in order for the energy term to be calculated. Thus, when only
+a subset of all atoms is used in energy evaluation, this variable controls the
+interaction between the picked atoms and the rest of the
+system. When it is <TT>2</TT>, the non-bonded pairs will contain only
+selected atoms. This means that the optimized atoms will not ``feel''
+the rest of the protein through the non-bonded terms at all.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I><A HREF="#MEMB:energydata.nonbondedselatoms">energy_data.nonbonded_sel_atoms</A></I><A NAME="10978"></A> is <TT>1</TT> (the default), only one of
+the atoms in the non-bonded pair has to be a selected atom. This means that
+the selected region feels the rest of the system through the non-bonded terms,
+at the expense of longer CPU times.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>See Section&nbsp;<A HREF="node23.html#SECTION:model-segment">2.2.6</A> for an example.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>When all atoms are selected, this variable has no effect.
+                             
+</BLOCKQUOTE>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html3672"
+  HREF="node135.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html3666"
+  HREF="node119.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html3660"
+  HREF="node133.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html3668"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html3670"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3673"
+  HREF="node135.html">energy_data.nlogn_use   select</A>
+<B> Up:</B> <A NAME="tex2html3667"
+  HREF="node119.html">The energy_data class: objective</A>
+<B> Previous:</B> <A NAME="tex2html3661"
+  HREF="node133.html">energy_data.covalent_cys   use</A>
+ &nbsp; <B>  <A NAME="tex2html3669"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html3671"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

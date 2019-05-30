@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Automated comparative modeling with automodel</TITLE>
+<META NAME="description" CONTENT="Automated comparative modeling with automodel">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node35.html">
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="manual.html">
+<LINK REL="next" HREF="node16.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1488"
+  HREF="node16.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1482"
+  HREF="manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1476"
+  HREF="node14.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1484"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1486"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1489"
+  HREF="node16.html">Simple usage</A>
+<B> Up:</B> <A NAME="tex2html1483"
+  HREF="manual.html">MODELLER A Program for</A>
+<B> Previous:</B> <A NAME="tex2html1477"
+  HREF="node14.html">Running MODELLER</A>
+ &nbsp; <B>  <A NAME="tex2html1485"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1487"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00700000000000000000"></A>
+    <A NAME="CHAPTERAUTOMODEL"></A>
+<BR>
+Automated comparative modeling with <TT>automodel</TT>
+</H1>
+    The simplest way to build comparative models with M<SMALL>ODELLER</SMALL> is to use the
+<TT>automodel</TT> class. This automates many of the steps required for simple
+modeling, and can be customized for more complex tasks. A related class,
+<TT>loopmodel</TT>, also allows for refinement of loop regions.
+
+<P>
+See section&nbsp;<A HREF="node451.html#SECTION:flowchart">A.4</A> for a flowchart of the comparative modeling
+procedure, and section&nbsp;<A HREF="node452.html#SECTION:loopmethod">A.5</A> for an overview of the loop
+modeling algorithm.
+
+<P>
+This chapter gives an overview of simple applications of the <TT>automodel</TT>
+class. For more detailed information, see the comparative modeling class
+reference, in Chapter&nbsp;<A HREF="node40.html#CHAPTERAUTOMODELREF">4</A>, or the comments in the <A NAME="tex2html28"
+  HREF="http://www.python.org/">Python</A> files themselves, <TT>modlib/modeller/automodel/automodel.py</TT>
+and <TT>modlib/modeller/automodel/loopmodel.py</TT>.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html1490"
+  HREF="node16.html">Simple usage</A>
+<LI><A NAME="tex2html1491"
+  HREF="node17.html">More advanced usage</A>
+<UL>
+<LI><A NAME="tex2html1492"
+  HREF="node18.html">Including water molecules, HETATM residues, and hydrogen atoms</A>
+<LI><A NAME="tex2html1493"
+  HREF="node19.html">Changing the default optimization and refinement protocol</A>
+<LI><A NAME="tex2html1494"
+  HREF="node20.html">Getting a very fast and approximate model</A>
+<LI><A NAME="tex2html1495"
+  HREF="node21.html">Building a model from multiple templates</A>
+<LI><A NAME="tex2html1496"
+  HREF="node22.html">Building an all hydrogen model</A>
+<LI><A NAME="tex2html1497"
+  HREF="node23.html">Refining only part of the model</A>
+<LI><A NAME="tex2html1498"
+  HREF="node24.html">Including disulfide bridges</A>
+<LI><A NAME="tex2html1499"
+  HREF="node25.html">Providing your own restraints file</A>
+<LI><A NAME="tex2html1500"
+  HREF="node26.html">Using your own initial model</A>
+<LI><A NAME="tex2html1501"
+  HREF="node27.html">Adding additional restraints to the defaults</A>
+<LI><A NAME="tex2html1502"
+  HREF="node28.html">Building multi-chain models with symmetry</A>
+<LI><A NAME="tex2html1503"
+  HREF="node29.html">Accessing output data after modeling is complete</A>
+<LI><A NAME="tex2html1504"
+  HREF="node30.html">Fully automated alignment and modeling</A>
+</UL>
+<BR>
+<LI><A NAME="tex2html1505"
+  HREF="node31.html">Loop optimization</A>
+<UL>
+<LI><A NAME="tex2html1506"
+  HREF="node32.html">Automatic loop refinement after model building</A>
+<LI><A NAME="tex2html1507"
+  HREF="node33.html">Defining loop regions for refinement</A>
+<LI><A NAME="tex2html1508"
+  HREF="node34.html">Refining an existing PDB file</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

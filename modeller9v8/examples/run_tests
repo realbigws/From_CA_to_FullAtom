@@ -1,0 +1,5 @@
+#!/bin/sh
+for dir in all-steps assessment automodel commands python salign scoring; do
+  echo "Entering directory: $dir"
+  (cd $dir && ./run_tests)
+done

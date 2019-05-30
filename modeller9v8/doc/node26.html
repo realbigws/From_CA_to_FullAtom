@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Using your own initial model</TITLE>
+<META NAME="description" CONTENT="Using your own initial model">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node27.html">
+<LINK REL="previous" HREF="node25.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node27.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1674"
+  HREF="node27.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1668"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1662"
+  HREF="node25.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1670"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1672"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1675"
+  HREF="node27.html">Adding additional restraints to</A>
+<B> Up:</B> <A NAME="tex2html1669"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1663"
+  HREF="node25.html">Providing your own restraints</A>
+ &nbsp; <B>  <A NAME="tex2html1671"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1673"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00729000000000000000"></A><A NAME="SECTION:initialmodel"></A><A NAME="SECTION:model-myini"></A>
+<BR>
+Using your own initial model
+</H2>
+
+<P>
+Normally, <TT>automodel</TT> generates an initial model by transferring
+coordinates from the templates. However, if you have a prepared PDB file
+containing an initial model, you can have <TT>automodel</TT> use this
+instead with the <TT>inifile</TT> keyword, as in the example below. (This
+automatically sets <I><A HREF="node47.html#MEMB:automodel.generatemethod">automodel.generate_method</A></I><A NAME="3083"></A> to <TT>generate.read_xyz</TT>
+for you, which is necessary for this to work.)
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html45"
+  HREF="../examples/automodel/model-myini.py">examples/automodel/model-myini.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Modeling using a provided initial structure file (inifile)
+from modeller import *
+from modeller.automodel import *    # Load the automodel class
+
+log.verbose()
+env = environ()
+
+# directories for input atom files
+env.io.atom_files_directory = ['.', '../atom_files']
+
+a = automodel(env,
+              alnfile  = 'alignment.ali',     # alignment filename
+              knowns   = '5fd1',              # codes of the templates
+              sequence = '1fdx',              # code of the target
+              inifile  = 'my-initial.pdb')    # use 'my' initial structure
+a.starting_model= 1                 # index of the first model
+a.ending_model  = 1                 # index of the last model
+                                    # (determines how many models to calculate)
+a.make()                            # do homology modeling
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

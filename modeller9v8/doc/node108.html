@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Key for command descriptions</TITLE>
+<META NAME="description" CONTENT="Key for command descriptions">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node109.html">
+<LINK REL="previous" HREF="node107.html">
+<LINK REL="up" HREF="node107.html">
+<LINK REL="next" HREF="node109.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html3284"
+  HREF="node109.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html3278"
+  HREF="node107.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html3272"
+  HREF="node107.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html3280"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html3282"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3285"
+  HREF="node109.html">The environ class: MODELLER</A>
+<B> Up:</B> <A NAME="tex2html3279"
+  HREF="node107.html">MODELLER command reference</A>
+<B> Previous:</B> <A NAME="tex2html3273"
+  HREF="node107.html">MODELLER command reference</A>
+ &nbsp; <B>  <A NAME="tex2html3281"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html3283"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001110000000000000000"></A>
+<A NAME="SECTION:commandkey"></A>
+<BR>
+Key for command descriptions
+</H1>
+
+<P>
+Most commands in M<SMALL>ODELLER</SMALL> take one or more arguments, usually as <A NAME="tex2html86"
+  HREF="http://www.python.org/">Python</A>
+keywords. For convenience, many of these arguments take a default value if
+you do not specify them.
+
+<P>
+Each argument must be of a specific type, either a M<SMALL>ODELLER</SMALL> class
+object (<EM>e.g.</EM>, a <TT>model</TT> or <TT>alignment</TT>) or one of the standard
+Python types (integers, strings, floating point numbers, or lists of these
+types).
+
+<P>
+Many commands take optional <I>io</I><A NAME="9641"></A> and/or <I>edat</I><A NAME="9644"></A> arguments. <I>io</I><A NAME="9647"></A> should
+always be an <B><A HREF="node138.html#CMD:iodata">io_data()</A></B><A NAME="9650"></A> object, and is used by commands that need to
+read coordinate files, while <I>edat</I><A NAME="9655"></A> should be an <B><A HREF="node120.html#CMD:energydata">energy_data</A></B><A NAME="9658"></A> object,
+and is used by commands that need to use the energy function. For convenience,
+if these arguments are not specified, default values are taken from the
+M<SMALL>ODELLER</SMALL> environment (<I><A HREF="node111.html#MEMB:environ.io">environ.io</A></I><A NAME="9665"></A> and <I><A HREF="node112.html#MEMB:environ.edat">environ.edat</A></I><A NAME="9670"></A> respectively).
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

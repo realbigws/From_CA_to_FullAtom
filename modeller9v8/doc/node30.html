@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Fully automated alignment and modeling</TITLE>
+<META NAME="description" CONTENT="Fully automated alignment and modeling">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node29.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node31.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1728"
+  HREF="node31.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1722"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1718"
+  HREF="node29.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1724"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1726"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1729"
+  HREF="node31.html">Loop optimization</A>
+<B> Up:</B> <A NAME="tex2html1723"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1719"
+  HREF="node29.html">Accessing output data after</A>
+ &nbsp; <B>  <A NAME="tex2html1725"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1727"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION007213000000000000000"></A>
+<A NAME="SECTION:model-full"></A>
+<BR>
+Fully automated alignment and modeling
+</H2>
+
+<P>
+If you do not have an initial alignment between your templates and target
+sequence, M<SMALL>ODELLER</SMALL> can derive one for you, fully automatically. All
+M<SMALL>ODELLER</SMALL> requires is a a PIR file containing the target sequence and the
+template PDB codes (their sequences are not required -- just use a single '*'
+character -- as M<SMALL>ODELLER</SMALL> will read these from the PDBs). Use the
+<TT>automodel</TT> class as per usual, but call the <B><A HREF="node64.html#CMD:automodel.autoalign">automodel.auto_align()</A></B><A NAME="3190"></A>
+method before <B><A HREF="node66.html#CMD:automodel.make">automodel.make()</A></B><A NAME="3195"></A>; see the example below. (M<SMALL>ODELLER</SMALL> has
+a variety of other alignment methods which you can use instead for this
+purpose; see Section&nbsp;<A HREF="node269.html#SECTION:compare">6.15</A> for more details.)
+
+<P>
+Please be aware that the single most important factor that determines the
+quality of a model is the quality of the alignment. If the alignment is
+incorrect, the model will also be incorrect. <B>For this reason,
+automated alignment for comparative modeling should not be used unless
+the sequences are so similar that the calculated alignment is likely to be
+correct, which usually requires more than 50% sequence identity.</B>
+Instead, the alignment should be carefully inspected, optimized
+by hand, and checked by the <B><A HREF="node277.html#CMD:alignment.check">alignment.check()</A></B><A NAME="3202"></A> command before
+used in modeling. Moreover, several iterations of alignment
+and modeling may be necessary in general.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html53"
+  HREF="../examples/automodel/model-full.py">examples/automodel/model-full.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># A sample script for fully automated comparative modeling
+from modeller import *
+from modeller.automodel import *    # Load the automodel class
+
+log.verbose()
+env = environ()
+
+# directories for input atom files
+env.io.atom_files_directory = ['.', '../atom_files']
+
+a = automodel(env,
+              # file with template codes and target sequence
+              alnfile  = 'alignment.seg',
+              # PDB codes of the templates
+              knowns   = ('5fd1', '1fdn', '1fxd', '1iqz'),
+              # code of the target
+              sequence = '1fdx')
+a.auto_align()                      # get an automatic alignment
+a.make()                            # do homology modeling
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html54"
+  HREF="../examples/automodel/alignment.seg">examples/automodel/alignment.seg</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>&gt;P1;1fdx
+sequence::::::ferredoxin:Peptococcus aerogenes:-1.00:-1.00
+AYVINDSCIACGACKPECPVNIIQGSIYAIDADSCIDCGSCASVCPVGAPNPED*
+&gt;P1;1fdn
+structureX:1fdn:FIRST:@:55:@:ferredoxin:Clostrodium acidiurici: 1.84:-1.0
+*
+&gt;P1;5fd1
+structureX:5fd1:FIRST:@:60:@:ferredoxin:Azotobacter vinelandii: 1.90:0.192
+*
+&gt;P1;1fxd
+structureX:1fxd:FIRST:@:58:@:ferredoxin:Desolfovibrio gigas: 1.70:-1.0
+*
+&gt;P1;1iqz
+structureX:1iqz:FIRST:@:60:@:ferredoxin:Bacillus thermoproteolyticus: 2.30:-1.0
+*
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1728"
+  HREF="node31.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1722"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1718"
+  HREF="node29.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1724"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1726"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1729"
+  HREF="node31.html">Loop optimization</A>
+<B> Up:</B> <A NAME="tex2html1723"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1719"
+  HREF="node29.html">Accessing output data after</A>
+ &nbsp; <B>  <A NAME="tex2html1725"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1727"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

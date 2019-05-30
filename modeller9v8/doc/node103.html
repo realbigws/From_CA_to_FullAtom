@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Specification of pseudo atoms</TITLE>
+<META NAME="description" CONTENT="Specification of pseudo atoms">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node104.html">
+<LINK REL="previous" HREF="node102.html">
+<LINK REL="up" HREF="node101.html">
+<LINK REL="next" HREF="node104.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html2884"
+  HREF="node104.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2878"
+  HREF="node101.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2872"
+  HREF="node102.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html2880"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html2882"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html2885"
+  HREF="node104.html">Excluded pairs</A>
+<B> Up:</B> <A NAME="tex2html2879"
+  HREF="node101.html">Spatial restraints</A>
+<B> Previous:</B> <A NAME="tex2html2873"
+  HREF="node102.html">Specification of restraints</A>
+ &nbsp; <B>  <A NAME="tex2html2881"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html2883"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001032000000000000000"></A>
+<A NAME="SECTION:pseudo"></A><A NAME="8358"></A>
+<A NAME="8359"></A>
+<BR>
+Specification of pseudo atoms
+</H2>
+
+<P>
+There are virtual and pseudo atoms.  A virtual atom is an atom that
+occurs in the actual molecule, but whose position is not represented
+explicitly in the MODEL and topology file.  A pseudo atom is a
+position that does not correspond to an actual atom in a molecule, but
+is some sort of an average of positions of real atoms. Pseudo atoms can
+be added to the list of restraints by adding the objects below to the
+<I><A HREF="node197.html#MEMB:Restraints.pseudoatoms">Restraints.pseudo_atoms</A></I><A NAME="8787"></A> list. Atom ids are as for features, above.
+The M<SMALL>ODELLER</SMALL> pseudo and virtual atom types follow closely the G<SMALL>ROMOS</SMALL> definitions.
+
+<P>
+<A NAME="8794"></A><TT>pseudo_atom.gravity_center(*atom_ids)</TT>
+<BR>
+Gravity center of all of the supplied atoms.
+
+<P>
+<A NAME="8797"></A><TT>pseudo_atom.ch2(*atom_ids)</TT>
+<BR>
+Pseudo aliphatic proton on a tetrahedral carbon (<IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.png"
+ ALT="$ &gt;$">
+CH2). Not assigned
+stereospecifically; its position is between the two real protons; defined by
+the central C and the other two substituents (specified by <I>atom_ids</I><A NAME="8801"></A>).
+
+<P>
+<A NAME="8803"></A><TT>pseudo_atom.ch31(*atom_ids)</TT>
+<BR>
+Pseudo aliphatic proton on a tetrahedral carbon (-CH3), defined by the central
+C and the heavy atom X in X-CH3 (specified by <I>atom_ids</I><A NAME="8807"></A>); its position is
+the average of the three real protons.
+
+<P>
+<A NAME="8809"></A><TT>pseudo_atom.ch32(*atom_ids)</TT>
+<BR>
+Pseudo aliphatic proton between two unassigned -CH3 groups; defined by X in CH3&nbsp;-&nbsp;X&nbsp;-&nbsp;CH3 and the two C atoms from the two CH3 groups (specified by
+<I>atom_ids</I><A NAME="8813"></A>).  Its position is the average of the six real protons.
+
+<P>
+<A NAME="8815"></A><TT>virtual_atom.ch1(*atom_ids)</TT>
+<BR>
+Virtual aliphatic proton on a tetrahedral carbon (-<IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.png"
+ ALT="$ &gt;$">
+CH), defined by the
+central C and the three other substituents (specified by <I>atom_ids</I><A NAME="8819"></A>).
+
+<P>
+<A NAME="8821"></A><TT>virtual_atom.ch1a(*atom_ids)</TT>
+<BR>
+Virtual aromatic proton on a trigonal carbon (=CH), defined by the central C
+and the two C atoms bonded to the central C (specified by <I>atom_ids</I><A NAME="8825"></A>).
+
+<P>
+<A NAME="8827"></A><TT>virtual_atom.ch2(*atom_ids)</TT>
+<BR>
+Virtual aliphatic proton on a tetrahedral carbon (<IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.png"
+ ALT="$ &gt;$">
+CH2) assigned
+stereospecifically; defined by the central tetrahedral atom and the other two
+substituents on it (specified by <I>atom_ids</I><A NAME="8831"></A>).
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html81"
+  HREF="../examples/python/pseudo_atoms.py">examples/python/pseudo_atoms.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+from modeller.scripts import complete_pdb
+from modeller.optimizers import conjugate_gradients
+
+env = environ()
+
+env.io.atom_files_directory = ['../atom_files']
+log.verbose()
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+# Read in the model
+mdl = complete_pdb(env, "1fdn")
+rsr = mdl.restraints
+
+# Select all C-alpha atoms
+allat = selection(mdl)
+allca = allat.only_atom_types('CA')
+
+# Create a pseudo atom that is the center of all C-alphas, and activate it
+center = pseudo_atom.gravity_center(allca)
+rsr.pseudo_atoms.append(center)
+
+# Constrain every C-alpha to be no more than 10 angstroms from the center
+for at in allca:
+    r = forms.upper_bound(group=physical.xy_distance,
+                          feature=features.distance(at, center),
+                          mean=10.0, stdev=0.1)
+    rsr.add(r)
+
+# Constrain the gravity center to the x=0 plane
+r = forms.gaussian(group=physical.xy_distance,
+                   feature=features.x_coordinate(center),
+                   mean=0.0, stdev=0.1)
+rsr.add(r)
+
+# Keep sensible stereochemistry
+rsr.make(allat, restraint_type='stereo', spline_on_site=False)
+
+# Optimize with CG
+cg = conjugate_gradients()
+cg.optimize(allat, max_iterations=100, output='REPORT')
+mdl.write(file='1fas.ini')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2884"
+  HREF="node104.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2878"
+  HREF="node101.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2872"
+  HREF="node102.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html2880"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html2882"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html2885"
+  HREF="node104.html">Excluded pairs</A>
+<B> Up:</B> <A NAME="tex2html2879"
+  HREF="node101.html">Spatial restraints</A>
+<B> Previous:</B> <A NAME="tex2html2873"
+  HREF="node102.html">Specification of restraints</A>
+ &nbsp; <B>  <A NAME="tex2html2881"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html2883"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,28 @@
+# Purpose : calculate model(s) from the sequence and related structure(s)
+#
+# Input 1 : SEGFILE, ALNFILE, KNOWNS, SEQUENCE, DATABASE_DIRECTORY,
+#           DEVIATION, TOPLIB, PARLIB, GENERATE_METHOD, RAND_METHOD, 
+#           MD_LEVEL
+#
+# Output : alignment in file ALNFILE, stereochemical and homology restraints 
+#          in file CSRFILE,
+#          schedule in file SCHFILE, final model in file FINAL_MODEL,
+#          debugging output in .D
+#          MODEL, CSRFILE, SCHFILE, FINAL_MODEL, REFINED_MODEL
+#
+
+
+SUBROUTINE ROUTINE = 'full_homol'
+
+  # get some filenames from SEQUENCE:
+  CALL ROUTINE = 'getnames'
+  STRING_OPERATE STRING_ARGUMENTS = SEGFILE '.ali',  RESULT = ALNFILE
+
+  # derive the alignment first:
+  CALL ROUTINE = 'align_strs_seq'
+
+  # getting model(s):
+  CALL ROUTINE = 'model'
+
+RETURN
+END_SUBROUTINE

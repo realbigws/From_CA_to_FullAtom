@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>selection.randomize_xyz() -- randomize selected coordinates</TITLE>
+<META NAME="description" CONTENT="selection.randomize_xyz() -- randomize selected coordinates">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node242.html">
+<LINK REL="previous" HREF="node240.html">
+<LINK REL="up" HREF="node220.html">
+<LINK REL="next" HREF="node242.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5265"
+  HREF="node242.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5259"
+  HREF="node220.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5253"
+  HREF="node240.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5261"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5263"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5266"
+  HREF="node242.html">selection.superpose()   superpose</A>
+<B> Up:</B> <A NAME="tex2html5260"
+  HREF="node220.html">The selection class: handling</A>
+<B> Previous:</B> <A NAME="tex2html5254"
+  HREF="node240.html">selection.mutate()   mutate</A>
+ &nbsp; <B>  <A NAME="tex2html5262"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5264"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011921000000000000000">
+selection.randomize_xyz() -- randomize selected coordinates</A>
+</H2> <A NAME="20602"></A><A NAME="CMD:selection.randomizexyz"></A><A NAME="20605"></A><TT>randomize_xyz(deviation)</TT>
+<BR><BLOCKQUOTE>
+This command randomizes the Cartesian coordinates of the 
+selected atoms.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>deviation</I><A NAME="20621"></A> is positive,
+the coordinates are randomized by the <I>addition</I> 
+of a random number uniformly distributed in the interval from
+<!-- MATH
+ $-{\sf deviation}$
+ -->
+<IMG
+ WIDTH="76" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img86.png"
+ ALT="$ -{\sf deviation}\index{deviation@{\sf deviation}}$">
+ to <!-- MATH
+ $+{\sf deviation}$
+ -->
+<IMG
+ WIDTH="76" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img87.png"
+ ALT="$ +{\sf deviation}\index{deviation@{\sf deviation}}$">
+ angstroms. Atoms in residues containining
+rings (TYR, PHE, TRP, HIS) are capped to move no more than 0.5 angstroms
+regardless of the setting of <I>deviation</I><A NAME="20630"></A>, so that the ring structure is
+roughly maintained and the system does not later get stuck in local minima.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>If <I>deviation</I><A NAME="20633"></A> is
+negative, the coordinates are <I>assigned</I> a random value
+uniformly distributed in the interval from <!-- MATH
+ $-{\sf deviation}$
+ -->
+<IMG
+ WIDTH="76" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img86.png"
+ ALT="$ -{\sf deviation}\index{deviation@{\sf deviation}}$">
+ to 
+<!-- MATH
+ $+{\sf deviation}$
+ -->
+<IMG
+ WIDTH="76" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img87.png"
+ ALT="$ +{\sf deviation}\index{deviation@{\sf deviation}}$">
+ angstroms.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Any defined rigid bodies (see Section&nbsp;<A HREF="node105.html#SECTION:rigidbody">5.3.4</A>) remain rigid;
+only their mass centers are modified by this command (no rotation is done).
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html131"
+  HREF="../examples/commands/randomize_xyz.py">examples/commands/randomize_xyz.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: selection.randomize_xyz()
+
+# This will randomize the X,Y,Z of the model:
+
+from modeller import *
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+
+mdl = model(env, file='1fas')
+
+# Act on all atoms in the model
+sel = selection(mdl)
+
+# Change all existing X,Y,Z for +- 4 angstroms:
+sel.randomize_xyz(deviation=4.0)
+mdl.write(file='1fas.ini1')
+
+# Assign X,Y,Z in the range from -100 to 100 angstroms:
+sel.randomize_xyz(deviation=-100.0)
+mdl.write(file='1fas.ini2')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

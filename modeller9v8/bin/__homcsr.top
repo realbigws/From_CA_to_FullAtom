@@ -1,0 +1,186 @@
+# Purpose: to construct typical comparative modelling restraints
+#
+# Input  : ALNFILE, SEQUENCE, MODEL, CSRFILE (necessary)
+#
+# Input  : KNOWNS, DATABASE_DIRECTORY (for homology restraints)
+# 
+# Input  : TOPLIB, PARLIB
+#
+# Output : stereochemical and homology restraints in file CSRFILE
+#
+
+SUBROUTINE ROUTINE = 'homcsr'
+  # Check the alignment
+  READ_ALIGNMENT FILE = ALNFILE, ALIGN_CODES = KNOWNS SEQUENCE
+
+# Since in general we do not want to loose the original alignment file
+# (which is usually not a temporary scratch file):
+
+  STRING_IF STRING_ARGUMENTS = TOP_VERSION 'accelrys', OPERATION = 'EQ'
+    # Accelrys code here (Azat, you may want to add the .tmp.ali part so that
+    # you do not change the input alignment file, unless you want to have it
+    # changed here for some other use elsewhere):
+    WRITE_ALIGNMENT # FILE = '.tmp.ali'
+    READ_ALIGNMENT
+    # DELETE_FILE FILE = '.tmp.ali'
+  END_IF
+
+
+  CHECK_ALIGNMENT
+
+  # make topology and build/read the atom coordinates:
+  CALL ROUTINE = GENERATE_METHOD
+
+  # exit early?
+  IF ARGUMENTS = EXIT_STAGE 2, OPERATION = 'EQ'
+    RETURN
+  END_IF
+
+  # make and write the stereochemical, homology, and special restraints?
+  IF ARGUMENTS = CREATE_RESTRAINTS 0, OPERATION = 'NE'
+    CALL ROUTINE = 'mkhomcsr'
+  END_IF
+
+  RETURN
+END_SUBROUTINE
+
+
+
+
+SUBROUTINE ROUTINE = 'mkhomcsr'
+
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'stereo', ADD_RESTRAINTS = OFF
+
+  # go_to 'next'
+
+  # SET ALIGNMENT_FORMAT = 'PIR'
+  READ_ALIGNMENT FILE = ALNFILE, ALIGN_CODES = KNOWNS SEQUENCE
+
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'phi-psi_binormal', ADD_RESTRAINTS = ON
+
+  SET SPLINE_RANGE = 4.0, SPLINE_DX = 0.3, SPLINE_MIN_POINTS = 5
+
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'omega_dihedral', ADD_RESTRAINTS = ON
+
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'chi1_dihedral', ADD_RESTRAINTS = ON
+
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'chi2_dihedral', ADD_RESTRAINTS = ON
+
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'chi3_dihedral', ADD_RESTRAINTS = ON
+  
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'chi4_dihedral', ADD_RESTRAINTS = ON
+
+  SET SPLINE_RANGE = 4.0, SPLINE_DX = 0.7, SPLINE_MIN_POINTS = 5
+
+  # Only do the standard residue types for CA, N, O, MNCH, SDCH dst rsrs
+  # (no HET or BLK residue types):
+  SET RES_TYPES = 'STD'
+
+  SET DISTANCE_RSR_MODEL = 5, MAXIMAL_DISTANCE = MAX_CA-CA_DISTANCE
+  SET RESIDUE_SPAN_RANGE = 2 99999, RESIDUE_SPAN_SIGN = on
+  SET RESTRAINT_GROUP = 9
+  PICK_ATOMS PICK_ATOMS_SET = 2, ATOM_TYPES = 'CA'
+  PICK_ATOMS PICK_ATOMS_SET = 3, ATOM_TYPES = 'CA'
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'distance', ADD_RESTRAINTS = 'ON'
+  
+  SET DISTANCE_RSR_MODEL = 6, MAXIMAL_DISTANCE = MAX_N-O_DISTANCE
+  SET RESIDUE_SPAN_RANGE = 2 99999, RESIDUE_SPAN_SIGN = off
+  SET RESTRAINT_GROUP = 10
+  PICK_ATOMS PICK_ATOMS_SET = 2, ATOM_TYPES = 'N'
+  PICK_ATOMS PICK_ATOMS_SET = 3, ATOM_TYPES = 'O'
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'distance', ADD_RESTRAINTS = 'ON'
+
+  SET DISTANCE_RSR_MODEL = 6, MAXIMAL_DISTANCE = MAX_SC-MC_DISTANCE
+  SET RESIDUE_SPAN_RANGE = 1 2, RESIDUE_SPAN_SIGN = off
+  SET RESTRAINT_GROUP = 23, RESTRAINT_STDEV = 0.5 1.5
+  PICK_ATOMS PICK_ATOMS_SET = 2, ATOM_TYPES = 'SDCH'
+  PICK_ATOMS PICK_ATOMS_SET = 3, ATOM_TYPES = 'MNCH'
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'distance', ADD_RESTRAINTS = 'ON'
+
+  SET DISTANCE_RSR_MODEL = 6, MAXIMAL_DISTANCE = MAX_SC-SC_DISTANCE
+  SET RESIDUE_SPAN_RANGE = 2 99999, RESIDUE_SPAN_SIGN = on
+  SET RESTRAINT_GROUP = 26, RESTRAINT_STDEV = 0.5 2.0
+  PICK_ATOMS PICK_ATOMS_SET = 2, ATOM_TYPES = 'SDCH'
+  PICK_ATOMS PICK_ATOMS_SET = 3, ATOM_TYPES = 'SDCH'
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'distance', ADD_RESTRAINTS = 'ON'
+
+  # Generate intra-HETATM and HETATM-protein restraints:
+  CALL ROUTINE = 'hetatm_restraints'
+
+  # Generate intra-BLK and BLK-protein restraints:
+  CALL ROUTINE = 'blk_restraints'
+
+  # Special restraints have to be called last so that possible cis-proline
+  # changes are reflected in the current restraints:
+  CALL ROUTINE = 'special_restraints'
+
+  # label 'next'
+
+  CONDENSE_RESTRAINTS
+
+  WRITE_RESTRAINTS FILE = CSRFILE
+
+  SET RESIDUE_SPAN_RANGE = -999 -999, RESIDUE_SPAN_SIGN = on
+
+  RETURN
+END_SUBROUTINE
+
+
+SUBROUTINE ROUTINE = 'hetatm_restraints'
+
+  # Select MODEL=7 where you can specify stand. dev. explicitly
+  SET RESTRAINT_TYPE = 'distance'
+  SET DISTANCE_RSR_MODEL = 7
+  SET MAXIMAL_DISTANCE = 7.0
+  SET ADD_RESTRAINTS = ON
+  SET RESTRAINT_GROUP = 27
+
+  # Inter- and intra- residue:
+  SET RESTRAINT_STDEV = 0.2 0.0
+  # Note: there are going to be duplicated HETATM-HETATM restraints:
+  SET RESIDUE_SPAN_RANGE = 0 99999, RESIDUE_SPAN_SIGN = off
+  PICK_ATOMS PICK_ATOMS_SET = 2, ATOM_TYPES = 'ALL', RES_TYPES = 'ALL'
+  PICK_ATOMS PICK_ATOMS_SET = 3, ATOM_TYPES = 'ALL', RES_TYPES = 'HET'
+  MAKE_RESTRAINTS
+
+  RETURN
+END_SUBROUTINE
+
+
+# Re-define the auxillary restraints routine to include the restraints between
+# the protein and the BLK residues. The BLK atoms will be restrained by their 
+# distances to the protein CA atoms that are within MAXIMAL_DISTANCE angstroms 
+# of the selected BLK atoms in the templates. Note: this only works because 
+# the BLK atoms have unique atom names.
+SUBROUTINE ROUTINE = 'blk_restraints'
+
+  # To derive restraints from all (one) templates, comment out (uncomment):
+  # READ_ALIGNMENT FILE = ALNFILE, ALIGN_CODES = '3b5c' SEQUENCE
+
+  # Select MODEL=7 where you can specify stand. dev. explicitly
+  SET RESTRAINT_TYPE = 'distance'
+  SET DISTANCE_RSR_MODEL = 7
+  SET MAXIMAL_DISTANCE = 10.0
+  SET ADD_RESTRAINTS = ON
+  SET RESTRAINT_GROUP = 27
+
+  # Intra-residue:
+  SET RESTRAINT_STDEV = 0.05 0.0
+  SET RESIDUE_SPAN_RANGE = 0 0, RESIDUE_SPAN_SIGN = on
+  PICK_ATOMS PICK_ATOMS_SET = 2, ATOM_TYPES = 'ALL',  RES_TYPES = 'BLK'
+  PICK_ATOMS PICK_ATOMS_SET = 3, ATOM_TYPES = 'ALL',  RES_TYPES = 'BLK'
+  MAKE_RESTRAINTS
+
+  # Inter-residue:
+  SET RESTRAINT_STDEV = 0.2 0.0
+  SET RESIDUE_SPAN_RANGE = 1 99999, RESIDUE_SPAN_SIGN = off
+  # There may be some duplicated CA BLK - CA BLK restraints:
+  PICK_ATOMS PICK_ATOMS_SET = 2, ATOM_TYPES = 'CA',  RES_TYPES = 'ALL'
+  PICK_ATOMS PICK_ATOMS_SET = 3, ATOM_TYPES = 'ALL', RES_TYPES = 'BLK'
+  MAKE_RESTRAINTS
+
+  # Clean after yourself:
+  DELETE_ALIGNMENT
+
+  RETURN
+END_SUBROUTINE

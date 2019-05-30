@@ -1,0 +1,25 @@
+# Purpose: Do principal components on family FAMILY and produce an ASGL plot
+#
+# Input  : TOP variable FAMILY
+#
+# Output files: FAMILY.mat, FAMILY.dat.
+#
+
+SUBROUTINE ROUTINE = 'principal_components'
+
+STRING_OPERATE OPERATION = CONCATENATE, STRING_ARGUMENTS = FAMILY '.ali', ;
+               RESULT = FILE
+READ_ALIGNMENT
+
+STRING_OPERATE OPERATION = CONCATENATE, STRING_ARGUMENTS = FAMILY '.mat', ;
+               RESULT = MATRIX_FILE
+ID_TABLE
+
+STRING_OPERATE OPERATION = CONCATENATE, STRING_ARGUMENTS = FAMILY '.dat', ;
+               RESULT = FILE
+PRINCIPAL_COMPONENTS
+
+DENDROGRAM
+
+RETURN
+END_SUBROUTINE

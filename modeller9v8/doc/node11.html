@@ -1,0 +1,322 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Method for comparative protein structure modeling by MODELLER</TITLE>
+<META NAME="description" CONTENT="Method for comparative protein structure modeling by MODELLER">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node12.html">
+<LINK REL="previous" HREF="node10.html">
+<LINK REL="up" HREF="node6.html">
+<LINK REL="next" HREF="node12.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1428"
+  HREF="node12.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1422"
+  HREF="node6.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1416"
+  HREF="node10.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1424"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1426"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1429"
+  HREF="node12.html">Using MODELLER for comparative</A>
+<B> Up:</B> <A NAME="tex2html1423"
+  HREF="node6.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html1417"
+  HREF="node10.html">Bug reports</A>
+ &nbsp; <B>  <A NAME="tex2html1425"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1427"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00650000000000000000"></A><A NAME="2029"></A>
+<BR>
+Method for comparative protein structure modeling by 
+M<SMALL>ODELLER</SMALL>
+</H1>
+
+<P>
+M<SMALL>ODELLER</SMALL> implements an automated approach to comparative 
+protein structure modeling by satisfaction of spatial restraints
+(Figure&nbsp;<A HREF="#fig:scheme">1.1</A>) [<A
+ HREF="node469.html#SalBlu93">&#352;ali &amp; Blundell, 1993</A>].  The method and its 
+applications to biological problems are described in detail
+in references listed in Section&nbsp;<A HREF="node8.html#SECTION:bibliography">1.2</A>. Briefly, 
+the core modeling procedure begins with an alignment of the sequence to be
+modeled (target) with related known 3D structures (templates). This
+alignment is usually the input to the program. The output is a 3D
+model for the target sequence containing all mainchain and sidechain
+non-hydrogen atoms.  Given an alignment, the model is obtained without
+any user intervention.  First, many distance and dihedral angle
+restraints on the target sequence are calculated from its alignment with
+template 3D structures (Figure&nbsp;<A HREF="#fig:feature">1.2</A>).  The form of these
+restraints was obtained from a statistical analysis of the
+relationships between many pairs of homologous structures.  This
+analysis relied on a database of 105 family alignments that included
+416 proteins with known 3D structure [<A
+ HREF="node469.html#SalOve94">&#352;ali &amp; Overington, 1994</A>].  By scanning the
+database, tables quantifying various correlations were obtained, such
+as the correlations between two equivalent <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+ - <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+ distances, 
+or between equivalent mainchain dihedral angles from two
+related proteins.  These relationships were expressed as conditional
+probability density functions (pdf's) and can be used directly as
+spatial restraints. For example, probabilities for different values of
+the mainchain dihedral angles are calculated from the type of a
+residue considered, from mainchain conformation of an equivalent
+residue, and from sequence similarity between the two proteins.
+Another example is the pdf for a certain <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+-<!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+ distance
+given equivalent distances in two related protein structures
+(Figure&nbsp;<A HREF="#fig:feature">1.2</A>). An important feature of the method is that
+the spatial restraints are obtained empirically, from a database of
+protein structure alignments.  Next, the spatial restraints and
+C<SMALL>HARMM</SMALL> energy terms enforcing proper stereochemistry
+[<A
+ HREF="node469.html#CHARMM98">MacKerell <EM>et&nbsp;al.</EM>, 1998</A>] are combined into an objective function.  Finally,
+the model is obtained by optimizing the objective function in
+Cartesian space. The optimization is carried out by the use of the
+variable target function method [<A
+ HREF="node469.html#BraGo85">Braun &amp; G&#245;, 1985</A>] employing methods of
+conjugate gradients and molecular dynamics with simulated annealing
+(Figure&nbsp;<A HREF="#fig:progress">1.3</A>). Several slightly different models can be
+calculated by varying the initial structure. The variability among
+these models can be used to estimate the errors in the corresponding
+regions of the fold. 
+
+<P>
+There are additional specialized modeling protocols, such as that for
+the modeling of loops (Section&nbsp;<A HREF="node31.html#SECTION:loops">2.3</A>).
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:scheme"></A><A NAME="2065"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1.1:</STRONG>
+ <FONT SIZE="-1">First, the known, template 3D 
+structures are aligned with the target sequence to be modeled.
+Second, spatial features, such as <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+-<!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+ distances, hydrogen bonds,
+and mainchain and sidechain dihedral angles, are transferred from the templates
+to the target. Thus, a number of spatial restraints on its structure are
+obtained. Third, the 3D model is obtained by satisfying all the restraints as
+well as possible.</FONT></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><IMG
+  WIDTH="576" HEIGHT="515" ALIGN="BOTTOM" BORDER="0"
+ SRC="./homology.png"
+ ALT="Image homology">
+
+<BR> 
+                 
+<DIV ALIGN="CENTER">
+ 
+</DIV></DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:feature"></A><A NAME="2070"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1.2:</STRONG>
+ <FONT SIZE="-1">A restraint on a given <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+-<!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+ distance, <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img14.png"
+ ALT="$ d$">
+, is expressed 
+as a conditional probability density function that depends on two other
+equivalent distances (<IMG
+ WIDTH="66" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img15.png"
+ ALT="$ d' = 17.0$">
+ and <!-- MATH
+ $d'' = 23.5$
+ -->
+<IMG
+ WIDTH="70" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img16.png"
+ ALT="$ d'' = 23.5$">
+):
+<!-- MATH
+ $p(d/d',d'')$
+ -->
+<IMG
+ WIDTH="77" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img17.png"
+ ALT="$ p(d/d',d'')$">
+. The restraint (continuous line) is obtained by
+least-squares fitting a sum of two Gaussian functions to the
+histogram, which in turn is derived from the database of 
+alignments of protein structures. In practice, more complicated restraints
+are used that depend on additional information, such as similarity
+between the proteins, solvent accessibility, and distance from a gap
+in the alignment [<A
+ HREF="node469.html#SalBlu93">&#352;ali &amp; Blundell, 1993</A>].
+</FONT></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><IMG
+  WIDTH="452" HEIGHT="356" ALIGN="BOTTOM" BORDER="0"
+ SRC="./feature2.png"
+ ALT="Image feature2">
+
+<BR> 
+                 
+<DIV ALIGN="CENTER">
+ 
+</DIV></DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+
+<DIV ALIGN="CENTER"><A NAME="fig:progress"></A><A NAME="2069"></A>
+<TABLE>
+<CAPTION ALIGN="BOTTOM"><STRONG>Figure 1.3:</STRONG>
+ <FONT SIZE="-1">Optimization of the objective
+function (curve) starts with a distorted average of template structures. In
+this run, the first <!-- MATH
+ $\sim 2,000$
+ -->
+<IMG
+ WIDTH="60" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$ \sim 2,000$">
+ iterations correspond to the variable
+target function method relying on the conjugate gradients
+technique. This approach first satisfies sequentially local restraints
+and slowly introduces longer range restraints until the complete
+objective function is optimized. In the last 4,750 iterations for this
+model, molecular dynamics with simulated annealing is used to refine
+the model. Typically, a model is calculated in the order of minutes
+on a PC workstation. </FONT></CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER"><IMG
+  WIDTH="531" HEIGHT="171" ALIGN="BOTTOM" BORDER="0"
+ SRC="./progress-d.png"
+ ALT="Image progress-d">
+
+<BR> 
+                 
+<DIV ALIGN="CENTER">
+ 
+</DIV></DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1428"
+  HREF="node12.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1422"
+  HREF="node6.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1416"
+  HREF="node10.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1424"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1426"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1429"
+  HREF="node12.html">Using MODELLER for comparative</A>
+<B> Up:</B> <A NAME="tex2html1423"
+  HREF="node6.html">Introduction</A>
+<B> Previous:</B> <A NAME="tex2html1417"
+  HREF="node10.html">Bug reports</A>
+ &nbsp; <B>  <A NAME="tex2html1425"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1427"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,1757 @@
+# LIBRARY OF RESIDUE TOPOLOGY MODELS
+#
+# MODELLER 7, Copyright Andrej Sali
+#
+# Changed the naming of the hydrogen atoms to conform to
+# the PDB convention, which conforms to the IUPAC convention.
+# Needs the corresponding top.lib.
+#
+#
+         ALLH POLH HEAV MCCB MNCH MCWO CA   MNSS CA3H CACB
+*
+RESI ALA
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT3  CT3  CT3  CT3  #### #### #### #### #### CT3
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI ARG
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### HA   ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     NC2  NC2  NC2  #### #### #### #### #### #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     C    C    C    #### #### #### #### #### #### ####
+ATOM     NC2  NC2  NC2  #### #### #### #### #### #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     NC2  NC2  NC2  #### #### #### #### #### #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI ASN
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CC   CC   CC   #### #### #### #### #### #### ####
+ATOM     O    O    O    #### #### #### #### #### #### ####
+ATOM     NH2  NH2  NH2  #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI ASX
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CC   CC   CC   #### #### #### #### #### #### ####
+ATOM     O    O    O    #### #### #### #### #### #### ####
+ATOM     NH2  NH2  NH2  #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI ASP
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CC   CC   CC   #### #### #### #### #### #### ####
+ATOM     OC   OC   OC   #### #### #### #### #### #### ####
+ATOM     OC   OC   OC   #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI CYS
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### CT2  #### CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     S    S    S    #### #### #### #### S    #### ####
+ATOM     HS   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI CSS
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  CT2  CT2  #### CT2  #### CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     S    S    S    #### #### #### #### S    #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI GLN
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### HA   ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CC   CC   CC   #### #### #### #### #### #### ####
+ATOM     O    O    O    #### #### #### #### #### #### ####
+ATOM     NH2  NH2  NH2  #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI GLX
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### HA   ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CC   CC   CC   #### #### #### #### #### #### ####
+ATOM     O    O    O    #### #### #### #### #### #### ####
+ATOM     NH2  NH2  NH2  #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI GLU
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### HA   ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CC   CC   CC   #### #### #### #### #### #### ####
+ATOM     OC   OC   OC   #### #### #### #### #### #### ####
+ATOM     OC   OC   OC   #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI GLY
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2
+ATOM     HB   #### #### #### #### #### #### #### #### ####
+ATOM     HB   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI UNK
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2
+ATOM     HB   #### #### #### #### #### #### #### #### ####
+ATOM     HB   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI HIS
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     NR1  NR1  NR1  #### #### #### #### #### NR1  ####
+ATOM     H    #### #### #### #### #### #### #### #### ####
+ATOM     CPH1 CPH1 CPH1 #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### #### CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     NR2  NR2  NR2  #### #### #### #### #### #### ####
+ATOM     CPH1 CPH1 CPH1 #### #### #### #### #### #### ####
+ATOM     HR3  #### #### #### #### #### #### #### #### ####
+ATOM     CPH2 CPH2 CPH2 #### #### #### #### #### #### ####
+ATOM     HR1  #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI HSE
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     NR1  NR1  NR1  #### #### #### #### #### NR1  ####
+ATOM     H    #### #### #### #### #### #### #### #### ####
+ATOM     CPH1 CPH1 CPH1 #### #### #### #### #### #### ####
+ATOM     HR3  #### #### #### #### #### #### #### #### ####
+ATOM     NR2  NR2  NR2  #### #### #### #### #### #### ####
+ATOM     CPH1 CPH1 CPH1 #### #### #### #### #### #### ####
+ATOM     CPH2 CPH2 CPH2 #### #### #### #### #### #### ####
+ATOM     HR1  #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### #### CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI HSP
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     NR3  NR3  NR3  #### #### #### #### #### NR3  ####
+ATOM     H    #### #### #### #### #### #### #### #### ####
+ATOM     NR3  NR3  NR3  #### #### #### #### #### #### ####
+ATOM     H    #### #### #### #### #### #### #### #### ####
+ATOM     CPH2 CPH2 CPH2 #### #### #### #### #### #### ####
+ATOM     HR2  #### #### #### #### #### #### #### #### ####
+ATOM     CPH1 CPH1 CPH1 #### #### #### #### #### #### ####
+ATOM     HR1  #### #### #### #### #### #### #### #### ####
+ATOM     CPH1 CPH1 CPH1 #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### #### CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI ILE
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT1  CT1  CT1  CT1  #### #### #### #### CT1  CT1
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT3  CT3  CT3  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT3  CT3  CT3  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI LEU
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT3  CT3  CT3  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT3  CT3  CT3  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI LYS
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### HA   ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     NH3  NH3  NH3  #### #### #### #### #### #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI MET
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     S    S    S    #### #### #### #### #### #### ####
+ATOM     CT3  CT3  CT3  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI PHE
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI PRO
+ATOM     N    N    N    N    N    N    #### N    #### ####
+ATOM     CP1  CP1  CP1  CP1  CP1  CP1  CP1  CP1  CP1  CP1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CP3  CP3  CP3  #### #### #### #### #### #### CP3
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CP2  CP2  CP2  CP2  #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CP2  CP2  CP2  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI SER
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### #### CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     OH1  OH1  OH1  #### #### #### #### #### #### ####
+ATOM     H    #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI THR
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT1  CT1  CT1  CT1  #### #### #### #### #### CT1
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     OH1  OH1  OH1  #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT3  CT3  CT3  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI TRP
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### HA   ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CY   CY   CY   #### #### #### #### #### #### ####
+ATOM     CPT  CPT  CPT  #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     NY   NY   NY   #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CPT  CPT  CPT  #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI TYR
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   #### #### #### #### #### #### ####
+ATOM     OH1  OH1  OH1  #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI VAL
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### HB   ####
+ATOM     CT1  CT1  CT1  CT1  #### #### #### #### #### CT1
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT3  CT3  CT3  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT3  CT3  CT3  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+RESI TIP3
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     HT   HT   #### #### #### #### #### #### #### ####
+ATOM     HT   HT   #### #### #### #### #### #### #### ####
+*
+RESI CAL
+ATOM     CAL  CAL  CAL  CAL  CAL  CAL  CAL  CAL  CAL  CAL
+*
+RESI ZN2
+ATOM     ZN   ZN   ZN   ZN   ZN   ZN   ZN   ZN   ZN   ZN
+*
+RESI HEME
+ATOM     FE   FE   FE   FE   FE   FE   FE   FE   FE   FE
+ATOM     NPH  NPH  NPH  NPH  NPH  NPH  NPH  NPH  NPH  NPH
+ATOM     NP1  NP1  NP1  NP1  NP1  NP1  NP1  NP1  NP1  NP1
+ATOM     NPH  NPH  NPH  NPH  NPH  NPH  NPH  NPH  NPH  NPH
+ATOM     NP1  NP1  NP1  NP1  NP1  NP1  NP1  NP1  NP1  NP1
+ATOM     CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA
+ATOM     CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB
+ATOM     CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB
+ATOM     CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA
+ATOM     CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA
+ATOM     CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB
+ATOM     CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB
+ATOM     CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA
+ATOM     CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA
+ATOM     CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB
+ATOM     CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB
+ATOM     CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA
+ATOM     CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA
+ATOM     CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB
+ATOM     CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB  CPB
+ATOM     CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA  CPA
+ATOM     CPM  CPM  CPM  CPM  CPM  CPM  CPM  CPM  CPM  CPM
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CPM  CPM  CPM  CPM  CPM  CPM  CPM  CPM  CPM  CPM
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CPM  CPM  CPM  CPM  CPM  CPM  CPM  CPM  CPM  CPM
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CPM  CPM  CPM  CPM  CPM  CPM  CPM  CPM  CPM  CPM
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT3  CT3  CT3  CT3  CT3  CT3  CT3  CT3  CT3  CT3
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CC   CC   CC   CC   CC   CC   CC   CC   CC   CC
+ATOM     OC   OC   OC   OC   OC   OC   OC   OC   OC   OC
+ATOM     OC   OC   OC   OC   OC   OC   OC   OC   OC   OC
+ATOM     CT3  CT3  CT3  CT3  CT3  CT3  CT3  CT3  CT3  CT3
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    C    C    C    C
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    C    C    C    C
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT3  CT3  CT3  CT3  CT3  CT3  CT3  CT3  CT3  CT3
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    C    C    C    C
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    C    C    C    C
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT3  CT3  CT3  CT3  CT3  CT3  CT3  CT3  CT3  CT3
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CC   CC   CC   CC   CC   CC   CC   CC   CC   CC
+ATOM     OC   OC   OC   OC   OC   OC   OC   OC   OC   OC
+ATOM     OC   OC   OC   OC   OC   OC   OC   OC   OC   OC
+*
+PRES NTER
+ATOM     NH3  NH3  NH3  NH3  NH3  NH3  #### NH3  #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     HB   #### #### #### #### #### #### #### #### ####
+*
+PRES GLYP
+ATOM     NH3  NH3  NH3  NH3  NH3  NH3  #### NH3  #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2  CT2
+ATOM     HB   #### #### #### #### #### #### #### #### ####
+ATOM     HB   #### #### #### #### #### #### #### #### ####
+*
+PRES PROP
+ATOM     NP   NP   NP   NP   NP   NP   #### NP   #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     HC   HC   #### #### #### #### #### #### #### ####
+ATOM     CP3  CP3  CP3  #### #### #### #### #### #### CP3
+ATOM     CP1  CP1  CP1  CP1  CP1  CP1  CP1  CP1  CP1  CP1
+ATOM     HB   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+*
+PRES ACE
+ATOM     CT3  CT3  CT3  CT3  CT3  CT3  #### CT3  #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+PRES ACP
+ATOM     CT3  CT3  CT3  CT3  CT3  CT3  #### CT3  #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    #### #### O    #### ####
+*
+PRES CTER
+ATOM     CC   CC   CC   CC   CC   CC   #### CC   #### ####
+ATOM     OC   OC   OC   OC   OC   OC   #### OC   #### ####
+ATOM     OC   OC   OC   OC   OC   OC   #### OC   #### ####
+*
+PRES CT1
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  #### CT1  #### ####
+ATOM     HB   #### #### #### #### #### #### #### #### ####
+ATOM     CD   CD   CD   CD   CD   CD   #### CD   #### ####
+ATOM     OB   OB   OB   OB   OB   OB   #### OB   #### ####
+ATOM     OS   OS   OS   OS   OS   OS   #### OS   #### ####
+ATOM     CT3  CT3  CT3  CT3  CT3  CT3  #### CT3  #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+*
+PRES CT2
+ATOM     CC   CC   CC   CC   CC   CC   #### CC   #### ####
+ATOM     O    O    O    O    O    O    #### O    #### ####
+ATOM     NH2  NH2  NH2  NH2  NH2  NH2  #### NH2  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+*
+PRES CT3
+ATOM     C    C    C    C    C    C    #### C    #### ####
+ATOM     O    O    O    O    O    O    #### O    #### ####
+ATOM     NH1  NH1  NH1  NH1  NH1  NH1  #### NH1  #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     CT3  CT3  CT3  CT3  CT3  CT3  #### CT3  #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+*
+PRES ASPP
+ATOM     CT2  CT2  CT2  CT2  #### #### #### #### CT2  CT2
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CD   CD   CD   #### #### #### #### #### #### ####
+ATOM     OB   OB   OB   #### #### #### #### #### #### ####
+ATOM     OH1  OH1  OH1  #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+*
+PRES GLUP
+ATOM     CT2  CT2  CT2  #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     HA   #### #### #### #### #### #### #### #### ####
+ATOM     CD   CD   CD   #### #### #### #### #### #### ####
+ATOM     OB   OB   OB   #### #### #### #### #### #### ####
+ATOM     OH1  OH1  OH1  #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+*
+PRES LINK
+*
+PRES DISU
+ATOM     CT2  CT2  CT2  CT2  CT2  CT2  #### CT2  #### ####
+ATOM     SM   SM   SM   SM   SM   SM   #### SM   #### ####
+ATOM     SM   SM   SM   SM   SM   SM   #### SM   #### ####
+ATOM     CT2  CT2  CT2  CT2  CT2  CT2  #### CT2  #### ####
+*
+RESI O2
+ATOM     OM   OM   OM   OM   OM   OM   OM   OM   OM   OM
+ATOM     OM   OM   OM   OM   OM   OM   OM   OM   OM   OM
+*
+RESI CO
+ATOM     CM   CM   CM   CM   CM   CM   CM   CM   CM   CM
+ATOM     OM   OM   OM   OM   OM   OM   OM   OM   OM   OM
+*
+PRES FHEM
+*
+PRES PHEM
+*
+PRES PLO2
+*
+PRES PLIG
+*
+PRES LIG1
+*
+PRES LIG2
+*
+PRES LIG3
+*
+RESI GDP
+ATOM     PB   PB   PB   PB   PB   PB   PB   PB   PB   PB
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     PA   PA   PA   PA   PA   PA   PA   PA   PA   PA
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     OS   OS   OS   OS   OS   OS   OS   OS   OS   OS
+ATOM     OS   OS   OS   OS   OS   OS   OS   OS   OS   OS
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     OS   OS   OS   OS   OS   OS   OS   OS   OS   OS
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     NY   NY   NY   NY   NY   NY   NY   NY   NY   NY
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     NY   NY   NY   NY   NY   NY   NY   NY   NY   NY
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     OS   OS   OS   OS   OS   OS   OS   OS   OS   OS
+ATOM     NY   NY   NY   NY   NY   NY   NY   NY   NY   NY
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     NY   NY   NY   NY   NY   NY   NY   NY   NY   NY
+ATOM     NY   NY   NY   NY   NY   NY   NY   NY   NY   NY
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+*
+RESI GTP
+ATOM     PB   PB   PB   PB   PB   PB   PB   PB   PB   PB
+ATOM     OS   OS   OS   OS   OS   OS   OS   OS   OS   OS
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     PA   PA   PA   PA   PA   PA   PA   PA   PA   PA
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     PA   PA   PA   PA   PA   PA   PA   PA   PA   PA
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     OS   OS   OS   OS   OS   OS   OS   OS   OS   OS
+ATOM     OS   OS   OS   OS   OS   OS   OS   OS   OS   OS
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     OS   OS   OS   OS   OS   OS   OS   OS   OS   OS
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     NY   NY   NY   NY   NY   NY   NY   NY   NY   NY
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     NY   NY   NY   NY   NY   NY   NY   NY   NY   NY
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     OT   OT   OT   OT   OT   OT   OT   OT   OT   OT
+ATOM     NY   NY   NY   NY   NY   NY   NY   NY   NY   NY
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     NY   NY   NY   NY   NY   NY   NY   NY   NY   NY
+ATOM     NY   NY   NY   NY   NY   NY   NY   NY   NY   NY
+ATOM     CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1  CT1
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     H    H    #### #### #### #### #### #### #### ####
+ATOM     HA   HA   #### #### #### #### #### #### #### ####
+*
+RESI DUM
+ATOM     DUM  DUM  DUM  DUM  DUM  DUM  DUM  DUM  DUM  DUM
+*
+PRES TP1
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     ON2B ON2B ON2B ON2B ON2B ON2B ON2B ON2B ON2B ON2B
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4
+ATOM     HN4  HN4  #### #### #### #### #### #### #### ####
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+*
+PRES TP1A
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     ON2B ON2B ON2B ON2B ON2B ON2B ON2B ON2B ON2B ON2B
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4
+ATOM     HN4  HN4  #### #### #### #### #### #### #### ####
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+*
+PRES TP2
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     ON2B ON2B ON2B ON2B ON2B ON2B ON2B ON2B ON2B ON2B
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+*
+PRES TP2A
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     HP   #### #### #### #### #### #### #### #### ####
+ATOM     CA   CA   CA   CA   CA   CA   CA   CA   CA   CA
+ATOM     ON2B ON2B ON2B ON2B ON2B ON2B ON2B ON2B ON2B ON2B
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+*
+RESI GUA
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A
+ATOM     CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2
+ATOM     NN2G NN2G NN2G NN2G NN2G NN2G NN2G NN2G NN2G NN2G
+ATOM     HN2  #### #### #### #### #### #### #### #### ####
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+*
+RESI ADE
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+*
+RESI CYT
+ATOM     P    P    P    P    P    P    #### P    #### P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  #### CN8  #### CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  #### ON6  #### ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B #### CN6B #### CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  #### NN2  #### NN2
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  #### CN3  #### CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN1  CN1  CN1  CN1  CN1  CN1  #### CN1  #### CN1
+ATOM     ON1C ON1C ON1C ON1C ON1C ON1C #### ON1C #### ON1C
+ATOM     NN3  NN3  NN3  NN3  NN3  NN3  #### NN3  #### NN3
+ATOM     CN2  CN2  CN2  CN2  CN2  CN2  #### CN2  #### CN2
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  #### NN1  #### NN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     HN1  #### #### #### #### #### #### #### #### ####
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  #### CN3  #### CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  #### ON5  #### ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+*
+RESI THY
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     NN2U NN2U NN2U NN2U NN2U NN2U NN2U NN2U NN2U NN2U
+ATOM     HN2  HN2  #### #### #### #### #### #### #### ####
+ATOM     CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+*
+RESI URA
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     NN2U NN2U NN2U NN2U NN2U NN2U NN2U NN2U NN2U NN2U
+ATOM     HN2  HN2  #### #### #### #### #### #### #### ####
+ATOM     CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+*
+RESI DGUA
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A
+ATOM     CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2
+ATOM     NN2G NN2G NN2G NN2G NN2G NN2G NN2G NN2G NN2G NN2G
+ATOM     HN2  #### #### #### #### #### #### #### #### ####
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+*
+RESI DADE
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+*
+RESI DCYT
+ATOM     P    P    P    P    P    P    #### P    #### P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  #### CN8  #### CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  #### ON6  #### ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B #### CN6B #### CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  #### NN2  #### NN2
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  #### CN3  #### CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN1  CN1  CN1  CN1  CN1  CN1  #### CN1  #### CN1
+ATOM     ON1C ON1C ON1C ON1C ON1C ON1C #### ON1C #### ON1C
+ATOM     NN3  NN3  NN3  NN3  NN3  NN3  #### NN3  #### NN3
+ATOM     CN2  CN2  CN2  CN2  CN2  CN2  #### CN2  #### CN2
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  #### NN1  #### NN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     HN1  #### #### #### #### #### #### #### #### ####
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  #### CN3  #### CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+*
+RESI DTHY
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     NN2U NN2U NN2U NN2U NN2U NN2U NN2U NN2U NN2U NN2U
+ATOM     HN2  HN2  #### #### #### #### #### #### #### ####
+ATOM     CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+*
+RESI DURA
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     NN2U NN2U NN2U NN2U NN2U NN2U NN2U NN2U NN2U NN2U
+ATOM     HN2  HN2  #### #### #### #### #### #### #### ####
+ATOM     CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1  CN1
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C CN6C
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+*
+RESI DMPA
+ATOM     P    P    P    P    P    P    #### P    #### P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  #### CN9  #### CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  #### CN9  #### CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+*
+RESI MP_0
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4
+ATOM     ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN4  HN4  #### #### #### #### #### #### #### ####
+ATOM     HN4  HN4  #### #### #### #### #### #### #### ####
+*
+RESI MP_1
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4  ON4
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN4  HN4  #### #### #### #### #### #### #### ####
+*
+RESI MP_2
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+*
+RESI SOD
+ATOM     SOD  SOD  SOD  SOD  SOD  SOD  SOD  SOD  SOD  SOD
+*
+RESI MG
+ATOM     MG   MG   MG   MG   MG   MG   #### MG   #### MG
+*
+PRES DEO1
+ATOM     CN6C CN6C CN6C CN6C CN6C CN6C #### CN6C #### CN6C
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+*
+PRES DEO2
+ATOM     CN6C CN6C CN6C CN6C CN6C CN6C #### CN6C #### CN6C
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+*
+PRES PYRC
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     HN2  HN2  #### #### #### #### #### #### #### ####
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+*
+PRES PYRU
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     HN2  HN2  #### #### #### #### #### #### #### ####
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+*
+PRES PURG
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     HN2  HN2  #### #### #### #### #### #### #### ####
+*
+PRES PURA
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     HN2  HN2  #### #### #### #### #### #### #### ####
+*
+PRES 5TER
+ATOM     HN5  HN5  #### #### #### #### #### #### #### HN5
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  #### ON5  #### ON5
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  #### CN8  #### CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+*
+PRES 5MET
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  #### CN9  #### CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+*
+PRES 5PHO
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  #### CN8  #### CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     P    P    P    P    P    P    #### P    #### P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     ON4  ON4  ON4  ON4  ON4  ON4  #### ON4  #### ON4
+ATOM     HN4  HN4  #### #### #### #### #### #### #### HN4
+*
+PRES 3TER
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  #### ON5  #### ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### HN5
+*
+PRES 3PHO
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     P    P    P    P    P    P    #### P    #### P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     ON4  ON4  ON4  ON4  ON4  ON4  #### ON4  #### ON4
+ATOM     HN4  HN4  #### #### #### #### #### #### #### HN4
+*
+PRES 25P1
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     P    P    P    P    P    P    #### P    #### P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  #### CN8  #### CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+*
+PRES 25P2
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     P    P    P    P    P    P    #### P    #### P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  #### CN8  #### CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+*
+PRES 9MG
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  #### CN9  #### CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+*
+PRES 9EG
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  #### CN8  #### CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  #### CN9  #### CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+*
+PRES 9MA
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  #### CN9  #### CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+*
+PRES 1MC
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  #### CN9  #### CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+*
+PRES 5MC1
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  #### NN2  #### NN2
+ATOM     HN2  HN2  #### #### #### #### #### #### #### HN2
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  #### CN3  #### CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### HN3
+ATOM     CN3D CN3D CN3D CN3D CN3D CN3D #### CN3D #### CN3D
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  #### CN9  #### CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+*
+PRES 5MC2
+ATOM     CN3D CN3D CN3D CN3D CN3D CN3D #### CN3D #### CN3D
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  #### CN9  #### CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+*
+PRES INO1
+ATOM     NN3I NN3I NN3I NN3I NN3I NN3I NN3I NN3I NN3I NN3I
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     NN2G NN2G NN2G NN2G NN2G NN2G NN2G NN2G NN2G NN2G
+ATOM     HN2  #### #### #### #### #### #### #### #### ####
+*
+PRES 1MT
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  #### CN9  #### CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+*
+RESI RIBT
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     NN5  NN5  NN5  NN5  NN5  NN5  NN5  NN5  NN5  NN5
+ATOM     HN1  #### #### #### #### #### #### #### #### ####
+ATOM     HN1  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6
+*
+RESI DEOT
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  #### CN9  #### CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     NN5  NN5  NN5  NN5  NN5  NN5  #### NN5  #### NN5
+ATOM     HN1  #### #### #### #### #### #### #### #### HN1
+ATOM     HN1  #### #### #### #### #### #### #### #### HN1
+ATOM     CN6C CN6C CN6C CN6C CN6C CN6C #### CN6C #### CN6C
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  #### ON5  #### ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### HN5
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B #### CN6B #### CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  #### ON6  #### ON6
+*
+RESI NIC
+ATOM     HN2  HN2  #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     CN3B CN3B CN3B CN3B CN3B CN3B CN3B CN3B CN3B CN3B
+ATOM     HN3B #### #### #### #### #### #### #### #### ####
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     HN3B #### #### #### #### #### #### #### #### ####
+ATOM     CN3A CN3A CN3A CN3A CN3A CN3A CN3A CN3A CN3A CN3A
+ATOM     HN3B #### #### #### #### #### #### #### #### ####
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     CN3B CN3B CN3B CN3B CN3B CN3B CN3B CN3B CN3B CN3B
+ATOM     HN3B #### #### #### #### #### #### #### #### ####
+ATOM     CN1A CN1A CN1A CN1A CN1A CN1A CN1A CN1A CN1A CN1A
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+*
+RESI NICH
+ATOM     HN2  HN2  #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     CN3C CN3C CN3C CN3C CN3C CN3C CN3C CN3C CN3C CN3C
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN3C CN3C CN3C CN3C CN3C CN3C CN3C CN3C CN3C CN3C
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     CN1A CN1A CN1A CN1A CN1A CN1A CN1A CN1A CN1A CN1A
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1
+ATOM     HN1  #### #### #### #### #### #### #### #### ####
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+*
+RESI PPI1
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     P2   P2   P2   P2   P2   P2   P2   P2   P2   P2
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+*
+RESI ADP
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  #### ON6  #### ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B #### CN6B #### CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  #### CN5  #### CN5
+ATOM     NN4  NN4  NN4  NN4  NN4  NN4  #### NN4  #### NN4
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  #### CN4  #### CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### HN3
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  #### NN2  #### NN2
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A #### NN3A #### NN3A
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  #### CN4  #### CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### HN3
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A #### NN3A #### NN3A
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  #### CN5  #### CN5
+ATOM     CN2  CN2  CN2  CN2  CN2  CN2  #### CN2  #### CN2
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  #### NN1  #### NN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### HN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### HN1
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  #### ON5  #### ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### HN5
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  #### ON5  #### ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### HN5
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  #### CN8  #### CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     P    P    P    P    P    P    #### P    #### P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     P2   P2   P2   P2   P2   P2   #### P2   #### P2
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+*
+RESI ATP
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  #### ON6  #### ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B #### CN6B #### CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  #### CN5  #### CN5
+ATOM     NN4  NN4  NN4  NN4  NN4  NN4  #### NN4  #### NN4
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  #### CN4  #### CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### HN3
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  #### NN2  #### NN2
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A #### NN3A #### NN3A
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  #### CN4  #### CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### HN3
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A #### NN3A #### NN3A
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  #### CN5  #### CN5
+ATOM     CN2  CN2  CN2  CN2  CN2  CN2  #### CN2  #### CN2
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  #### NN1  #### NN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### HN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### HN1
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  #### ON5  #### ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### HN5
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  #### CN6  #### CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### HN6
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  #### ON5  #### ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### HN5
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  #### CN8  #### CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     P    P    P    P    P    P    #### P    #### P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     P2   P2   P2   P2   P2   P2   #### P2   #### P2
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     P2   P2   P2   P2   P2   P2   #### P2   #### P2
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+*
+PRES 5DP
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  #### CN8  #### CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     HN7  #### #### #### #### #### #### #### #### HN7
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     P    P    P    P    P    P    #### P    #### P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  #### ON2  #### ON2
+ATOM     P2   P2   P2   P2   P2   P2   #### P2   #### P2
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  #### ON3  #### ON3
+*
+RESI NAD
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     CN3B CN3B CN3B CN3B CN3B CN3B CN3B CN3B CN3B CN3B
+ATOM     HN3B #### #### #### #### #### #### #### #### ####
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     HN3B #### #### #### #### #### #### #### #### ####
+ATOM     CN3A CN3A CN3A CN3A CN3A CN3A CN3A CN3A CN3A CN3A
+ATOM     HN3B #### #### #### #### #### #### #### #### ####
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     CN3B CN3B CN3B CN3B CN3B CN3B CN3B CN3B CN3B CN3B
+ATOM     HN3B #### #### #### #### #### #### #### #### ####
+ATOM     CN1A CN1A CN1A CN1A CN1A CN1A CN1A CN1A CN1A CN1A
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+*
+RESI NADH
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4  NN4
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A
+ATOM     CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4  CN4
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A NN3A
+ATOM     CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5  CN5
+ATOM     CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2  CN2
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     P    P    P    P    P    P    P    P    P    P
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3  ON3
+ATOM     ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2  ON2
+ATOM     CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9  CN9
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5  ON5
+ATOM     HN5  HN5  #### #### #### #### #### #### #### ####
+ATOM     CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B CN6B
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6  CN6
+ATOM     HN6  #### #### #### #### #### #### #### #### ####
+ATOM     ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6  ON6
+ATOM     NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2  NN2
+ATOM     CN3C CN3C CN3C CN3C CN3C CN3C CN3C CN3C CN3C CN3C
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8  CN8
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     HN7  #### #### #### #### #### #### #### #### ####
+ATOM     CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3  CN3
+ATOM     CN3C CN3C CN3C CN3C CN3C CN3C CN3C CN3C CN3C CN3C
+ATOM     HN3  #### #### #### #### #### #### #### #### ####
+ATOM     CN1A CN1A CN1A CN1A CN1A CN1A CN1A CN1A CN1A CN1A
+ATOM     ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1  ON1
+ATOM     NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1  NN1
+ATOM     HN1  #### #### #### #### #### #### #### #### ####
+ATOM     HN1  HN1  #### #### #### #### #### #### #### ####
+*

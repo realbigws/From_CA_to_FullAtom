@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>model.color() -- color MODEL according to alignment</TITLE>
+<META NAME="description" CONTENT="model.color() -- color MODEL according to alignment">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node189.html">
+<LINK REL="previous" HREF="node187.html">
+<LINK REL="up" HREF="node155.html">
+<LINK REL="next" HREF="node189.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4477"
+  HREF="node189.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4471"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4465"
+  HREF="node187.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4473"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4475"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4478"
+  HREF="node189.html">model.make_chains()   Fetch</A>
+<B> Up:</B> <A NAME="tex2html4472"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4466"
+  HREF="node187.html">model.make_region()   define</A>
+ &nbsp; <B>  <A NAME="tex2html4474"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4476"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011633000000000000000">
+model.color() -- color MODEL according to alignment</A>
+</H2> <A NAME="14678"></A><A NAME="CMD:model.color"></A><A NAME="14681"></A><TT>color(aln)</TT>
+<BR><BLOCKQUOTE>
+This command `colors' the model according to a given alignment,
+<I>aln</I><A NAME="14692"></A>, between the model and a sequence. The model has to be the first
+protein in the alignment. The second protein can be any sequence, with or
+without known structure.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The coloring is done by setting the <I>B<IMG
+ WIDTH="22" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img29.png"
+ ALT="$ {}_{iso}$">
+</I><A NAME="14695"></A> (isotropic temperature factor)
+field in the model as follows:
+</BLOCKQUOTE>
+<UL>
+<LI>0, for those regions that have residues in both MODEL and the sequence
+         (blue in R<SMALL>ASMOL</SMALL>; light green in <A NAME="tex2html110"
+  HREF="http://www.accelrys.com/quanta/">Q<SMALL>UANTA</SMALL></A>);
+</LI>
+<LI>1, for the two residues that span regions occurring in the sequence but
+         not in MODEL (green in R<SMALL>ASMOL</SMALL>; pink in <A NAME="tex2html111"
+  HREF="http://www.accelrys.com/quanta/">Q<SMALL>UANTA</SMALL></A>);
+</LI>
+<LI>2, regions that occur in MODEL but are deleted from the sequence
+         (red in R<SMALL>ASMOL</SMALL>; bright green in <A NAME="tex2html112"
+  HREF="http://www.accelrys.com/quanta/">Q<SMALL>UANTA</SMALL></A>).
+</LI>
+</UL>
+<P>
+<BLOCKQUOTE>The model can then be written out with <B><A HREF="node172.html#CMD:model.write">model.write()</A></B><A NAME="14712"></A> as a PDB file,
+and colored using your PDB viewer based on the temperature factors. You can
+then inspect the model for the structural context of deletions and insertions.
+This is useful in optimizing the alignment for comparative modeling.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html113"
+  HREF="../examples/commands/color_aln_model.py">examples/commands/color_aln_model.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: model.color()
+
+# Two demos:
+#
+# 1) Use a given alignment to color a structure according to
+#    insertions and deletions in a pairwise alignment.
+#
+# 2) Superpose two 3D structure and do (1).
+
+from modeller import *
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+
+# Demo 1:
+mdl = model(env)
+aln = alignment(env)
+mdl.read(file='2nbt', model_segment=('FIRST:A', 'LAST:A'))
+aln.append(file='toxin.ali', align_codes=('2nbt', '1fas'), remove_gaps=True)
+mdl.color(aln)
+mdl.write(file='2nbt-1.clr')
+
+# Demo 2:
+aln = alignment(env)
+segs = {'2nbt':('1:A', '66:A'), '1fas':('1:A', '61:A')}
+for code in ('2nbt', '1fas'):
+    mdl.read(file=code, model_segment=segs[code])
+    aln.append_model(mdl, align_codes=code, atom_files=code)
+aln.align(gap_penalties_1d=(-600, -400))
+aln.malign3d(gap_penalties_3d=(0, 3.0))
+aln.write(file='color_aln_model.pap', alignment_format='PAP')
+
+mdl.read(file='2nbt', model_segment=segs['2nbt'])
+mdl.color(aln)
+mdl.write(file='2nbt-2.clr')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4477"
+  HREF="node189.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4471"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4465"
+  HREF="node187.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4473"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4475"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4478"
+  HREF="node189.html">model.make_chains()   Fetch</A>
+<B> Up:</B> <A NAME="tex2html4472"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4466"
+  HREF="node187.html">model.make_region()   define</A>
+ &nbsp; <B>  <A NAME="tex2html4474"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4476"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

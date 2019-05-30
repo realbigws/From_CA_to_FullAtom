@@ -1,0 +1,812 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Features and their derivatives</TITLE>
+<META NAME="description" CONTENT="Features and their derivatives">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node450.html">
+<LINK REL="previous" HREF="node448.html">
+<LINK REL="up" HREF="node448.html">
+<LINK REL="next" HREF="node450.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8375"
+  HREF="node450.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8369"
+  HREF="node448.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8363"
+  HREF="node448.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8371"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8373"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8376"
+  HREF="node450.html">Restraints and their derivatives</A>
+<B> Up:</B> <A NAME="tex2html8370"
+  HREF="node448.html">Equations used in the</A>
+<B> Previous:</B> <A NAME="tex2html8364"
+  HREF="node448.html">Equations used in the</A>
+ &nbsp; <B>  <A NAME="tex2html8372"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8374"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html8377"
+  HREF="node449.html#SECTION001331100000000000000">Distance</A>
+<LI><A NAME="tex2html8378"
+  HREF="node449.html#SECTION001331200000000000000">Angle</A>
+<LI><A NAME="tex2html8379"
+  HREF="node449.html#SECTION001331300000000000000">Dihedral angle</A>
+<LI><A NAME="tex2html8380"
+  HREF="node449.html#SECTION001331400000000000000">Atomic solvent accessibility</A>
+<LI><A NAME="tex2html8381"
+  HREF="node449.html#SECTION001331500000000000000">Atomic density</A>
+<LI><A NAME="tex2html8382"
+  HREF="node449.html#SECTION001331600000000000000">Atomic coordinates</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H2><A NAME="SECTION001331000000000000000">
+Features and their derivatives</A>
+</H2>
+
+<P>
+
+<H3><A NAME="SECTION001331100000000000000">
+Distance</A>
+</H3>
+
+<P>
+Distance is defined by points <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ and <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ j$">
+:
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+d = \sqrt{\vec{r}_{ij} \cdot \vec{r}_{ij}} = |\vec{r}_{ij}| = r_{ij}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="188" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img265.png"
+ ALT="$\displaystyle d = \sqrt{\vec{r}_{ij} \cdot \vec{r}_{ij}} = \vert\vec{r}_{ij}\vert = r_{ij}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.37)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\vec{r}_{ij} = \vec{r}_i - \vec{r}_j \; .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="104" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img266.png"
+ ALT="$\displaystyle \vec{r}_{ij} = \vec{r}_i - \vec{r}_j \; .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.38)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The first derivatives of <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img14.png"
+ ALT="$ d$">
+ with respect to Cartesian coordinates are:
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+\frac{\partial d} {\partial \vec{r}_i} & = & 
+      \frac{\vec{r}_{ij}}{|\vec{r}_{ij}|} \\[3mm]
+  \frac{\partial d} {\partial \vec{r}_j} & = &  
+     -\frac{\partial d} {\partial \vec{r}_i}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="31" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img267.png"
+ ALT="$\displaystyle \frac{\partial d} {\partial \vec{r}_i}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="37" HEIGHT="43" ALIGN="MIDDLE" BORDER="0"
+ SRC="img268.png"
+ ALT="$\displaystyle \frac{\vec{r}_{ij}}{\vert\vec{r}_{ij}\vert}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.39)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="33" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img269.png"
+ ALT="$\displaystyle \frac{\partial d} {\partial \vec{r}_j}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="44" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img270.png"
+ ALT="$\displaystyle -\frac{\partial d} {\partial \vec{r}_i}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.40)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+
+<H3><A NAME="SECTION001331200000000000000">
+Angle</A>
+</H3>
+
+<P>
+Angle is defined by points <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+, <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ j$">
+, and <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img162.png"
+ ALT="$ k$">
+, and spanned by vectors 
+<IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img271.png"
+ ALT="$ ij$">
+ and <IMG
+ WIDTH="20" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img272.png"
+ ALT="$ kj$">
+:
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\alpha = \arccos \frac{\vec{r}_{ij} \cdot \vec{r}_{kj}}
+                      {|\vec{r}_{ij}| |\vec{r}_{kj}|} \; .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="154" HEIGHT="43" ALIGN="MIDDLE" BORDER="0"
+ SRC="img273.png"
+ ALT="$\displaystyle \alpha = \arccos \frac{\vec{r}_{ij} \cdot \vec{r}_{kj}} {\vert\vec{r}_{ij}\vert \vert\vec{r}_{kj}\vert} \; .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.41)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+It lies in the interval from 0 to 180<IMG
+ WIDTH="11" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img27.png"
+ ALT="$ {}^{o}$">
+. Internal 
+M<SMALL>ODELLER</SMALL> units are radians.
+
+<P>
+The first derivatives of <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$ \alpha $">
+ with respect to Cartesian coordinates are:
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+\frac{\partial \alpha}{\partial \vec{r}_i} & = & 
+      \frac{\partial \alpha}{\partial \cos \alpha} \; 
+      \frac{\partial \cos \alpha}{\partial \vec{r}_i} = 
+      \frac{1}{\sqrt{1-\cos^2 \alpha}} \;
+      \frac{1}{r_{ij}} \;
+      \left( \frac{\vec{r}_{ij}}{r_{ij}} \cos \alpha -
+             \frac{\vec{r}_{kj}}{r_{kj}} \right) \\[4mm]
+  \frac{\partial \alpha}{\partial \vec{r}_k} & = & 
+      \frac{\partial \alpha}{\partial \cos \alpha} \; 
+      \frac{\partial \cos \alpha}{\partial \vec{r}_k} = 
+      \frac{1}{\sqrt{1-\cos^2 \alpha}} \;
+      \frac{1}{r_{kj}} \;
+      \left( \frac{\vec{r}_{kj}}{r_{kj}} \cos \alpha -
+             \frac{\vec{r}_{ij}}{r_{ij}} \right) \\[4mm]
+  \frac{\partial \alpha} {\partial \vec{r}_j} & = &  
+     -\frac{\partial \alpha} {\partial \vec{r}_i}
+     -\frac{\partial \alpha} {\partial \vec{r}_k}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="31" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img274.png"
+ ALT="$\displaystyle \frac{\partial \alpha}{\partial \vec{r}_i}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="379" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img275.png"
+ ALT="$\displaystyle \frac{\partial \alpha}{\partial \cos \alpha} \;
+\frac{\partial ...
+... \frac{\vec{r}_{ij}}{r_{ij}} \cos \alpha -
+\frac{\vec{r}_{kj}}{r_{kj}} \right)$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.42)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="34" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img276.png"
+ ALT="$\displaystyle \frac{\partial \alpha}{\partial \vec{r}_k}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="382" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img277.png"
+ ALT="$\displaystyle \frac{\partial \alpha}{\partial \cos \alpha} \;
+\frac{\partial ...
+... \frac{\vec{r}_{kj}}{r_{kj}} \cos \alpha -
+\frac{\vec{r}_{ij}}{r_{ij}} \right)$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.43)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="33" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img278.png"
+ ALT="$\displaystyle \frac{\partial \alpha} {\partial \vec{r}_j}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="93" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img279.png"
+ ALT="$\displaystyle -\frac{\partial \alpha} {\partial \vec{r}_i}
+-\frac{\partial \alpha} {\partial \vec{r}_k}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.44)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+These equations for the  derivatives have a numerical instability when 
+the angle goes to 0 or to 180<IMG
+ WIDTH="11" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img27.png"
+ ALT="$ {}^{o}$">
+.
+Presently, the problem is `solved' by testing for the size
+of the angle; if it is too small, the derivatives are set to 0
+in the hope that other restraints will eventually pull the angle
+towards well behaved regions. Thus, angle restraints of 0 or 
+180<IMG
+ WIDTH="11" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img27.png"
+ ALT="$ {}^{o}$">
+ should not be used in the conjugate gradients or molecular dynamics
+optimizations.
+
+<P>
+
+<H3><A NAME="SECTION001331300000000000000">
+Dihedral angle</A>
+</H3>
+
+<P>
+Dihedral angle is defined by points <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+, <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ j$">
+, <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img162.png"
+ ALT="$ k$">
+, and <IMG
+ WIDTH="9" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img107.png"
+ ALT="$ l$">
+ (<IMG
+ WIDTH="31" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img280.png"
+ ALT="$ ijkl$">
+):
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\chi = \mbox{sign}(\chi) \arccos\frac{
+                           (\vec{r}_{ij} \times \vec{r}_{kj}) \cdot 
+                           (\vec{r}_{kj} \times \vec{r}_{kl})}
+                          {|\vec{r}_{ij} \times \vec{r}_{kj}|
+                           |\vec{r}_{kj} \times \vec{r}_{kl}|}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="31" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img281.png"
+ ALT="$\displaystyle \chi =$">&nbsp; &nbsp;sign<IMG
+ WIDTH="240" HEIGHT="53" ALIGN="MIDDLE" BORDER="0"
+ SRC="img282.png"
+ ALT="$\displaystyle (\chi) \arccos\frac{ (\vec{r}_{ij} \times \vec{r}_{kj}) \cdot (\v...
+...ec{r}_{ij} \times \vec{r}_{kj}\vert \vert\vec{r}_{kj} \times \vec{r}_{kl}\vert}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.45)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\mbox{sign}(\chi) = \mbox{sign}[\vec{r}_{kj} \cdot 
+                        (\vec{r}_{ij} \times \vec{r}_{kj}) \times
+                        (\vec{r}_{kj} \times \vec{r}_{kl})] \; .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER">sign<IMG
+ WIDTH="43" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img283.png"
+ ALT="$\displaystyle (\chi) =$">&nbsp; &nbsp;sign<IMG
+ WIDTH="225" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img284.png"
+ ALT="$\displaystyle [\vec{r}_{kj} \cdot (\vec{r}_{ij} \times \vec{r}_{kj}) \times (\vec{r}_{kj} \times \vec{r}_{kl})] \; .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.46)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The first derivatives of <IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img224.png"
+ ALT="$ \chi$">
+ with respect to Cartesian coordinates are:
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\frac{ \; {d}\chi} { \; {d}\vec{r}} = 
+    \frac{ \; {d}\chi}{ \; {d}\cos \chi} \frac{ \; {d}\cos \chi}{ \; {d}\vec{r}}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="158" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img285.png"
+ ALT="$\displaystyle \frac{ \; {d}\chi} { \; {d}\vec{r}} = \frac{ \; {d}\chi}{ \; {d}\cos \chi} \frac{ \; {d}\cos \chi}{ \; {d}\vec{r}}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.47)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\frac{ \; {d}\chi}{ \; {d}\cos \chi} = \left(\frac{ \; {d}\cos \chi}{ \; {d}\chi}\right)^{-1} = 
+                                   -\frac{1}{\sin \chi}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="242" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img286.png"
+ ALT="$\displaystyle \frac{ \; {d}\chi}{ \; {d}\cos \chi} = \left(\frac{ \; {d}\cos \chi}{ \; {d}\chi}\right)^{-1} = -\frac{1}{\sin \chi}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.48)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+and
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+\frac{\partial \cos \chi}{\partial \vec{r}_i} & = & \vec{r}_{kj} \times \vec{a} \\[3mm]
+  \frac{\partial \cos \chi}{\partial \vec{r}_j} & = & \vec{r}_{ik} \times \vec{a} -
+                                        \vec{r}_{kl} \times \vec{b} \\[3mm]
+  \frac{\partial \cos \chi}{\partial \vec{r}_k} & = & \vec{r}_{jl} \times \vec{b} -
+                                        \vec{r}_{ij} \times \vec{a} \\[3mm]
+  \frac{\partial \cos \chi}{\partial \vec{r}_l} & = & \vec{r}_{ij} \times \vec{b} \\[3mm]
+  \vec{a} & = & \frac{1}{|\vec{r}_{ij} \times \vec{r}_{kj}|} \;
+                     \left(\frac{\vec{r}_{kj} \times \vec{r}_{kl}}
+                     {|\vec{r}_{kj} \times \vec{r}_{kl}|} - 
+                     \cos \chi  \;
+                     \frac{\vec{r}_{ij} \times \vec{r}_{kj}}
+                          {|\vec{r}_{ij} \times \vec{r}_{kj}|}\right) \\[6mm]
+  \vec{b} & = & \frac{1}{|\vec{r}_{kj} \times \vec{r}_{kl}|} \;
+                     \left(\frac{\vec{r}_{ij} \times \vec{r}_{kj}}
+                     {|\vec{r}_{ij} \times \vec{r}_{kj}|} - 
+                     \cos \chi  \;
+                     \frac{\vec{r}_{kj} \times \vec{r}_{kl}}
+                          {|\vec{r}_{kj} \times \vec{r}_{kl}|}\right) \; .
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="54" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img287.png"
+ ALT="$\displaystyle \frac{\partial \cos \chi}{\partial \vec{r}_i}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img288.png"
+ ALT="$\displaystyle \vec{r}_{kj} \times \vec{a}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.49)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="54" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img289.png"
+ ALT="$\displaystyle \frac{\partial \cos \chi}{\partial \vec{r}_j}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="123" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img290.png"
+ ALT="$\displaystyle \vec{r}_{ik} \times \vec{a} -
+\vec{r}_{kl} \times \vec{b}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.50)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="54" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img291.png"
+ ALT="$\displaystyle \frac{\partial \cos \chi}{\partial \vec{r}_k}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="121" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img292.png"
+ ALT="$\displaystyle \vec{r}_{jl} \times \vec{b} -
+\vec{r}_{ij} \times \vec{a}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.51)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="54" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img293.png"
+ ALT="$\displaystyle \frac{\partial \cos \chi}{\partial \vec{r}_l}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="52" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img294.png"
+ ALT="$\displaystyle \vec{r}_{ij} \times \vec{b}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.52)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="14" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img295.png"
+ ALT="$\displaystyle \vec{a}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="318" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img296.png"
+ ALT="$\displaystyle \frac{1}{\vert\vec{r}_{ij} \times \vec{r}_{kj}\vert} \;
+\left(\f...
+..._{ij} \times \vec{r}_{kj}}
+{\vert\vec{r}_{ij} \times \vec{r}_{kj}\vert}\right)$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.53)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="13" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img297.png"
+ ALT="$\displaystyle \vec{b}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="330" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img298.png"
+ ALT="$\displaystyle \frac{1}{\vert\vec{r}_{kj} \times \vec{r}_{kl}\vert} \;
+\left(\f...
+... \times \vec{r}_{kl}}
+{\vert\vec{r}_{kj} \times \vec{r}_{kl}\vert}\right) \; .$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.54)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+These equations for the derivatives have a numerical instability when 
+the angle goes to 0. Thus, the following set of equations is used
+instead [<A
+ HREF="node469.html#Sch93">van Schaik <EM>et&nbsp;al.</EM>, 1993</A>]:
+
+<P>
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+\vec{r}_{mj} & = & \vec{r}_{ij} \times \vec{r}_{kj} \\
+\vec{r}_{nk} & = & \vec{r}_{kj} \times \vec{r}_{kl} \\
+\frac{\partial \chi}{\partial \vec{r}_i} & = &
+      \frac{r_{kj}}{r^2_{mj}} \vec{r}_{mj} \\
+\frac{\partial \chi}{\partial \vec{r}_l} & = &
+      -\frac{r_{kj}}{r^2_{nk}} \vec{r}_{nk} \\
+\frac{\partial \chi}{\partial \vec{r}_j} & = &
+      \left(\frac{\vec{r}_{ij} \cdot \vec{r}_{kj}}{r^2_{kj}} - 1 \right) \;
+      \frac{\partial \chi}{\partial \vec{r}_i} - 
+      \frac{\vec{r}_{kl} \cdot \vec{r}_{kj}}{r^2_{kj}}
+      \frac{\partial \chi}{\partial \vec{r}_l} \\
+\frac{\partial \chi}{\partial \vec{r}_k} & = &
+      \left(\frac{\vec{r}_{kl} \cdot \vec{r}_{kj}}{r^2_{kj}} - 1 \right) \;
+      \frac{\partial \chi}{\partial \vec{r}_l} -
+      \frac{\vec{r}_{ij} \cdot \vec{r}_{kj}}{r^2_{kj}}
+      \frac{\partial \chi}{\partial \vec{r}_i}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="31" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img299.png"
+ ALT="$\displaystyle \vec{r}_{mj}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="66" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img300.png"
+ ALT="$\displaystyle \vec{r}_{ij} \times \vec{r}_{kj}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.55)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="29" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img301.png"
+ ALT="$\displaystyle \vec{r}_{nk}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="67" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img302.png"
+ ALT="$\displaystyle \vec{r}_{kj} \times \vec{r}_{kl}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.56)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="31" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img303.png"
+ ALT="$\displaystyle \frac{\partial \chi}{\partial \vec{r}_i}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="60" HEIGHT="43" ALIGN="MIDDLE" BORDER="0"
+ SRC="img304.png"
+ ALT="$\displaystyle \frac{r_{kj}}{r^2_{mj}} \vec{r}_{mj}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.57)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="31" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img305.png"
+ ALT="$\displaystyle \frac{\partial \chi}{\partial \vec{r}_l}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="68" HEIGHT="43" ALIGN="MIDDLE" BORDER="0"
+ SRC="img306.png"
+ ALT="$\displaystyle -\frac{r_{kj}}{r^2_{nk}} \vec{r}_{nk}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.58)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="33" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img307.png"
+ ALT="$\displaystyle \frac{\partial \chi}{\partial \vec{r}_j}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="255" HEIGHT="63" ALIGN="MIDDLE" BORDER="0"
+ SRC="img308.png"
+ ALT="$\displaystyle \left(\frac{\vec{r}_{ij} \cdot \vec{r}_{kj}}{r^2_{kj}} - 1 \right...
+...r}_{kl} \cdot \vec{r}_{kj}}{r^2_{kj}}
+\frac{\partial \chi}{\partial \vec{r}_l}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.59)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="34" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img309.png"
+ ALT="$\displaystyle \frac{\partial \chi}{\partial \vec{r}_k}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="255" HEIGHT="63" ALIGN="MIDDLE" BORDER="0"
+ SRC="img310.png"
+ ALT="$\displaystyle \left(\frac{\vec{r}_{kl} \cdot \vec{r}_{kj}}{r^2_{kj}} - 1 \right...
+...r}_{ij} \cdot \vec{r}_{kj}}{r^2_{kj}}
+\frac{\partial \chi}{\partial \vec{r}_i}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.60)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+The only possible instability in these equations is when the length of
+the central bond of the dihedral, <IMG
+ WIDTH="25" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img311.png"
+ ALT="$ r_{kj}$">
+, goes to 0. In such a case,
+which should not happen, the derivatives are set to 0. The expressions for
+an improper dihedral angle, as opposed to a dihedral or dihedral angle,
+are the same, except that indices <IMG
+ WIDTH="31" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img280.png"
+ ALT="$ ijkl$">
+ are permuted to <IMG
+ WIDTH="31" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img312.png"
+ ALT="$ ikjl$">
+.
+In both cases, covalent bonds <IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img271.png"
+ ALT="$ ij$">
+, <IMG
+ WIDTH="20" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img313.png"
+ ALT="$ jk$">
+, and <IMG
+ WIDTH="18" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img314.png"
+ ALT="$ kl$">
+ are defining
+the angle.
+
+<P>
+
+<H3><A NAME="SECTION001331400000000000000">
+Atomic solvent accessibility</A>
+</H3>
+
+<P>
+This is the accessibility value calculated by the PSA algorithm
+(see <B><A HREF="node186.html#CMD:model.writedata">model.write_data()</A></B><A NAME="40653"></A>). This is usually set by the last call to
+<B><A HREF="node202.html#CMD:Restraints.make">Restraints.make()</A></B><A NAME="40658"></A> or <B><A HREF="node203.html#CMD:Restraints.makedistance">Restraints.make_distance()</A></B><A NAME="40663"></A>.
+First derivatives are not calculated, and are always returned as 0.
+
+<P>
+
+<H3><A NAME="SECTION001331500000000000000"></A>
+<A NAME="SECTION:atdensity"></A>
+<BR>
+Atomic density
+</H3>
+
+<P>
+Atomic density for a given atom is simply calculated as the number of atoms
+within a distance <I><A HREF="node121.html#MEMB:energydata.contactshell">energy_data.contact_shell</A></I><A NAME="40668"></A> of that atom. First
+derivatives are not calculated, and are always returned as 0.
+
+<P>
+
+<H3><A NAME="SECTION001331600000000000000">
+Atomic coordinates</A>
+</H3>
+
+<P>
+The absolute atomic coordinates <IMG
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img315.png"
+ ALT="$ x_{i}$">
+, <IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img316.png"
+ ALT="$ y_{i}$">
+ and <IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img317.png"
+ ALT="$ z_{i}$">
+ are available
+for every point <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+, primarily for use in anchoring points to planes, lines
+or points. Their first derivatives with respect to Cartesian coordinates
+are of course simply 0 or 1.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8375"
+  HREF="node450.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8369"
+  HREF="node448.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8363"
+  HREF="node448.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8371"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8373"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8376"
+  HREF="node450.html">Restraints and their derivatives</A>
+<B> Up:</B> <A NAME="tex2html8370"
+  HREF="node448.html">Equations used in the</A>
+<B> Previous:</B> <A NAME="tex2html8364"
+  HREF="node448.html">Equations used in the</A>
+ &nbsp; <B>  <A NAME="tex2html8372"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8374"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

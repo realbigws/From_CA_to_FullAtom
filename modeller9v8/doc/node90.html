@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>dope_loopmodel reference</TITLE>
+<META NAME="description" CONTENT="dope_loopmodel reference">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node92.html">
+<LINK REL="previous" HREF="node76.html">
+<LINK REL="up" HREF="node40.html">
+<LINK REL="next" HREF="node91.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html2661"
+  HREF="node91.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2655"
+  HREF="node40.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2649"
+  HREF="node89.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html2657"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html2659"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html2662"
+  HREF="node91.html">dope_loopmodel()   prepare</A>
+<B> Up:</B> <A NAME="tex2html2656"
+  HREF="node40.html">Comparative modeling class reference</A>
+<B> Previous:</B> <A NAME="tex2html2650"
+  HREF="node89.html">loopmodel.build_ini_loop()   create</A>
+ &nbsp; <B>  <A NAME="tex2html2658"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html2660"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00940000000000000000"></A>
+<A NAME="CLASS:dopeloopmodel"></A><A NAME="5508"></A>
+<BR>
+<TT>dope_loopmodel</TT> reference
+</H1>
+
+<P>
+The <TT>dope_loopmodel</TT> class is derived from <TT>loopmodel</TT>, and is
+very similar in operation, except that a newer DOPE-based loop modeling
+protocol is used (see <B><A HREF="node248.html#CMD:selection.assessdope">selection.assess_dope()</A></B><A NAME="6533"></A>). The main differences are:
+
+<UL>
+<LI>DOPE (see <B><A HREF="node248.html#CMD:selection.assessdope">selection.assess_dope()</A></B><A NAME="6538"></A>) potential used in combination
+with GB/SA implicit solvent interaction (see Section&nbsp;<A HREF="node267.html#SECTION:gbsa">6.14</A>).
+
+<P>
+</LI>
+<LI>Lennard-Jones<A NAME="6542"></A> potential used rather than soft-sphere<A NAME="6543"></A>.
+
+<P>
+</LI>
+<LI>Improved handling of ligand-loop interactions.
+</LI>
+</UL>
+
+<P>
+To use, simply use '<TT>dope_loopmodel</TT>' rather than '<TT>loopmodel</TT>' in
+your <A NAME="tex2html69"
+  HREF="http://www.python.org/">Python</A> scripts (see Section <A HREF="node31.html#SECTION:loops">2.3</A> for examples). Note
+that it will be significantly slower than the regular loop modeling procedure,
+primarily due to the GB/SA interaction.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html2663"
+  HREF="node91.html">dope_loopmodel() -- prepare to build models with DOPE loop refinement</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

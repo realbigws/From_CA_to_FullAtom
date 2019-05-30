@@ -1,0 +1,1615 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Restraints and their derivatives</TITLE>
+<META NAME="description" CONTENT="Restraints and their derivatives">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node449.html">
+<LINK REL="up" HREF="node448.html">
+<LINK REL="next" HREF="node451.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8393"
+  HREF="node451.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8387"
+  HREF="node448.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8383"
+  HREF="node449.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8389"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8391"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8394"
+  HREF="node451.html">Flowchart of comparative modeling</A>
+<B> Up:</B> <A NAME="tex2html8388"
+  HREF="node448.html">Equations used in the</A>
+<B> Previous:</B> <A NAME="tex2html8384"
+  HREF="node449.html">Features and their derivatives</A>
+ &nbsp; <B>  <A NAME="tex2html8390"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8392"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html8395"
+  HREF="node450.html#SECTION001332100000000000000">Single Gaussian restraint</A>
+<LI><A NAME="tex2html8396"
+  HREF="node450.html#SECTION001332200000000000000">Multiple Gaussian restraint</A>
+<LI><A NAME="tex2html8397"
+  HREF="node450.html#SECTION001332300000000000000">Multiple binormal restraint</A>
+<LI><A NAME="tex2html8398"
+  HREF="node450.html#SECTION001332400000000000000">Lower bound</A>
+<LI><A NAME="tex2html8399"
+  HREF="node450.html#SECTION001332500000000000000">Upper bound</A>
+<LI><A NAME="tex2html8400"
+  HREF="node450.html#SECTION001332600000000000000">Cosine restraint</A>
+<LI><A NAME="tex2html8401"
+  HREF="node450.html#SECTION001332700000000000000">Coulomb restraint</A>
+<LI><A NAME="tex2html8402"
+  HREF="node450.html#SECTION001332800000000000000">Lennard-Jones restraint</A>
+<LI><A NAME="tex2html8403"
+  HREF="node450.html#SECTION001332900000000000000">Spline restraint</A>
+<LI><A NAME="tex2html8404"
+  HREF="node450.html#SECTION0013321000000000000000">Symmetry restraint</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H2><A NAME="SECTION001332000000000000000"></A>
+<A NAME="SECTION:restrainteq"></A>
+<BR>
+Restraints and their derivatives
+</H2>
+
+<P>
+The chain rule is used to find the partial derivatives of the feature
+pdf with respect to the atomic coordinates. Thus, only the derivatives
+of the pdf with respect to the features are listed here.
+
+<P>
+
+<H3><A NAME="SECTION001332100000000000000">
+Single Gaussian restraint</A>
+</H3>
+
+<P>
+The pdf for a geometric feature <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+ (<EM>e.g.</EM>, distance, angle, 
+dihedral angle) is
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:gauss"></A><!-- MATH
+ \begin{equation}
+p = \frac{1}{\sigma \sqrt{2 \pi}} \exp \left[-\frac{1}{2}
+               \left(\frac{f-\bar{f}}{\sigma}\right)^2\right] \; .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="237" HEIGHT="63" ALIGN="MIDDLE" BORDER="0"
+ SRC="img318.png"
+ ALT="$\displaystyle p = \frac{1}{\sigma \sqrt{2 \pi}} \exp \left[-\frac{1}{2} \left(\frac{f-\bar{f}}{\sigma}\right)^2\right] \; .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.61)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+A corresponding restraint <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$ c$">
+ in the sum that defines the objective 
+function <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img184.png"
+ ALT="$ F$">
+ is
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:gaussian"></A><!-- MATH
+ \begin{equation}
+c = -\ln p = \frac{1}{2} \left(\frac{f-\bar{f}}{\sigma}\right)^2 -
+               \ln \frac{1}{\sigma \sqrt{2 \pi}}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="259" HEIGHT="62" ALIGN="MIDDLE" BORDER="0"
+ SRC="img319.png"
+ ALT="$\displaystyle c = -\ln p = \frac{1}{2} \left(\frac{f-\bar{f}}{\sigma}\right)^2 - \ln \frac{1}{\sigma \sqrt{2 \pi}}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.62)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+(Note that since the second term is constant for a given restraint, it is
+ignored. <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$ c$">
+ is also scaled by <IMG
+ WIDTH="28" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img320.png"
+ ALT="$ RT$">
+ in kcal/mol with <!-- MATH
+ $R = 297.15K$
+ -->
+<IMG
+ WIDTH="96" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img321.png"
+ ALT="$ R = 297.15K$">
+ to allow
+these scores to be summed with CHARMM energies.)
+
+<P>
+The first derivatives with respect to feature <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+ are:
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\frac{ \; {d}c}{ \; {d}f} = \frac{f-\bar{f}}{\sigma} \; \frac{1}{\sigma} \; .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="118" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img322.png"
+ ALT="$\displaystyle \frac{ \; {d}c}{ \; {d}f} = \frac{f-\bar{f}}{\sigma} \; \frac{1}{\sigma} \; .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.63)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The relative heavy violation with respect to <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+ is given as:
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:gaussianviol"></A><!-- MATH
+ \begin{equation}
+\frac{f - \bar{f}}{\sigma}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="46" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img323.png"
+ ALT="$\displaystyle \frac{f - \bar{f}}{\sigma}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.64)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+
+<H3><A NAME="SECTION001332200000000000000">
+Multiple Gaussian restraint</A>
+</H3>
+
+<P>
+The polymodal pdf for a geometric feature <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+ (<EM>e.g.</EM>, distance, angle, 
+dihedral angle) is
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:polygauss"></A><!-- MATH
+ \begin{equation}
+p = \sum_{i=1}^n \omega_i p_i = \sum_{i=1}^n \omega_i 
+      \frac{1}{\sigma_i \sqrt{2 \pi}} \exp \left[-\frac{1}{2}
+               \left(\frac{f-\bar{f}_i}{\sigma_i}\right)^2\right] \; .
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="362" HEIGHT="63" ALIGN="MIDDLE" BORDER="0"
+ SRC="img324.png"
+ ALT="$\displaystyle p = \sum_{i=1}^n \omega_i p_i = \sum_{i=1}^n \omega_i \frac{1}{\s...
+...\exp \left[-\frac{1}{2} \left(\frac{f-\bar{f}_i}{\sigma_i}\right)^2\right] \; .$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.65)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+A corresponding restraint <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$ c$">
+ in the sum that defines the objective 
+function <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img184.png"
+ ALT="$ F$">
+ is (as before, this is scaled by <IMG
+ WIDTH="28" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img320.png"
+ ALT="$ RT$">
+):
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+c = -\ln p = -\ln \sum_{i=1}^n \omega_i p_i
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="178" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img325.png"
+ ALT="$\displaystyle c = -\ln p = -\ln \sum_{i=1}^n \omega_i p_i$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.66)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The first derivatives with respect to feature <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+ are:
+<BR>
+<DIV ALIGN="CENTER"><A NAME="eq:dpolygauss"></A><!-- MATH
+ \begin{eqnarray}
+\frac{ \; {d}c}{ \; {d}f} & = & \frac{1}{p} \sum_{i=1}^n \omega_i p_i \cdot
+      \left[\frac{f-\bar{f}_i}{\sigma_i}\frac{1}{\sigma_i}\right]
+\; .
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="28" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img326.png"
+ ALT="$\displaystyle \frac{ \; {d}c}{ \; {d}f}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="177" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img327.png"
+ ALT="$\displaystyle \frac{1}{p} \sum_{i=1}^n \omega_i p_i \cdot
+\left[\frac{f-\bar{f}_i}{\sigma_i}\frac{1}{\sigma_i}\right]
+\; .$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.67)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+When any of the normalized deviations <!-- MATH
+ $v_i = (f-\bar{f}_i) / \sigma_i$
+ -->
+<IMG
+ WIDTH="115" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img328.png"
+ ALT="$ v_i = (f-\bar{f}_i) / \sigma_i$">
+ is 
+large, there are numerical instabilities in calculating the derivatives 
+because <IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img329.png"
+ ALT="$ v_i$">
+ are arguments to the <I>exp</I> function. Robustness is
+ensured as follows.
+The `effective' normalized deviation is used in all the equations 
+above when the magnitude of normalized violation <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img106.png"
+ ALT="$ v$">
+ is larger than 
+cutoff <TT>rgauss1</TT> (10 for double precision). This scheme works up 
+to <TT>rgauss2</TT> (200 for double precision); violations larger than
+that are ignored. This trick is equivalent 
+to increasing the standard deviation <IMG
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img330.png"
+ ALT="$ \sigma_i$">
+. A slight disadvantage
+is that there is a discontinuity in the first derivatives at <TT>rgauss1</TT>.
+However, if continuity were imposed,
+the range would not be extended (this is equivalent to linearizing the 
+Gaussian, but since it is already linear for large deviations, a 
+linearization with derivatives smoothness would not introduce much
+change at all).
+
+<P>
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+M  & = & 37 \ \ \ ; \ \ \ \ 
+    \mbox{$M^2/2$\  has to be smaller than the largest argument to $\exp$} \\
+ A  & = &  \frac{1}{M} \frac{\mbox{\tt rgauss2}-M}
+                            {\mbox{\tt rgauss2} -\mbox{\tt rgauss1}}\\
+ B  & = &  \frac{\mbox{\tt rgauss2}}{M} \frac{M-\mbox{\tt rgauss1}}
+                                       {\mbox{\tt rgauss2}-\mbox{\tt rgauss1}}\\
+ v  & = & \frac{f - \bar{f}_i}{\sigma_i} \\
+ F  & = & A \left| v \right| + B \\
+ v' & = & v / F
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img331.png"
+ ALT="$\displaystyle M$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img332.png"
+ ALT="$\displaystyle 37 \ \ \ ; \ \ \ $">&nbsp; &nbsp;<IMG
+ WIDTH="405" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img333.png"
+ ALT="$\displaystyle \mbox{$M^2/2$\ has to be smaller than the largest argument to $\exp$}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.68)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img334.png"
+ ALT="$\displaystyle A$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="165" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img335.png"
+ ALT="$\displaystyle \frac{1}{M} \frac{\mbox{\tt rgauss2}-M}
+{\mbox{\tt rgauss2} -\mbox{\tt rgauss1}}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.69)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img336.png"
+ ALT="$\displaystyle B$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="207" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img337.png"
+ ALT="$\displaystyle \frac{\mbox{\tt rgauss2}}{M} \frac{M-\mbox{\tt rgauss1}}
+{\mbox{\tt rgauss2}-\mbox{\tt rgauss1}}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.70)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="13" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img338.png"
+ ALT="$\displaystyle v$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="50" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img339.png"
+ ALT="$\displaystyle \frac{f - \bar{f}_i}{\sigma_i}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.71)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img340.png"
+ ALT="$\displaystyle F$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="68" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img341.png"
+ ALT="$\displaystyle A \left\vert v \right\vert + B$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.72)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="17" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img342.png"
+ ALT="$\displaystyle v'$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="33" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img343.png"
+ ALT="$\displaystyle v / F$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.73)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+Now, Eqs.&nbsp;<A HREF="#eq:polygauss">A.65</A>-<A HREF="#eq:dpolygauss">A.67</A> are used with <IMG
+ WIDTH="17" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img344.png"
+ ALT="$ v'$">
+ instead 
+of <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img106.png"
+ ALT="$ v$">
+. For single precision, <IMG
+ WIDTH="59" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img345.png"
+ ALT="$ M = 12$">
+, <TT>rgauss1</TT> = 4, <TT>rgauss2</TT> = 100.
+
+<P>
+The relative heavy violation with respect to <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+ is given as:
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\max_{\omega_i} (f-\bar{f}_i)/\sigma_i
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="110" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img346.png"
+ ALT="$\displaystyle \max_{\omega_i} (f-\bar{f}_i)/\sigma_i$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.74)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+
+<H3><A NAME="SECTION001332300000000000000">
+Multiple binormal restraint</A>
+</H3>
+
+<P>
+The polymodal pdf for a geometric feature <!-- MATH
+ $(f_1, f_2)$
+ -->
+<IMG
+ WIDTH="54" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img347.png"
+ ALT="$ (f_1, f_2)$">
+ (<EM>e.g.</EM>, a pair of
+dihedral angles) is
+
+<P>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="eq:polybinormorig"></A><!-- MATH
+ \begin{eqnarray}
+p & = & \sum_{i=1}^n \omega_i p_i \; = \; \sum_{i=1}^n \omega_i 
+      \frac{1}{2 \pi \sigma_{1i} \sigma_{2i} \sqrt{(1-\rho_i^2)}}  \; \cdot 
+      \nonumber \\
+      & & \exp \left\{-\frac{1}{2 (1-\rho_i^2)}
+               \left[
+               \left(\frac{f_1-\bar{f}_{1i}}{\sigma_{1i}}\right)^2 - 
+               2 \rho_i \frac{f_1-\bar{f}_{1i}} {\sigma_{1i}}
+                        \frac{f_2-\bar{f}_{2i}} {\sigma_{2i}} +
+               \left(\frac{f_2-\bar{f}_{2i}}{\sigma_{2i}}\right)^2
+              \right] 
+              \right\} \; .
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img348.png"
+ ALT="$\displaystyle p$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="272" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img349.png"
+ ALT="$\displaystyle \sum_{i=1}^n \omega_i p_i \; = \; \sum_{i=1}^n \omega_i
+\frac{1}{2 \pi \sigma_{1i} \sigma_{2i} \sqrt{(1-\rho_i^2)}} \; \cdot$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="521" HEIGHT="63" ALIGN="MIDDLE" BORDER="0"
+ SRC="img350.png"
+ ALT="$\displaystyle \exp \left\{-\frac{1}{2 (1-\rho_i^2)}
+\left[
+\left(\frac{f_1-\b...
+...+
+\left(\frac{f_2-\bar{f}_{2i}}{\sigma_{2i}}\right)^2
+\right]
+\right\} \; .$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.75)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+where <IMG
+ WIDTH="42" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img351.png"
+ ALT="$ \rho &lt; 1$">
+. <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img352.png"
+ ALT="$ \rho$">
+ is the correlation coefficient between <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.png"
+ ALT="$ f_1$">
+ and <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$ f_2$">
+.
+M<SMALL>ODELLER</SMALL> actually uses the following series expansion to calculate <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.png"
+ ALT="$ p$">
+:
+
+<P>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="eq:polybinorm"></A><!-- MATH
+ \begin{eqnarray}
+p & = & \sum_{i=1}^n \omega_i
+     \frac{1}{2 \pi \sigma_{1i} \sigma_{2i} \sqrt{(1-\rho_i^2)}}  \; \cdot
+      \nonumber \\
+      & & \exp \left\{-\frac{1}{1-\rho_i^2}
+               \left[
+               \frac{1-\cos(f_1-\bar{f}_{1i})}{\sigma_{1i}^2} - 
+               \rho_i \frac{\sin(f_1-\bar{f}_{1i})} {\sigma_{1i}}
+                        \frac{\sin(f_2-\bar{f}_{2i})} {\sigma_{2i}} +
+               \frac{1-\cos(f_2-\bar{f}_{2i})}{\sigma_{2i}^2}
+              \right] 
+              \right\} \; .
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img348.png"
+ ALT="$\displaystyle p$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="188" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img353.png"
+ ALT="$\displaystyle \sum_{i=1}^n \omega_i
+\frac{1}{2 \pi \sigma_{1i} \sigma_{2i} \sqrt{(1-\rho_i^2)}} \; \cdot$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="614" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img354.png"
+ ALT="$\displaystyle \exp \left\{-\frac{1}{1-\rho_i^2}
+\left[
+\frac{1-\cos(f_1-\bar{...
+...2i}} +
+\frac{1-\cos(f_2-\bar{f}_{2i})}{\sigma_{2i}^2}
+\right]
+\right\} \; .$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.76)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+A corresponding restraint <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$ c$">
+ in the sum that defines the objective 
+function <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img184.png"
+ ALT="$ F$">
+ is (as before, this is scaled by <IMG
+ WIDTH="28" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img320.png"
+ ALT="$ RT$">
+):
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+c = -\ln p = -\ln \sum_{i=1}^n \omega_i p_i
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="178" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img325.png"
+ ALT="$\displaystyle c = -\ln p = -\ln \sum_{i=1}^n \omega_i p_i$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.77)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The first derivatives with respect to features <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.png"
+ ALT="$ f_1$">
+ and <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$ f_2$">
+ are:
+<BR>
+<DIV ALIGN="CENTER"><A NAME="eq:dpolybinorm"></A><!-- MATH
+ \begin{eqnarray}
+\frac{\partial c}{\partial f_1} & = & \frac{1}{p}
+      \sum_{i=1}^n \left[ \omega_i p_i \cdot
+      \frac{1}{\sigma_{1i} (1-\rho_i^2)}
+      \left(\frac{\sin(f_1-\bar{f}_{1i})}{\sigma_{1i}} -
+            \rho_i\frac{\cos(f_1-\bar{f}_{1i})\sin(f_2-\bar{f}_{2i})}{\sigma_{2i}}
+      \right)
+      \right] \\[5mm]
+  \frac{\partial c}{\partial f_2} & = & \frac{1}{p}
+      \sum_{i=1}^n \left[ \omega_i p_i \cdot
+      \frac{1}{\sigma_{2i} (1-\rho_i^2)}
+      \left(\frac{\sin(f_2-\bar{f}_{2i})}{\sigma_{2i}} -
+            \rho_i\frac{\cos(f_2-\bar{f}_{2i})\sin(f_1-\bar{f}_{1i})}{\sigma_{1i}}
+      \right)
+      \right] \; .
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="32" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img355.png"
+ ALT="$\displaystyle \frac{\partial c}{\partial f_1}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="509" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img356.png"
+ ALT="$\displaystyle \frac{1}{p}
+\sum_{i=1}^n \left[ \omega_i p_i \cdot
+\frac{1}{\si...
+...ac{\cos(f_1-\bar{f}_{1i})\sin(f_2-\bar{f}_{2i})}{\sigma_{2i}}
+\right)
+\right]$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.78)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="32" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img357.png"
+ ALT="$\displaystyle \frac{\partial c}{\partial f_2}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="521" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img358.png"
+ ALT="$\displaystyle \frac{1}{p}
+\sum_{i=1}^n \left[ \omega_i p_i \cdot
+\frac{1}{\si...
+...os(f_2-\bar{f}_{2i})\sin(f_1-\bar{f}_{1i})}{\sigma_{1i}}
+\right)
+\right] \; .$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.79)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+The relative heavy violation with respect to <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+ is given as:
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\max_{\omega_i} \sqrt{
+             -\frac{1}{2 (1-\rho_i^2)}
+              \left[
+              \left(\frac{f_1-\bar{f}_{1i}}{\sigma_{1i}}\right)^2 -
+              2 \rho_i \frac{f_1-\bar{f}_{1i}} {\sigma_{1i}}
+                       \frac{f_2-\bar{f}_{2i}} {\sigma_{2i}} +
+              \left(\frac{f_2-\bar{f}_{2i}}{\sigma_{2i}}\right)^2
+              \right] }
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="506" HEIGHT="77" ALIGN="MIDDLE" BORDER="0"
+ SRC="img359.png"
+ ALT="$\displaystyle \max_{\omega_i} \sqrt{ -\frac{1}{2 (1-\rho_i^2)} \left[ \left(\fr...
+...} {\sigma_{2i}} + \left(\frac{f_2-\bar{f}_{2i}}{\sigma_{2i}}\right)^2 \right] }$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.80)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+
+<H3><A NAME="SECTION001332400000000000000">
+Lower bound</A>
+</H3>
+
+<P>
+This is like the left half of a single Gaussian restraint:
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:lgaussian"></A><!-- MATH
+ \begin{equation}
+p = \left\{ \begin{array}{ll} p_{gauss} \; ; & f < \bar{f} \\
+                                0 \; ;         & f \geq \bar{f} \\
+                \end{array} \right.
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="170" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img360.png"
+ ALT="$\displaystyle p = \left\{ \begin{array}{ll} p_{gauss} \; ; &amp; f &lt; \bar{f} \\ 0 \; ; &amp; f \geq \bar{f} \\ \end{array} \right.$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.81)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img361.png"
+ ALT="$ \bar{f}$">
+ is a lower bound and <IMG
+ WIDTH="46" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img362.png"
+ ALT="$ p_{gauss}$">
+ is given in 
+Eq.&nbsp;<A HREF="#eq:gauss">A.61</A>. 
+A similar equation relying on the first derivatives of a Gaussian <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.png"
+ ALT="$ p$">
+ 
+holds for the first derivatives of a lower bound.
+
+<P>
+
+<H3><A NAME="SECTION001332500000000000000">
+Upper bound</A>
+</H3>
+
+<P>
+This is like the right half of a single Gaussian restraint:
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:rgaussian"></A><!-- MATH
+ \begin{equation}
+p = \left\{ \begin{array}{ll} p_{gauss} \; ; & f > \bar{f} \\
+                                0 \; ;         & f \leq \bar{f} \\
+               \end{array} \right.
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="170" HEIGHT="54" ALIGN="MIDDLE" BORDER="0"
+ SRC="img363.png"
+ ALT="$\displaystyle p = \left\{ \begin{array}{ll} p_{gauss} \; ; &amp; f &gt; \bar{f} \\ 0 \; ; &amp; f \leq \bar{f} \\ \end{array} \right.$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.82)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img361.png"
+ ALT="$ \bar{f}$">
+ is an upper bound and <IMG
+ WIDTH="46" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img362.png"
+ ALT="$ p_{gauss}$">
+ is given 
+in Eq.&nbsp;<A HREF="#eq:gauss">A.61</A>. 
+A similar equation relying on the first derivatives of a Gaussian <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.png"
+ ALT="$ p$">
+ 
+holds for the first derivatives of an upper bound.
+
+<P>
+
+<H3><A NAME="SECTION001332600000000000000">
+Cosine restraint</A>
+</H3>
+
+<P>
+This is usually used for dihedral angles <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+:
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:cosine"></A><!-- MATH
+ \begin{equation}
+c = | b | - b \cos(n f + a)
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="157" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img364.png"
+ ALT="$\displaystyle c = \vert b \vert - b \cos(n f + a)$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.83)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.png"
+ ALT="$ b$">
+ is C<SMALL>HARMM</SMALL> force constant, <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.png"
+ ALT="$ a$">
+ is phase shift (tested for
+0 and 180<IMG
+ WIDTH="11" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img27.png"
+ ALT="$ {}^{o}$">
+), and <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img45.png"
+ ALT="$ n$">
+ is periodicity (tested for 1, 2, 3, 4, 5, and 6).
+The C<SMALL>HARMM</SMALL> phase value from the C<SMALL>HARMM</SMALL> parameter library corresponds to
+<IMG
+ WIDTH="56" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img365.png"
+ ALT="$ a-180$">
+<IMG
+ WIDTH="11" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img27.png"
+ ALT="$ {}^{o}$">
+. The force constant <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img23.png"
+ ALT="$ b$">
+ can be negative, in effect offsetting
+the phase <IMG
+ WIDTH="13" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.png"
+ ALT="$ a$">
+ for 180<IMG
+ WIDTH="11" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img27.png"
+ ALT="$ {}^{o}$">
+ compared to the same but positive force constant.
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\frac{ \; {d}c}{ \; {d}f} = b n \sin(n f + a)
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="147" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img366.png"
+ ALT="$\displaystyle \frac{ \; {d}c}{ \; {d}f} = b n \sin(n f + a)$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.84)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+
+<H3><A NAME="SECTION001332700000000000000">
+Coulomb restraint</A>
+</H3>
+
+<P>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="eq:coulomb"></A><!-- MATH
+ \begin{eqnarray}
+c & = & \frac{1}{\epsilon_r}\frac{q_i q_j}{f} s(f,f_1,f_2) \\
+s(f,f_1,f_2) & = & \left\{ \begin{array}{ll} 1 \; ;
+                                          & f \leq f_1 \\
+                                  \frac{(f_2 - f)^2 (f_2+2f-3f_1)}
+                                       {(f_2-f_1)^3}\; ;
+                                          & f_o  < f \leq f_2  \\
+                                  0 \; ;
+                                          & f > f_2 \\
+                \end{array} \right.
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="11" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img367.png"
+ ALT="$\displaystyle c$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="124" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img368.png"
+ ALT="$\displaystyle \frac{1}{\epsilon_r}\frac{q_i q_j}{f} s(f,f_1,f_2)$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.85)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="77" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img369.png"
+ ALT="$\displaystyle s(f,f_1,f_2)$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="267" HEIGHT="82" ALIGN="MIDDLE" BORDER="0"
+ SRC="img370.png"
+ ALT="$\displaystyle \left\{ \begin{array}{ll} 1 \; ;
+&amp; f \leq f_1 \\
+\frac{(f_2 - ...
+...f_1)^3}\; ;
+&amp; f_o &lt; f \leq f_2 \\
+0 \; ;
+&amp; f &gt; f_2 \\
+\end{array} \right.$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.86)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+where <IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img371.png"
+ ALT="$ q_i$">
+ and <IMG
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img372.png"
+ ALT="$ q_j$">
+ are the atomic charges of atoms <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ and <IMG
+ WIDTH="12" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img67.png"
+ ALT="$ j$">
+,
+obtained from the C<SMALL>HARMM</SMALL> topology file, that are at a distance <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+. 
+<!-- MATH
+ $\epsilon_r$
+ -->
+<IMG
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.png"
+ ALT="$ \epsilon_r$">
+ is the relative dielectric, controlled by
+the <I><A HREF="node132.html#MEMB:energydata.relativedielectric">energy_data.relative_dielectric</A></I><A NAME="40694"></A> variable.
+Function <!-- MATH
+ $s(f,f_1,f_2)$
+ -->
+<IMG
+ WIDTH="77" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img373.png"
+ ALT="$ s(f,f_1,f_2)$">
+ is a switching function that smoothes
+the potential down to zero in the interval from <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.png"
+ ALT="$ f_1$">
+ to <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$ f_2$">
+ (<IMG
+ WIDTH="55" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img374.png"
+ ALT="$ f_2&gt; f_1$">
+).
+The total Coulomb<A NAME="40698"></A> energy of a molecule is a sum over all pairs of atoms
+that are not in the same bonds or bond angles.
+1-4 energy for the 1-4 atom pairs in the same dihedral angle 
+corresponds to the <TT>ELEC14</TT> M<SMALL>ODELLER</SMALL> term; the remaining 
+longer-range contribution corresponds to the <TT>ELEC</TT> term.
+
+<P>
+The first derivatives are:
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+\frac{ \; {d}c}{ \; {d}f} & = & -\frac{c}{f} + \frac{c}{s} \frac{ \; {d}s}{ \; {d}f} \\
+\frac{ \; {d}s}{ \; {d}f} & = & \left\{ \begin{array}{ll} 0 \; ;
+                                          & f \leq f_1 \\
+                                  \frac{6 (f_2-f)(f_1-f)}{(f_2-f_1)^3} \; ;
+                                          & f_1  < f \leq f_2  \\
+                                  0 \; ;
+                                          & f > f_2 \\
+                \end{array} \right.
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="28" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img326.png"
+ ALT="$\displaystyle \frac{ \; {d}c}{ \; {d}f}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="85" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img375.png"
+ ALT="$\displaystyle -\frac{c}{f} + \frac{c}{s} \frac{ \; {d}s}{ \; {d}f}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.87)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="28" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img376.png"
+ ALT="$\displaystyle \frac{ \; {d}s}{ \; {d}f}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="232" HEIGHT="78" ALIGN="MIDDLE" BORDER="0"
+ SRC="img377.png"
+ ALT="$\displaystyle \left\{ \begin{array}{ll} 0 \; ;
+&amp; f \leq f_1 \\
+\frac{6 (f_2-...
+..._1)^3} \; ;
+&amp; f_1 &lt; f \leq f_2 \\
+0 \; ;
+&amp; f &gt; f_2 \\
+\end{array} \right.$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.88)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+The violations of this restraint are always reported as zero.
+
+<P>
+
+<H3><A NAME="SECTION001332800000000000000">
+Lennard-Jones restraint</A>
+</H3>
+
+<P>
+Usually used for non-bonded distances:
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:lennard"></A><!-- MATH
+ \begin{equation}
+c = \left[\left(\frac{A}{f}\right)^{12} -
+      \left(\frac{B}{f}\right)^6 \right] s(f,f_1,f_2)
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="245" HEIGHT="63" ALIGN="MIDDLE" BORDER="0"
+ SRC="img378.png"
+ ALT="$\displaystyle c = \left[\left(\frac{A}{f}\right)^{12} - \left(\frac{B}{f}\right)^6 \right] s(f,f_1,f_2)$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.89)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+The parameters <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.png"
+ ALT="$ f_1$">
+ and <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$ f_2$">
+ of the switching function can be
+different from those in Eq.&nbsp;<A HREF="#eq:coulomb">A.86</A>. The parameters <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img181.png"
+ ALT="$ A$">
+ and
+<IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img182.png"
+ ALT="$ B$">
+ are obtained from the C<SMALL>HARMM</SMALL> parameter file (NONBOND section)
+where they are given as <IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img379.png"
+ ALT="$ E_i$">
+ and <IMG
+ WIDTH="18" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img380.png"
+ ALT="$ r_j$">
+ such that <!-- MATH
+ $E_{ij}(f) = -4
+\sqrt{E_i E_j} [(\rho_{ij}/f)^{12} - (\rho_{ij}/f)^6]$
+ -->
+<IMG
+ WIDTH="289" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img381.png"
+ ALT="$ E_{ij}(f) = -4
+\sqrt{E_i E_j} [(\rho_{ij}/f)^{12} - (\rho_{ij}/f)^6]$">
+ in kcal/mole
+for <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img75.png"
+ ALT="$ f$">
+ in angstroms and <!-- MATH
+ $\rho = (r_i + r_j)/2^{1/6}$
+ -->
+<IMG
+ WIDTH="128" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img382.png"
+ ALT="$ \rho = (r_i + r_j)/2^{1/6}$">
+; the minimum of
+<IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img383.png"
+ ALT="$ E$">
+ is <!-- MATH
+ $-\sqrt{E_i E_j}$
+ -->
+<IMG
+ WIDTH="68" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img384.png"
+ ALT="$ -\sqrt{E_i E_j}$">
+ at <!-- MATH
+ $f=(r_i + r_j)$
+ -->
+<IMG
+ WIDTH="93" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img385.png"
+ ALT="$ f=(r_i + r_j)$">
+, and its zero is at
+<IMG
+ WIDTH="43" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img386.png"
+ ALT="$ f=\rho$">
+. The total Lennard-Jones<A NAME="40710"></A> energy should be evaluated over all
+pairs of atoms that are not in the same bonds or bond angles. The
+parameters <IMG
+ WIDTH="16" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img181.png"
+ ALT="$ A$">
+ and <IMG
+ WIDTH="17" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img182.png"
+ ALT="$ B$">
+ for 1-4 pairs in dihedral angles can be
+different from those for the other pairs; they are obtained from the
+second set of <IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img379.png"
+ ALT="$ E_i$">
+ and <IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img387.png"
+ ALT="$ r_i$">
+ in the C<SMALL>HARMM</SMALL> parameter file, if it
+exists. 1-4 energy corresponds to the <TT>LJ14</TT> M<SMALL>ODELLER</SMALL> term; the
+remaining longer-range contribution corresponds to the <TT>LJ</TT> term.
+
+<P>
+The first derivatives are:
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+\frac{ \; {d}c}{ \; {d}f} & = & \frac{C s}{f} - C \frac{ \; {d}s}{ \; {d}f} \\
+C & = & -12 \left(\frac{A}{f}\right)^{12} + 6 \left(\frac{B}{f}\right)^6
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="28" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img326.png"
+ ALT="$\displaystyle \frac{ \; {d}c}{ \; {d}f}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="84" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img388.png"
+ ALT="$\displaystyle \frac{C s}{f} - C \frac{ \; {d}s}{ \; {d}f}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.90)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img389.png"
+ ALT="$\displaystyle C$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="165" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img390.png"
+ ALT="$\displaystyle -12 \left(\frac{A}{f}\right)^{12} + 6 \left(\frac{B}{f}\right)^6$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.91)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+<P>
+The violations of this restraint are always reported as zero.
+
+<P>
+
+<H3><A NAME="SECTION001332900000000000000">
+Spline restraint</A>
+</H3>
+
+<P>
+Any restraint form can be represented by a cubic spline [<A
+ HREF="node469.html#PreTeuVet92">Press <EM>et&nbsp;al.</EM>, 1992</A>]:
+
+<P>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="eq:spline"></A><!-- MATH
+ \begin{eqnarray}
+c & = & A c_j + B c_{j+1} + C c''_j + D c''_{j+1} \\
+  A & = & \frac{f_{j+1} - f}{f_{j+1} - f_j} \\
+  B & = & 1 - A \\
+  C & = & \frac{1}{6}(A^3-A)(f_{j+1} - f_j)^2 \\
+  D & = & \frac{1}{6}(B^3-B)(f_{j+1} - f_j)^2
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="11" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img367.png"
+ ALT="$\displaystyle c$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="202" HEIGHT="33" ALIGN="MIDDLE" BORDER="0"
+ SRC="img391.png"
+ ALT="$\displaystyle A c_j + B c_{j+1} + C c''_j + D c''_{j+1}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.92)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img334.png"
+ ALT="$\displaystyle A$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="73" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img392.png"
+ ALT="$\displaystyle \frac{f_{j+1} - f}{f_{j+1} - f_j}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.93)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img336.png"
+ ALT="$\displaystyle B$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="44" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img393.png"
+ ALT="$\displaystyle 1 - A$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.94)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img389.png"
+ ALT="$\displaystyle C$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="163" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img394.png"
+ ALT="$\displaystyle \frac{1}{6}(A^3-A)(f_{j+1} - f_j)^2$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.95)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="18" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img395.png"
+ ALT="$\displaystyle D$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="165" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img396.png"
+ ALT="$\displaystyle \frac{1}{6}(B^3-B)(f_{j+1} - f_j)^2$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.96)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+where <!-- MATH
+ $f_j \le f \le f_{j+1}$
+ -->
+<IMG
+ WIDTH="101" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img397.png"
+ ALT="$ f_j \le f \le f_{j+1}$">
+.
+
+<P>
+The first derivatives are:
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\frac{ \; {d}c}{ \; {d}f} = \frac{c_{j+1} - c_j}{f_{j+1} - f_j} -
+                      \frac{3A^2 - 1}{6} (f_{j+1}-f_j) c''_j +
+                      \frac{3B^2 - 1}{6} (f_{j+1}-f_j) c''_{j+1}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="472" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img398.png"
+ ALT="$\displaystyle \frac{ \; {d}c}{ \; {d}f} = \frac{c_{j+1} - c_j}{f_{j+1} - f_j} -...
+...c{3A^2 - 1}{6} (f_{j+1}-f_j) c''_j + \frac{3B^2 - 1}{6} (f_{j+1}-f_j) c''_{j+1}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.97)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+The values of <IMG
+ WIDTH="11" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img24.png"
+ ALT="$ c$">
+ and <IMG
+ WIDTH="16" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img399.png"
+ ALT="$ c'$">
+ beyond <IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.png"
+ ALT="$ f_1$">
+ and <IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img400.png"
+ ALT="$ f_n$">
+ are obtained by linear
+interpolation from the termini. A violation of the restraint is calculated
+by finding the global minimum. A relative violation is estimated by using
+a standard deviation (<EM>e.g.</EM>, force constant) obtained by fitting 
+a parabola to the global minimum.
+
+<P>
+Variable spacing of spline points could be used to save on memory. However,
+this would increase the execution time, so it is not used.
+
+<P>
+To calculate the relative heavy violation, the feature value <IMG
+ WIDTH="14" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img361.png"
+ ALT="$ \bar{f}$">
+
+that results in the smallest value of the restraint is obtained by
+interpolation, and a Gaussian function is fitted locally around this value to
+obtain the standard deviation <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img68.png"
+ ALT="$ \sigma$">
+. These are then used in
+Eq.&nbsp;<A HREF="#eq:gaussianviol">A.64</A>.
+
+<P>
+
+<H3><A NAME="SECTION0013321000000000000000">
+Symmetry restraint</A>
+</H3>
+
+<P>
+The asymmetry penalty added to the objective function is defined as
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="eq:symmetry"></A><!-- MATH
+ \begin{equation}
+F_{symm} = \sum_{i<j} \omega_i \omega_j (d_{ij} - d'_{ij})^2
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="207" HEIGHT="52" ALIGN="MIDDLE" BORDER="0"
+ SRC="img401.png"
+ ALT="$\displaystyle F_{symm} = \sum_{i&lt;j} \omega_i \omega_j (d_{ij} - d'_{ij})^2$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(A.98)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+where the sum runs over all pairs of equivalent atoms <IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img271.png"
+ ALT="$ ij$">
+,
+<IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img402.png"
+ ALT="$ \omega_i$">
+ is an atom weight for atom <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+, <IMG
+ WIDTH="24" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img403.png"
+ ALT="$ d_{ij}$">
+ is
+an intra-molecular distance between atoms <IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img271.png"
+ ALT="$ ij$">
+ in the first
+segment, and <IMG
+ WIDTH="24" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img404.png"
+ ALT="$ d'_{ij}$">
+ is the equivalent distance in the second
+segment.
+
+<P>
+For each <IMG
+ WIDTH="38" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img405.png"
+ ALT="$ i&lt;j$">
+, the first derivatives are:
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH
+ \begin{eqnarray}
+\frac{\partial c}{\partial \vec{d}_{ij}} & = &
+   2 \omega_i \omega_j (d_{ij} - d'_{ij})
+     \frac{\vec{d}_{ij}}{d_{ij}} \\
+\frac{\partial c}{\partial \vec{d}'_{ij}} & = & -
+   2 \omega_i \omega_j (d_{ij} - d'_{ij})
+     \frac{\vec{d}'_{ij}}{d'_{ij}}
+\end{eqnarray}
+ -->
+<TABLE CELLPADDING="0" ALIGN="CENTER" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="38" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img406.png"
+ ALT="$\displaystyle \frac{\partial c}{\partial \vec{d}_{ij}}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="139" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img407.png"
+ ALT="$\displaystyle 2 \omega_i \omega_j (d_{ij} - d'_{ij})
+\frac{\vec{d}_{ij}}{d_{ij}}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.99)</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="38" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img408.png"
+ ALT="$\displaystyle \frac{\partial c}{\partial \vec{d}'_{ij}}$"></TD>
+<TD WIDTH="10" ALIGN="CENTER" NOWRAP><IMG
+ WIDTH="17" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img198.png"
+ ALT="$\displaystyle =$"></TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="152" HEIGHT="59" ALIGN="MIDDLE" BORDER="0"
+ SRC="img409.png"
+ ALT="$\displaystyle -
+2 \omega_i \omega_j (d_{ij} - d'_{ij})
+\frac{\vec{d}'_{ij}}{d'_{ij}}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+(A.100)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL">
+
+Thus, the total first derivatives are obtained by summing the two expressions
+above for all <IMG
+ WIDTH="10" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img61.png"
+ ALT="$ i$">
+ and <IMG
+ WIDTH="38" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img410.png"
+ ALT="$ j&gt;i$">
+ distances.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8393"
+  HREF="node451.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8387"
+  HREF="node448.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8383"
+  HREF="node449.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8389"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8391"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8394"
+  HREF="node451.html">Flowchart of comparative modeling</A>
+<B> Up:</B> <A NAME="tex2html8388"
+  HREF="node448.html">Equations used in the</A>
+<B> Previous:</B> <A NAME="tex2html8384"
+  HREF="node449.html">Features and their derivatives</A>
+ &nbsp; <B>  <A NAME="tex2html8390"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8392"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

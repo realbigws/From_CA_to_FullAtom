@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>alignment.append_model() -- copy model sequence and coordinates to alignment</TITLE>
+<META NAME="description" CONTENT="alignment.append_model() -- copy model sequence and coordinates to alignment">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node280.html">
+<LINK REL="previous" HREF="node278.html">
+<LINK REL="up" HREF="node269.html">
+<LINK REL="next" HREF="node280.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5835"
+  HREF="node280.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5829"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5823"
+  HREF="node278.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5831"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5833"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5836"
+  HREF="node280.html">alignment.append_sequence()   add</A>
+<B> Up:</B> <A NAME="tex2html5830"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5824"
+  HREF="node278.html">alignment.compare_with()   compare</A>
+ &nbsp; <B>  <A NAME="tex2html5832"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5834"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00111510000000000000000">
+alignment.append_model() -- copy model sequence and coordinates to alignment</A>
+</H2> <A NAME="25775"></A><A NAME="CMD:alignment.appendmodel"></A><A NAME="25778"></A><TT>append_model(mdl, align_codes, atom_files='')</TT>
+<BR><BLOCKQUOTE>
+This command adds the sequence and coordinates of the 
+given model, <I>mdl</I><A NAME="25791"></A>, to the end of the current alignment.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>You should additionally set <I>align_codes</I><A NAME="25794"></A> and <I>atom_files</I><A NAME="25797"></A> to the
+PDB ID and file name, respectively. This information is added to the
+alignment with the new sequence. (Alternatively, you can set this information
+later by setting <I><A HREF="node300.html#MEMB:Sequence.code">Sequence.code</A></I><A NAME="25800"></A> and <I><A HREF="node301.html#MEMB:Sequence.atomfile">Sequence.atom_file</A></I><A NAME="25805"></A>.)
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html165"
+  HREF="../examples/commands/aln_append_model.py">examples/commands/aln_append_model.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># This demonstrates one way to generate an initial alignment between two
+# PDB sequences. It can later be edited by hand.
+
+# Set Modeller environment (including search patch for model.read())
+from modeller import *
+env = environ()
+env.io.atom_files_directory = [".", "../atom_files/"]
+
+# Create a new empty alignment and model:
+aln = alignment(env)
+mdl = model(env)
+
+# Read the whole 1fdn atom file
+code='1fdn'
+mdl.read(file=code, model_segment=('FIRST:@', 'END:'))
+
+# Add the model sequence to the alignment
+aln.append_model(mdl, align_codes=code, atom_files=code)
+
+# Read 5fd1 atom file chain A from 1-63, and add to alignment
+code='5fd1'
+mdl.read(file=code, model_segment=('1:A', '63:A'))
+aln.append_model(mdl, align_codes=code, atom_files=code)
+
+# Align them by sequence
+aln.malign(gap_penalties_1d=(-500, -300))
+aln.write(file='fer1-seq.ali')
+
+# Align them by structure
+aln.malign3d(gap_penalties_3d=(0.0, 2.0))
+
+# check the alignment for its suitability for modeling
+aln.check()
+
+aln.write(file='fer1.ali')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

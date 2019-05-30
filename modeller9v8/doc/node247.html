@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>selection.debug_function() -- test code self-consistency</TITLE>
+<META NAME="description" CONTENT="selection.debug_function() -- test code self-consistency">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node248.html">
+<LINK REL="previous" HREF="node246.html">
+<LINK REL="up" HREF="node220.html">
+<LINK REL="next" HREF="node248.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5349"
+  HREF="node248.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5343"
+  HREF="node220.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5337"
+  HREF="node246.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5345"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5347"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5350"
+  HREF="node248.html">selection.assess_dope()   assess</A>
+<B> Up:</B> <A NAME="tex2html5344"
+  HREF="node220.html">The selection class: handling</A>
+<B> Previous:</B> <A NAME="tex2html5338"
+  HREF="node246.html">selection.energy()   evaluate</A>
+ &nbsp; <B>  <A NAME="tex2html5346"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5348"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011927000000000000000">
+selection.debug_function() -- test code self-consistency</A>
+</H2> <A NAME="21135"></A><A NAME="CMD:selection.debugfunction"></A><A NAME="21138"></A><TT>debug_function(residue_span_range=(0, 99999), debug_function_cutoff=(0.01, 0.001, 0.1), detailed_debugging=False, schedule_scale=None, edat=None)</TT>
+<BR><DL>
+<DT><STRONG>Output:</STRONG></DT>
+<DD>n_exceed
+                             
+</DD>
+</DL>
+<BLOCKQUOTE>
+This command checks the self-consistency of the code
+for the objective function and its derivatives by calculating and
+comparing numeric and analytical derivatives. All the parameters
+influencing the evaluation of the molecular pdf are also relevant (see
+<B><A HREF="node246.html#CMD:selection.energy">selection.energy()</A></B><A NAME="21155"></A>). The derivative is reported if both the absolute
+difference and the fractional difference between the two kinds of evaluations
+exceed <I>debug_function_cutoff</I><A NAME="21160"></A>[0] and
+<I>debug_function_cutoff</I><A NAME="21163"></A>[1], respectively. This command returns
+<I>n_exceed</I><A NAME="21166"></A>, the number of such reported differences.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The scaling factors for the physical restraint types are given by
+<I>schedule_scale</I><A NAME="21169"></A>. This allows some restraints to be turned off (scaled to
+zero) for the purpose of this test, if required.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>When <I>detailed_debugging</I><A NAME="21172"></A> is <TT>True</TT>, the analytic and numeric 
+derivatives of each restraint with respect to atomic positions are
+also compared for the atoms `violated' by the whole molecular pdf. 
+The absolute cutoff for writing out the discrepancies is
+scaled by <I>debug_function_cutoff</I><A NAME="21176"></A>[2]; the relative cutoff
+remains the same as before.
+                             
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html140"
+  HREF="../examples/scoring/debug_function.py">examples/scoring/debug_function.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: selection.debug_function()
+
+# This will use the MODELLER automodel class to construct homology
+# restraints for 1fas. It will then use model.debug_function() to test
+# the source code for the function and derivatives calculation
+# by comparing analytical and numerical first derivatives (note that
+# automodel is a derived class of model, so all 'model' methods will work
+# on 'automodel'). Some discrepancies may be reported but ignore them here.
+
+from modeller import *
+from modeller.automodel import *    # Load the automodel class
+
+log.verbose()
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+
+a = automodel(env, alnfile = 'debug_function.ali',
+              knowns  = ('2ctx', '2nbt'), sequence = '1fas')
+a.spline_on_site = False
+a.make(exit_stage=1)
+
+# Test on all atoms
+atmsel = selection(a)
+
+# To assign 0 weights to restraints whose numerical derivatives
+# code does not work (i.e., splines for angles and dihedrals):
+scal = physical.values(default=1.0, lennard_jones=0, coulomb=0, h_bond=0,
+                       phi_dihedral=0, psi_dihedral=0, omega_dihedral=0,
+                       chi1_dihedral=0, chi2_dihedral=0, chi3_dihedral=0,
+                       chi4_dihedral=0, disulfide_angle=0,
+                       disulfide_dihedral=0, chi5_dihedral=0)
+atmsel.energy(output='SHORT', schedule_scale=scal)
+atmsel.debug_function(debug_function_cutoff=(15.00, 0.10, 0.1),
+                      detailed_debugging=True, schedule_scale=scal)
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5349"
+  HREF="node248.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5343"
+  HREF="node220.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5337"
+  HREF="node246.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5345"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5347"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5350"
+  HREF="node248.html">selection.assess_dope()   assess</A>
+<B> Up:</B> <A NAME="tex2html5344"
+  HREF="node220.html">The selection class: handling</A>
+<B> Previous:</B> <A NAME="tex2html5338"
+  HREF="node246.html">selection.energy()   evaluate</A>
+ &nbsp; <B>  <A NAME="tex2html5346"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5348"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

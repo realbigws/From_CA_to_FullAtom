@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>alignment.id_table() -- calculate percentage sequence identities</TITLE>
+<META NAME="description" CONTENT="alignment.id_table() -- calculate percentage sequence identities">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node286.html">
+<LINK REL="previous" HREF="node284.html">
+<LINK REL="up" HREF="node269.html">
+<LINK REL="next" HREF="node286.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html5919"
+  HREF="node286.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html5913"
+  HREF="node269.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html5907"
+  HREF="node284.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html5915"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html5917"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5920"
+  HREF="node286.html">alignment.compare_sequences()   compare</A>
+<B> Up:</B> <A NAME="tex2html5914"
+  HREF="node269.html">The alignment class: comparison</A>
+<B> Previous:</B> <A NAME="tex2html5908"
+  HREF="node284.html">alignment.describe()   describe</A>
+ &nbsp; <B>  <A NAME="tex2html5916"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html5918"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00111516000000000000000">
+alignment.id_table() -- calculate percentage sequence identities</A>
+</H2> <A NAME="26131"></A><A NAME="CMD:alignment.idtable"></A>     
+<A NAME="26134"></A><TT>id_table(matrix_file)</TT>
+<BR><BLOCKQUOTE>
+This command calculates percentage residue identities for 
+all pairs of sequences in the current alignment.  The percentage
+residue identity is defined as the number of identical residues
+divided by the length of the shorter sequence.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>In addition to the output in the <TT>log</TT> file, this routine creates file
+<I>matrix_file</I><A NAME="26149"></A> with pairwise sequence
+distances that can be used directly as the input to the tree making
+programs of the P<SMALL>HYLIP</SMALL> package, such as K<SMALL>ITSCH</SMALL> [<A
+ HREF="node469.html#Fel85">Felsenstein, 1985</A>], 
+and also for the <B><A HREF="node115.html#CMD:environ.dendrogram">environ.dendrogram()</A></B><A NAME="26154"></A> and
+<B><A HREF="node116.html#CMD:environ.principalcomponents">environ.principal_components()</A></B><A NAME="26159"></A> commands. A more general
+version of this command, which allows a user specified measure for
+residue-residue differences is <B><A HREF="node286.html#CMD:alignment.comparesequences">alignment.compare_sequences()</A></B><A NAME="26164"></A>.  
+                             
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html168"
+  HREF="../examples/commands/id_table.py">examples/commands/id_table.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: alignment.id_table(), alignment.compare_sequences(),
+#              misc.principal_components(), misc.dendrogram()
+
+# Pairwise sequence identity between sequences in the alignment.
+
+from modeller import *
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+# Read all entries in this alignment:
+aln = alignment(env, file='toxin.ali')
+
+# Access pairwise properties:
+s1 = aln[0]
+s2 = aln[1]
+print "%s and %s have %d equivalences, and are %.2f%% identical" % \
+      (s1, s2, s1.get_num_equiv(s2), s1.get_sequence_identity(s2))
+
+# Calculate pairwise sequence identities:
+aln.id_table(matrix_file='toxin_id.mat')
+
+# Calculate pairwise sequence similarities:
+mdl = model(env, file='2ctx', model_segment=('1:A', '71:A'))
+aln.compare_sequences(mdl, rr_file='$(LIB)/as1.sim.mat', max_gaps_match=1,
+                      matrix_file='toxin.mat', variability_file='toxin.var')
+mdl.write(file='2ctx.var')
+
+# Do principal components clustering using sequence similarities:
+env.principal_components(matrix_file='toxin.mat', file='toxin.princ')
+
+# Dendrogram in the log file:
+env.dendrogram(matrix_file='toxin.mat', cluster_cut=-1.0)
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

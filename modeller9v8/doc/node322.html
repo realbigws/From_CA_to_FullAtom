@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Chain.join() -- join other chain(s) onto this one</TITLE>
+<META NAME="description" CONTENT="Chain.join() -- join other chain(s) onto this one">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node321.html">
+<LINK REL="up" HREF="node315.html">
+<LINK REL="next" HREF="node323.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html6459"
+  HREF="node323.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html6453"
+  HREF="node315.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html6449"
+  HREF="node321.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html6455"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html6457"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6460"
+  HREF="node323.html">The Residue class: a</A>
+<B> Up:</B> <A NAME="tex2html6454"
+  HREF="node315.html">The Chain class: a</A>
+<B> Previous:</B> <A NAME="tex2html6450"
+  HREF="node321.html">Chain.atom_file_and_code()   get</A>
+ &nbsp; <B>  <A NAME="tex2html6456"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html6458"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011187000000000000000">
+Chain.join() -- join other chain(s) onto this one</A>
+</H2> <A NAME="31394"></A><A NAME="CMD:Chain.join"></A><A NAME="31397"></A><TT>join(chain)</TT>
+<BR><BLOCKQUOTE>
+Given another chain from the same model, alignment structure, or alignment
+sequence, this command will remove any chain breaks between the two chains.
+The passed chain (and any other chains between the two) will become part of
+the first. For example, if in a model containing five chains A, B, C, D and E
+chains D and B are joined, the model will end up with chains A, B, and E;
+former chains C and D will become part of the A chain.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Note that the chain must follow this chain in the sequence (<EM>e.g.</EM>, you can join
+chain B or C onto chain A, but not chain A onto B or C). If it does not, or
+it is from a different sequence, a <TT>ValueError</TT> is raised.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Note that this does not renumber the residues; you will need to do that
+separately if you don't want duplicate residue numbers.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Note that for models this does not affect the model topology -- any existing
+C-terminal or N-terminal patches (<EM>e.g.</EM>, OXT atoms) are not removed, and no
+bond is created between the termini of the joined chains. To accomplish that,
+write out the model (<B><A HREF="node172.html#CMD:model.write">model.write()</A></B><A NAME="31411"></A>) and then read it back in
+(<B><A HREF="node413.html#CMD:completepdb">complete_pdb()</A></B><A NAME="31416"></A>).
+
+</BLOCKQUOTE>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html196"
+  HREF="../examples/commands/join_chains.py">examples/commands/join_chains.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for: Chain.join()
+
+# This will take a model containing two chains and join them into one.
+
+from modeller import *
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+
+mdl = model(env)
+mdl.read(file='2abx')
+
+# Join the B chain onto the end of the A chain
+mdl.chains['A'].join(mdl.chains['B'])
+
+# Renumber all residues in the new chain starting from 1
+for num, residue in enumerate(mdl.chains['A'].residues):
+    residue.num = '%d' % (num + 1)
+
+mdl.write(file='2abx-join.pdb')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html6459"
+  HREF="node323.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html6453"
+  HREF="node315.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html6449"
+  HREF="node321.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html6455"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html6457"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6460"
+  HREF="node323.html">The Residue class: a</A>
+<B> Up:</B> <A NAME="tex2html6454"
+  HREF="node315.html">The Chain class: a</A>
+<B> Previous:</B> <A NAME="tex2html6450"
+  HREF="node321.html">Chain.atom_file_and_code()   get</A>
+ &nbsp; <B>  <A NAME="tex2html6456"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html6458"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

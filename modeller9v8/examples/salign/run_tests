@@ -1,0 +1,9 @@
+#!/bin/sh -v
+mod9v8 salign_align2d.py
+mod9v8 salign_profile_profile.py
+mod9v8 salign_external_matrix.py
+mod9v8 salign_fix_positions.py
+mod9v8 salign_multiple_seq.py
+mod9v8 salign_multiple_struc.py
+mod9v8 salign_iterative.py
+mod9v8 salign_subopt.py

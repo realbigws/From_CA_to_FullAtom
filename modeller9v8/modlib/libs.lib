@@ -1,0 +1,30 @@
+# This is the list of MODELLER library files. 
+# This file is specified in the $LIBS_LIB9v8 environment variable.
+# This file relies on the $MODINSTALL9v8 environment variable.
+# The environment variables have to be in the format ${varname} or $(varname).
+
+MESSAGES_LIB ${MODINSTALL9v8}/modlib/messages.lib
+RESDIH_LIB   ${MODINSTALL9v8}/modlib/resdih.lib
+RESGRP_LIB   ${MODINSTALL9v8}/modlib/resgrp.lib
+RR_MAT       ${MODINSTALL9v8}/modlib/xs4.mat
+MNCHDEF_LIB  ${MODINSTALL9v8}/modlib/af_mnchdef.lib
+MODPRM_LIB   ${MODINSTALL9v8}/modlib/params.lib
+FEATS_LIB    ${MODINSTALL9v8}/modlib/feats.lib
+RADII_LIB    ${MODINSTALL9v8}/modlib/radii.lib
+RADII14_LIB  ${MODINSTALL9v8}/modlib/radii14.lib
+MNCH_LIB     ${MODINSTALL9v8}/modlib/mnch.lib
+MNCH1_LIB    ${MODINSTALL9v8}/modlib/mnch1.lib
+MNCH2_LIB    ${MODINSTALL9v8}/modlib/mnch2.lib
+MNCH3_LIB    ${MODINSTALL9v8}/modlib/mnch3.lib
+MNCH4_LIB    ${MODINSTALL9v8}/modlib/mnch4.lib
+MODELS_LIB   ${MODINSTALL9v8}/modlib/models.lib
+ATMEQV_LIB   ${MODINSTALL9v8}/modlib/atmeqv.lib
+SCHED_LIB    ${MODINSTALL9v8}/modlib/sched.lib
+SSTRUC_LIB   ${MODINSTALL9v8}/modlib/sstruc.lib
+MDT_LIB      ${MODINSTALL9v8}/modlib/mdt.lib
+PAIR_LIB     ${MODINSTALL9v8}/modlib/pair9.de
+SURF_LIB     ${MODINSTALL9v8}/modlib/surf5.de
+BIN_MODELLER ${MODINSTALL9v8}/bin
+LIB_MODELLER ${MODINSTALL9v8}/modlib
+INCLUDE      ${MODINSTALL9v8}/src/include
+DYNLIB       ${MODINSTALL9v8}/lib

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Parallel job support</TITLE>
+<META NAME="description" CONTENT="Parallel job support">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="previous" HREF="node414.html">
+<LINK REL="up" HREF="node107.html">
+<LINK REL="next" HREF="node417.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html7827"
+  HREF="node417.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7821"
+  HREF="node107.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7817"
+  HREF="node415.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7823"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7825"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7828"
+  HREF="node417.html">job()   create</A>
+<B> Up:</B> <A NAME="tex2html7822"
+  HREF="node107.html">MODELLER command reference</A>
+<B> Previous:</B> <A NAME="tex2html7818"
+  HREF="node415.html">iterative_structural_align()   obtain</A>
+ &nbsp; <B>  <A NAME="tex2html7824"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7826"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION0011320000000000000000"></A>
+    <A NAME="SECTION:parallel"></A>
+<BR>
+Parallel job support
+</H1>
+    <A NAME="CLASS:job"></A><A NAME="37271"></A>
+
+<P>
+The <TT>parallel</TT> module provides methods to parallelize M<SMALL>ODELLER</SMALL> calculations over multiple processors. This may be employed to make use of
+more than one CPU on a multi-processor machine, or of several nodes in a
+cluster. Each remote process is termed a `slave', while the process
+which starts and controls the parallel job is termed the `master'.
+
+<P>
+Two methods for accessing the slaves from the master are provided; the first
+is a task-based interface (<B><A HREF="node421.html#CMD:job.queuetask">job.queue_task()</A></B><A NAME="37485"></A>, <B><A HREF="node422.html#CMD:job.runalltasks">job.run_all_tasks()</A></B><A NAME="37490"></A>
+and <B><A HREF="node423.html#CMD:job.yieldtasksunordered">job.yield_tasks_unordered()</A></B><A NAME="37495"></A>)
+which is largely transparent in use and fault-tolerant, while the second is
+a lower-level slave-master message-passing interface (<B><A HREF="node424.html#CMD:job.start">job.start()</A></B><A NAME="37500"></A>,
+<B><A HREF="node425.html#CMD:Communicator.senddata">Communicator.send_data()</A></B><A NAME="37505"></A>, <B><A HREF="node426.html#CMD:Communicator.getdata">Communicator.get_data()</A></B><A NAME="37510"></A> and
+<B><A HREF="node427.html#CMD:slave.runcmd">slave.run_cmd()</A></B><A NAME="37515"></A>), which is similar to MPI (although coarse-grained) and
+requires you to handle errors yourself. It is recommended that you use the
+task interface unless you require a large amount of message passing.
+
+<P>
+This module relies on several modules in the <A NAME="tex2html221"
+  HREF="http://www.python.org/">Python</A> standard library. These
+modules are not provided with M<SMALL>ODELLER</SMALL>, so you must additionally install
+<A NAME="tex2html222"
+  HREF="http://www.python.org/">Python</A> if it is not already present on your system. It is also
+experimental, and may need modification to work with your own networking or
+parallel system.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL>
+<LI><A NAME="tex2html7829"
+  HREF="node417.html">job() -- create a new parallel job</A>
+<LI><A NAME="tex2html7830"
+  HREF="node418.html">sge_pe_job() -- create a job using all Sun GridEngine (SGE) slave processes</A>
+<LI><A NAME="tex2html7831"
+  HREF="node419.html">sge_qsub_job() -- create a job which can be expanded with Sun GridEngine 'qsub'</A>
+<LI><A NAME="tex2html7832"
+  HREF="node420.html">job.slave_startup_commands -- Slave startup commands</A>
+<LI><A NAME="tex2html7833"
+  HREF="node421.html">job.queue_task() -- submit a task to run within the job</A>
+<LI><A NAME="tex2html7834"
+  HREF="node422.html">job.run_all_tasks() -- run all queued tasks, and return results</A>
+<LI><A NAME="tex2html7835"
+  HREF="node423.html">job.yield_tasks_unordered() -- run all queued tasks, and yield unordered results</A>
+<LI><A NAME="tex2html7836"
+  HREF="node424.html">job.start() -- start all slaves for message-passing</A>
+<LI><A NAME="tex2html7837"
+  HREF="node425.html">Communicator.send_data() -- send data</A>
+<LI><A NAME="tex2html7838"
+  HREF="node426.html">Communicator.get_data() -- get data</A>
+<LI><A NAME="tex2html7839"
+  HREF="node427.html">slave.run_cmd() -- run a command on the slave</A>
+<LI><A NAME="tex2html7840"
+  HREF="node428.html">local_slave() -- create a slave running on the local machine</A>
+<LI><A NAME="tex2html7841"
+  HREF="node429.html">sge_pe_slave() -- create a slave running on a Sun GridEngine parallel environment slave node</A>
+<LI><A NAME="tex2html7842"
+  HREF="node430.html">sge_qsub_slave() -- create a 'qsub' slave running on a Sun GridEngine node</A>
+<LI><A NAME="tex2html7843"
+  HREF="node431.html">ssh_slave() -- create a slave on a remote host accessed via ssh</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7827"
+  HREF="node417.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html7821"
+  HREF="node107.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html7817"
+  HREF="node415.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html7823"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html7825"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7828"
+  HREF="node417.html">job()   create</A>
+<B> Up:</B> <A NAME="tex2html7822"
+  HREF="node107.html">MODELLER command reference</A>
+<B> Previous:</B> <A NAME="tex2html7818"
+  HREF="node415.html">iterative_structural_align()   obtain</A>
+ &nbsp; <B>  <A NAME="tex2html7824"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html7826"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

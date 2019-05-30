@@ -1,0 +1,4 @@
+#!/bin/sh
+for dir in all-steps assessment atom_files automodel c-extensions commands python salign scoring; do
+  (cd $dir && ./clean_tests)
+done

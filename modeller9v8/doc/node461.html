@@ -1,0 +1,217 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Profile file</TITLE>
+<META NAME="description" CONTENT="Profile file">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node462.html">
+<LINK REL="previous" HREF="node455.html">
+<LINK REL="up" HREF="node453.html">
+<LINK REL="next" HREF="node462.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html8567"
+  HREF="node462.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8561"
+  HREF="node453.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8555"
+  HREF="node460.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8563"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8565"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8568"
+  HREF="node462.html">Binary files</A>
+<B> Up:</B> <A NAME="tex2html8562"
+  HREF="node453.html">File formats</A>
+<B> Previous:</B> <A NAME="tex2html8556"
+  HREF="node460.html">Rigid bodies</A>
+ &nbsp; <B>  <A NAME="tex2html8564"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8566"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION001430000000000000000"></A>
+<A NAME="profileformat"></A>
+<BR>
+Profile file
+</H1>
+
+<P>
+The format of the profile file (text) is as follows:
+
+<P>
+ <BR>
+<PRE># Number of sequences:      4
+# Length of profile  :     20
+# N_PROF_ITERATIONS  :      3
+# GAP_PENALTIES_1D   :   -900.0   -50.0
+# MATRIX_OFFSET      :    0.0
+# RR_FILE            : ${MODINSTALLCVS}/modlib//as1.sim.mat
+    1 2ctx                                     X     0    71     1    71     0     0     0    0.    0.0     IRCFITPDITS---KDCPN-
+    2 2abx                                     X     0    74     1    74     0     0     0    0.    0.0     IVCHTTATIPS-SAVTCPPG
+    3 2nbt                                     X     0    66     1    66     0     0     0    0.    0.0     RTCLISPSS---TPQTCPNG
+    4 1fas                                     X     0    61     1    61     0     0     0    0.    0.0     TMCYSHTTTSRAILTNCG--
+</PRE>
+
+<P>
+The first six lines begin with a '#' in the first column and give a few 
+general details of the profile.
+
+<P>
+The first line gives the number of sequences in the profile. The line should be
+in the following format: '(24x,i6)'.
+
+<P>
+The second line gives the number of positions in the profile. This should be in
+'(24x,i6)' format also. 
+
+<P>
+The third line gives the value of the <I>n_prof_iterations</I><A NAME="42012"></A> variable.
+The fourth line gives the value of the <I>gap_penalties_1d</I><A NAME="42015"></A> variable. 
+The fifth line gives the value of the <I>matrix_offset</I><A NAME="42018"></A> variable. 
+The sixth line gives the value of the <I>rr_file</I><A NAME="42021"></A> variable. 
+
+<P>
+The number of sequences in the profile and its length are used to allocate
+memory for the profile arrays. So they should provide an accurate description
+of the profile.
+
+<P>
+The values of the variables described in lines 3 through 6 are not
+used internally by M<SMALL>ODELLER</SMALL>. But the <B><A HREF="node368.html#CMD:profile.read">profile.read()</A></B><A NAME="42026"></A> command expects to
+find a total of six header lines. These records represent useful information
+when <B><A HREF="node372.html#CMD:profile.build">profile.build()</A></B><A NAME="42031"></A> was used to construct the profile.
+
+<P>
+The remaining lines consist of the alignment of the sequences in the
+profile. The format of these lines is of the form: 
+'(i5,1x,a40,1x,a1,1x,7(i5,1x),f5.0,1x,g10.2,1x,32767a1)'
+
+<P>
+The various columns that precede the sequence are:
+
+<OL>
+<LI>The index number of the sequence in the profile.
+
+<P>
+</LI>
+<LI>The code of the sequence (similar to <I><A HREF="node300.html#MEMB:Sequence.code">Sequence.code</A></I><A NAME="42036"></A>).
+
+<P>
+</LI>
+<LI>The type of sequence ('S' for sequence, 'X' for structure). This
+depends on the original source of the sequences. (See <B><A HREF="node296.html#CMD:alignment.toprofile">alignment.to_profile()</A></B><A NAME="42041"></A>
+and <B><A HREF="node377.html#CMD:sequencedb.read">sequence_db.read()</A></B><A NAME="42046"></A>). 
+
+<P>
+</LI>
+<LI>The iteration in which the sequence was selected as significant.
+(See <B><A HREF="node372.html#CMD:profile.build">profile.build()</A></B><A NAME="42051"></A>).
+
+<P>
+</LI>
+<LI>The length of the database sequence.
+
+<P>
+</LI>
+<LI>The starting position of the target sequence in the alignment.
+
+<P>
+</LI>
+<LI>The ending position of the target sequence in the alignment.
+
+<P>
+</LI>
+<LI>The starting position of the database sequence in the alignment.
+
+<P>
+</LI>
+<LI>The ending position of the database sequence in the alignment.
+
+<P>
+</LI>
+<LI>The number of equivalent positions in the alignment.
+
+<P>
+</LI>
+<LI>The sequence identity of between the target sequence and the
+database sequence.
+
+<P>
+</LI>
+<LI>The e-value of the alignment. (See <B><A HREF="node372.html#CMD:profile.build">profile.build()</A></B><A NAME="42056"></A>).
+
+<P>
+</LI>
+<LI>The sequence alignment.
+
+<P>
+</LI>
+</OL>
+
+<P>
+Many of the fields described above are valid only when the profile that 
+is written out is the result of <B><A HREF="node372.html#CMD:profile.build">profile.build()</A></B><A NAME="42061"></A>.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8567"
+  HREF="node462.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html8561"
+  HREF="node453.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html8555"
+  HREF="node460.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html8563"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html8565"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8568"
+  HREF="node462.html">Binary files</A>
+<B> Up:</B> <A NAME="tex2html8562"
+  HREF="node453.html">File formats</A>
+<B> Previous:</B> <A NAME="tex2html8556"
+  HREF="node460.html">Rigid bodies</A>
+ &nbsp; <B>  <A NAME="tex2html8564"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html8566"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

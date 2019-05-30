@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Simple usage</TITLE>
+<META NAME="description" CONTENT="Simple usage">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node17.html">
+<LINK REL="previous" HREF="node15.html">
+<LINK REL="up" HREF="node15.html">
+<LINK REL="next" HREF="node17.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1521"
+  HREF="node17.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1515"
+  HREF="node15.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1509"
+  HREF="node15.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1517"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1519"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1522"
+  HREF="node17.html">More advanced usage</A>
+<B> Up:</B> <A NAME="tex2html1516"
+  HREF="node15.html">Automated comparative modeling with</A>
+<B> Previous:</B> <A NAME="tex2html1510"
+  HREF="node15.html">Automated comparative modeling with</A>
+ &nbsp; <B>  <A NAME="tex2html1518"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1520"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00710000000000000000"></A>
+<A NAME="SECTION:model-default"></A>
+<BR>
+Simple usage
+</H1>
+
+<P>
+The simple example below constructs a single comparative model for the <TT>1fdx</TT>
+sequence from the known <TT>5fd1</TT> structure, using <TT>alignment.ali</TT>, a PIR
+format alignment of <TT>5fd1</TT> and <TT>1fdx</TT>. The final model is written into the
+PDB file <TT>1fdx.B99990001.pdb</TT>. See Section&nbsp;<A HREF="node14.html#SECTION:running">1.6.2</A> for
+instructions on how to run this script.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html29"
+  HREF="../examples/automodel/model-default.py">examples/automodel/model-default.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Homology modeling by the automodel class
+from modeller import *              # Load standard Modeller classes
+from modeller.automodel import *    # Load the automodel class
+
+log.verbose()    # request verbose output
+env = environ()  # create a new MODELLER environment to build this model in
+
+# directories for input atom files
+env.io.atom_files_directory = ['.', '../atom_files']
+
+a = automodel(env,
+              alnfile  = 'alignment.ali',     # alignment filename
+              knowns   = '5fd1',              # codes of the templates
+              sequence = '1fdx')              # code of the target
+a.starting_model= 1                 # index of the first model
+a.ending_model  = 1                 # index of the last model
+                                    # (determines how many models to calculate)
+a.make()                            # do the actual homology modeling
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html30"
+  HREF="../examples/automodel/alignment.ali">examples/automodel/alignment.ali</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>C; A sample alignment in the PIR format; used in tutorial
+
+&gt;P1;5fd1
+structureX:5fd1:1    :A:106  :A:ferredoxin:Azotobacter vinelandii: 1.90: 0.19
+AFVVTDNCIKCKYTDCVEVCPVDCFYEGPNFLVIHPDECIDCALCEPECPAQAIFSEDEVPEDMQEFIQLNAELA
+EVWPNITEKKDPLPDAEDWDGVKGKLQHLER*
+
+&gt;P1;1fdx
+sequence:1fdx:1    : :54   : :ferredoxin:Peptococcus aerogenes: 2.00:-1.00
+AYVINDSC--IACGACKPECPVNIIQGS--IYAIDADSCIDCGSCASVCPVGAPNPED-----------------
+-------------------------------*
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+Stepping through the script, first we load the <TT>automodel</TT> class,
+using standard <A NAME="tex2html31"
+  HREF="http://www.python.org/">Python</A> syntax to load a module. Next, we request verbose
+output (see Section&nbsp;<A HREF="node400.html#SECTION:log">6.28</A>) so that we can more easily spot errors.
+We then create an <B><A HREF="node110.html#CMD:environ">environ()</A></B><A NAME="2801"></A> object (see Section&nbsp;<A HREF="node109.html#CLASS:environ">6.2</A>)
+and call it <TT>env</TT>. This object holds the M<SMALL>ODELLER</SMALL> `environment', which
+comprises default values for many parameters, as well as the libraries used
+for comparative modeling (topology, parameters, dihedral classes, <EM>etc</EM>). An
+<TT>environ</TT> object is needed to create most other M<SMALL>ODELLER</SMALL> objects,
+but you can call it whatever you like (it doesn't have to be called <TT>env</TT>).
+
+<P>
+Once we have the <TT>environ</TT> object, we can set some global parameters.
+In this case, we set <I><A HREF="node142.html#MEMB:iodata.atomfilesdirectory">io_data.atom_files_directory</A></I><A NAME="2817"></A> to set the directories
+to look for PDB files in.
+
+<P>
+Next, we create an <TT>automodel</TT> object, tell it which PIR alignment
+file to use, and which sequences are templates and which one we want to build
+a model for, and call it <TT>a</TT>. This doesn't actually build any models, but
+creates the object, ready to be tweaked for our purposes. In this case, we
+simply tell it to build a single model, by setting both
+<I><A HREF="node52.html#MEMB:automodel.startingmodel">automodel.starting_model</A></I><A NAME="2825"></A> and <I><A HREF="node53.html#MEMB:automodel.endingmodel">automodel.ending_model</A></I><A NAME="2830"></A> to 1. Finally,
+we actually build the model by running <B><A HREF="node66.html#CMD:automodel.make">automodel.make()</A></B><A NAME="2835"></A>.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1521"
+  HREF="node17.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1515"
+  HREF="node15.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1509"
+  HREF="node15.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1517"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1519"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1522"
+  HREF="node17.html">More advanced usage</A>
+<B> Up:</B> <A NAME="tex2html1516"
+  HREF="node15.html">Automated comparative modeling with</A>
+<B> Previous:</B> <A NAME="tex2html1510"
+  HREF="node15.html">Automated comparative modeling with</A>
+ &nbsp; <B>  <A NAME="tex2html1518"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1520"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

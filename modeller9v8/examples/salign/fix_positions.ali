@@ -1,0 +1,9 @@
+>P1;1leh
+sequence:pdb5fd1.ent:1::5:: : :-1.00:-1.00
+AF-VVT*
+>P1;3btoA
+sequence:3bto: :: :: : :-1.00:-1.00
+---F-V*
+>P1;_fix_pos
+sequence:x: :: :: : :-1.00:-1.00
+   4 4*

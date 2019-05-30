@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>model.get_insertions() -- return a list of all insertions</TITLE>
+<META NAME="description" CONTENT="model.get_insertions() -- return a list of all insertions">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node168.html">
+<LINK REL="previous" HREF="node166.html">
+<LINK REL="up" HREF="node155.html">
+<LINK REL="next" HREF="node168.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4183"
+  HREF="node168.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4177"
+  HREF="node155.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4171"
+  HREF="node166.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4179"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4181"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4184"
+  HREF="node168.html">model.get_deletions()   return</A>
+<B> Up:</B> <A NAME="tex2html4178"
+  HREF="node155.html">The model class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4172"
+  HREF="node166.html">model.residue_range()   return</A>
+ &nbsp; <B>  <A NAME="tex2html4180"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4182"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION0011612000000000000000">
+model.get_insertions() -- return a list of all insertions</A>
+</H2> <A NAME="13398"></A><A NAME="CMD:model.getinsertions"></A><A NAME="13401"></A><TT>get_insertions(aln, minlength, maxlength, extension)</TT>
+<BR><BLOCKQUOTE>
+This returns a list of all insertions (<EM>i.e.</EM>, residue ranges in which the
+model sequence, which must be the last in the alignment <I>aln</I><A NAME="13416"></A>, is aligned
+only with gaps in the other sequences). Each residue range is extended by
+<I>extension</I><A NAME="13419"></A> residues either side of the insertion, and is only returned if
+it is at least <I>minlength</I><A NAME="13422"></A> residues long, but not longer than <I>maxlength</I><A NAME="13425"></A>.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>See also <B><A HREF="node168.html#CMD:model.getdeletions">model.get_deletions()</A></B><A NAME="13428"></A>, <B><A HREF="node169.html#CMD:model.loops">model.loops()</A></B><A NAME="13433"></A>.
+
+</BLOCKQUOTE>
+<B>Example:</B> See <B><A HREF="node221.html#CMD:selection">selection()</A></B><A NAME="13441"></A> command.
+
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

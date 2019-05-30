@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Controlling breakpoints and the amount of output</TITLE>
+<META NAME="description" CONTENT="Controlling breakpoints and the amount of output">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node97.html">
+<LINK REL="previous" HREF="node95.html">
+<LINK REL="up" HREF="node94.html">
+<LINK REL="next" HREF="node97.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html2771"
+  HREF="node97.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2765"
+  HREF="node94.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2759"
+  HREF="node95.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html2767"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html2769"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html2772"
+  HREF="node97.html">File naming</A>
+<B> Up:</B> <A NAME="tex2html2766"
+  HREF="node94.html">Miscellaneous rules and features</A>
+<B> Previous:</B> <A NAME="tex2html2760"
+  HREF="node95.html">MODELLER system</A>
+ &nbsp; <B>  <A NAME="tex2html2768"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html2770"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001012000000000000000"></A><A NAME="7393"></A>
+<A NAME="SECTION:breakpoint"></A><A NAME="7395"></A>
+<A NAME="7396"></A>
+<BR>
+Controlling breakpoints and the amount of output
+</H2>
+
+<P>
+Some errors are recoverable. For those errors, a <A NAME="tex2html70"
+  HREF="http://www.python.org/">Python</A> exception
+exception is raised. It is then up to your script to deal sensibly with the
+failure of the preceding command using a standard <TT>'except'</TT> clause.
+For example, this flexibility allows derivation of multiple models and
+searching for many sequences, even if some cases abort due to convergence 
+problems. This exception could be a generic <TT>ModellerError</TT><A NAME="7575"></A> exception,
+a more specific subclass (<TT>FileFormatError</TT><A NAME="7577"></A>), or a standard <A NAME="tex2html71"
+  HREF="http://www.python.org/">Python</A> exception<A NAME="tex2html72"
+  HREF="footnode.html#foot7559"><SUP>5.1</SUP></A>.
+
+<P>
+There are five kinds of messages that M<SMALL>ODELLER</SMALL> writes to the 
+<TT>log</TT> file: long output from the M<SMALL>ODELLER</SMALL> commands, 
+short notes to do with the execution of the program (files opened, <EM>etc</EM>.), 
+warnings identified by <TT>`_W&gt;'</TT>, errors 
+identified by <TT>`_E&gt;'</TT>, and the messages about the status of dynamic
+memory allocation. To control how much of this output is displayed, use the
+<TT>log</TT> object; for more information, see Section&nbsp;<A HREF="node400.html#SECTION:log">6.28</A>.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html2771"
+  HREF="node97.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html2765"
+  HREF="node94.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html2759"
+  HREF="node95.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html2767"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html2769"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html2772"
+  HREF="node97.html">File naming</A>
+<B> Up:</B> <A NAME="tex2html2766"
+  HREF="node94.html">Miscellaneous rules and features</A>
+<B> Previous:</B> <A NAME="tex2html2760"
+  HREF="node95.html">MODELLER system</A>
+ &nbsp; <B>  <A NAME="tex2html2768"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html2770"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

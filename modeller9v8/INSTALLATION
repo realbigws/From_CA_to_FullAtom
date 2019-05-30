@@ -1,0 +1,108 @@
+
+
+                                 INSTALLATION
+
+                             M O D E L L E R   9v8
+
+
+                       Copyright(c) 1989-2010 Andrej Sali
+                              All Rights Reserved
+
+ See the file README for information about how to get MODELLER. The source code
+ is not generally available. Hence, most users are limited to the compiled
+ versions of MODELLER. The program is distributed as a single install file
+ that contains scripts, libraries, examples, documentation (in PDF and
+ HTML formats) and executables for the supported platforms and operating
+ systems. Please refer to the relevant section below for your platform:
+
+
+** WINDOWS INSTALLATION
+
+   1)   If using Windows NT/2000/XP/Vista, log on as a Computer Administrator.
+        (For older systems, e.g. Windows 98, just log on as normal.)
+
+   2)   Download the Windows installer modeller9v8.exe and save it to your
+        Desktop.
+
+   3)   Double-click on the modeller9v8 file to start the installer.
+
+   4)   Tell the installer where to install Modeller, and enter your Modeller
+        license key when prompted.
+
+   5)   Once the install is complete, use the Modeller link from the Start
+        Menu to start a Command Prompt from where you can run Modeller
+        scripts. You can then delete the original installer file from
+        your Desktop.
+
+
+** MAC OS X INSTALLATION
+
+   1)   Log in to your Mac as an admin user.
+
+   2)   Download the modeller-9v8.dmg file to your Desktop.
+
+   4)   Double-click on the modeller-9v8.dmg file to open the disk image.
+
+   5)   Double-click on the "Modeller 9v8.pkg" file within this image.
+        Enter your license key when prompted by the installer.
+
+   6)   Once the install is complete, you can run Modeller from a command line
+        (e.g. the Terminal application) by typing "mod9v8".
+        You can then drag both the 'Modeller 9v8' disk image and the
+        modeller-9v8.dmg file to your trash.
+
+
+** LINUX INSTALLATION (USING RPM)
+
+   (Note: replace 'i386' with 'ia64' or 'x86_64' if using an Itanium or
+   AMD64/EM64T machine, respectively.)
+
+   1)  Download the modeller-9v8-1.i386.rpm file.
+
+   2)  Install the RPM file with the following command, replacing XXXX with
+       your Modeller license key:
+
+          env KEY_MODELLER9v8=XXXX rpm -ivh modeller-9v8-1.i386.rpm
+
+
+** GENERIC UNIX INSTALLATION
+
+   1)  Download the modeller-9v8.tar.gz file into a temporary directory on your
+       computer.
+
+   2)  Open a console or terminal (e.g. xterm, Konsole, GNOME terminal)
+       and change to the directory where you downloaded the .tar.gz file.
+       Unpack the file with the following commands:
+
+          gunzip modeller-9v8.tar.gz
+          tar -xvf modeller-9v8.tar
+
+      The result of unpacking will be the directory ./modeller-9v8, containing
+      the following uncompressed files and directories:
+
+         doc/             MODELLER documentation directory
+         examples/        directory containing examples and tutorials
+         Install          installation script
+         INSTALLATION     this file
+         README           file describing distribution and registration
+         modlib/          libraries and data files for the program
+         bin/             .top script files and MODELLER executables
+
+
+   3)  Go to the ./modeller-9v8 directory and run the installation script:
+
+         ./Install
+
+       Answer several questions as prompted. If you make a mistake,
+       you can re-run the script.
+
+  For additional information visit our web site:
+
+  http://salilab.org/modeller/
+
+
+
+  Sincerely,
+
+  MODELLER Team
+  2010/04/21, r7145

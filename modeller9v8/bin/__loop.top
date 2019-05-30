@@ -1,0 +1,272 @@
+# This file defines the current loop modeling routines. An example of
+# how to use CALL ROUTINE = 'loop' is given in the comments following
+# this. 
+#
+# The routine is given with a working example:
+# oxidoreductase 2nac.pdb loops: 28-35 and 173-176 are optimised.
+#
+# Input: none, edit this file
+# Output: generated models in *.M* files, calculated energies in *.E* files
+#
+
+# INCLUDE                         # include the standard routines
+# 
+# SET LOOP_MD_LEVEL = 'refine_3' 
+# 
+# SET SEQUENCE = '2nac'             # the sequence code
+# SET LOOP_MODEL = '2nac.pdb'       # the structure into which the loop is built
+# 
+# SET LOOP_STARTING_MODEL = 1
+# SET LOOP_ENDING_MODEL = 25  # how many loop models are calculated
+# SET RAND_SEED = -34871     # to get different starting models each time
+# SET ID2 = 0                
+# 
+# CALL ROUTINE = 'loop'                      # do the loop models
+#
+# Try to get an even better model by clustering (optional):
+# CALL ROUTINE = 'cluster', ID1 = LOOP_STARTING_MODEL, ID2 = LOOP_ENDING_MODEL
+#
+
+ 
+# This routine picks model residues that need to be refined (necessary):
+#
+#  SUBROUTINE ROUTINE = 'select_loop_atoms'
+#   # Make sure your atom selection is NOT a function of coordinates!!!!
+#   # (because atom selections for restraints construction and optimization
+#   #  will be different!) This means SELECTION_SEGMENT = 'SPHERE' is bad!
+# 
+#   # 8 residue insertion:
+#    PICK_ATOMS SELECTION_SEGMENT = '28:A' '35:A', SELECTION_STATUS = 'initialize'
+#   # Add 4 residue insertion:
+#    PICK_ATOMS SELECTION_SEGMENT = '173:A' '176:A', SELECTION_STATUS = 'add'
+#
+#
+#   RETURN
+# END_SUBROUTINE
+
+# This routine adds any special restraints (optional):
+#
+# SUBROUTINE ROUTINE = 'special_restraints'
+#   MAKE_RESTRAINTS RESTRAINT_TYPE = 'ALPHA', RESIDUE_IDS = '157:A' '166:A'
+#   RETURN
+# END_SUBROUTINE
+#
+##########################################################################
+# End of example
+##########################################################################
+
+
+
+SUBROUTINE ROUTINE = 'loop'
+  CALL ROUTINE = 'getnames-loop'
+
+  READ_TOPOLOGY FILE = TOPLIB
+
+  READ_ATOM_CLASSES ATOM_CLASSES_FILE = '$(LIB)/atmcls-melo.lib'
+
+  READ_PARAMETERS FILE = PARLIB, ADD_PARAMETERS = off
+  READ_PARAMETERS FILE = '$(LIB)/melo1-dist.lib', ADD_PARAMETERS = on
+
+  # Best is 7A, but would have to comment it out to be able to set it in the
+  # the main .top file:
+  SET CONTACT_SHELL = 7.00
+  
+  SET OUTPUT = 'LONG'
+
+  # Get the initial coordinates from the input atom file, make sure
+  # that the disulfides occuring in the input atom file are patched
+  # in the model (via the 'special_patches' routine) and that the 
+  # residue numbering is also inherited. Also, it is not necessary 
+  # that the input atom file has either all atoms or atoms in the 
+  # standard RTF order.
+
+  READ_MODEL FILE = LOOP_MODEL           # MODEL_SEGMENT !
+  SEQUENCE_TO_ALI ALIGN_CODES = SEQUENCE, ATOM_FILES = LOOP_MODEL, ADD_SEQUENCE = off
+  SEQUENCE_TO_ALI ADD_SEQUENCE = on, ;
+     ALIGN_CODES = ALIGN_CODES SEQUENCE, ATOM_FILES = ATOM_FILES LOOP_MODEL
+  GENERATE_TOPOLOGY
+  TRANSFER_XYZ
+  BUILD_MODEL INITIALIZE_XYZ = off
+  READ_MODEL2 FILE = LOOP_MODEL
+  TRANSFER_RES_NUMB 
+  CALL ROUTINE = 'special_patches'
+
+  CALL ROUTINE = 'select_loop_atoms'
+
+  # Select all atoms to be modeled 'ab initio':
+  CALL ROUTINE = 'loop_restraints'
+
+  # Select corresponding restraints only:
+  # only necessary to eliminate inefficiencies in 'special_restraints' 
+  # because MAKE_RSRS works with selected atoms now:
+  PICK_RESTRAINTS ADD_RESTRAINTS = off 
+  CONDENSE_RESTRAINTS
+  WRITE_RESTRAINTS FILE = LOOP_CSRFILE
+
+  # Calculate energy for the original (raw) loop:
+  ENERGY NONBONDED_SEL_ATOMS = 1
+
+  # Prepare the starting structure (comment it out if
+  # the input PDB file is a better initial structure):
+  CALL ROUTINE = 'build_ini_loop'
+  SET ROOT_NAME = SEQUENCE, FILE_ID = '.IL', FILE_EXT = PDB_EXT, ID1 = 0
+  SET LOOP_INI_MODEL = '${DEFAULT}'
+
+  WRITE_MODEL FILE = LOOP_INI_MODEL
+
+  MAKE_SCHEDULE LIBRARY_SCHEDULE = 6
+  SET WRITE_ALL_ATOMS = on
+  DO  ID1 = LOOP_STARTING_MODEL, LOOP_ENDING_MODEL, 1
+    READ_MODEL FILE = LOOP_INI_MODEL
+    CALL ROUTINE = 'select_loop_atoms'
+    RANDOMIZE_XYZ DEVIATION = 5.0
+    SET ROOT_NAME = SEQUENCE, FILE_ID = '.DL', FILE_EXT = ''
+    SWITCH_TRACE FILE = '${DEFAULT}', TRACE_OUTPUT = 20
+    # Refine without the rest of the protein:
+    CALL ROUTINE = 'optimize', NONBONDED_SEL_ATOMS = 2, FILE_EXT = PDB_EXT
+    # Refine in the context of the rest of the protein:
+    CALL ROUTINE = 'optimize', NONBONDED_SEL_ATOMS = 1
+    ENERGY
+
+    STRING_IF STRING_ARGUMENTS = TOP_VERSION 'accelrys', OPERATION = 'EQ'
+      # Accelrys code here (in addition to the academic stuff):
+
+      # output information about whole molecule
+      SET ROOT_NAME = SEQUENCE
+      CALL ROUTINE = 'select_all_atoms'
+      # Select all atoms :
+      CALL ROUTINE = 'loop_restraints'
+      # "push" OUTPUT
+      SET OUTPUT2 = OUTPUT
+      # write total energy
+      ENERGY OUTPUT = 'LONG VIOLATIONS'
+      # write total violations
+      # ENERGY_PROFILE OUTPUT = 'ENERGY', FILE = 'default', FILE_ID = '.VL', FILE_EXT = ''
+      ENERGY OUTPUT = 'LONG ENERGY_PROFILE', NORMALIZE_PROFILE = OFF, ;
+          FILE = 'default', FILE_ID = '.EL', FILE_EXT = ''
+      ENERGY OUTPUT = 'LONG ENERGY_PROFILE', NORMALIZE_PROFILE = ON, ;
+          FILE = 'default', FILE_ID = '.NEL', FILE_EXT = ''
+      # ENERGY OUTPUT = 'LONG VIOLATIONS_PROFILE', FILE = 'default', FILE_ID = '.VL', FILE_EXT = ''
+      # "pop" output
+      SET OUTPUT = OUTPUT2
+
+    END_IF
+
+    SET ROOT_NAME = SEQUENCE, FILE_ID = '.BL', FILE_EXT = PDB_EXT
+    IUPAC_MODEL
+    WRITE_MODEL FILE = 'default'
+  END_DO
+
+  RETURN
+END_SUBROUTINE
+
+#########################################
+
+
+SUBROUTINE ROUTINE = 'loop_restraints'
+
+# do not use template derived rsrs at all:
+  SET DIH_LIB_ONLY = on 
+
+  SET DYNAMIC_SPHERE = on
+  SET DYNAMIC_MODELLER = on
+
+# use only p(M/R):
+  SET MNCH_LIB = 1
+
+  SET RESTRAINT_SEL_ATOMS = 1 # only restraints that have that many atoms in 
+                              # the selected set are going to be calculated
+
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'bond', ADD_RESTRAINTS = off
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'angle', ADD_RESTRAINTS = on
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'improper', ADD_RESTRAINTS = on
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'dihedral', ADD_RESTRAINTS = on
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'phi-psi_binormal', ADD_RESTRAINTS = ON
+
+  SET SPLINE_RANGE = 4.0, SPLINE_DX = 0.3, SPLINE_MIN_POINTS = 5
+
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'omega_dihedral', ADD_RESTRAINTS = ON
+
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'chi1_dihedral', ADD_RESTRAINTS = ON
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'chi2_dihedral', ADD_RESTRAINTS = ON
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'chi3_dihedral', ADD_RESTRAINTS = ON
+  MAKE_RESTRAINTS RESTRAINT_TYPE = 'chi4_dihedral', ADD_RESTRAINTS = ON
+
+  CALL ROUTINE = 'special_restraints'
+
+  RETURN
+END_SUBROUTINE
+#############################################
+
+
+SUBROUTINE ROUTINE = 'optimize'
+
+  SET OPTIMIZATION_METHOD = 1, MAX_ITERATIONS = 200, MIN_ATOM_SHIFT = 0.001
+  SET OUTPUT2 = OUTPUT
+  SET OUTPUT = 'NO_REPORT'
+  OPTIMIZE SCHEDULE_STEP = 1
+  OPTIMIZE SCHEDULE_STEP = 2
+  OPTIMIZE SCHEDULE_STEP = 3
+  OPTIMIZE SCHEDULE_STEP = 4
+  OPTIMIZE SCHEDULE_STEP = 5
+
+  CALL ROUTINE = LOOP_MD_LEVEL
+
+  SET OPTIMIZATION_METHOD = 1, MAX_ITERATIONS = 1000, MIN_ATOM_SHIFT = 0.00001
+  OPTIMIZE
+  SET OUTPUT = OUTPUT2
+
+  RETURN
+END_SUBROUTINE
+
+##################################################
+
+SUBROUTINE ROUTINE = 'getnames-loop'
+  STRING_OPERATE OPERATION = 'CONCATENATE', ;
+                 STRING_ARGUMENTS = SEQUENCE '.lrsr',  RESULT = LOOP_CSRFILE
+  RETURN
+END_SUBROUTINE
+
+###############################################
+
+SUBROUTINE ROUTINE = 'build_ini_loop'
+
+  UNBUILD_MODEL
+  BUILD_MODEL BUILD_METHOD = '3D_INTERPOLATION', INITIALIZE_XYZ = off
+
+  RETURN
+END_SUBROUTINE
+
+
+
+# This routine picks model residues that are modeled in __loops 
+# (necessary, but can be re-defined just as other routines).
+# This version of the atom selection routine automatically picks all
+# standard model residues that occur in 'loops':
+#
+SUBROUTINE ROUTINE = 'select_loop_atoms'
+  READ_ALIGNMENT FILE = ALNFILE, ALIGN_CODES = KNOWNS SEQUENCE, ADD_SEQUENCE = off
+  SET ATOM_TYPES = 'ALL'
+  SET RES_TYPES = 'STD'
+  SET SELECTION_STATUS = 'INITIALIZE'
+  SET SELECTION_MODE = 'ATOM'
+  SET SELECTION_SEARCH = 'SEGMENT'
+  SET SELECTION_FROM = 'ALL'
+  SET PICK_ATOMS_SET = 1
+  # Uncomment, to allow user selection:
+  # SET GAP_EXTENSION = 2 2 # gaps are extended for two residues in both
+  #                         # directions to get loops (insertions & deletions)
+  # SET MAX_LOOP_LENGTH = 15
+  PICK_ATOMS SELECTION_SEGMENT = 'LOOPS' ''
+  RETURN
+END_SUBROUTINE
+
+
+SUBROUTINE ROUTINE = 'select_all_atoms'
+  SET SELECTION_STATUS = 'INITIALIZE'
+  SET SELECTION_MODE = 'ATOM'
+  SET SELECTION_SEARCH = 'SEGMENT'
+  SET SELECTION_FROM = 'ALL'
+  PICK_ATOMS SELECTION_SEGMENT = 'FIRST:@' 'END:'
+  RETURN
+END_SUBROUTINE

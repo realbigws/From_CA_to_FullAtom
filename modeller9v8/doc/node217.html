@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>alpha() -- make an -helix</TITLE>
+<META NAME="description" CONTENT="alpha() -- make an -helix">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node218.html">
+<LINK REL="previous" HREF="node216.html">
+<LINK REL="up" HREF="node216.html">
+<LINK REL="next" HREF="node218.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4902"
+  HREF="node218.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4896"
+  HREF="node216.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4890"
+  HREF="node216.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4898"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4900"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4903"
+  HREF="node218.html">strand()   make</A>
+<B> Up:</B> <A NAME="tex2html4897"
+  HREF="node216.html">The secondary_structure module: secondary</A>
+<B> Previous:</B> <A NAME="tex2html4891"
+  HREF="node216.html">The secondary_structure module: secondary</A>
+ &nbsp; <B>  <A NAME="tex2html4899"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4901"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001181000000000000000">
+alpha() -- make an <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$ \alpha $">
+-helix</A>
+</H2> <A NAME="19273"></A><A NAME="CMD:alpha"></A><A NAME="19277"></A><TT>alpha(residues)</TT>
+<BR><BLOCKQUOTE>
+This makes restraints enforcing an <IMG
+ WIDTH="14" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$ \alpha $">
+-helix (mainchain
+conformation class ``A'') for the residue segment specified by <I>residues</I><A NAME="19294"></A>
+(which can be created using the <B><A HREF="node166.html#CMD:model.residuerange">model.residue_range()</A></B><A NAME="19297"></A> function).
+The helix is restrained by <IMG
+ WIDTH="35" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img83.png"
+ ALT="$ \Phi,\Psi$">
+ binormal restraints, N-O hydrogen
+bonds, <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+-<!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+ distances for <!-- MATH
+ $i-j \in \{2-9\}$
+ -->
+<IMG
+ WIDTH="107" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img84.png"
+ ALT="$ i-j \in \{2-9\}$">
+, <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+-O distances
+for <!-- MATH
+ $i-j \in \{2-9\}$
+ -->
+<IMG
+ WIDTH="107" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img84.png"
+ ALT="$ i-j \in \{2-9\}$">
+, and O-O distances for <!-- MATH
+ $i-j \in \{2-6\}$
+ -->
+<IMG
+ WIDTH="107" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img85.png"
+ ALT="$ i-j \in \{2-6\}$">
+
+<A NAME="tex2html121"
+  HREF="footnode.html#foot19284"><SUP>6.2</SUP></A>.
+Note that this requires all heavy atoms to be
+present to work properly, so will not work with the <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+-only topology.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>In many cases (<EM>e.g.</EM>, most comparative modeling runs) you will already have
+binormal, <!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+-<!-- MATH
+ ${C}_\alpha$
+ -->
+<IMG
+ WIDTH="25" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img13.png"
+ ALT="$ {C}_\alpha$">
+, and N-O restraints active (which will conflict
+with helix restraints), so it is recommended that you first use
+<B><A HREF="node211.html#CMD:Restraints.unpick">Restraints.unpick()</A></B><A NAME="19310"></A> followed by <B><A HREF="node209.html#CMD:Restraints.condense">Restraints.condense()</A></B><A NAME="19315"></A> to remove these.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>To actually add the restraints, pass the new object to <B><A HREF="node210.html#CMD:Restraints.add">Restraints.add()</A></B><A NAME="19320"></A>.
+
+</BLOCKQUOTE>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html122"
+  HREF="../examples/commands/secondary_structure.py">examples/commands/secondary_structure.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Example for model.build_sequence(), secondary_structure.alpha()
+
+from modeller import *
+from modeller.optimizers import conjugate_gradients
+
+# Set up environment
+e = environ()
+e.libs.topology.read('${LIB}/top_heav.lib')
+e.libs.parameters.read('${LIB}/par.lib')
+
+# Build an extended chain model from primary sequence, and write it out
+m = model(e)
+m.build_sequence('GSCASVCGV')
+m.write(file='extended-chain.pdb')
+
+# Make stereochemical restraints on all atoms
+allatoms = selection(m)
+m.restraints.make(allatoms, restraint_type='STEREO', spline_on_site=False)
+
+# Constrain all residues to be alpha-helical
+# (Could also use m.residue_range() rather than m.residues here.)
+m.restraints.add(secondary_structure.alpha(m.residues))
+
+# Get an optimized structure with CG, and write it out
+cg = conjugate_gradients()
+cg.optimize(allatoms, max_iterations=100)
+m.write(file='alpha-helix.pdb')
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4902"
+  HREF="node218.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4896"
+  HREF="node216.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4890"
+  HREF="node216.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4898"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4900"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4903"
+  HREF="node218.html">strand()   make</A>
+<B> Up:</B> <A NAME="tex2html4897"
+  HREF="node216.html">The secondary_structure module: secondary</A>
+<B> Previous:</B> <A NAME="tex2html4891"
+  HREF="node216.html">The secondary_structure module: secondary</A>
+ &nbsp; <B>  <A NAME="tex2html4899"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4901"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

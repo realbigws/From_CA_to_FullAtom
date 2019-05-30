@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Including water molecules, HETATM residues, and hydrogen atoms</TITLE>
+<META NAME="description" CONTENT="Including water molecules, HETATM residues, and hydrogen atoms">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node19.html">
+<LINK REL="previous" HREF="node17.html">
+<LINK REL="up" HREF="node17.html">
+<LINK REL="next" HREF="node19.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html1562"
+  HREF="node19.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1556"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1550"
+  HREF="node17.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1558"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1560"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1563"
+  HREF="node19.html">Changing the default optimization</A>
+<B> Up:</B> <A NAME="tex2html1557"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1551"
+  HREF="node17.html">More advanced usage</A>
+ &nbsp; <B>  <A NAME="tex2html1559"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1561"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00721000000000000000"></A>
+<A NAME="SECTION:model-ligand"></A>
+<BR>
+Including water molecules, HETATM residues, and hydrogen atoms
+</H2>
+
+<P>
+If your template contains a ligand or other non-protein residues (e.g. DNA or
+RNA, or anything marked as HETATM in the PDB file) then M<SMALL>ODELLER</SMALL>
+can transfer this into your generated model. This is done by using the
+BLK ('.') residue type in your alignment (both in the template(s) <EM>and</EM>
+the model sequence) to copy the ligand residue(s) as a rigid body into the
+model. In most cases, you should also set <I><A HREF="node139.html#MEMB:iodata.hetatm">env.io.hetatm</A></I><A NAME="2842"></A> to <TT>True</TT>,
+which instructs M<SMALL>ODELLER</SMALL> to read HETATM records from your template PDB files;
+by default all HETATM records are ignored.
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html32"
+  HREF="../examples/automodel/model-ligand.py">examples/automodel/model-ligand.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># Homology modeling with ligand transfer from the template
+from modeller import *              # Load standard Modeller classes
+from modeller.automodel import *    # Load the automodel class
+
+log.verbose()    # request verbose output
+env = environ()  # create a new MODELLER environment to build this model in
+
+# directories for input atom files
+env.io.atom_files_directory = ['.', '../atom_files']
+
+# Read in HETATM records from template PDBs
+env.io.hetatm = True
+
+a = automodel(env,
+              alnfile  = 'align-ligand.ali',  # alignment filename
+              knowns   = '5fd1',              # codes of the templates
+              sequence = '1fdx')              # code of the target
+a.starting_model= 4                 # index of the first model
+a.ending_model  = 4                 # index of the last model
+                                    # (determines how many models to calculate)
+a.make()                            # do the actual homology modeling
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html33"
+  HREF="../examples/automodel/align-ligand.ali">examples/automodel/align-ligand.ali</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>C; Similar to alignment.ali, but with ligands included
+
+&gt;P1;5fd1
+structureX:5fd1:1    :A:108  :A:ferredoxin:Azotobacter vinelandii: 1.90: 0.19
+AFVVTDNCIKCKYTDCVEVCPVDCFYEGPNFLVIHPDECIDCALCEPECPAQAIFSEDEVPEDMQEFIQLNAELA
+EVWPNITEKKDPLPDAEDWDGVKGKLQHLER..*
+
+&gt;P1;1fdx
+sequence:1fdx:1    : :56   : :ferredoxin:Peptococcus aerogenes: 2.00:-1.00
+AYVINDSC--IACGACKPECPVNIIQGS--IYAIDADSCIDCGSCASVCPVGAPNPED-----------------
+-------------------------------..*
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+Note that by turning on <I><A HREF="node139.html#MEMB:iodata.hetatm">env.io.hetatm</A></I><A NAME="2860"></A>, <EM>all</EM> HETATM records are read
+from your templates, so all of these must be listed in your alignment.
+Use a single '.' character for each HETATM residue in the <EM>template</EM>
+sequence in your alignment.<A NAME="tex2html34"
+  HREF="footnode.html#foot2763"><SUP>2.1</SUP></A> M<SMALL>ODELLER</SMALL> always
+reads PDB residues in the order they're written in the PDB file, so if you
+have a ligand at the end of PDB file, put the '.' residue at the end of the
+sequence in the alignment too. You will often see a chain break ('/')
+immediately preceding '.' residues in example alignments.  That's only
+necessary if you want to force the ligands to have a different chain ID to the
+amino acids. (If you want them in the same chain, leave out the chain break.)
+
+<P>
+To get the ligand into your model, you must align a residue in the model with
+the desired residue in the template. Use a single '.' residue in your
+<EM>model</EM> sequence in your alignment for each ligand you want in the model.
+This must be aligned with a suitable ligand in the template sequence. If you
+have extra HETATM ligands in the template which you <EM>don't</EM> want in the
+model, simply align them with a gap ('-') in the model sequence. If you have
+multiple templates, you can copy ligands from any suitable template -- just
+align the '.' residue in the model with the desired template sequence ligand.
+
+<P>
+<TT>automodel</TT> builds restraints on these ligands to keep their geometry
+and environment reasonably similar to the template, by restraining some
+intra-ligand, inter-ligand, and ligand-protein distances to their template
+values. See <B><A HREF="node69.html#CMD:automodel.nonstdrestraints">automodel.nonstd_restraints()</A></B><A NAME="2870"></A> for more information.
+
+<P>
+You can also treat ligands flexibly by defining topology and parameter
+information. See section&nbsp;<A HREF="node100.html#SECTION:block">5.2.1</A>
+for more information, and the example in the advanced modeling tutorial, at
+<A NAME="tex2html35"
+  HREF="http://salilab.org/modeller/tutorial/advanced.html">http://salilab.org/modeller/tutorial/advanced.html</A>.
+
+<P>
+If you want to add ligands to your model which are not present in your template,
+you will need to do some docking studies, which are beyond the scope of the
+M<SMALL>ODELLER</SMALL> program.
+
+<P>
+To read in water residues, set <I><A HREF="node141.html#MEMB:iodata.water">env.io.water</A></I><A NAME="2877"></A> to <TT>True</TT> and use the 'w'
+residue type in your alignment.
+
+<P>
+To read in hydrogen atoms, set <I><A HREF="node140.html#MEMB:iodata.hydrogen">env.io.hydrogen</A></I><A NAME="2883"></A> to <TT>True</TT>. This is not
+generally necessary, as if you want to build an all hydrogen model, it is
+easiest just to use the <TT>allhmodel</TT> class, which turns this on for you
+automatically; see section&nbsp;<A HREF="node22.html#SECTION:model-default-allh">2.2.5</A>.
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html1562"
+  HREF="node19.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html1556"
+  HREF="node17.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html1550"
+  HREF="node17.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html1558"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html1560"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html1563"
+  HREF="node19.html">Changing the default optimization</A>
+<B> Up:</B> <A NAME="tex2html1557"
+  HREF="node17.html">More advanced usage</A>
+<B> Previous:</B> <A NAME="tex2html1551"
+  HREF="node17.html">More advanced usage</A>
+ &nbsp; <B>  <A NAME="tex2html1559"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html1561"
+  HREF="node470.html">Index</A></B> 
+<!--End of Navigation Panel-->
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>

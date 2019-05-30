@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>selection() -- create a new selection</TITLE>
+<META NAME="description" CONTENT="selection() -- create a new selection">
+<META NAME="keywords" CONTENT="manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="manual.css">
+
+<LINK REL="next" HREF="node222.html">
+<LINK REL="previous" HREF="node220.html">
+<LINK REL="up" HREF="node220.html">
+<LINK REL="next" HREF="node222.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html4985"
+  HREF="node222.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html4979"
+  HREF="node220.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html4973"
+  HREF="node220.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A> 
+<A NAME="tex2html4981"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents.png"></A> 
+<A NAME="tex2html4983"
+  HREF="node470.html">
+<IMG WIDTH="43" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4986"
+  HREF="node222.html">selection.add()   add</A>
+<B> Up:</B> <A NAME="tex2html4980"
+  HREF="node220.html">The selection class: handling</A>
+<B> Previous:</B> <A NAME="tex2html4974"
+  HREF="node220.html">The selection class: handling</A>
+ &nbsp; <B>  <A NAME="tex2html4982"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A NAME="tex2html4984"
+  HREF="node470.html">Index</A></B> 
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION001191000000000000000">
+selection() -- create a new selection</A>
+</H2> <A NAME="20238"></A><A NAME="CMD:selection"></A><A NAME="20241"></A><TT>selection(*atoms)</TT>
+<BR>
+<P>
+<BLOCKQUOTE>
+This creates a new empty <TT>selection</TT> object. An initial
+group of atoms or other objects can be added to the selection by listing them
+here; see Section&nbsp;<A HREF="node220.html#CLASS:selection">6.9</A> for more information.
+
+</BLOCKQUOTE>
+
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html126"
+  HREF="../examples/python/selection.py">examples/python/selection.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE>from modeller import *
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+env.libs.topology.read(file='$(LIB)/top_heav.lib')
+env.libs.parameters.read(file='$(LIB)/par.lib')
+
+mdl = model(env, file='1fdn')
+
+# New empty selection
+s = selection()
+
+# Add all atoms from residues 4 through 10 (chain A) inclusive (PDB numbering)
+s.add(mdl.residue_range('4:A', '10:A'))
+
+# Selection of all atoms currently within 5A of atom CA in residue 1 in chain A
+# (this destroys the previous selection):
+s = mdl.atoms['CA:1:A'].select_sphere(5)
+
+# Is the CB:1:A atom in the selection?
+print mdl.atoms['CB:1:A'] in s
+
+# Alternative ways of selecting the same atom:
+print mdl.chains['A'].residues['1'].atoms['CB'] in s
+print mdl.residues['1:A'].atoms['CB'] in s
+
+# All atoms currently within 5A of atom CA:1:A, OR currently within 3A of the
+# point (1,10,1):
+s = mdl.atoms['CA:1:A'].select_sphere(5) | mdl.point(1,10,1).select_sphere(3)
+
+# All atoms currently within 5A of atom CA:1:A, AND also currently within 3A
+# of the point (1,10,1):
+s = mdl.atoms['CA:1:A'].select_sphere(5) &amp; mdl.point(1,10,1).select_sphere(3)
+
+# All atoms currently within 5A of atom CA:1:A, OR currently within 3A of the
+# point (1,10,1), but not BOTH:
+s = mdl.atoms['CA:1:A'].select_sphere(5) ^ mdl.point(1,10,1).select_sphere(3)
+
+# Create a selection containing the CA atom from residue 1, chain A,
+# and all of residue 2 (PDB numbering)
+s = selection(mdl.atoms['CA:1:A'], mdl.residues['2:A'])
+
+# All residues EXCEPT 5-10 in chain A (i.e. all atom selection minus the
+# selection of residues 5-10, otherwise known as an inverted selection):
+s = selection(mdl) - selection(mdl.residue_range('5:A', '10:A'))
+
+# Selection of residues 1, 4, 8 and 10-15 (PDB numbering) from chain A:
+s = selection(mdl.residues['1:A'], mdl.residues['4:A'], mdl.residues['8:A'],
+              mdl.residue_range('10:A', '15:A'))
+
+# Print the center of mass (note: not mass weighted)
+print s.mass_center
+
+# Rotate by 90 degrees about the z axis through the origin (0,0,0)
+# (right handed rotation)
+s.rotate_origin([0,0,1], 90)
+
+# The same thing, except that the axis passes through the center of mass:
+s.rotate_mass_center([0,0,1], 90)
+
+# Translate by 5 angstroms along the x axis
+s.translate([5.0, 0, 0])
+
+# Equivalent (but less efficient, as it involves calculating the COM)
+s.x += 5.0
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+
+<DL>
+<DT><STRONG>Example: <A NAME="tex2html127"
+  HREF="../examples/commands/pick_atoms.py">examples/commands/pick_atoms.py</A></STRONG></DT>
+<DD> <BR>
+<BR>
+<PRE># This will pick various subsets of atoms in the MODEL and compare them
+# with MODEL2.
+
+from modeller import *
+
+env = environ()
+env.io.atom_files_directory = ['../atom_files']
+log.level(1, 1, 1, 1, 0)
+
+# Read the models and the alignment:
+mdl  = model(env, file='1fas')
+mdl2 = model(env, file='2ctx')
+aln = alignment(env, file='toxin.ali', align_codes=('1fas', '2ctx'))
+aln.write(file='toxin.pap', alignment_format='PAP')
+
+# Pick and superpose mainchain atoms:
+atmsel = selection(mdl).only_mainchain()
+atmsel.superpose(mdl2, aln)
+
+# Pick and superpose sidechain atoms:
+atmsel = selection(mdl).only_sidechain()
+atmsel.superpose(mdl2, aln)
+
+# Pick and superpose CA and CB atoms:
+atmsel = selection(mdl).only_atom_types('CA CB')
+atmsel.superpose(mdl2, aln)
+
+# Pick and superpose all atoms:
+atmsel = selection(mdl)
+atmsel.superpose(mdl2, aln)
+
+# Pick and superpose CA and CB atoms in one segment only:
+atmsel = selection(mdl.residue_range('2:A', '10:A')).only_atom_types('CA CB')
+atmsel.superpose(mdl2, aln)
+
+# Pick and superpose all atoms within 6 angstroms of the 'CA' atom in
+# residue '10' in chain A:
+atmsel = mdl.atoms['CA:10:A'].select_sphere(6.0)
+atmsel.superpose(mdl2, aln)
+
+# Pick and superpose all atoms within 6 angstroms of any atom in
+# segment 2:A to 10:A
+atmsel = selection(mdl.residue_range('2:A', '10:A')).select_sphere(6.0)
+atmsel.superpose(mdl2, aln)
+
+# Pick all atoms in the model
+atmsel = selection(mdl)
+
+# Pick all atoms in all loops (ie residues within 2 positions
+# of any gap in the alignment):
+loops = mdl2.loops(aln, minlength=5, maxlength=15, insertion_ext=2,
+                   deletion_ext=2)
+atmsel = selection(loops)
+
+# Pick all atoms within 6 angstroms of all loops
+atmsel = selection(loops).select_sphere(6.0)
+</PRE>
+</DD>
+</DL>  <BR>
+<P>
+<BR><HR>
+<ADDRESS>
+Automatic builds
+2010-04-21
+</ADDRESS>
+</BODY>
+</HTML>
