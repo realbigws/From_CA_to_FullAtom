@@ -35,7 +35,7 @@ Usage:
 ======
 
 USAGE:  ./CA_to_FullAtom.sh <-i CA_trance> [-o out_file] [-F fix_or_not]
-                           [-K remove_tmp] [-H home]
+                            [-K remove_tmp] [-H home]
 Options:
 
 ***** required arguments *****

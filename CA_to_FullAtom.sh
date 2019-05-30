@@ -8,7 +8,7 @@ usage()
 	echo "    Given CA trace in PDB format, restore full atoms. "
 	echo ""
 	echo "USAGE:  ./CA_to_FullAtom.sh <-i CA_trance> [-o out_file] [-F fix_or_not] "
-	echo "                           [-K remove_tmp] [-H home] "
+	echo "                            [-K remove_tmp] [-H home] "
 	echo "Options:"
 	echo ""
 	echo "***** required arguments *****"
