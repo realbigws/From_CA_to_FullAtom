@@ -63,7 +63,8 @@ Running example:
 
 
 #-------- note -------#
-Users may add 'missing' residues to head, middle, and/or tail regions.
+Users may add 'missing' residues to head, middle, and/or tail regions, 
+   by specifying HEAD, MISS, and TAIL in the first part, respectively.
 
 
 For example:
