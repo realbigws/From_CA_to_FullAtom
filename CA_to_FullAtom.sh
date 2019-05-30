@@ -125,6 +125,7 @@ fi
 
 # --- default directories --#
 bin=$home/bin
+util=$home/util
 
 # --- create temporary folder --#
 DATE=`date '+%Y_%m_%d_%H_%M_%S'`
@@ -140,7 +141,7 @@ mkdir -p $tmp_root
 #-> restore heavy atomand CB
 $bin/PDB_Tool -i $input -R 1 -N -1 -o $tmp_root/${relnam}_HeavyAtom.pdb
 #-> generate a pseudo model
-$bin/PDB_Add_Chain $tmp_root/${relnam}_HeavyAtom.pdb A $tmp_root/1pdbA.pdb
+$util/PDB_Add_Chain $tmp_root/${relnam}_HeavyAtom.pdb A $tmp_root/1pdbA.pdb
 
 
 #----------------------------------------------------------------#
@@ -149,11 +150,11 @@ $bin/PDB_Add_Chain $tmp_root/${relnam}_HeavyAtom.pdb A $tmp_root/1pdbA.pdb
 
 
 #-> extract SEQRES from original input
-$bin/PDB_To_SEQ_miss $input $tmp_root/${relnam}.fasta
+$util/PDB_To_SEQ_miss $input $tmp_root/${relnam}.fasta
 #-> extract ATOM from HeavyAtom model
-$bin/PDB_To_SEQ_miss $tmp_root/1pdbA.pdb $tmp_root/1pdbA.fasta
+$util/PDB_To_SEQ_miss $tmp_root/1pdbA.pdb $tmp_root/1pdbA.fasta
 #-> perform DynaProg
-$bin/Protein_DynaProg $tmp_root/${relnam}.fasta $tmp_root/1pdbA.fasta \
+$util/Protein_DynaProg $tmp_root/${relnam}.fasta $tmp_root/1pdbA.fasta \
 	$tmp_root/${relnam}-1pdbA.fasta
 #-> run modeller
 $home/build3Dmodel.sh $tmp_root/${relnam}-1pdbA.fasta ${relnam} $tmp_root $home $fix_or_not

@@ -6,12 +6,33 @@ Given CA trace in PDB format, restore full atoms.
 
 
 
+============
+Requirement:
+============
+
+bin/DeepScore could be obtained from DeepAlign package:
+    https://github.com/realbigws/DeepAlign
+
+bin/PDB_Tool could be obtained from PDB_Tool package:
+    https://github.com/realbigws/PDB_Tool
+
+
+========
+Compile:
+========
+
+cd source_code/
+        make
+cd ../
+
+
 
 ======
 Usage:
 ======
 
-USAGE:  ./CA_to_FullAtom.sh <-i CA_trance> [-o out_file] [-K remove_tmp] [-H home]
+USAGE:  ./CA_to_FullAtom.sh <-i CA_trance> [-o out_file] [-F fix_or_not]
+                           [-K remove_tmp] [-H home]
 Options:
 
 ***** required arguments *****
@@ -19,6 +40,8 @@ Options:
 
 ***** optional arguments *****
 -o out_file     : Default output file would be '${input_name}_FullAtom.pdb'.]
+
+-F fix_or_not   : Use FIX or RELAX mode to construct 3D model [default = 1 for FIX]
 
 -K remove_tmp   : Remove temporary folder or not. [default = 1 to remove]
 
