@@ -66,5 +66,14 @@ Running example:
 Users may add 'missing' residues to head, middle, and/or tail regions.
 
 
+For example:
+
+ATOM    117  CA  LYS A 117      10.569   8.441  55.274  1.00 20.54      A    C
+ATOM    118  CA  VAL A 118      12.277   7.728  51.931  1.00 39.07      A    C
+ATOM    119  CA  ILE A 119      11.471   4.029  52.324  1.00 27.78      A    C
+ATOM    120  CA  ALA A 120       7.805   4.981  52.936  1.00 59.80      A    C
+TAIL             SER A 121       0.000   0.000   0.000  0.00  0.00
+TAIL             ALA A 122       0.000   0.000   0.000  0.00  0.00
+TAIL             LYS A 123       0.000   0.000   0.000  0.00  0.00
 
 
